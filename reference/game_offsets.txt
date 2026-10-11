@@ -1,0 +1,174 @@
++0x006  undefined1                                 1 fn  00401750
++0x008  DWORD,uint,undefined4                      1 fn  00403017
++0x00b  undefined1                                 1 fn  00401750
++0x00c  int,undefined4                             1 fn  00403017
++0x010  longlong                                   1 fn  00401803
++0x014  undefined1                                 1 fn  00401750
++0x018  char,undefined1                            2 fn  00401803 00403017
++0x020  DWORD,uint,undefined4                      2 fn  00401803 00403017
++0x024  int,undefined4                             2 fn  00401803 00403017
++0x028  float,undefined4                           2 fn  00401803 00403017
++0x02c  char                                       3 fn  00401803 004019f6 004022d2
++0x02f  char,undefined1                            2 fn  00401750 00408a90
++0x030  HWND,int,undefined4                        3 fn  00401803 004022d2 0042b0bb
++0x034  int,undefined4                             4 fn  004019f6 00401daa 00402388 00402471
++0x038  int,undefined4                             2 fn  00401daa 00402388
++0x03c  int,undefined4                            15 fn  00401daa 00402388 0042134c 00421d0f 00422100 00425170
++0x040  int,undefined4                             5 fn  004019f6 004022d2 00402388 004026a8 0042a488
++0x044  int,undefined4                             6 fn  00401daa 004022d2 00402388 004026a8 004027ca 0042a488
++0x048  int,undefined4                             2 fn  004019f6 00402388
++0x04c  int,undefined4                             2 fn  00401daa 0042a488
++0x04d  &addr                                      1 fn  00408df0
++0x050  char,undefined1                            1 fn  00401daa
++0x054  float                                     12 fn  00403017 0040e400 0041e9c0 0041fe31 004228f0 00422fc2
++0x058  &addr,int                                  6 fn  00403089 0040e400 0041e9c0 004228f0 00427475 00427e4d
++0x05c  &addr,int                                  6 fn  00403089 0040e400 0041e9c0 004228f0 00427475 00427e4d
++0x060  &addr,int                                  5 fn  00403089 0040e400 0041e9c0 004228f0 00427475
++0x064  &addr,int                                  5 fn  00403089 0040e400 0041e9c0 004228f0 00427475
++0x067  &addr                                      1 fn  00408df0
++0x068  &addr,int                                  4 fn  00403089 0041e9c0 00427475 00427e4d
++0x06c  &addr,int                                  9 fn  00403089 0040e400 0041e9c0 0041fe31 004228f0 00422fc2
++0x070  &addr,int                                  9 fn  00403089 0040e400 0041e9c0 0041fe31 004228f0 00422fc2
++0x074  &addr,int                                  8 fn  00403089 0041e9c0 0041fe31 004228f0 00422fc2 00423d53
++0x077  &addr                                      1 fn  00408df0
++0x078  &addr,int                                  6 fn  00403089 0040e400 0041e9c0 004228f0 00427475 00427e4d
++0x07c  &addr,int                                  5 fn  00403089 0040e400 0041e9c0 004228f0 00427475
++0x080  &addr,int                                  5 fn  00403089 0040e400 0041e9c0 004228f0 00427475
++0x084  &addr,int                                  6 fn  00403089 0040e400 0041e9c0 004228f0 00427475 00427e4d
++0x087  &addr                                      1 fn  00408df0
++0x088  &addr,int                                  4 fn  00403089 0041e9c0 00427475 00427e4d
++0x08a  &addr                                      1 fn  00408df0
++0x08c  &addr                                      1 fn  00403089
++0x08d  &addr                                      1 fn  00408df0
++0x090  &addr                                      1 fn  00403089
++0x093  &addr                                      1 fn  00408df0
++0x094  undefined4                                 1 fn  00401daa
++0x098  undefined4                                 1 fn  00401daa
++0x0c0  int,undefined4,void                       13 fn  0040e400 0041e9c0 0041fe31 004228f0 00422fc2 00423d53
++0x0c4  int,undefined4,void                        3 fn  00429930 0042a256 0042a829
++0x0c8  int,undefined4,void                        4 fn  00429930 0042a256 0042a829 0042a8fa
++0x0cc  int,undefined4,void                        3 fn  00429930 0042a256 0042a8fa
++0x0d0  int,undefined4,void                        3 fn  00429930 0042a256 0042a8fa
++0x0d4  int,undefined4,void                        3 fn  00429930 0042a256 0042a8fa
++0x0d8  int,void                                   3 fn  004228f0 00423d53 004271d0
++0x0dc  int,void                                   3 fn  004228f0 00423d53 004271d0
++0x0e0  int,void                                   3 fn  004228f0 00423d53 004271d0
++0x0e4  int,void                                   3 fn  004228f0 00423d53 004271d0
++0x0e8  int,void                                   3 fn  004228f0 00423d53 004271d0
++0x0ec  int,void                                   3 fn  004228f0 00423d53 004271d0
++0x0f0  undefined4                                 3 fn  00429930 0042a829 0042a8fa
++0x0f4  undefined4                                 3 fn  00429930 0042a829 0042a8fa
++0x0f8  undefined4                                 3 fn  00429930 0042a829 0042a8fa
++0x0fc  undefined4                                 3 fn  00429930 0042a829 0042a8fa
++0x100  undefined4                                 3 fn  00429930 0042a829 0042a8fa
++0x104  undefined4                                 3 fn  00429930 0042a829 0042a8fa
++0x108  undefined4                                 3 fn  00429930 0042a829 0042a8fa
++0x10c  undefined4                                 1 fn  00429930
++0x110  undefined4                                 1 fn  00429930
++0x114  undefined4                                 1 fn  00429930
++0x118  undefined4                                 1 fn  00429930
++0x11c  undefined4                                 1 fn  00429930
++0x120  undefined4                                 1 fn  00429930
++0x124  undefined4                                 1 fn  00429930
++0x128  undefined4                                 1 fn  00429930
++0x130  undefined4                                 1 fn  00429930
++0x134  undefined4                                 1 fn  00429930
++0x138  undefined4                                 2 fn  00423d53 00429930
++0x13c  undefined4                                 2 fn  00423d53 00429930
++0x140  undefined4                                 2 fn  00423d53 00429930
++0x148  undefined4                                 1 fn  00429930
++0x14c  undefined4                                 1 fn  00429930
++0x150  undefined4                                 1 fn  00429930
++0x158  float,undefined4                           2 fn  00423d53 00429930
++0x15c  float,undefined4                           2 fn  00423d53 00429930
++0x160  float,undefined4                           2 fn  00423d53 00429930
++0x174  undefined4                                 2 fn  00423d53 00429930
++0x178  undefined4                                 2 fn  00423d53 00429930
++0x17c  undefined4                                 2 fn  00423d53 00429930
++0x180  float                                      1 fn  00429930
++0x188  undefined4                                 1 fn  00429930
++0x19c  &addr                                      1 fn  0042a488
++0x1dc  undefined4                                 2 fn  00423d53 00429930
++0x1e0  undefined4                                 2 fn  00423d53 00429930
++0x1e4  undefined4                                 2 fn  00423d53 00429930
++0x1e8  undefined4                                 2 fn  00423d53 00429930
++0x1ec  float                                      2 fn  00423d53 00429930
++0x1f0  undefined4                                 2 fn  00423d53 00429930
++0x1f4  float                                      2 fn  00423d53 00429930
++0x1f8  undefined4                                 2 fn  00423d53 00429930
++0x1fc  undefined4                                 2 fn  00423d53 00429930
++0x200  undefined4                                 2 fn  00423d53 00429930
++0x204  undefined4                                 2 fn  00423d53 00429930
++0x208  undefined4                                 2 fn  00423d53 00429930
++0x20c  undefined4                                 2 fn  00423d53 00429930
++0x210  undefined4                                 2 fn  00423d53 00429930
++0x214  undefined4                                 2 fn  00423d53 00429930
++0x218  undefined4                                 2 fn  00423d53 00429930
++0x21c  float,undefined4                          12 fn  0040e400 0041e9c0 0041fe31 004228f0 00422fc2 00423d53
++0x220  float,undefined4                          13 fn  0040e400 0041b070 0041e9c0 0041fe31 004228f0 00422fc2
++0x224  float,undefined4                          13 fn  0040e400 0041b070 0041e9c0 0041fe31 004228f0 00422fc2
++0x228  float,undefined4                          11 fn  0040e400 0041e9c0 0041fe31 004228f0 00422fc2 00423d53
++0x22c  float,undefined4                          11 fn  0040e400 0041e9c0 0041fe31 004228f0 00422fc2 00423d53
++0x230  float,undefined4                          11 fn  0040e400 0041e9c0 0041fe31 004228f0 00422fc2 00423d53
++0x234  float,undefined4                           4 fn  00422fc2 00423d53 0042557f 00429930
++0x238  float,undefined4                           4 fn  00422fc2 00423d53 0042557f 00429930
++0x23c  float,undefined4                           4 fn  00422fc2 00423d53 0042557f 00429930
++0x240  undefined4                                 5 fn  0040e400 00422fc2 00423d53 00429930 0042a8fa
++0x244  undefined4                                 4 fn  00422fc2 00423d53 00429930 0042a8fa
++0x248  undefined4                                 5 fn  0040e400 00422fc2 00423d53 00429930 0042a8fa
++0x24c  float,undefined4                           7 fn  0040e400 004228f0 00422fc2 00423d53 00429930 0042a8fa
++0x250  float,undefined4                          11 fn  0040e400 0041fe31 004228f0 00422fc2 00423d53 004271d0
++0x254  float,undefined4                           7 fn  0040e400 004228f0 00422fc2 00423d53 00429930 0042a8fa
++0x258  float,undefined4                           9 fn  0040e400 0041e9c0 0041fe31 004228f0 00422fc2 00423d53
++0x25c  float,undefined4                          10 fn  0040e400 0041fe31 004228f0 00422fc2 00423d53 004271d0
++0x260  float,undefined4                           9 fn  0040e400 0041e9c0 0041fe31 00422fc2 00423d53 004271d0
++0x264  float,undefined4                           6 fn  00422fc2 00423d53 004271d0 00429930 0042a8fa 0042b23c
++0x268  int,undefined4                             9 fn  0040e400 0041e9c0 0041fe31 004228f0 00422fc2 00423d53
++0x26c  int,undefined4                            13 fn  0040e400 0041b070 0041e9c0 0041fe31 004228f0 00422fc2
++0x270  &addr                                      1 fn  0041b070
++0x370  undefined4                                 3 fn  00422fc2 00423d53 00429930
++0x374  undefined4                                 3 fn  00422fc2 00423d53 00429930
++0x378  undefined4                                 3 fn  00422fc2 00423d53 00429930
++0x37c  float,undefined4                           4 fn  00422fc2 00423d53 00425170 00429930
++0x380  float,undefined4                           4 fn  00422fc2 00423d53 00425170 00429930
++0x384  float,undefined4                           4 fn  00422fc2 00423d53 00425170 00429930
++0x388  float,undefined4                           2 fn  0042557f 004259a7
++0x38c  float                                      2 fn  0042557f 004259a7
++0x390  float,undefined4                          11 fn  0040e400 0041b070 0041e9c0 0041fe31 004228f0 00422fc2
++0x394  float,undefined4                          10 fn  0041e9c0 0041fe31 004228f0 00422fc2 00423d53 004271d0
++0x398  char,undefined1                            7 fn  0041e9c0 0041fe31 004228f0 00422fc2 00423d53 00427475
++0x399  char,undefined1                            5 fn  004228f0 00422fc2 00423d53 00427475 00429930
++0x39a  byte,char,undefined1                       7 fn  0041b070 00422fc2 00423d53 00427475 00427e4d 004286c9
++0x39c  int,undefined4                             7 fn  0040e400 0041e9c0 0041fe31 00422fc2 00423d53 00428844
++0x3a0  float,undefined4                           7 fn  0040e400 0041e9c0 0041fe31 00422100 00422fc2 00423d53
++0x3a4  char,undefined1                            8 fn  0041e9c0 0041fe31 0042134c 004228f0 00422fc2 00423d53
++0x3a5  char,undefined1                            7 fn  0041e9c0 0041fe31 00421d0f 004228f0 00422fc2 00423d53
++0x3a6  byte,char,undefined1                      10 fn  0040e400 0041b070 0041e9c0 0041fe31 0042134c 004228f0
++0x3a7  char,undefined1                            7 fn  0041e9c0 0041fe31 00422fc2 00423d53 004271d0 00429930
++0x3a8  char,undefined1                            2 fn  0040e400 0042b23c
++0x3ac  int,undefined4                             9 fn  0040e400 0041e9c0 0041fe31 004228f0 00422fc2 00423d53
++0x3b0  int,undefined4                             9 fn  0040e400 0041b070 0041e9c0 0041fe31 00422fc2 00423d53
++0x3b4  int,undefined4                             6 fn  0041b070 0041e9c0 00422fc2 00423d53 00427e4d 00429930
++0x3b8  int,undefined4                             9 fn  0040e400 0041b070 0041e9c0 0041fe31 004228f0 00422fc2
++0x3bc  float,undefined4                           5 fn  0040e400 0041fe31 00422fc2 00423d53 00429930
++0x3c0  undefined4                                 1 fn  0041e9c0
++0x3c4  undefined4                                 1 fn  0041e9c0
++0x3c8  undefined4                                 1 fn  0041e9c0
++0x3d8  int,undefined4                             6 fn  0041b070 0041fe31 00422fc2 00423d53 00429930 0042b23c
++0x3dc  int,undefined4                             6 fn  0041b070 0041fe31 00422fc2 00423d53 00429930 0042b23c
++0x3e0  float,undefined4                           8 fn  0040e400 0041b070 0041e9c0 0041fe31 00422fc2 00423d53
++0x3e4  int,undefined4                             2 fn  0041e9c0 0041fe31
++0x3e8  int,undefined4                             2 fn  0041e9c0 0041fe31
++0x3ec  int,undefined4                             2 fn  0041e9c0 0041fe31
++0x3f0  int,undefined4                             3 fn  0040e400 0041e9c0 0041fe31
++0x3f4  int,undefined4                             3 fn  0040e400 0041e9c0 0041fe31
++0x3f8  int,undefined4                             3 fn  0040e400 0041e9c0 0041fe31
++0x3fc  int,undefined4                             2 fn  0040e400 0041e9c0
++0x400  float,undefined4                           6 fn  0040e400 00422fc2 00423d53 00427475 00427e4d 00429930
++0x404  int,undefined4                             3 fn  0040e400 0041e9c0 0041fe31
++0x408  int,undefined4                             1 fn  0040e400
++0x40c  int,undefined4                             6 fn  0040e400 0041e9c0 0041fe31 00422fc2 00423d53 00429930
++0x410  float,undefined4                           1 fn  0040e400
++0x414  char,undefined1                            7 fn  0040e400 0041b070 0041e9c0 0041fe31 00422fc2 00423d53
++0x418  int,undefined4                             8 fn  0040e400 0041b070 0041e9c0 004228f0 00422fc2 00423d53
++0x41c  float,undefined4                           4 fn  0040e400 0041b070 0041fe31 00429930

@@ -1,0 +1,135 @@
+# Function names / owners / signatures applied by ApplyAndDump.java.
+# addr      owner        name                     signature ("-" = keep params, only rename/move)
+# Methods (owner != "-") become __thiscall with `this` typed as the owner struct.
+
+# ---- CApp / Game framework -------------------------------------------------
+00401750  Game  AppCtor              -
+004017e7  Game  AppDtor              -
+00401803  Game  Create               bool (void *hinst, int nCmdShow)
+004019f6  Game  InitDDraw            bool (void *hwnd)
+00401daa  Game  InitD3D              bool (void)
+004022d2  Game  Flip                 void (void)
+00402388  Game  Cleanup              void (void)
+00402471  Game  LoadBitmapSurface    bool (void **surf, char *file)
+004026a8  Game  BltSurface           void (int x, int y, void **surf, int sx0, int sy0, int sx1, int sy1)
+004027ca  Game  DrawText             void (char *str, int size, int x, int y, int r, int g, int b)
+00403017  Game  UpdateTimer          void (void)
+00403089  Game  UpdateInput          void (void)
+00408df0  Game  Ctor                 Game * (void)
+00408f20  Game  Dtor                 void (void)
+00408f50  Game  CtorMembers          Game * (void)
+
+# ---- Game logic --------------------------------------------------------------
+00429930  Game  InitGame             void (void)
+0042a256  Game  ShutdownGame         void (void)
+0042a488  Game  Frame                void (void)
+004271d0  Game  State1_Title         void (void)
+00427475  Game  State2               void (void)
+00427e4d  Game  State3               void (void)
+0041e9c0  Game  State4               void (void)
+0041fe31  Game  State5               void (void)
+0040e400  Game  State6               void (void)
+004228f0  Game  State7               void (void)
+00422fc2  Game  State8               void (void)
+00423d53  Game  State9               void (void)
+0041b070  Game  fn_41b070            void (void)
+0042134c  Game  fn_42134c            void (void)
+00421d0f  Game  fn_421d0f            void (void)
+00422100  Game  fn_422100            void (void)
+00425170  Game  RenderSky            void (float yawAngle, float pitchAngle)
+0042557f  Game  fn_42557f            void (void)
+004259a7  Game  fn_4259a7            void (void)
+00428491  Game  fn_428491            void (void)
+004286c9  Game  fn_4286c9            void (void)
+00428844  Game  fn_428844            void (void)
+0042a829  Game  RenderCourt          void (void)
+0042a8fa  Game  fn_42a8fa            void (void)
+0042b0bb  Game  fn_42b0bb            -
+0042b23c  Game  fn_42b23c            void (void)
+
+# ---- Sound -------------------------------------------------------------------
+00408110  Sound  Ctor                Sound * (void)
+00408162  Sound  Dtor                void (void)
+00408211  Sound  Init                bool (void *hwnd)
+00408302  Sound  LoadWav             bool (int slot, char *file)
+00408716  Sound  Play                void (int slot)
+0040875f  Sound  SetVolume           void (int slot, int vol)
+0040878a  Sound  OpenMp3             void (void)
+004087ee  Sound  PlayMp3             void (void)
+0040882a  Sound  StopMp3             void (void)
+
+# ---- Skinned character model ------------------------------------------------
+00408f80  SkinModel  Ctor            SkinModel * (void)
+00408fa1  SkinModel  Dtor            void (void)
+004090bc  SkinModel  Load            bool (char *name)
+0040ab8f  SkinModel  Scale           void (float s)
+0040ad88  SkinModel  Skin            void (void)
+0040b638  SkinModel  RenderMaterials void (IDirect3DDevice7 *dev)
+0040b812  SkinModel  Render          void (IDirect3DDevice7 *dev)
+
+# ---- Static mesh --------------------------------------------------------------
+0040c520  StaticMesh  Ctor           StaticMesh * (void)
+0040c537  StaticMesh  Dtor           void (void)
+0040c5ed  StaticMesh  Load           bool (char *file)
+0040d99a  StaticMesh  Scale          void (float s)
+0040da2f  StaticMesh  RenderMaterials bool (IDirect3DDevice7 *dev)
+0040dc34  StaticMesh  Render         bool (IDirect3DDevice7 *dev)
+0040dc9b  StaticMesh  SetMaterial    bool (IDirect3DDevice7 *dev)
+
+# ---- Player -------------------------------------------------------------------
+0042c620  Player  Ctor               Player * (void)
+0042c6ce  Player  Dtor               void (void)
+0042c7ac  Player  Load               void (IDirect3DDevice7 *dev, int charId)
+0042cfab  Player  Render             void (IDirect3DDevice7 *dev, Mat4 shadow)
+0042d12e  Player  Update             void (float dt)
+0042dcb7  Player  SetPos             void (float x, float y, float z, float yaw)
+0042dd29  Player  SetFace            void (int face)
+0042ddac  Player  fn_42ddac          -
+0042de30  Player  fn_42de30          -
+0042deb4  Player  fn_42deb4          -
+0042df38  Player  Motion_42df38      -
+0042dfc0  Player  Motion_42dfc0      -
+0042e9cd  Player  Motion_42e9cd      -
+0042ee86  Player  Motion_42ee86      -
+0042f1a9  Player  Motion_42f1a9      -
+0042fb3f  Player  Motion_42fb3f      -
+0043006a  Player  Motion_43006a      -
+004301cb  Player  Motion_4301cb      -
+0043030b  Player  Motion_43030b      -
+00430497  Player  Motion_430497      -
+004305b1  Player  Motion_4305b1      -
+00430701  Player  Motion_430701      -
+00430a58  Player  Motion_430a58      -
+00430c40  Player  Motion_430c40      -
+00430e6d  Player  Motion_430e6d      -
+00431118  Player  Motion_431118      -
+004312d5  Player  Motion_4312d5      -
+
+# ---- Free functions -------------------------------------------------------------
+00408a90  -  WinMain                 int (void *hinst, void *hprev, char *cmdline, int nCmdShow)
+00408c79  -  WndProc                 -
+00406555  -  D3DTextr_CreateTextureFromFile  int (char *name, u32 stage, u32 flags)
+00406679  -  D3DTextr_FindTexture    TexContainer * (char *name)
+004068f2  -  D3DTextr_GetSurface     void * (char *name)
+004067db  -  D3DTextr_RestoreAllTextures int (IDirect3DDevice7 *dev)
+004067ab  -  D3DTextr_Restore        int (char *name, IDirect3DDevice7 *dev)
+0040738a  -  D3DUtil_SetViewMatrix   int (Mat4 *m, Vec3 *from, Vec3 *at, Vec3 *up)
+004075c8  -  D3DUtil_SetProjectionMatrix int (Mat4 *m, float fov, float aspect, float zn, float zf)
+004076f2  -  D3DUtil_SetRotateXMatrix void (Mat4 *m, float a)
+0040774d  -  D3DUtil_SetRotateYMatrix void (Mat4 *m, float a)
+004077a7  -  D3DUtil_SetRotateZMatrix void (Mat4 *m, float a)
+00408040  -  D3DUtil_SetIdentityMatrix void (Mat4 *m)
+0040c4b0  -  SetTranslateMatrixV     void (Mat4 *m, Vec3 *v)
+0040c4e0  -  SetTranslateMatrix      void (Mat4 *m, float x, float y, float z)
+004038d0  -  D3DMath_MatrixMultiply  void (Mat4 *out, Mat4 *a, Mat4 *b)
+00407c20  -  Vec3_Set                Vec3 * (Vec3 *out, float x, float y, float z)
+0041b040  -  Atan2                   float (float y, float x)
+00434250  -  operator_new            void * (u32 size)
+00433370  -  operator_delete         void (void *p)
+00434050  -  fopen                   -
+00433e80  -  fclose                  -
+00434a40  -  sprintf                 -
+00434dc0  -  fscanf                  -
+00434e50  -  fgets                   -
+00433400  -  srand                   void (u32 seed)
+00433410  -  rand                    int (void)

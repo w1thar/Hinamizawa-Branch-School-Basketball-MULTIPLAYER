@@ -1,0 +1,8 @@
+*.x    -text
+*.osm  -text
+*.tga  binary
+*.bmp  binary
+*.wav  binary
+*.mp3  binary
+*.jpg  binary
+*.gif  binary
