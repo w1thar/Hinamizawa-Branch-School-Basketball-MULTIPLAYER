@@ -166,7 +166,7 @@ void __thiscall Game::InitGame(Game *this)
     this->players[local_14] = local_6c;
     Player::Load(this->players[local_14],this->device,local_14);
   }
-  fn_42b0bb(this);
+  LoadSoundSet(this,0);
   _memset(&this->light,0,0x68);
   (this->light).type = 3;
   (this->light).direction.x = (this->lightDir).x;

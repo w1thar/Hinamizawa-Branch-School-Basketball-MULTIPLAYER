@@ -1,0 +1,39 @@
+﻿00401803_Game__Create: 1f
+004039ed_FUN_004039ed: 0.001d 1f
+00403cfe_FUN_00403cfe: 1e-05f
+00403e72_FUN_00403e72: 2f
+00403ef0_FUN_00403ef0: 2f
+00403f6b_FUN_00403f6b: 2f
+00404069_FUN_00404069: 1f 2f
+004041bd_FUN_004041bd: 0f 0.5f 1f 2f
+00404491_FUN_00404491: 0f 0.001f 1f
+0040738a_D3DUtil_SetViewMatrix: 1e-06f
+004075c8_D3DUtil_SetProjectionMatrix: 0.01d 1f 2f
+00407801_FUN_00407801: 1f
+0040ab8f_SkinModel__Scale: 9f
+0040b638_SkinModel__RenderMaterials: 1f
+0040c5ed_StaticMesh__Load: -1e-06f 1e-06f
+0040da2f_StaticMesh__RenderMaterials: 1f
+0040dc9b_StaticMesh__SetMaterial: 1f
+0040e400_Game__State6: -38f -35f -25f -19f -18f -15f -12f -10f -8f -6f -3f -2f -0.785f -0.01f 0f 0.0001f 0.53f 0.6f 0.7f 0.785f 0.8f 0.85f 0.9f 1f 1.8f 2f 3f 3.14f 4f 5f 6f 6.5f 7f 8f 9f 10f 12f 15f 18f 19f 20f 25f 28f 30f 34f 35f 36f 37f 38f 40f 100f 225f
+004199d4_Game__RotateToward: 3.14f 6.28f
+00419ae5_Game__CalcStep: 0.8f 3f 9f
+0041b070_Game__DrawHUD: -20f 0.01f 0.5f+d 0.8f 1f 2f 2.833f 3f 4f 5f 6f 6.5f 7f 9f 9.5f 10f 30f 32f 60f 90f 128f 135f 255f
+0041e9c0_Game__State4: -20f -3f 0f 0.5f 1f 2f 3f 6f
+0041fe31_Game__State5: -0.5f -0.001f 0.001f 0.1f 0.2f 0.5f 0.8f 0.85f 1f 1.2f 1.57f 1.75f 2f 3f 5f 10f 20f 30f 65f 32767f
+0042134c_Game__DrawTeamPortraits: 0.075f 0.165f 0.3f 1f 1.3f 10f 11f 640f
+00422100_Game__DrawPowerGauge: 1e-05f 0.72f 0.95f 480f
+004228f0_Game__State7: 1f 2f 15f
+00422fc2_Game__State8: 0.3f 0.5f 1f 1.5f 2f 3f 4f
+00423d53_Game__State9: 0.00037037f 0.00074074f 0.002222f 0.2f 1f 265f
+00425170_Game__RenderSky: -1.57f 0.02f 0.5f 0.55f 1f 1.1f 1.5f 1.57f 6.28f
+0042557f_Game__DrawSunGlare: 0f 2f 3d 53.33333f 240f 320f 480f 640f 32767d
+004259a7_Game__fn_4259a7: -200f -100f 1e-06f 2f+d 3.2f 5f 12f 16f 32f 80f 240f 255f 320f 740f 32767d
+00427475_Game__State2: -65f -50f -45f -30f 0f 0.01f 0.2f 0.98f 2f 3f 7f 8f 10f 12f 13f 17f 17.5f 18.5f 22.3f 24.8d 25f 25.3f 28.8f 29.3f 31.5f 32f 135f 140f
+00427e4d_Game__State3: -1f 0.5f 1f 7f
+00428491_Game__fn_428491: 0.01f 255f
+00428844_Game__fn_428844: 0.0072f 0.04f 0.95f 480f
+0042a8fa_Game__RenderObjects: 0.7f
+0042b23c_Game__fn_42b23c: -36f -35f -30f -4f -3.14f -1f -0.8f -0.5f -0.2f 0f 0.2f 0.25f 0.5f 0.7f 0.8f 1f 1.5f 3.14f 4f 6.28f 9f 11f 16f 20f 30f 35f 36f 150f
+0042d12e_Player__Update: -3.14f -0.01f 0f 0.01f 3.14f 6.28f
+0042ee86_Player__Motion_42ee86: 1.1f

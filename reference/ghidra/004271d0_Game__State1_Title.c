@@ -46,7 +46,7 @@ void __thiscall Game::State1_Title(Game *this)
   this->f260 = 0.0;
   this->f264 = 0.0;
   this->i3b0 = 0;
-  Sound::OpenMp3(this->sound);
+  Sound::OpenMp3(this->sound,s_WAV_LP_1_mp3_00454164);
   this->f394 = 1.0;
   this->f390 = 0.0;
   this->b3a4 = '\0';

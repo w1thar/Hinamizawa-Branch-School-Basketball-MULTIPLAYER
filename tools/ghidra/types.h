@@ -134,7 +134,7 @@ typedef struct XMaterial {                                  /* 0x148 */
 } XMaterial;
 
 typedef struct XFace { int n; int idx[4]; } XFace;          /* 0x14 */
-typedef struct CTexVert { int vtx; float tu, tv; } CTexVert;
+typedef struct CTexVert { int vtx; float tv, tu; } CTexVert;    /* original tv, tu of the vertex */
 typedef struct CTexGroup { int count; float step; CTexVert *verts; } CTexGroup;
 
 typedef struct SkinModel {                                  /* 0x34 */
@@ -272,8 +272,7 @@ typedef struct Game {                                       /* 0x420 */
     u8 pad3a9[3];
     int i3ac, i3b0, i3b4, i3b8;
     float f3bc;
-    int teamYou[3];         /* 0x3c0 */
-    int teamCom[3];         /* 0x3cc */
+    int team[6];            /* 0x3c0: [0..2] YOU, [3..5] COM */
     int i3d8, i3dc;
     float f3e0;
     int slot[6];            /* 0x3e4 */

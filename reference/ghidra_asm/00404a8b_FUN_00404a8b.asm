@@ -22,20 +22,20 @@
 00404ac8  MOV dword ptr [EBP + -0x8],ECX
 00404acb  MOV EDX,dword ptr [EBP + -0x8]
 00404ace  PUSH EDX
-00404acf  CALL 0x00433370
+00404acf  CALL 0x00433370  ; operator_delete
 00404ad4  ADD ESP,0x4
 00404ad7  MOV EAX,dword ptr [EBP + -0xc]
 00404ada  MOV dword ptr [EAX + 0x74],0x0
 00404ae1  MOV ECX,dword ptr [EBP + -0xc]
 00404ae4  MOV EDX,dword ptr [ECX + 0x70]
 00404ae7  PUSH EDX
-00404ae8  CALL dword ptr [0x0045a484] {371038}
+00404ae8  CALL dword ptr [0x0045a484] {371038}  ; GDI32.DLL::DeleteObject
 00404aee  MOV EAX,[0x00457ef0]
 00404af3  CMP EAX,dword ptr [EBP + -0xc]
 00404af6  JNZ 0x00404b05
 00404af8  MOV ECX,dword ptr [EBP + -0xc]
 00404afb  MOV EDX,dword ptr [ECX]
-00404afd  MOV dword ptr [0x00457ef0] {None} {None} {None} {None},EDX
+00404afd  MOV dword ptr [0x00457ef0] {None},EDX
 00404b03  JMP 0x00404b33
 00404b05  MOV EAX,[0x00457ef0]
 00404b0a  MOV dword ptr [EBP + -0x4],EAX

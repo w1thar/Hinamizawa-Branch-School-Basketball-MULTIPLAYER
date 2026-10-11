@@ -4,7 +4,7 @@
 0042c624  MOV dword ptr [EBP + -0x4],ECX
 0042c627  MOV ECX,dword ptr [EBP + -0x4]
 0042c62a  ADD ECX,0x158
-0042c630  CALL 0x0040130c
+0042c630  CALL 0x0040130c  ; Vec3::CtorDefault
 0042c635  MOV EAX,dword ptr [EBP + -0x4]
 0042c638  MOV dword ptr [EAX],0x44e4ec
 0042c63e  MOV ECX,dword ptr [EBP + -0x4]

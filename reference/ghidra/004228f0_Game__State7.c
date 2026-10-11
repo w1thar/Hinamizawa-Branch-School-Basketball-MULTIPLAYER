@@ -25,7 +25,7 @@ void __thiscall Game::State7(Game *this)
     this->b399 = '\0';
     this->i3ac = 0;
     this->f394 = 1.0;
-    Sound::OpenMp3(this->sound);
+    Sound::OpenMp3(this->sound,s_WAV_LP_Satoko_mp3_004540cc);
     fVar2 = 0.0;
     pVVar1 = Vec3::Ctor(&local_14,0.0,0.0,17.0);
     Player::SetPos(this->players[0],pVVar1->x,pVVar1->y,pVVar1->z,fVar2);
@@ -47,17 +47,17 @@ void __thiscall Game::State7(Game *this)
     Player::Motion_430c40(this->players[0]);
     Player::Motion_430c40(this->players[1]);
     Player::Motion_430c40(this->players[2]);
-    Player::Motion_42df38(this->players[3]);
-    Player::Motion_42df38(this->players[4]);
+    Player::Motion_Stand(this->players[3]);
+    Player::Motion_Stand(this->players[4]);
     Player::Motion_430c40(this->players[5]);
-    Player::fn_42ddac(this->players[0]);
-    Player::fn_42de30(this->players[0]);
-    Player::fn_42ddac(this->players[1]);
-    Player::fn_42deb4(this->players[1]);
-    Player::fn_42de30(this->players[1]);
-    Player::fn_42de30(this->players[2]);
-    Player::fn_42de30(this->players[3]);
-    Player::fn_42de30(this->players[4]);
+    Player::SetTex1(this->players[0],1);
+    Player::SetTex2(this->players[0],1);
+    Player::SetTex1(this->players[1],1);
+    Player::SetTex3(this->players[1],-1);
+    Player::SetTex2(this->players[1],1);
+    Player::SetTex2(this->players[2],1);
+    Player::SetTex2(this->players[3],1);
+    Player::SetTex2(this->players[4],1);
     (this->camPos).x = 16.6;
     (this->camPos).y = 5.5;
     (this->camPos).z = 27.4;
@@ -120,7 +120,7 @@ void __thiscall Game::State7(Game *this)
     this->i3b8 = 5;
     this->f390 = 0.0;
     this->f394 = 1.0;
-    Sound::OpenMp3(this->sound);
+    Sound::OpenMp3(this->sound,s_WAV_LP_4_mp3_004540e0);
   }
   return;
 }

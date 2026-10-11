@@ -9,7 +9,7 @@
 00404cd1  MOV EAX,dword ptr [EBP + 0x8]
 00404cd4  PUSH EAX
 00404cd5  PUSH 0x0
-00404cd7  CALL dword ptr [0x0045a660] {370786}
+00404cd7  CALL dword ptr [0x0045a660] {370786}  ; USER32.DLL::LoadImageA
 00404cdd  MOV ECX,dword ptr [EBP + -0x4]
 00404ce0  MOV dword ptr [ECX + 0x70],EAX
 00404ce3  MOV EDX,dword ptr [EBP + -0x4]

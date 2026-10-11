@@ -6,7 +6,7 @@
 0040dca7  MOV ECX,dword ptr [EAX + 0x18]
 0040dcaa  ADD ECX,0x44
 0040dcad  PUSH ECX
-0040dcae  CALL 0x004010e6
+0040dcae  CALL 0x004010e6  ; D3DTextr_GetSurface
 0040dcb3  ADD ESP,0x4
 0040dcb6  PUSH EAX
 0040dcb7  PUSH 0x0
@@ -20,13 +20,13 @@
 0040dccd  MOV EAX,dword ptr [EDX + 0x18]
 0040dcd0  ADD EAX,0x44
 0040dcd3  PUSH EAX
-0040dcd4  CALL 0x00435050
+0040dcd4  CALL 0x00435050  ; _strchr
 0040dcd9  ADD ESP,0x8
 0040dcdc  MOV dword ptr [EBP + -0x4],EAX
 0040dcdf  PUSH 0x74
 0040dce1  MOV ECX,dword ptr [EBP + -0x4]
 0040dce4  PUSH ECX
-0040dce5  CALL 0x00435050
+0040dce5  CALL 0x00435050  ; _strchr
 0040dcea  ADD ESP,0x8
 0040dced  TEST EAX,EAX
 0040dcef  JZ 0x0040dd36

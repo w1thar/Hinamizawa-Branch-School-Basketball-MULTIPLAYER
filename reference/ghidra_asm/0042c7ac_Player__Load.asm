@@ -21,7 +21,7 @@
 0042c80c  PUSH 0x4543d4 {'k1'}
 0042c811  LEA EDX,[EBP + 0xfffffef0]
 0042c817  PUSH EDX
-0042c818  CALL 0x00434a40
+0042c818  CALL 0x00434a40  ; sprintf
 0042c81d  ADD ESP,0x8
 0042c820  MOV EAX,dword ptr [EBP + 0xfffffed4]
 0042c826  MOV dword ptr [EAX + 0x168],0x41200000
@@ -41,7 +41,7 @@
 0042c895  PUSH 0x4543d8 {'mion'}
 0042c89a  LEA ECX,[EBP + 0xfffffef0]
 0042c8a0  PUSH ECX
-0042c8a1  CALL 0x00434a40
+0042c8a1  CALL 0x00434a40  ; sprintf
 0042c8a6  ADD ESP,0x8
 0042c8a9  MOV EDX,dword ptr [EBP + 0xfffffed4]
 0042c8af  MOV dword ptr [EDX + 0x168],0x41200000
@@ -61,7 +61,7 @@
 0042c91e  PUSH 0x4543e0 {'rena'}
 0042c923  LEA EAX,[EBP + 0xfffffef0]
 0042c929  PUSH EAX
-0042c92a  CALL 0x00434a40
+0042c92a  CALL 0x00434a40  ; sprintf
 0042c92f  ADD ESP,0x8
 0042c932  MOV ECX,dword ptr [EBP + 0xfffffed4]
 0042c938  MOV dword ptr [ECX + 0x168],0x41100000
@@ -81,7 +81,7 @@
 0042c9a7  PUSH 0x4543e8 {'satoko'}
 0042c9ac  LEA EDX,[EBP + 0xfffffef0]
 0042c9b2  PUSH EDX
-0042c9b3  CALL 0x00434a40
+0042c9b3  CALL 0x00434a40  ; sprintf
 0042c9b8  ADD ESP,0x8
 0042c9bb  MOV EAX,dword ptr [EBP + 0xfffffed4]
 0042c9c1  MOV dword ptr [EAX + 0x168],0x41280000
@@ -101,7 +101,7 @@
 0042ca30  PUSH 0x4543f0 {'rika'}
 0042ca35  LEA ECX,[EBP + 0xfffffef0]
 0042ca3b  PUSH ECX
-0042ca3c  CALL 0x00434a40
+0042ca3c  CALL 0x00434a40  ; sprintf
 0042ca41  ADD ESP,0x8
 0042ca44  MOV EDX,dword ptr [EBP + 0xfffffed4]
 0042ca4a  MOV dword ptr [EDX + 0x168],0x41000000
@@ -121,7 +121,7 @@
 0042cab9  PUSH 0x4543f8 {'sion'}
 0042cabe  LEA EAX,[EBP + 0xfffffef0]
 0042cac4  PUSH EAX
-0042cac5  CALL 0x00434a40
+0042cac5  CALL 0x00434a40  ; sprintf
 0042caca  ADD ESP,0x8
 0042cacd  MOV ECX,dword ptr [EBP + 0xfffffed4]
 0042cad3  MOV dword ptr [ECX + 0x168],0x41100000
@@ -138,14 +138,14 @@
 0042cb2d  MOV ECX,dword ptr [EBP + 0xfffffed4]
 0042cb33  MOV dword ptr [ECX + 0x180],0x40a9999a
 0042cb3d  PUSH 0x34
-0042cb3f  CALL 0x00434250
+0042cb3f  CALL 0x00434250  ; operator_new
 0042cb44  ADD ESP,0x4
 0042cb47  MOV dword ptr [EBP + 0xfffffee4],EAX
 0042cb4d  MOV dword ptr [EBP + -0x4],0x0
 0042cb54  CMP dword ptr [EBP + 0xfffffee4],0x0
 0042cb5b  JZ 0x0042cb70
 0042cb5d  MOV ECX,dword ptr [EBP + 0xfffffee4]
-0042cb63  CALL 0x004010b4
+0042cb63  CALL 0x004010b4  ; SkinModel::Ctor
 0042cb68  MOV dword ptr [EBP + 0xfffffecc],EAX
 0042cb6e  JMP 0x0042cb7a
 0042cb70  MOV dword ptr [EBP + 0xfffffecc],0x0
@@ -159,24 +159,24 @@
 0042cba2  PUSH EDX
 0042cba3  MOV EAX,dword ptr [EBP + 0xfffffed4]
 0042cba9  MOV ECX,dword ptr [EAX + 0x4]
-0042cbac  CALL 0x004011db
+0042cbac  CALL 0x004011db  ; SkinModel::Load
 0042cbb1  LEA ECX,[EBP + 0xfffffef0]
 0042cbb7  PUSH ECX
 0042cbb8  PUSH 0x454400 {'basket\\%s.tga'}
 0042cbbd  MOV EDX,dword ptr [EBP + 0xfffffed4]
 0042cbc3  ADD EDX,0x50
 0042cbc6  PUSH EDX
-0042cbc7  CALL 0x00434a40
+0042cbc7  CALL 0x00434a40  ; sprintf
 0042cbcc  ADD ESP,0xc
 0042cbcf  PUSH 0x0
 0042cbd1  PUSH 0x0
 0042cbd3  MOV EAX,dword ptr [EBP + 0xfffffed4]
 0042cbd9  ADD EAX,0x50
 0042cbdc  PUSH EAX
-0042cbdd  CALL 0x004012d5
+0042cbdd  CALL 0x004012d5  ; D3DTextr_CreateTextureFromFile
 0042cbe2  ADD ESP,0xc
 0042cbe5  PUSH 0x78
-0042cbe7  CALL 0x00434250
+0042cbe7  CALL 0x00434250  ; operator_new
 0042cbec  ADD ESP,0x4
 0042cbef  MOV ECX,dword ptr [EBP + 0xfffffed4]
 0042cbf5  MOV dword ptr [ECX + 0x4c],EAX
@@ -185,7 +185,7 @@
 0042cbfc  MOV EDX,dword ptr [EBP + 0xfffffed4]
 0042cc02  MOV EAX,dword ptr [EDX + 0x4c]
 0042cc05  PUSH EAX
-0042cc06  CALL 0x00433440
+0042cc06  CALL 0x00433440  ; _memset
 0042cc0b  ADD ESP,0xc
 0042cc0e  MOV dword ptr [EBP + -0x10],0x0
 0042cc15  JMP 0x0042cc20
@@ -201,7 +201,7 @@
 0042cc3c  MOV EDX,dword ptr [EBP + 0xfffffeec]
 0042cc42  IMUL EDX,EDX,0x18
 0042cc45  PUSH EDX
-0042cc46  CALL 0x00434250
+0042cc46  CALL 0x00434250  ; operator_new
 0042cc4b  ADD ESP,0x4
 0042cc4e  MOV dword ptr [EBP + 0xfffffedc],EAX
 0042cc54  MOV dword ptr [EBP + -0x4],0x1
@@ -213,7 +213,7 @@
 0042cc70  PUSH 0x18
 0042cc72  MOV ECX,dword ptr [EBP + 0xfffffedc]
 0042cc78  PUSH ECX
-0042cc79  CALL 0x00401294
+0042cc79  CALL 0x00401294  ; FUN_0040c3a0
 0042cc7e  MOV EDX,dword ptr [EBP + 0xfffffedc]
 0042cc84  MOV dword ptr [EBP + 0xfffffec8],EDX
 0042cc8a  JMP 0x0042cc96
@@ -239,7 +239,7 @@
 0042cce0  MOV EDX,dword ptr [ECX + 0x4c]
 0042cce3  MOV EAX,dword ptr [EDX + EAX*0x1 + 0x8]
 0042cce7  PUSH EAX
-0042cce8  CALL 0x00433440
+0042cce8  CALL 0x00433440  ; _memset
 0042cced  ADD ESP,0xc
 0042ccf0  MOV dword ptr [EBP + 0xfffffee8],0x0
 0042ccfa  JMP 0x0042cd0b
@@ -341,13 +341,13 @@
 0042ce84  MOV EAX,dword ptr [EDX + 0x20]
 0042ce87  MOV dword ptr [EAX + 0xa4],0x0
 0042ce91  MOV ECX,dword ptr [EBP + 0xfffffed4]
-0042ce97  CALL 0x00401384
+0042ce97  CALL 0x00401384  ; Player::Motion_Stand
 0042ce9c  PUSH 0x44
 0042ce9e  PUSH 0x0
 0042cea0  MOV ECX,dword ptr [EBP + 0xfffffed4]
 0042cea6  ADD ECX,0x8
 0042cea9  PUSH ECX
-0042ceaa  CALL 0x00433440
+0042ceaa  CALL 0x00433440  ; _memset
 0042ceaf  ADD ESP,0xc
 0042ceb2  MOV EDX,dword ptr [EBP + 0xfffffed4]
 0042ceb8  MOV dword ptr [EDX + 0x8],0x3f4ccccd

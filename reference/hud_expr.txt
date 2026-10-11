@@ -1,0 +1,412 @@
+0041b077  local_8 = ECX
+0041b08e  jump to 0x0041b099 if this->f390 < 1f
+0041b090  local_c = 1
+0041b097  goto 0x0041b0a0
+0041b099  local_c = 0
+0041b0b4  jump to 0x0041b0bf if this->f390 >= 2f
+0041b0b6  local_10 = 1
+0041b0bd  goto 0x0041b0c6
+0041b0bf  local_10 = 0
+0041b0d2  flag = (this->state == 2)
+0041b0f2  CALL sprintf(&this->text, '昭和５８年\u3000初夏', ESI)   [ECX=&this->text]
+0041b164  CALL Game::DrawText(&this->text, 28, 207, 230, (int)((this->f390 - 1f) * 255f), (int)((this->f390 - 1f) * 255f), (int)((this->f390 - 1f) * 255f))   [ECX=this]
+0041b17d  jump to 0x0041b188 if this->f390 < 2f
+0041b17f  local_14 = 1
+0041b186  goto 0x0041b18f
+0041b188  local_14 = 0
+0041b1a3  jump to 0x0041b1ae if this->f390 >= 4f
+0041b1a5  local_18 = 1
+0041b1ac  goto 0x0041b1b5
+0041b1ae  local_18 = 0
+0041b1c1  flag = (this->state == 2)
+0041b1dd  CALL sprintf(&this->text, '昭和５８年\u3000初夏')   [ECX=&this->text]
+0041b20d  CALL Game::DrawText(&this->text, 28, 207, 230, 255, 255, 255)   [ECX=this]
+0041b226  jump to 0x0041b231 if this->f390 < 4f
+0041b228  local_1c = 1
+0041b22f  goto 0x0041b238
+0041b231  local_1c = 0
+0041b24c  jump to 0x0041b257 if this->f390 >= 5f
+0041b24e  local_20 = 1
+0041b255  goto 0x0041b25e
+0041b257  local_20 = 0
+0041b26a  flag = (this->state == 2)
+0041b28a  CALL sprintf(&this->text, '昭和５８年\u3000初夏')   [ECX=&this->text]
+0041b2fc  CALL Game::DrawText(&this->text, 28, 207, 230, (int)((5f - this->f390) * 255f), (int)((5f - this->f390) * 255f), (int)((5f - this->f390) * 255f))   [ECX=this]
+0041b315  jump to 0x0041b320 if this->f390 < 6f
+0041b317  local_24 = 1
+0041b31e  goto 0x0041b327
+0041b320  local_24 = 0
+0041b33b  jump to 0x0041b346 if this->f390 >= 7f
+0041b33d  local_28 = 1
+0041b344  goto 0x0041b34d
+0041b346  local_28 = 0
+0041b359  flag = (this->state == 2)
+0041b379  CALL sprintf(&this->text, '××県\u3000鹿骨市')   [ECX=&this->text]
+0041b3eb  CALL Game::DrawText(&this->text, 28, 223, 230, (int)((this->f390 - 6f) * 255f), (int)((this->f390 - 6f) * 255f), (int)((this->f390 - 6f) * 255f))   [ECX=this]
+0041b404  jump to 0x0041b40f if this->f390 < 7f
+0041b406  local_2c = 1
+0041b40d  goto 0x0041b416
+0041b40f  local_2c = 0
+0041b42a  jump to 0x0041b435 if this->f390 >= 9f
+0041b42c  local_30 = 1
+0041b433  goto 0x0041b43c
+0041b435  local_30 = 0
+0041b448  flag = (this->state == 2)
+0041b464  CALL sprintf(&this->text, '××県\u3000鹿骨市')   [ECX=&this->text]
+0041b494  CALL Game::DrawText(&this->text, 28, 223, 230, 255, 255, 255)   [ECX=this]
+0041b4ad  jump to 0x0041b4b8 if this->f390 < 9f
+0041b4af  local_34 = 1
+0041b4b6  goto 0x0041b4bf
+0041b4b8  local_34 = 0
+0041b4d3  jump to 0x0041b4de if this->f390 >= 10f
+0041b4d5  local_38 = 1
+0041b4dc  goto 0x0041b4e5
+0041b4de  local_38 = 0
+0041b4f1  flag = (this->state == 2)
+0041b511  CALL sprintf(&this->text, '××県\u3000鹿骨市')   [ECX=&this->text]
+0041b583  CALL Game::DrawText(&this->text, 28, 223, 230, (int)((10f - this->f390) * 255f), (int)((10f - this->f390) * 255f), (int)((10f - this->f390) * 255f))   [ECX=this]
+0041b59c  jump to 0x0041b5a7 if this->f390 < 32f
+0041b59e  local_3c = 1
+0041b5a5  goto 0x0041b5ae
+0041b5a7  local_3c = 0
+0041b5c2  jump to 0x0041b5cd if this->f390 >= 135f
+0041b5c4  local_40 = 1
+0041b5cb  goto 0x0041b5d4
+0041b5cd  local_40 = 0
+0041b5e0  flag = (this->state == 2)
+0041b600  CALL sprintf(&this->text, "ＰＵＳＨ\u3000'Ｘ'ＫＥＹ")   [ECX=&this->text]
+0041b6a8  CALL Game::DrawText(&this->text, 24, 192, 192, (int)((sinf((this->f390 * 10f)) * 128f) + 128f), (int)((sinf((this->f390 * 7f)) * 128f) + 128f), (int)((sinf((this->f390 * 3f)) * 128f) + 128f))   [ECX=this]
+0041b6bb  CALL sprintf(&this->text, '矢印キー：移動\u3000\u3000Programed by ひぐ中（ぇー')   [ECX=this]
+0041b6e2  CALL Game::DrawText(&this->text, 12, 371, 460, 50, 50, 50)   [ECX=this]
+0041b6f3  flag = (this->state == 3)
+0041b719  CALL sprintf(&this->text, 'プレイモードを選択してください')   [ECX=this]
+0041b7c1  CALL Game::DrawText(&this->text, 24, 140, 192, (int)((sinf((this->f390 * 10f)) * 128f) + 128f), (int)((sinf((this->f390 * 7f)) * 128f) + 128f), (int)((sinf((this->f390 * 3f)) * 128f) + 128f))   [ECX=this]
+0041b7d5  CALL sprintf(&this->text, 'ノーマルモード')   [ECX=this]
+0041b7fb  CALL Game::DrawText(&this->text, 28, 245, 337, 0, 0, 0)   [ECX=this]
+0041b80f  CALL sprintf(&this->text, '\u3000部活モード')   [ECX=&this->text]
+0041b836  CALL Game::DrawText(&this->text, 28, 245, 376, 0, 0, 0)   [ECX=this]
+0041b849  CALL sprintf(&this->text, '\u3000練習モード')   [ECX=this]
+0041b870  CALL Game::DrawText(&this->text, 28, 245, 433, 0, 0, 0)   [ECX=this]
+0041b87f  jump to 0x0041b949 if this->i3b0 != 0
+0041b893  CALL sprintf(&this->text, 'ノーマルモード')   [ECX=this]
+0041b8bd  CALL Game::DrawText(&this->text, 28, 243, 335, 255, 0, 0)   [ECX=this]
+0041b8d1  CALL sprintf(&this->text, '\u3000部活モード')   [ECX=this]
+0041b900  CALL Game::DrawText(&this->text, 28, 243, 374, 255, 255, 255)   [ECX=this]
+0041b914  CALL sprintf(&this->text, '\u3000練習モード')   [ECX=&this->text]
+0041b944  CALL Game::DrawText(&this->text, 28, 243, 431, 255, 255, 255)   [ECX=this]
+0041b953  jump to 0x0041ba1d if this->i3b0 != 1
+0041b968  CALL sprintf(&this->text, 'ノーマルモード')   [ECX=&this->text]
+0041b998  CALL Game::DrawText(&this->text, 28, 243, 335, 255, 255, 255)   [ECX=this]
+0041b9ab  CALL sprintf(&this->text, '\u3000部活モード')   [ECX=this]
+0041b9d5  CALL Game::DrawText(&this->text, 28, 243, 374, 255, 0, 0)   [ECX=this]
+0041b9e9  CALL sprintf(&this->text, '\u3000練習モード')   [ECX=this]
+0041ba18  CALL Game::DrawText(&this->text, 28, 243, 431, 255, 255, 255)   [ECX=this]
+0041ba27  jump to 0x0041baf1 if this->i3b0 != 2
+0041ba3c  CALL sprintf(&this->text, 'ノーマルモード')   [ECX=this]
+0041ba6b  CALL Game::DrawText(&this->text, 28, 243, 335, 255, 255, 255)   [ECX=this]
+0041ba7f  CALL sprintf(&this->text, '\u3000部活モード')   [ECX=&this->text]
+0041baaf  CALL Game::DrawText(&this->text, 28, 243, 374, 255, 255, 255)   [ECX=this]
+0041bac2  CALL sprintf(&this->text, '\u3000練習モード')   [ECX=this]
+0041baec  CALL Game::DrawText(&this->text, 28, 243, 431, 255, 0, 0)   [ECX=this]
+0041bb00  CALL sprintf(&this->text, 'ESCキー:強制終了(常時)')   [ECX=this]
+0041bb2f  CALL Game::DrawText(&this->text, 12, 499, 460, 255, 250, 150)   [ECX=this]
+0041bb40  flag = (this->state == 4)
+0041bb4f  flag = (this->i3b8 < 3)
+0041bb6b  CALL sprintf(&this->text, 'チーム分け')   [ECX=(this->i3b8 < 3)]
+0041bc0f  CALL Game::DrawText(&this->text, 28, 243, 24, (int)((sinf((this->f390 * 10f)) * 128f) + 128f), (int)((sinf((this->f390 * 7f)) * 128f) + 128f), (int)((sinf((this->f390 * 3f)) * 128f) + 128f))   [ECX=this]
+0041bc23  CALL sprintf(&this->text, 'あなたのチームのプレーヤーを３人選択してください')   [ECX=&this->text]
+0041bc44  CALL Game::DrawText(&this->text, 24, 34, 74, 0, 0, 0)   [ECX=this]
+0041bc6a  CALL Game::DrawText(&this->text, 24, 32, 72, 255, 255, 255)   [ECX=this]
+0041bc79  jump to 0x0041be37 if this->i3b4 != 0
+0041bc8e  CALL sprintf(&this->text, '前原\u3000圭一')   [ECX=this]
+0041bcb4  CALL Game::DrawText(&this->text, 36, 398, 194, 0, 0, 0)   [ECX=this]
+0041bce1  CALL Game::DrawText(&this->text, 36, 396, 192, 255, 255, 180)   [ECX=this]
+0041bcf5  CALL sprintf(&this->text, '物語の主人公、”口先の魔術師”')   [ECX=this]
+0041bd24  CALL Game::DrawText(&this->text, 16, 352, 264, 255, 255, 255)   [ECX=this]
+0041bd38  CALL sprintf(&this->text, '唯一の男キャラ。各能力値は高い')   [ECX=&this->text]
+0041bd68  CALL Game::DrawText(&this->text, 16, 352, 288, 255, 255, 255)   [ECX=this]
+0041bd7b  CALL sprintf(&this->text, 'が、たまに暴走する。')   [ECX=this]
+0041bdab  CALL Game::DrawText(&this->text, 16, 352, 311, 255, 255, 255)   [ECX=this]
+0041bdbf  CALL sprintf(&this->text, '”俺如キニ祟リ殺サレルナ！？”')   [ECX=this]
+0041bdee  CALL Game::DrawText(&this->text, 16, 352, 335, 255, 255, 255)   [ECX=this]
+0041be02  CALL sprintf(&this->text, '必殺技：ビジョンアクチュエーション')   [ECX=&this->text]
+0041be32  CALL Game::DrawText(&this->text, 16, 352, 374, 255, 180, 180)   [ECX=this]
+0041be41  jump to 0x0041bfff if this->i3b4 != 1
+0041be56  CALL sprintf(&this->text, '園崎\u3000魅音')   [ECX=&this->text]
+0041be7d  CALL Game::DrawText(&this->text, 36, 398, 194, 0, 0, 0)   [ECX=this]
+0041bea9  CALL Game::DrawText(&this->text, 36, 396, 192, 255, 255, 180)   [ECX=this]
+0041bebd  CALL sprintf(&this->text, '部活の部長、最年長”おじさん”')   [ECX=&this->text]
+0041beed  CALL Game::DrawText(&this->text, 16, 352, 264, 255, 255, 255)   [ECX=this]
+0041bf00  CALL sprintf(&this->text, '全ての能力が平均以上であり、オール')   [ECX=this]
+0041bf30  CALL Game::DrawText(&this->text, 16, 352, 288, 255, 255, 255)   [ECX=this]
+0041bf44  CALL sprintf(&this->text, 'マイティな使いやすいキャラ。')   [ECX=this]
+0041bf73  CALL Game::DrawText(&this->text, 16, 352, 311, 255, 255, 255)   [ECX=this]
+0041bf87  CALL sprintf(&this->text, '”勝つためには、手段を選ぶな！！”')   [ECX=&this->text]
+0041bfb7  CALL Game::DrawText(&this->text, 16, 352, 335, 255, 255, 255)   [ECX=this]
+0041bfca  CALL sprintf(&this->text, '必殺技：ひき肉トルネード')   [ECX=this]
+0041bffa  CALL Game::DrawText(&this->text, 16, 352, 374, 255, 180, 180)   [ECX=this]
+0041c009  jump to 0x0041c1c6 if this->i3b4 != 2
+0041c01d  CALL sprintf(&this->text, '竜宮\u3000レナ')   [ECX=this]
+0041c044  CALL Game::DrawText(&this->text, 36, 398, 194, 0, 0, 0)   [ECX=this]
+0041c071  CALL Game::DrawText(&this->text, 36, 396, 192, 255, 255, 180)   [ECX=this]
+0041c084  CALL sprintf(&this->text, 'メインヒロイン、かぁいいものに')   [ECX=this]
+0041c0b4  CALL Game::DrawText(&this->text, 16, 352, 264, 255, 255, 255)   [ECX=this]
+0041c0c8  CALL sprintf(&this->text, '目がない。能力は特に弱点は無く、')   [ECX=this]
+0041c0f7  CALL Game::DrawText(&this->text, 16, 352, 288, 255, 255, 255)   [ECX=this]
+0041c10b  CALL sprintf(&this->text, 'ジャンプ力が特に優れている。')   [ECX=&this->text]
+0041c13b  CALL Game::DrawText(&this->text, 16, 352, 311, 255, 255, 255)   [ECX=this]
+0041c14e  CALL sprintf(&this->text, '”かぁいい～！お持ち帰りっ～！！”')   [ECX=this]
+0041c17e  CALL Game::DrawText(&this->text, 16, 352, 335, 255, 255, 255)   [ECX=this]
+0041c192  CALL sprintf(&this->text, '必殺技：レナフラッシュダンクＳ')   [ECX=this]
+0041c1c1  CALL Game::DrawText(&this->text, 16, 352, 374, 255, 180, 180)   [ECX=this]
+0041c1d0  jump to 0x0041c38e if this->i3b4 != 3
+0041c1e5  CALL sprintf(&this->text, '北条\u3000沙都子')   [ECX=this]
+0041c20b  CALL Game::DrawText(&this->text, 36, 379, 194, 0, 0, 0)   [ECX=this]
+0041c238  CALL Game::DrawText(&this->text, 36, 377, 192, 255, 255, 180)   [ECX=this]
+0041c24c  CALL sprintf(&this->text, '梨花と共に最年少。トラップマスター。')   [ECX=this]
+0041c27b  CALL Game::DrawText(&this->text, 16, 352, 264, 255, 255, 255)   [ECX=this]
+0041c28f  CALL sprintf(&this->text, '負けず嫌いだが、おっちょこちょい。')   [ECX=&this->text]
+0041c2bf  CALL Game::DrawText(&this->text, 16, 352, 288, 255, 255, 255)   [ECX=this]
+0041c2d2  CALL sprintf(&this->text, '背は低いが、足が非常に速い。')   [ECX=this]
+0041c302  CALL Game::DrawText(&this->text, 16, 352, 311, 255, 255, 255)   [ECX=this]
+0041c316  CALL sprintf(&this->text, '”圭一さんには負けませんことよ！”')   [ECX=this]
+0041c345  CALL Game::DrawText(&this->text, 16, 352, 335, 255, 255, 255)   [ECX=this]
+0041c359  CALL sprintf(&this->text, '必殺技：ワイヤーブービートラップ')   [ECX=&this->text]
+0041c389  CALL Game::DrawText(&this->text, 16, 352, 374, 255, 180, 180)   [ECX=this]
+0041c398  jump to 0x0041c556 if this->i3b4 != 4
+0041c3ad  CALL sprintf(&this->text, '古手\u3000梨花')   [ECX=&this->text]
+0041c3d4  CALL Game::DrawText(&this->text, 36, 398, 194, 0, 0, 0)   [ECX=this]
+0041c400  CALL Game::DrawText(&this->text, 36, 396, 192, 255, 255, 180)   [ECX=this]
+0041c414  CALL sprintf(&this->text, '沙都子と共に最年少。オヤシロ小狸。')   [ECX=&this->text]
+0041c444  CALL Game::DrawText(&this->text, 16, 352, 264, 255, 255, 255)   [ECX=this]
+0041c457  CALL sprintf(&this->text, '運動能力は他のキャラに比べると少々')   [ECX=this]
+0041c487  CALL Game::DrawText(&this->text, 16, 352, 288, 255, 255, 255)   [ECX=this]
+0041c49b  CALL sprintf(&this->text, '劣るが、ループ力のみ特別高い。')   [ECX=this]
+0041c4ca  CALL Game::DrawText(&this->text, 16, 352, 311, 255, 255, 255)   [ECX=this]
+0041c4de  CALL sprintf(&this->text, '”みー！\u3000にぱ～～☆”')   [ECX=&this->text]
+0041c50e  CALL Game::DrawText(&this->text, 16, 352, 335, 255, 255, 255)   [ECX=this]
+0041c521  CALL sprintf(&this->text, '必殺技：コダヌキカァイイモード')   [ECX=this]
+0041c551  CALL Game::DrawText(&this->text, 16, 352, 374, 255, 180, 180)   [ECX=this]
+0041c560  jump to 0x0041c71d if this->i3b4 != 5
+0041c574  CALL sprintf(&this->text, '園崎\u3000詩音')   [ECX=this]
+0041c59b  CALL Game::DrawText(&this->text, 36, 398, 194, 0, 0, 0)   [ECX=this]
+0041c5c8  CALL Game::DrawText(&this->text, 36, 396, 192, 255, 255, 180)   [ECX=this]
+0041c5db  CALL sprintf(&this->text, '園崎 魅音の双子の妹。興宮在住。')   [ECX=this]
+0041c60b  CALL Game::DrawText(&this->text, 16, 352, 264, 255, 255, 255)   [ECX=this]
+0041c61f  CALL sprintf(&this->text, '普段は部活には加わらないが、今回は')   [ECX=this]
+0041c64e  CALL Game::DrawText(&this->text, 16, 352, 288, 255, 255, 255)   [ECX=this]
+0041c662  CALL sprintf(&this->text, '大会なので特別参加。')   [ECX=&this->text]
+0041c692  CALL Game::DrawText(&this->text, 16, 352, 311, 255, 255, 255)   [ECX=this]
+0041c6a5  CALL sprintf(&this->text, '”あなたを、犯人です☆”')   [ECX=this]
+0041c6d5  CALL Game::DrawText(&this->text, 16, 352, 335, 255, 255, 255)   [ECX=this]
+0041c6e9  CALL sprintf(&this->text, '必殺技：おさぼりマネージャー')   [ECX=this]
+0041c718  CALL Game::DrawText(&this->text, 16, 352, 374, 255, 180, 180)   [ECX=this]
+0041c731  jump to 0x0041c73c if this->camPos.z <= -20f
+0041c733  local_44 = 1
+0041c73a  goto 0x0041c743
+0041c73c  local_44 = 0
+0041c74f  flag = (this->state == 4)
+0041c761  flag = (this->i3b8 < 5)
+0041c77c  CALL sprintf(&this->text, 'このチームでよろしいですか？')   [ECX=(this->i3b8 < 5)]
+0041c824  CALL Game::DrawText(&this->text, 28, 128, 167, (int)((sinf((this->f390 * 10f)) * 128f) + 128f), (int)((sinf((this->f390 * 7f)) * 128f) + 128f), (int)((sinf((this->f390 * 3f)) * 128f) + 128f))   [ECX=this]
+0041c838  CALL sprintf(&this->text, 'ＹＯＵ')   [ECX=this]
+0041c85e  CALL Game::DrawText(&this->text, 28, 76, 4, 255, 255, 0)   [ECX=this]
+0041c872  CALL sprintf(&this->text, 'ＣＯＭ')   [ECX=&this->text]
+0041c89c  CALL Game::DrawText(&this->text, 28, 480, 4, 255, 255, 0)   [ECX=this]
+0041c8ab  jump to 0x0041c8f3 if this->i3b0 != 0
+0041c8bc  CALL sprintf(&this->text, 'モード：ノーマル')   [ECX=&this->text]
+0041c8e9  CALL Game::DrawText(&this->text, 24, 223, 62, 255, 255, 255)   [ECX=this]
+0041c8ee  goto 0x0041c982
+0041c8fd  jump to 0x0041c942 if this->i3b0 != 1
+0041c90e  CALL sprintf(&this->text, '\u3000モード：部活')   [ECX=&this->text]
+0041c93b  CALL Game::DrawText(&this->text, 24, 223, 62, 255, 255, 255)   [ECX=this]
+0041c940  goto 0x0041c982
+0041c950  CALL sprintf(&this->text, '\u3000モード：練習')   [ECX=this]
+0041c97d  CALL Game::DrawText(&this->text, 24, 223, 62, 255, 255, 255)   [ECX=this]
+0041c98c  jump to 0x0041ca5f if this->i3b8 != 3
+0041c9a0  CALL sprintf(&this->text, 'はい')   [ECX=this]
+0041c9c7  CALL Game::DrawText(&this->text, 36, 289, 242, 0, 0, 0)   [ECX=this]
+0041c9ee  CALL Game::DrawText(&this->text, 36, 287, 240, 255, 0, 0)   [ECX=this]
+0041ca01  CALL sprintf(&this->text, 'いいえ')   [ECX=this]
+0041ca28  CALL Game::DrawText(&this->text, 28, 283, 313, 0, 0, 0)   [ECX=this]
+0041ca55  CALL Game::DrawText(&this->text, 28, 281, 311, 155, 155, 155)   [ECX=this]
+0041ca5a  goto 0x0041cb27
+0041ca6d  CALL sprintf(&this->text, 'はい')   [ECX=this]
+0041ca94  CALL Game::DrawText(&this->text, 28, 302, 242, 0, 0, 0)   [ECX=this]
+0041cac1  CALL Game::DrawText(&this->text, 28, 300, 240, 155, 155, 155)   [ECX=this]
+0041cad4  CALL sprintf(&this->text, 'いいえ')   [ECX=this]
+0041cafb  CALL Game::DrawText(&this->text, 36, 277, 313, 0, 0, 0)   [ECX=this]
+0041cb22  CALL Game::DrawText(&this->text, 36, 275, 311, 255, 0, 0)   [ECX=this]
+0041cb33  flag = (this->state == 5)
+0041cb42  flag = (this->i3b8 < 5)
+0041cb53  flag = (this->state == 6)
+0041cb81  CALL sprintf(&this->text, 'ＣＯＭ')   [ECX=this]
+0041cba8  CALL Game::DrawText(&this->text, 28, 76, 4, 255, 255, 0)   [ECX=this]
+0041cbbc  CALL sprintf(&this->text, 'ＹＯＵ')   [ECX=this]
+0041cbe5  CALL Game::DrawText(&this->text, 28, 480, 4, 255, 255, 0)   [ECX=this]
+0041cc02  CALL sprintf(&this->text, '%3d', this->i3dc)   [ECX=this]
+0041cc2f  CALL Game::DrawText(&this->text, 48, 163, 31, 255, 255, 255)   [ECX=this]
+0041cc4d  CALL sprintf(&this->text, '%3d', this->i3d8)   [ECX=&this->text]
+0041cc7a  CALL Game::DrawText(&this->text, 48, 401, 31, 255, 255, 255)   [ECX=this]
+0041cc8d  CALL sprintf(&this->text, 'Goal ->>')   [ECX=this]
+0041ccb1  CALL Game::DrawText(&this->text, 16, 289, 73, 0, 0, 0)   [ECX=this]
+0041cd2b  CALL Game::DrawText(&this->text, 16, 287, 72, 255, (int)((cosf((this->f3e0 * 4f)) * 128f) + 128f), (int)((cosf((this->f3e0 * 4f)) * 128f) + 128f))   [ECX=this]
+0041cd30  goto 0x0041cef1
+0041cd44  CALL sprintf(&this->text, 'ＹＯＵ')   [ECX=this]
+0041cd6a  CALL Game::DrawText(&this->text, 28, 76, 4, 255, 255, 0)   [ECX=this]
+0041cd7e  CALL sprintf(&this->text, 'ＣＯＭ')   [ECX=&this->text]
+0041cda8  CALL Game::DrawText(&this->text, 28, 480, 4, 255, 255, 0)   [ECX=this]
+0041cdc6  CALL sprintf(&this->text, '%3d', this->i3d8)   [ECX=this->i3d8]
+0041cdf2  CALL Game::DrawText(&this->text, 48, 163, 31, 255, 255, 255)   [ECX=this]
+0041ce0f  CALL sprintf(&this->text, '%3d', this->i3dc)   [ECX=this]
+0041ce3c  CALL Game::DrawText(&this->text, 48, 401, 31, 255, 255, 255)   [ECX=this]
+0041ce50  CALL sprintf(&this->text, '<<- Goal')   [ECX=this]
+0041ce73  CALL Game::DrawText(&this->text, 16, 289, 73, 0, 0, 0)   [ECX=this]
+0041ceec  CALL Game::DrawText(&this->text, 16, 287, 72, 255, (int)((cosf((this->f3e0 * 4f)) * 128f) + 128f), (int)((cosf((this->f3e0 * 4f)) * 128f) + 128f))   [ECX=this]
+0041cf00  CALL sprintf(&this->text, 'TIME')   [ECX=&this->text]
+0041cf2d  CALL Game::DrawText(&this->text, 24, 294, 0, 255, 255, 255)   [ECX=this]
+0041cf46  jump to 0x0041cf51 if this->f3e0 <= 90f
+0041cf48  local_4 = 255
+0041cf4f  goto 0x0041cf68
+0041cf65  local_4 = (int)(2.833f * this->f3e0)
+0041cfb6  CALL sprintf(&this->text, '%d:%#2d', (int)(this->f3e0 / 60f), ((int)this->f3e0 - ((int)(this->f3e0 / 60f) * 0x3c)))   [ECX=this]
+0041cfe1  CALL Game::DrawText(&this->text, 36, 284, 31, 255, (int)(2.833f * this->f3e0), (int)(2.833f * this->f3e0))   [ECX=this]
+0041d012  jump to 0x0041d053 if ((int)this->f3e0 - ((int)(this->f3e0 / 60f) * 0x3c)) >= 10
+0041d023  CALL sprintf(&this->text, 4537616)   [ECX=this]
+0041d04e  CALL Game::DrawText(&this->text, 36, 320, 31, 255, (int)(2.833f * this->f3e0), (int)(2.833f * this->f3e0))   [ECX=this]
+0041d067  jump to 0x0041d072 if this->f41c >= 3f
+0041d069  local_48 = 1
+0041d070  goto 0x0041d079
+0041d072  local_48 = 0
+0041d08d  jump to 0x0041d098 if this->f41c <= 0.01f
+0041d08f  local_4c = 1
+0041d096  goto 0x0041d09f
+0041d098  local_4c = 0
+0041d0ca  CALL sprintf(&this->text, '%d', ((int)this->f41c + 0x1))   [ECX=&this->text]
+0041d11d  CALL Game::DrawText(&this->text, 28, 313, 110, 255, ((int)(this->f41c + 1f) * 0x55), ((int)(this->f41c + 1f) * 0x55))   [ECX=this]
+0041d136  jump to 0x0041d141 if this->f41c >= 9.5f
+0041d138  local_50 = 1
+0041d13f  goto 0x0041d148
+0041d141  local_50 = 0
+0041d15c  jump to 0x0041d167 if this->f41c <= 6.5f
+0041d15e  local_54 = 1
+0041d165  goto 0x0041d16e
+0041d167  local_54 = 0
+0041d1a2  CALL sprintf(&this->text, '%d', ((int)(this->f41c - 0.5f) - 5))   [ECX=(0 & 0)]
+0041d1f7  CALL Game::DrawText(&this->text, 48, 310, 335, 255, ((int)(this->f41c + 0.5f) * 0x55), ((int)(this->f41c + 0.5) * 0x55))   [ECX=this]
+0041d210  jump to 0x0041d21b if this->camPos.y <= 30f
+0041d212  local_58 = 1
+0041d219  goto 0x0041d222
+0041d21b  local_58 = 0
+0041d22e  flag = (this->state == 5)
+0041d260  CALL sprintf(&this->text, '後半戦')   [ECX=&this->text]
+0041d308  CALL Game::DrawText(&this->text, 48, 256, 225, (int)((sinf((this->f390 * 10f)) * 128f) + 128f), (int)((sinf((this->f390 * 7f)) * 128f) + 128f), (int)((sinf((this->f390 * 3f)) * 128f) + 128f))   [ECX=this]
+0041d30d  goto 0x0041d3cd
+0041d320  CALL sprintf(&this->text, '前半戦')   [ECX=this]
+0041d3c8  CALL Game::DrawText(&this->text, 48, 256, 225, (int)((sinf((this->f390 * 10f)) * 128f) + 128f), (int)((sinf((this->f390 * 7f)) * 128f) + 128f), (int)((sinf((this->f390 * 3f)) * 128f) + 128f))   [ECX=this]
+0041d3e1  jump to 0x0041d3ec if this->camPos.y > 5f
+0041d3e3  local_5c = 1
+0041d3ea  goto 0x0041d3f3
+0041d3ec  local_5c = 0
+0041d407  jump to 0x0041d412 if this->f390 >= 0.8f
+0041d409  local_60 = 1
+0041d410  goto 0x0041d419
+0041d412  local_60 = 0
+0041d42b  flag = (this->state == 5)
+0041d447  CALL sprintf(&this->text, 'スタート！')   [ECX=&this->text]
+0041d4ef  CALL Game::DrawText(&this->text, 48, 223, 225, (int)((sinf((this->f390 * 10f)) * 128f) + 128f), (int)((sinf((this->f390 * 7f)) * 128f) + 128f), (int)((sinf((this->f390 * 3f)) * 128f) + 128f))   [ECX=this]
+0041d4fe  jump to 0x0041d697 if this->i3b8 != 5
+0041d525  CALL sprintf(&this->text, '試合終了')   [ECX=this]
+0041d5cd  CALL Game::DrawText(&this->text, 48, 236, 225, (int)((sinf((this->f390 * 10f)) * 128f) + 128f), (int)((sinf((this->f390 * 7f)) * 128f) + 128f), (int)((sinf((this->f390 * 3f)) * 128f) + 128f))   [ECX=this]
+0041d5d2  goto 0x0041d692
+0041d5e6  CALL sprintf(&this->text, 'はーふたいむ')   [ECX=this]
+0041d68d  CALL Game::DrawText(&this->text, 48, 185, 225, (int)((sinf((this->f390 * 10f)) * 128f) + 128f), (int)((sinf((this->f390 * 7f)) * 128f) + 128f), (int)((sinf((this->f390 * 3f)) * 128f) + 128f))   [ECX=this]
+0041d692  goto 0x0041d836
+0041d6b4  jump to 0x0041d77b if this->i418 != 5
+0041d6c9  CALL sprintf(&this->text, 'ゴール！！')   [ECX=&this->text]
+0041d771  CALL Game::DrawText(&this->text, 48, 223, 225, (int)((sinf((this->f390 * 10f)) * 128f) + 128f), (int)((sinf((this->f390 * 7f)) * 128f) + 128f), (int)((sinf((this->f390 * 3f)) * 128f) + 128f))   [ECX=this]
+0041d776  goto 0x0041d836
+0041d789  CALL sprintf(&this->text, 'ラインアウト')   [ECX=this]
+0041d831  CALL Game::DrawText(&this->text, 48, 204, 225, (int)((sinf((this->f390 * 10f)) * 128f) + 128f), (int)((sinf((this->f390 * 7f)) * 128f) + 128f), (int)((sinf((this->f390 * 3f)) * 128f) + 128f))   [ECX=this]
+0041d840  jump to 0x0041daf0 if this->i3b0 != 2
+0041d868  CALL sprintf(&this->text, '右矢印：時計回り')   [ECX=0]
+0041d894  CALL Game::DrawText(&this->text, 12, 32, 408, 255, 255, 255)   [ECX=this]
+0041d8a8  CALL sprintf(&this->text, '左矢印：反時計回り')   [ECX=&this->text]
+0041d8d5  CALL Game::DrawText(&this->text, 12, 32, 422, 255, 255, 255)   [ECX=this]
+0041d8e8  CALL sprintf(&this->text, '上矢印：前進')   [ECX=this]
+0041d915  CALL Game::DrawText(&this->text, 12, 32, 436, 255, 255, 255)   [ECX=this]
+0041d929  CALL sprintf(&this->text, '下矢印：後退')   [ECX=this]
+0041d955  CALL Game::DrawText(&this->text, 12, 32, 451, 255, 255, 255)   [ECX=this]
+0041d969  CALL sprintf(&this->text, 'Ｘキー：パス')   [ECX=&this->text]
+0041d999  CALL Game::DrawText(&this->text, 12, 415, 408, 255, 255, 255)   [ECX=this]
+0041d9ac  CALL sprintf(&this->text, 'Ｚキー：ループパス\u3000\u3000\u3000(コーン青)')   [ECX=this]
+0041d9dc  CALL Game::DrawText(&this->text, 12, 415, 422, 255, 255, 255)   [ECX=this]
+0041d9f0  CALL sprintf(&this->text, '\u3000〃\u3000：ループシュート\u3000(コーン緑)')   [ECX=this]
+0041da1f  CALL Game::DrawText(&this->text, 12, 415, 436, 255, 255, 255)   [ECX=this]
+0041da33  CALL sprintf(&this->text, '\u3000〃\u3000：ジャンプシュート(コーン赤)')   [ECX=&this->text]
+0041da63  CALL Game::DrawText(&this->text, 12, 415, 451, 255, 255, 255)   [ECX=this]
+0041da76  CALL sprintf(&this->text, '前半戦は←のゴールに向かって攻める(後半は逆)')   [ECX=this]
+0041daa6  CALL Game::DrawText(&this->text, 12, 204, 465, 255, 255, 255)   [ECX=this]
+0041daab  goto 0x0041daf0
+0041dabc  CALL sprintf(&this->text, 'ホールド状態：（Ｘキー、Ｚキー押しっぱなし）敵にボールを奪われない')   [ECX=this]
+0041daeb  CALL Game::DrawText(&this->text, 12, 223, 465, 255, 255, 255)   [ECX=this]
+0041dafc  flag = (this->state == 7)
+0041db0b  flag = (this->i3b8 == 2)
+0041db27  CALL sprintf(&this->text, 'ＣＯＭ')   [ECX=(this->i3b8 == 2)]
+0041db4d  CALL Game::DrawText(&this->text, 28, 76, 4, 255, 255, 0)   [ECX=this]
+0041db61  CALL sprintf(&this->text, 'ＹＯＵ')   [ECX=&this->text]
+0041db8b  CALL Game::DrawText(&this->text, 28, 480, 4, 255, 255, 0)   [ECX=this]
+0041dba9  CALL sprintf(&this->text, '%3d', this->i3dc)   [ECX=this->i3dc]
+0041dbd5  CALL Game::DrawText(&this->text, 48, 163, 31, 255, 255, 255)   [ECX=this]
+0041dbf2  CALL sprintf(&this->text, '%3d', this->i3d8)   [ECX=this]
+0041dc1f  CALL Game::DrawText(&this->text, 48, 401, 31, 255, 255, 255)   [ECX=this]
+0041dc33  CALL sprintf(&this->text, 'TIME')   [ECX=this]
+0041dc5f  CALL Game::DrawText(&this->text, 24, 294, 0, 255, 255, 255)   [ECX=this]
+0041dc73  CALL sprintf(&this->text, '休憩中')   [ECX=&this->text]
+0041dd18  CALL Game::DrawText(&this->text, 24, 284, 35, (int)((sinf((this->f390 * 10f)) * 128f) + 128f), (int)((sinf((this->f390 * 7f)) * 128f) + 128f), (int)((sinf((this->f390 * 3f)) * 128f) + 128f))   [ECX=this]
+0041dd2b  CALL sprintf(&this->text, 'Ｘキー：後半戦へ\u3000\u3000矢印キー：移動\u3000\u3000ESCキー：強制終了')   [ECX=this]
+0041dd55  CALL Game::DrawText(&this->text, 18, 76, 86, 255, 255, 255)   [ECX=this]
+0041dd64  jump to 0x0041e30c if this->state != 8
+0041dd74  jump to 0x0041df02 if this->i3b8 >= 4
+0041dd89  CALL sprintf(&this->text, 'ＣＯＭ')   [ECX=&this->text]
+0041ddb0  CALL Game::DrawText(&this->text, 28, 76, 4, 255, 255, 0)   [ECX=this]
+0041ddc3  CALL sprintf(&this->text, 'ＹＯＵ')   [ECX=this]
+0041dded  CALL Game::DrawText(&this->text, 28, 480, 4, 255, 255, 0)   [ECX=this]
+0041de0b  CALL sprintf(&this->text, '%3d', this->i3dc)   [ECX=&this->text]
+0041de38  CALL Game::DrawText(&this->text, 48, 163, 31, 255, 255, 255)   [ECX=this]
+0041de56  CALL sprintf(&this->text, '%3d', this->i3d8)   [ECX=this->i3d8]
+0041de82  CALL Game::DrawText(&this->text, 48, 401, 31, 255, 255, 255)   [ECX=this]
+0041de96  CALL sprintf(&this->text, 'TIME')   [ECX=&this->text]
+0041dec3  CALL Game::DrawText(&this->text, 24, 294, 0, 255, 255, 255)   [ECX=this]
+0041ded6  CALL sprintf(&this->text, '終了')   [ECX=this]
+0041defd  CALL Game::DrawText(&this->text, 28, 291, 33, 255, 0, 0)   [ECX=this]
+0041df0c  jump to 0x0041dfcd if this->i3b8 != 1
+0041df20  CALL sprintf(&this->text, '結果発表')   [ECX=this]
+0041dfc8  CALL Game::DrawText(&this->text, 48, 236, 225, (int)((sinf((this->f390 * 10f)) * 128f) + 128f), (int)((sinf((this->f390 * 7f)) * 128f) + 128f), (int)((sinf((this->f390 * 3f)) * 128f) + 128f))   [ECX=this]
+0041dfd7  jump to 0x0041e243 if this->i3b8 != 3
+0041dfef  jump to 0x0041e0b2 if this->i3d8 <= this->i3dc
+0041e003  CALL sprintf(&this->text, 'ＹＯＵ\u3000ＷＩＮ！')   [ECX=this]
+0041e0a8  CALL Game::DrawText(&this->text, 72, 32, 225, (int)((sinf((this->f390 * 10f)) * 128f) + 128f), (int)((sinf((this->f390 * 7f)) * 128f) + 128f), (int)((sinf((this->f390 * 3f)) * 128f) + 128f))   [ECX=this]
+0041e0ad  goto 0x0041e243
+0041e0c4  jump to 0x0041e187 if this->i3d8 >= this->i3dc
+0041e0d9  CALL sprintf(&this->text, 'ＹＯＵ\u3000ＬＯＳＥ')   [ECX=this->i3d8]
+0041e17d  CALL Game::DrawText(&this->text, 72, 32, 225, (int)((sinf((this->f390 * 10f)) * 128f) + 128f), (int)((sinf((this->f390 * 7f)) * 128f) + 128f), (int)((sinf((this->f390 * 3f)) * 128f) + 128f))   [ECX=this]
+0041e182  goto 0x0041e243
+0041e196  CALL sprintf(&this->text, 'ＤＲＡＷ')   [ECX=&this->text]
+0041e23e  CALL Game::DrawText(&this->text, 72, 192, 225, (int)((sinf((this->f390 * 10f)) * 128f) + 128f), (int)((sinf((this->f390 * 7f)) * 128f) + 128f), (int)((sinf((this->f390 * 3f)) * 128f) + 128f))   [ECX=this]
+0041e24d  jump to 0x0041e30c if this->i3b8 != 6
+0041e262  CALL sprintf(&this->text, 'ＧＡＭＥ\u3000ＯＶＥＲ')   [ECX=&this->text]
+0041e307  CALL Game::DrawText(&this->text, 48, 102, 225, (int)((sinf((this->f390 * 10f)) * 128f) + 128f), (int)((sinf((this->f390 * 7f)) * 128f) + 128f), (int)((sinf((this->f390 * 3f)) * 128f) + 128f))   [ECX=this]
+0041e316  jump to 0x0041e49e if this->state != 9
+0041e32b  CALL sprintf(&this->text, 'Nice Play!!')   [ECX=&this->text]
+0041e358  CALL Game::DrawText(&this->text, 12, 320, 24, 255, 255, 255)   [ECX=this]
+0041e36b  CALL sprintf(&this->text, 'Thank you for your playing!!')   [ECX=this]
+0041e398  CALL Game::DrawText(&this->text, 12, 320, 48, 255, 255, 255)   [ECX=this]
+0041e3ac  CALL sprintf(&this->text, 'And Thanks for "07th Storming Party" for giving us')   [ECX=this]
+0041e3d8  CALL Game::DrawText(&this->text, 12, 320, 62, 255, 255, 255)   [ECX=this]
+0041e3ec  CALL sprintf(&this->text, 'wonderful story of "HIGURASHI NO NAKU KORONI"')   [ECX=&this->text]
+0041e419  CALL Game::DrawText(&this->text, 12, 320, 76, 255, 255, 255)   [ECX=this]
+0041e42c  CALL sprintf(&this->text, 'We are looking forward to "MEAKASHI" Story !!')   [ECX=this]
+0041e459  CALL Game::DrawText(&this->text, 12, 320, 100, 255, 255, 255)   [ECX=this]
+0041e46d  CALL sprintf(&this->text, 'from a Mionist...')   [ECX=this]
+0041e499  CALL Game::DrawText(&this->text, 12, 518, 120, 255, 255, 255)   [ECX=this]

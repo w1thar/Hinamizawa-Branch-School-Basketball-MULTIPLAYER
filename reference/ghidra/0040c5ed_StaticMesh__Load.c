@@ -43,12 +43,12 @@ bool __thiscall StaticMesh::Load(StaticMesh *this,char *file)
   uint local_2070;
   int *local_206c;
   void *local_2068;
-  byte local_2064;
+  char local_2064;
   undefined4 local_2063;
   uint auStackY_1f64 [1995];
   undefined4 uStackY_38;
   uint uVar11;
-  byte *pbVar12;
+  char *pcVar12;
   int *piVar13;
   undefined *puVar14;
   uint uVar15;
@@ -61,7 +61,7 @@ bool __thiscall StaticMesh::Load(StaticMesh *this,char *file)
   local_10 = *unaff_FS_OFFSET;
   *unaff_FS_OFFSET = &local_10;
   FUN_00435010();
-  local_2064 = 0;
+  local_2064 = '\0';
   puVar9 = &local_2063;
   for (iVar7 = 0x3f; iVar7 != 0; iVar7 = iVar7 + -1) {
     *puVar9 = 0;
@@ -70,8 +70,8 @@ bool __thiscall StaticMesh::Load(StaticMesh *this,char *file)
   *(undefined2 *)puVar9 = 0;
   *(undefined1 *)((int)puVar9 + 2) = 0;
   local_206c = (int *)fopen(file,&DAT_00453504);
-  while (iVar7 = _strcmp((char *)&local_2064,s_Mesh___00453508), iVar7 != 0) {
-    fgets((char *)&local_2064,0x100,local_206c);
+  while (iVar7 = _strcmp(&local_2064,s_Mesh___00453508), iVar7 != 0) {
+    fgets(&local_2064,0x100,local_206c);
   }
   fscanf(local_206c,&DAT_00453514);
   iVar7 = *(int *)(extraout_ECX + 4);
@@ -105,48 +105,48 @@ bool __thiscall StaticMesh::Load(StaticMesh *this,char *file)
   uVar11 = 0;
   while (uVar11 < *(int *)(extraout_ECX + 4) - 1U) {
     iVar7 = *(int *)(extraout_ECX + 8) + uVar11 * 0x20;
-    fscanf(local_206c,(byte *)s__f__f__f___0045351c);
+    fscanf(local_206c,s__f__f__f___0045351c);
     uVar11 = iVar7 + 1;
   }
-  fscanf(local_206c,(byte *)s__f__f__f___00453528);
+  fscanf(local_206c,s__f__f__f___00453528);
   local_2070 = 0;
-  FUN_00434d10(local_206c);
+  fgetc(local_206c);
   fscanf(local_206c,&DAT_00453534);
   pvVar4 = operator_new(local_2070 * 0x14);
   *(void **)(extraout_ECX + 0x1c) = pvVar4;
   _memset(*(void **)(extraout_ECX + 0x1c),0,local_2070 * 0x14);
   *(undefined4 *)(extraout_ECX + 0xc) = 0;
-  for (pbVar12 = (byte *)0x0; pbVar12 < (byte *)(local_2070 - 1); pbVar12 = pbVar12 + 1) {
-    pbVar12 = (byte *)(*(int *)(extraout_ECX + 0x1c) + 8 + (int)pbVar12 * 0x14);
+  for (pcVar12 = (char *)0x0; pcVar12 < (char *)(local_2070 - 1); pcVar12 = pcVar12 + 1) {
+    pcVar12 = (char *)(*(int *)(extraout_ECX + 0x1c) + 8 + (int)pcVar12 * 0x14);
     uStackY_38 = 0x40c9b2;
-    fscanf(local_206c,(byte *)s__d__d__d__d__d___0045353c);
+    fscanf(local_206c,s__d__d__d__d__d___0045353c);
     *(int *)(extraout_ECX + 0xc) =
          *(int *)(extraout_ECX + 0xc) +
-         (*(int *)(*(int *)(extraout_ECX + 0x1c) + (int)pbVar12 * 0x14) + -2) * 3;
-    if (*(int *)(*(int *)(extraout_ECX + 0x1c) + (int)pbVar12 * 0x14) == 3) {
-      pbVar12 = &local_2064;
-      fgets((char *)pbVar12,0x100,local_206c);
+         (*(int *)(*(int *)(extraout_ECX + 0x1c) + (int)pcVar12 * 0x14) + -2) * 3;
+    if (*(int *)(*(int *)(extraout_ECX + 0x1c) + (int)pcVar12 * 0x14) == 3) {
+      pcVar12 = &local_2064;
+      fgets(pcVar12,0x100,local_206c);
     }
   }
-  iVar7 = *(int *)(extraout_ECX + 0x1c) + 8 + (int)pbVar12 * 0x14;
+  iVar7 = *(int *)(extraout_ECX + 0x1c) + 8 + (int)pcVar12 * 0x14;
   uStackY_38 = 0x40ca89;
-  fscanf(local_206c,(byte *)s__d__d__d__d__d___00453550);
+  fscanf(local_206c,s__d__d__d__d__d___00453550);
   *(int *)(extraout_ECX + 0xc) =
        *(int *)(extraout_ECX + 0xc) +
        (*(int *)(*(int *)(extraout_ECX + 0x1c) + iVar7 * 0x14) + -2) * 3;
-  fgets((char *)&local_2064,0x100,local_206c);
-  fgets((char *)&local_2064,0x100,local_206c);
-  fgets((char *)&local_2064,0x100,local_206c);
-  fscanf(local_206c,(byte *)s__d__00453564);
-  fgets((char *)&local_2064,0x100,local_206c);
-  fgets((char *)&local_2064,0x100,local_206c);
+  fgets(&local_2064,0x100,local_206c);
+  fgets(&local_2064,0x100,local_206c);
+  fgets(&local_2064,0x100,local_206c);
+  fscanf(local_206c,s__d__00453564);
+  fgets(&local_2064,0x100,local_206c);
+  fgets(&local_2064,0x100,local_206c);
   uVar11 = 0;
   while (uVar11 < local_2070 - 1) {
     piVar13 = local_206c;
-    fscanf(local_206c,(byte *)s__d__0045356c);
+    fscanf(local_206c,s__d__0045356c);
     uVar11 = (int)piVar13 + 1;
   }
-  fscanf(local_206c,(byte *)s__d___00453574);
+  fscanf(local_206c,s__d___00453574);
   pvVar4 = operator_new(*(int *)(extraout_ECX + 0xc) << 1);
   *(void **)(extraout_ECX + 0x10) = pvVar4;
   _memset(*(void **)(extraout_ECX + 0x10),0,*(int *)(extraout_ECX + 0xc) << 1);
@@ -201,41 +201,40 @@ bool __thiscall StaticMesh::Load(StaticMesh *this,char *file)
   }
   local_20b4 = *(void **)(extraout_ECX + 0x1c);
   operator_delete(local_20b4);
-  fgets((char *)&local_2064,0x100,local_206c);
-  fgets((char *)&local_2064,0x100,local_206c);
-  for (pbVar12 = (byte *)0x0; pbVar12 < *(byte **)(extraout_ECX + 0x14); pbVar12 = pbVar12 + 1) {
-    iVar7 = *(int *)(extraout_ECX + 0x18) + 4 + (int)pbVar12 * 0x148;
-    fscanf(local_206c,(byte *)s__f__f__f__f___0045357c);
+  fgets(&local_2064,0x100,local_206c);
+  fgets(&local_2064,0x100,local_206c);
+  for (pcVar12 = (char *)0x0; pcVar12 < *(char **)(extraout_ECX + 0x14); pcVar12 = pcVar12 + 1) {
+    iVar7 = *(int *)(extraout_ECX + 0x18) + 4 + (int)pcVar12 * 0x148;
+    fscanf(local_206c,s__f__f__f__f___0045357c);
     puVar8 = (undefined4 *)(*(int *)(extraout_ECX + 0x18) + iVar7 * 0x148);
     puVar9 = (undefined4 *)(*(int *)(extraout_ECX + 0x18) + 0x10 + iVar7 * 0x148);
     *puVar9 = *puVar8;
     puVar9[1] = puVar8[1];
     puVar9[2] = puVar8[2];
     puVar9[3] = puVar8[3];
-    fscanf(local_206c,(byte *)s__f__00453590);
-    fscanf(local_206c,(byte *)s__f__f__f___00453598);
-    fscanf(local_206c,(byte *)s__f__f__f___004535a8);
-    fgets((char *)&local_2064,0x100,local_206c);
+    fscanf(local_206c,s__f__00453590);
+    fscanf(local_206c,s__f__f__f___00453598);
+    fscanf(local_206c,s__f__f__f___004535a8);
+    fgets(&local_2064,0x100,local_206c);
     fscanf(local_206c,&DAT_004535b8);
-    fgets((char *)&local_2064,0x100,local_206c);
+    fgets(&local_2064,0x100,local_206c);
     piVar13 = local_206c;
-    fscanf(local_206c,(byte *)s___c______004535bc);
-    sprintf((undefined1 *)(*(int *)(extraout_ECX + 0x18) + 0x44 + (int)piVar13 * 0x148),&local_2064)
-    ;
-    fgets((char *)&local_2064,0x100,local_206c);
-    fgets((char *)&local_2064,0x100,local_206c);
-    fgets((char *)&local_2064,0x100,local_206c);
-    pbVar12 = &local_2064;
-    fgets((char *)pbVar12,0x100,local_206c);
+    fscanf(local_206c,s___c______004535bc);
+    sprintf((char *)(*(int *)(extraout_ECX + 0x18) + 0x44 + (int)piVar13 * 0x148),&local_2064);
+    fgets(&local_2064,0x100,local_206c);
+    fgets(&local_2064,0x100,local_206c);
+    fgets(&local_2064,0x100,local_206c);
+    pcVar12 = &local_2064;
+    fgets(pcVar12,0x100,local_206c);
   }
-  fgets((char *)&local_2064,0x100,local_206c);
-  fgets((char *)&local_2064,0x100,local_206c);
+  fgets(&local_2064,0x100,local_206c);
+  fgets(&local_2064,0x100,local_206c);
   for (puVar14 = (undefined *)0x0; puVar14 < (undefined *)(*(int *)(extraout_ECX + 4) + -1);
       puVar14 = puVar14 + 1) {
     puVar14 = &DAT_004535cc;
     fscanf(local_206c,&DAT_004535cc);
   }
-  fscanf(local_206c,(byte *)s__f__f__004535d8);
+  fscanf(local_206c,s__f__f__004535d8);
   fclose(local_206c);
   local_20b8 = operator_new(*(int *)(extraout_ECX + 0xc) * 0xc);
   local_8 = 2;

@@ -141,7 +141,7 @@ void __thiscall Game::State4(Game *this)
       }
       else {
         this->players[local_8]->yaw = 0.0;
-        Player::Motion_42df38(this->players[local_8]);
+        Player::Motion_Stand(this->players[local_8]);
       }
     }
   }
@@ -165,10 +165,10 @@ void __thiscall Game::State4(Game *this)
     this->f390 = 0.0;
     this->f394 = 1.0;
     if (this->i3b0 == 2) {
-      Sound::OpenMp3(this->sound);
+      Sound::OpenMp3(this->sound,s_WAV_LP_Rika_mp3_00452edc);
     }
     else {
-      Sound::OpenMp3(this->sound);
+      Sound::OpenMp3(this->sound,s_WAV_LP_4_mp3_00452eec);
     }
   }
   if (this->i3b8 == 4 &&
@@ -224,7 +224,7 @@ void __thiscall Game::State4(Game *this)
       pVVar2 = Vec3::Ctor(&local_98,3.0,0.0,23.0);
       Player::SetPos(this->players[this->slot[5]],pVVar2->x,pVVar2->y,pVVar2->z,fVar3);
       Sound::PlayMp3(this->sound);
-      fn_42b0bb(this);
+      LoadSoundSet(this,1);
       this->b398 = '\0';
       this->b3a5 = '\x01';
       this->b3a4 = '\x01';
@@ -238,7 +238,7 @@ void __thiscall Game::State4(Game *this)
       this->i268 = this->slot[2];
       this->f3a0 = 0.0;
       for (local_8 = 0; local_8 < 6; local_8 = local_8 + 1) {
-        Player::Motion_42df38(this->players[this->slot[local_8]]);
+        Player::Motion_Stand(this->players[this->slot[local_8]]);
         this->players[this->slot[local_8]]->i190 = 7;
       }
       this->players[this->slot[2]]->i190 = 0;

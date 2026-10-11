@@ -94,7 +94,7 @@ void __thiscall Game::State2(Game *this)
       this->keySpace == KEY_PUSH) || this->keyEnter == KEY_PUSH) {
     Sound::Play(this->sound,1);
     for (local_10 = 0; local_10 < 6; local_10 = local_10 + 1) {
-      Player::Motion_42df38(this->players[local_10]);
+      Player::Motion_Stand(this->players[local_10]);
       this->players[local_10]->animTime = 0.0;
     }
     if (((((-50.0 <= (this->camPos).x || (this->camPos).x <= -65.0) || 10.0 <= (this->camPos).y) ||
@@ -107,7 +107,7 @@ void __thiscall Game::State2(Game *this)
     (this->camDir).y = 0.0;
     (this->camDir).z = 1.0;
     Sound::PlayMp3(this->sound);
-    Sound::OpenMp3(this->sound);
+    Sound::OpenMp3(this->sound,s_WAV_LP_2_mp3_00454174);
     this->f390 = 0.0;
     Sound::PlayMp3(this->sound);
     this->f394 = 0.0;

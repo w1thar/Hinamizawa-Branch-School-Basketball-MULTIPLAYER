@@ -1,0 +1,4 @@
+#include "resource.h"
+
+IDI_APP    ICON   "@HB_ICON@"
+IDR_ASSETS RCDATA "@HB_PAK@"

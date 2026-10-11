@@ -8,7 +8,7 @@
 00427488  MOV EDX,dword ptr [EBP + -0x10]
 0042748b  MOV EAX,dword ptr [EDX + 0x228]
 00427491  PUSH EAX
-00427492  CALL 0x00401127
+00427492  CALL 0x00401127  ; Atan2
 00427497  ADD ESP,0x8
 0042749a  FSTP float ptr [EBP + -0x4]
 0042749d  MOV ECX,dword ptr [EBP + -0x10]
@@ -55,7 +55,7 @@
 00427541  PUSH 0x0
 00427543  MOV EAX,dword ptr [EBP + -0x10]
 00427546  MOV ECX,dword ptr [EAX + 0xc0]
-0042754c  CALL 0x00401258
+0042754c  CALL 0x00401258  ; Sound::Play
 00427551  MOV ECX,dword ptr [EBP + -0x10]
 00427554  FLD float ptr [ECX + 0x390]
 0042755a  FCOMP float ptr [0x0044e3b8] {12}
@@ -126,7 +126,7 @@
 00427650  MOV byte ptr [EDX + 0x399],0x1
 00427657  MOV EAX,dword ptr [EBP + -0x10]
 0042765a  MOV ECX,dword ptr [EAX + 0xc0]
-00427660  CALL 0x0040100a
+00427660  CALL 0x0040100a  ; Sound::PlayMp3
 00427665  MOV dword ptr [EBP + -0x8],0x0
 0042766c  JMP 0x00427677
 0042766e  MOV ECX,dword ptr [EBP + -0x8]
@@ -194,7 +194,7 @@
 00427763  MOV byte ptr [EDX + 0x399],0x0
 0042776a  MOV EAX,dword ptr [EBP + -0x4]
 0042776d  PUSH EAX
-0042776e  CALL 0x00401262
+0042776e  CALL 0x00401262  ; sinf
 00427773  ADD ESP,0x4
 00427776  FMUL float ptr [0x0044e3e4] {13}
 0042777c  MOV ECX,dword ptr [EBP + -0x10]
@@ -205,7 +205,7 @@
 0042778e  FSTP float ptr [EAX + 0x21c]
 00427794  MOV ECX,dword ptr [EBP + -0x4]
 00427797  PUSH ECX
-00427798  CALL 0x0040136b
+00427798  CALL 0x0040136b  ; cosf
 0042779d  ADD ESP,0x4
 004277a0  FMUL float ptr [0x0044e3e4] {13}
 004277a6  MOV EDX,dword ptr [EBP + -0x10]
@@ -238,7 +238,7 @@
 00427812  JZ 0x00427868
 00427814  MOV EDX,dword ptr [EBP + -0x4]
 00427817  PUSH EDX
-00427818  CALL 0x00401262
+00427818  CALL 0x00401262  ; sinf
 0042781d  ADD ESP,0x4
 00427820  FMUL float ptr [0x0044e3e4] {13}
 00427826  MOV EAX,dword ptr [EBP + -0x10]
@@ -249,7 +249,7 @@
 00427838  FSTP float ptr [EDX + 0x21c]
 0042783e  MOV EAX,dword ptr [EBP + -0x4]
 00427841  PUSH EAX
-00427842  CALL 0x0040136b
+00427842  CALL 0x0040136b  ; cosf
 00427847  ADD ESP,0x4
 0042784a  FMUL float ptr [0x0044e3e4] {13}
 00427850  MOV ECX,dword ptr [EBP + -0x10]
@@ -325,7 +325,7 @@
 00427963  JZ 0x004279b9
 00427965  MOV EAX,dword ptr [EBP + -0x4]
 00427968  PUSH EAX
-00427969  CALL 0x00401262
+00427969  CALL 0x00401262  ; sinf
 0042796e  ADD ESP,0x4
 00427971  FMUL float ptr [0x0044e3fc] {25}
 00427977  MOV ECX,dword ptr [EBP + -0x10]
@@ -336,7 +336,7 @@
 00427989  FSTP float ptr [EAX + 0x21c]
 0042798f  MOV ECX,dword ptr [EBP + -0x4]
 00427992  PUSH ECX
-00427993  CALL 0x0040136b
+00427993  CALL 0x0040136b  ; cosf
 00427998  ADD ESP,0x4
 0042799b  FMUL float ptr [0x0044e3fc] {25}
 004279a1  MOV EDX,dword ptr [EBP + -0x10]
@@ -360,7 +360,7 @@
 004279df  JZ 0x00427a35
 004279e1  MOV EAX,dword ptr [EBP + -0x4]
 004279e4  PUSH EAX
-004279e5  CALL 0x00401262
+004279e5  CALL 0x00401262  ; sinf
 004279ea  ADD ESP,0x4
 004279ed  FMUL float ptr [0x0044e3fc] {25}
 004279f3  MOV ECX,dword ptr [EBP + -0x10]
@@ -371,7 +371,7 @@
 00427a05  FSTP float ptr [EAX + 0x21c]
 00427a0b  MOV ECX,dword ptr [EBP + -0x4]
 00427a0e  PUSH ECX
-00427a0f  CALL 0x0040136b
+00427a0f  CALL 0x0040136b  ; cosf
 00427a14  ADD ESP,0x4
 00427a17  FMUL float ptr [0x0044e3fc] {25}
 00427a1d  MOV EDX,dword ptr [EBP + -0x10]
@@ -400,13 +400,13 @@
 00427a6f  FSTP float ptr [EBP + -0x4]
 00427a72  MOV ECX,dword ptr [EBP + -0x4]
 00427a75  PUSH ECX
-00427a76  CALL 0x00401262
+00427a76  CALL 0x00401262  ; sinf
 00427a7b  ADD ESP,0x4
 00427a7e  MOV EDX,dword ptr [EBP + -0x10]
 00427a81  FSTP float ptr [EDX + 0x228]
 00427a87  MOV EAX,dword ptr [EBP + -0x4]
 00427a8a  PUSH EAX
-00427a8b  CALL 0x0040136b
+00427a8b  CALL 0x0040136b  ; cosf
 00427a90  ADD ESP,0x4
 00427a93  MOV ECX,dword ptr [EBP + -0x10]
 00427a96  FSTP float ptr [ECX + 0x230]
@@ -430,13 +430,13 @@
 00427ad3  FSTP float ptr [EBP + -0x4]
 00427ad6  MOV ECX,dword ptr [EBP + -0x4]
 00427ad9  PUSH ECX
-00427ada  CALL 0x00401262
+00427ada  CALL 0x00401262  ; sinf
 00427adf  ADD ESP,0x4
 00427ae2  MOV EDX,dword ptr [EBP + -0x10]
 00427ae5  FSTP float ptr [EDX + 0x228]
 00427aeb  MOV EAX,dword ptr [EBP + -0x4]
 00427aee  PUSH EAX
-00427aef  CALL 0x0040136b
+00427aef  CALL 0x0040136b  ; cosf
 00427af4  ADD ESP,0x4
 00427af7  MOV ECX,dword ptr [EBP + -0x10]
 00427afa  FSTP float ptr [ECX + 0x230]
@@ -485,7 +485,7 @@
 00427ba3  MOV dword ptr [ECX + 0x26c],0x1
 00427bad  MOV EDX,dword ptr [EBP + -0x10]
 00427bb0  MOV ECX,dword ptr [EDX + 0xc0]
-00427bb6  CALL 0x00401276
+00427bb6  CALL 0x00401276  ; Sound::StopMp3
 00427bbb  MOV EAX,dword ptr [EBP + -0x10]
 00427bbe  MOV byte ptr [EAX + 0x39a],0x0
 00427bc5  MOV ECX,dword ptr [EBP + -0x10]
@@ -522,7 +522,7 @@
 00427c2d  PUSH 0x1
 00427c2f  MOV EAX,dword ptr [EBP + -0x10]
 00427c32  MOV ECX,dword ptr [EAX + 0xc0]
-00427c38  CALL 0x00401258
+00427c38  CALL 0x00401258  ; Sound::Play
 00427c3d  MOV dword ptr [EBP + -0xc],0x0
 00427c44  JMP 0x00427c4f
 00427c46  MOV ECX,dword ptr [EBP + -0xc]
@@ -533,7 +533,7 @@
 00427c55  MOV EDX,dword ptr [EBP + -0xc]
 00427c58  MOV EAX,dword ptr [EBP + -0x10]
 00427c5b  MOV ECX,dword ptr [EAX + EDX*0x4 + 0xd8]
-00427c62  CALL 0x00401384
+00427c62  CALL 0x00401384  ; Player::Motion_Stand
 00427c67  MOV ECX,dword ptr [EBP + -0xc]
 00427c6a  MOV EDX,dword ptr [EBP + -0x10]
 00427c6d  MOV EAX,dword ptr [EDX + ECX*0x4 + 0xd8]
@@ -615,16 +615,16 @@
 00427dbe  MOV dword ptr [ECX + 0x230],0x3f800000
 00427dc8  MOV EDX,dword ptr [EBP + -0x10]
 00427dcb  MOV ECX,dword ptr [EDX + 0xc0]
-00427dd1  CALL 0x0040100a
+00427dd1  CALL 0x0040100a  ; Sound::PlayMp3
 00427dd6  PUSH 0x454174 {'WAV\\LP\\2.mp3'}
 00427ddb  MOV EAX,dword ptr [EBP + -0x10]
 00427dde  MOV ECX,dword ptr [EAX + 0xc0]
-00427de4  CALL 0x00401078
+00427de4  CALL 0x00401078  ; Sound::OpenMp3
 00427de9  MOV ECX,dword ptr [EBP + -0x10]
 00427dec  MOV dword ptr [ECX + 0x390],0x0
 00427df6  MOV EDX,dword ptr [EBP + -0x10]
 00427df9  MOV ECX,dword ptr [EDX + 0xc0]
-00427dff  CALL 0x0040100a
+00427dff  CALL 0x0040100a  ; Sound::PlayMp3
 00427e04  MOV EAX,dword ptr [EBP + -0x10]
 00427e07  MOV dword ptr [EAX + 0x394],0x0
 00427e11  MOV ECX,dword ptr [EBP + -0x10]

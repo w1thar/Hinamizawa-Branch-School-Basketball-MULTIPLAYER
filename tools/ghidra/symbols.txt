@@ -32,19 +32,19 @@
 004228f0  Game  State7               void (void)
 00422fc2  Game  State8               void (void)
 00423d53  Game  State9               void (void)
-0041b070  Game  fn_41b070            void (void)
-0042134c  Game  fn_42134c            void (void)
+0041b070  Game  DrawHUD              void (void)
+0042134c  Game  DrawTeamPortraits    void (void)
 00421d0f  Game  fn_421d0f            void (void)
-00422100  Game  fn_422100            void (void)
+00422100  Game  DrawPowerGauge       void (void)
 00425170  Game  RenderSky            void (float yawAngle, float pitchAngle)
-0042557f  Game  fn_42557f            void (void)
+0042557f  Game  DrawSunGlare         void (void)
 004259a7  Game  fn_4259a7            void (void)
 00428491  Game  fn_428491            void (void)
 004286c9  Game  fn_4286c9            void (void)
 00428844  Game  fn_428844            void (void)
 0042a829  Game  RenderCourt          void (void)
-0042a8fa  Game  fn_42a8fa            void (void)
-0042b0bb  Game  fn_42b0bb            -
+0042a8fa  Game  RenderObjects        void (void)
+0042b0bb  Game  LoadSoundSet         void (int set)
 0042b23c  Game  fn_42b23c            void (void)
 
 # ---- Sound -------------------------------------------------------------------
@@ -54,7 +54,7 @@
 00408302  Sound  LoadWav             bool (int slot, char *file)
 00408716  Sound  Play                void (int slot)
 0040875f  Sound  SetVolume           void (int slot, int vol)
-0040878a  Sound  OpenMp3             void (void)
+0040878a  Sound  OpenMp3             void (char *file)
 004087ee  Sound  PlayMp3             void (void)
 0040882a  Sound  StopMp3             void (void)
 
@@ -83,11 +83,11 @@
 0042cfab  Player  Render             void (IDirect3DDevice7 *dev, Mat4 shadow)
 0042d12e  Player  Update             void (float dt)
 0042dcb7  Player  SetPos             void (float x, float y, float z, float yaw)
-0042dd29  Player  SetFace            void (int face)
-0042ddac  Player  fn_42ddac          -
-0042de30  Player  fn_42de30          -
-0042deb4  Player  fn_42deb4          -
-0042df38  Player  Motion_42df38      -
+0042dd29  Player  SetTex0            void (int frame)
+0042ddac  Player  SetTex1            void (int frame)
+0042de30  Player  SetTex2            void (int frame)
+0042deb4  Player  SetTex3            void (int frame)
+0042df38  Player  Motion_Stand       -
 0042dfc0  Player  Motion_42dfc0      -
 0042e9cd  Player  Motion_42e9cd      -
 0042ee86  Player  Motion_42ee86      -
@@ -127,9 +127,9 @@
 00433370  -  operator_delete         void (void *p)
 00434050  -  fopen                   -
 00433e80  -  fclose                  -
-00434a40  -  sprintf                 -
-00434dc0  -  fscanf                  -
-00434e50  -  fgets                   -
+00434a40  -  sprintf                 int (char *buf, char *fmt, ...)
+00434dc0  -  fscanf                  int (void *fp, char *fmt, ...)
+00434e50  -  fgets                   char * (char *buf, int n, void *fp)
 00433400  -  srand                   void (u32 seed)
 00433410  -  rand                    int (void)
 
@@ -192,3 +192,8 @@
 004581d8  @  g_mouseY                int
 00454430  @  g_randSeed              u32
 004581e8  @  KEY_FREE                int
+00434d10  -  fgetc                   int (void *fp)
+004199d4  Game  RotateToward         float (float target, float cur, float rate)
+00419ae5  Game  CalcStep             Vec3 * (Vec3 *out, int idx)
+00422870  TLVertex  Ctor             TLVertex * (Vec3 *v, float rhw, u32 color, u32 specular, float tu, float tv)
+00422850  TLVertex  CtorDefault      TLVertex * (void)

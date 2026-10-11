@@ -5,77 +5,75 @@ void __thiscall Game::State6(Game *this)
 {
   Player *pPVar1;
   Vec3 *pVVar2;
-  float *pfVar3;
-  float10 fVar4;
-  longlong lVar5;
+  longlong lVar3;
+  float fVar4;
+  float fVar5;
   float fVar6;
-  float fVar7;
-  float fVar8;
-  float local_66c [3];
-  float local_660 [3];
-  float local_654 [3];
-  float local_648 [3];
-  float local_63c [3];
-  float local_630 [3];
-  float local_624 [3];
-  float local_618 [3];
-  float local_60c [3];
-  float local_600 [3];
-  float local_5f4 [3];
-  float local_5e8 [3];
-  float local_5dc [3];
-  float local_5d0 [3];
-  float local_5c4 [3];
-  float local_5b8 [3];
-  float local_5ac [3];
-  float local_5a0 [3];
-  float local_594 [3];
-  float local_588 [3];
-  float local_57c [3];
-  float local_570 [3];
-  float local_564 [3];
-  float local_558 [3];
-  float local_54c [3];
-  float local_540 [3];
-  float local_534 [3];
-  float local_528 [3];
-  float local_51c [3];
-  float local_510 [3];
-  float local_504 [3];
-  float local_4f8 [3];
-  float local_4ec [3];
-  float local_4e0 [3];
-  float local_4d4 [3];
-  float local_4c8 [3];
-  float local_4bc [3];
-  float local_4b0 [3];
-  float local_4a4 [3];
-  float local_498 [3];
-  float local_48c [3];
-  float local_480 [3];
-  float local_474 [3];
-  float local_468 [3];
-  float local_45c [3];
-  float local_450 [3];
-  float local_444 [3];
-  float local_438 [3];
-  float local_42c [3];
-  float local_420 [3];
-  float local_414 [3];
-  float local_408 [3];
-  float local_3fc [3];
-  float local_3f0 [3];
-  float local_3e4 [3];
-  float local_3d8 [3];
-  float local_3cc [3];
-  float local_3c0 [3];
-  float local_3b4 [3];
-  float local_3a8 [3];
-  float local_39c [3];
-  float local_390 [3];
-  float local_384 [3];
-  float local_378 [3];
-  float local_36c [3];
+  Vec3 local_66c;
+  Vec3 local_660;
+  Vec3 local_654;
+  Vec3 local_648;
+  Vec3 local_63c;
+  Vec3 local_630;
+  Vec3 local_624;
+  Vec3 local_618;
+  Vec3 local_60c;
+  Vec3 local_600;
+  Vec3 local_5f4;
+  Vec3 local_5e8;
+  Vec3 local_5dc;
+  Vec3 local_5d0;
+  Vec3 local_5c4;
+  Vec3 local_5b8;
+  Vec3 local_5ac;
+  Vec3 local_5a0;
+  Vec3 local_594;
+  Vec3 local_588;
+  Vec3 local_57c;
+  Vec3 local_570;
+  Vec3 local_564;
+  Vec3 local_558;
+  Vec3 local_54c;
+  Vec3 local_540;
+  Vec3 local_534;
+  Vec3 local_528;
+  Vec3 local_51c;
+  Vec3 local_510;
+  Vec3 local_504;
+  Vec3 local_4f8;
+  Vec3 local_4ec;
+  Vec3 local_4e0;
+  Vec3 local_4d4;
+  Vec3 local_4c8;
+  Vec3 local_4bc;
+  Vec3 local_4b0;
+  Vec3 local_4a4;
+  Vec3 local_498;
+  Vec3 local_48c;
+  Vec3 local_480;
+  Vec3 local_474;
+  Vec3 local_468;
+  Vec3 local_45c;
+  Vec3 local_450;
+  Vec3 local_444;
+  Vec3 local_438;
+  Vec3 local_42c;
+  Vec3 local_420;
+  Vec3 local_414;
+  Vec3 local_408;
+  Vec3 local_3fc;
+  Vec3 local_3f0;
+  Vec3 local_3e4;
+  Vec3 local_3d8;
+  Vec3 local_3cc;
+  Vec3 local_3c0;
+  Vec3 local_3b4;
+  Vec3 local_3a8;
+  Vec3 local_39c;
+  Vec3 local_390;
+  Vec3 local_384;
+  Vec3 local_378;
+  Vec3 local_36c;
   Vec3 local_360;
   Vec3 local_354;
   Vec3 local_348;
@@ -174,7 +172,7 @@ void __thiscall Game::State6(Game *this)
   local_30 = 0.0;
   local_2c = 0.0;
   if (0.0 <= this->f3e0) {
-    for (local_20 = 0.0; fVar6 = local_18, fVar7 = local_30, (int)local_20 < 6;
+    for (local_20 = 0.0; fVar4 = local_18, fVar5 = local_30, (int)local_20 < 6;
         local_20 = (float)((int)local_20 + 1)) {
       this->f3bc = ((this->players[(int)local_20]->pos).z - (this->v24c).z) *
                    ((this->players[(int)local_20]->pos).z - (this->v24c).z) +
@@ -212,31 +210,31 @@ void __thiscall Game::State6(Game *this)
           local_8 = local_20;
           local_1c = this->f3bc;
         }
-        local_14 = fVar6;
+        local_14 = fVar4;
       }
     }
     if (this->b3a6 == '\0') {
       if ((this->players[(int)local_14]->pos).x < (this->players[(int)local_18]->pos).x) {
         local_28 = local_18;
         local_18 = local_14;
-        local_14 = fVar6;
+        local_14 = fVar4;
       }
       if ((this->players[(int)local_30]->pos).x < (this->players[(int)local_2c]->pos).x) {
         local_28 = local_30;
         local_30 = local_2c;
-        local_2c = fVar7;
+        local_2c = fVar5;
       }
     }
     else {
       if ((this->players[(int)local_18]->pos).x < (this->players[(int)local_14]->pos).x) {
         local_28 = local_18;
         local_18 = local_14;
-        local_14 = fVar6;
+        local_14 = fVar4;
       }
       if ((this->players[(int)local_2c]->pos).x < (this->players[(int)local_30]->pos).x) {
         local_28 = local_30;
         local_30 = local_2c;
-        local_2c = fVar7;
+        local_2c = fVar5;
       }
     }
     if (this->i418 == 1) {
@@ -325,41 +323,41 @@ void __thiscall Game::State6(Game *this)
         this->i268 = -1;
       }
       else {
-        fn_42b0bb(this);
+        LoadSoundSet(this,1);
         this->i418 = 0;
         local_1c = 100.0;
         local_34 = 100.0;
         for (local_40 = 0; local_40 < 6; local_40 = local_40 + 1) {
           this->players[local_40]->i190 = 7;
-          Player::Motion_42df38(this->players[local_40]);
+          Player::Motion_Stand(this->players[local_40]);
         }
         if (this->i40c == 1) {
           if (this->i3b0 == 2) {
-            fVar7 = 1.54;
+            fVar5 = 1.54;
             pVVar2 = Vec3::Ctor(&local_6c,40.0,0.0,this->f410);
-            Player::SetPos(this->players[this->slot[5]],pVVar2->x,pVVar2->y,pVVar2->z,fVar7);
+            Player::SetPos(this->players[this->slot[5]],pVVar2->x,pVVar2->y,pVVar2->z,fVar5);
             Sound::Play(this->sound,1);
             this->players[this->slot[5]]->f198 = 0.0;
             this->players[this->slot[5]]->yaw = 1.54;
             this->players[this->slot[5]]->i190 = 10;
             Player::Motion_4305b1(this->players[this->slot[5]]);
-            fVar7 = -1.54;
+            fVar5 = -1.54;
             pVVar2 = Vec3::Ctor(&local_78,10.0,0.0,this->f410);
-            Player::SetPos(this->players[(int)local_8],pVVar2->x,pVVar2->y,pVVar2->z,fVar7);
-            fVar7 = -1.54;
+            Player::SetPos(this->players[(int)local_8],pVVar2->x,pVVar2->y,pVVar2->z,fVar5);
+            fVar5 = -1.54;
             pVVar2 = Vec3::Ctor(&local_84,15.0,0.0,this->f410 + 5.0);
-            Player::SetPos(this->players[(int)local_18],pVVar2->x,pVVar2->y,pVVar2->z,fVar7);
-            fVar7 = -1.54;
+            Player::SetPos(this->players[(int)local_18],pVVar2->x,pVVar2->y,pVVar2->z,fVar5);
+            fVar5 = -1.54;
             pVVar2 = Vec3::Ctor(&local_90,16.0,0.0,this->f410 - 5.0);
-            Player::SetPos(this->players[(int)local_14],pVVar2->x,pVVar2->y,pVVar2->z,fVar7);
+            Player::SetPos(this->players[(int)local_14],pVVar2->x,pVVar2->y,pVVar2->z,fVar5);
             this->f260 = this->players[this->slot[5]]->yaw - 3.14;
             this->f25c = this->players[this->slot[5]]->stat174;
             this->f258 = this->players[this->slot[5]]->stat178;
-            fVar7 = sinf((float)this);
-            (this->v24c).x = -fVar7 * -2.0 + (this->players[this->slot[5]]->pos).x;
+            fVar5 = sinf((float)this);
+            (this->v24c).x = -fVar5 * -2.0 + (this->players[this->slot[5]]->pos).x;
             (this->v24c).y = this->players[this->slot[5]]->stat170 * 0.9;
-            fVar7 = cosf((float)this->players[this->slot[5]]);
-            (this->v24c).z = fVar7 * -2.0 + (this->players[this->slot[5]]->pos).z;
+            fVar5 = cosf((float)this->players[this->slot[5]]);
+            (this->v24c).z = fVar5 * -2.0 + (this->players[this->slot[5]]->pos).z;
             this->i404 = this->slot[5];
             this->i268 = -1;
             this->b414 = '\0';
@@ -372,24 +370,24 @@ void __thiscall Game::State6(Game *this)
               this->players[(int)local_8]->i190 = 4;
               Player::Motion_430497(this->players[(int)local_8]);
               this->i268 = (int)local_8;
-              fVar7 = 1.54;
+              fVar5 = 1.54;
               pVVar2 = Vec3::Ctor(&local_e4,38.0,0.0,this->f410);
-              Player::SetPos(this->players[(int)local_8],pVVar2->x,pVVar2->y,pVVar2->z,fVar7);
-              fVar7 = -1.54;
+              Player::SetPos(this->players[(int)local_8],pVVar2->x,pVVar2->y,pVVar2->z,fVar5);
+              fVar5 = -1.54;
               pVVar2 = Vec3::Ctor(&local_f0,30.0,0.0,this->f410 + 5.0);
-              Player::SetPos(this->players[(int)local_18],pVVar2->x,pVVar2->y,pVVar2->z,fVar7);
-              fVar7 = -1.54;
+              Player::SetPos(this->players[(int)local_18],pVVar2->x,pVVar2->y,pVVar2->z,fVar5);
+              fVar5 = -1.54;
               pVVar2 = Vec3::Ctor(&local_fc,32.0,0.0,this->f410 - 5.0);
-              Player::SetPos(this->players[(int)local_14],pVVar2->x,pVVar2->y,pVVar2->z,fVar7);
-              fVar7 = 1.54;
+              Player::SetPos(this->players[(int)local_14],pVVar2->x,pVVar2->y,pVVar2->z,fVar5);
+              fVar5 = 1.54;
               pVVar2 = Vec3::Ctor(&local_108,1.0,0.0,4.0);
-              Player::SetPos(this->players[(int)local_30],pVVar2->x,pVVar2->y,pVVar2->z,fVar7);
-              fVar7 = 1.54;
+              Player::SetPos(this->players[(int)local_30],pVVar2->x,pVVar2->y,pVVar2->z,fVar5);
+              fVar5 = 1.54;
               pVVar2 = Vec3::Ctor(&local_114,2.0,0.0,-4.0);
-              Player::SetPos(this->players[(int)local_2c],pVVar2->x,pVVar2->y,pVVar2->z,fVar7);
-              fVar7 = 1.54;
+              Player::SetPos(this->players[(int)local_2c],pVVar2->x,pVVar2->y,pVVar2->z,fVar5);
+              fVar5 = 1.54;
               pVVar2 = Vec3::Ctor(&local_120,3.0,0.0,0.0);
-              Player::SetPos(this->players[(int)local_38],pVVar2->x,pVVar2->y,pVVar2->z,fVar7);
+              Player::SetPos(this->players[(int)local_38],pVVar2->x,pVVar2->y,pVVar2->z,fVar5);
               this->i404 = (int)local_8;
               this->b414 = '\0';
             }
@@ -413,41 +411,41 @@ void __thiscall Game::State6(Game *this)
             this->f410 = 35.0;
           }
           else {
-            fVar7 = 1.54;
+            fVar5 = 1.54;
             pVVar2 = Vec3::Ctor(&local_9c,38.0,0.0,this->f410);
-            Player::SetPos(this->players[(int)local_38],pVVar2->x,pVVar2->y,pVVar2->z,fVar7);
-            fVar7 = -1.54;
+            Player::SetPos(this->players[(int)local_38],pVVar2->x,pVVar2->y,pVVar2->z,fVar5);
+            fVar5 = -1.54;
             pVVar2 = Vec3::Ctor(&local_a8,30.0,0.0,this->f410 + 5.0);
-            Player::SetPos(this->players[(int)local_30],pVVar2->x,pVVar2->y,pVVar2->z,fVar7);
-            fVar7 = -1.54;
+            Player::SetPos(this->players[(int)local_30],pVVar2->x,pVVar2->y,pVVar2->z,fVar5);
+            fVar5 = -1.54;
             pVVar2 = Vec3::Ctor(&local_b4,32.0,0.0,this->f410 - 5.0);
-            Player::SetPos(this->players[(int)local_2c],pVVar2->x,pVVar2->y,pVVar2->z,fVar7);
-            fVar7 = -1.54;
+            Player::SetPos(this->players[(int)local_2c],pVVar2->x,pVVar2->y,pVVar2->z,fVar5);
+            fVar5 = -1.54;
             pVVar2 = Vec3::Ctor(&local_c0,10.0,0.0,4.0);
-            Player::SetPos(this->players[(int)local_18],pVVar2->x,pVVar2->y,pVVar2->z,fVar7);
-            fVar7 = 1.54;
+            Player::SetPos(this->players[(int)local_18],pVVar2->x,pVVar2->y,pVVar2->z,fVar5);
+            fVar5 = 1.54;
             pVVar2 = Vec3::Ctor(&local_cc,2.0,0.0,-4.0);
-            Player::SetPos(this->players[(int)local_14],pVVar2->x,pVVar2->y,pVVar2->z,fVar7);
-            fVar7 = 1.54;
+            Player::SetPos(this->players[(int)local_14],pVVar2->x,pVVar2->y,pVVar2->z,fVar5);
+            fVar5 = 1.54;
             pVVar2 = Vec3::Ctor(&local_d8,3.0,0.0,0.0);
-            Player::SetPos(this->players[(int)local_8],pVVar2->x,pVVar2->y,pVVar2->z,fVar7);
+            Player::SetPos(this->players[(int)local_8],pVVar2->x,pVVar2->y,pVVar2->z,fVar5);
             Sound::Play(this->sound,1);
             this->players[(int)local_38]->f198 = 0.0;
-            fVar7 = Atan2((this->players[(int)local_38]->pos).x -
+            fVar5 = Atan2((this->players[(int)local_38]->pos).x -
                           (this->players[(int)local_30]->pos).x,
                           (this->players[(int)local_38]->pos).z -
                           (this->players[(int)local_30]->pos).z);
-            this->players[(int)local_38]->yaw = fVar7;
+            this->players[(int)local_38]->yaw = fVar5;
             this->players[(int)local_38]->i190 = 10;
             Player::Motion_4305b1(this->players[(int)local_38]);
             this->f260 = this->players[(int)local_38]->yaw - 3.14;
             this->f25c = this->players[(int)local_38]->stat174;
             this->f258 = this->players[(int)local_38]->stat178;
-            fVar7 = sinf(local_38);
-            (this->v24c).x = -fVar7 * -2.0 + (this->players[(int)local_38]->pos).x;
+            fVar5 = sinf(local_38);
+            (this->v24c).x = -fVar5 * -2.0 + (this->players[(int)local_38]->pos).x;
             (this->v24c).y = this->players[(int)local_38]->stat170 * 0.9;
-            fVar7 = cosf((float)this);
-            (this->v24c).z = fVar7 * -2.0 + (this->players[(int)local_38]->pos).z;
+            fVar5 = cosf((float)this);
+            (this->v24c).z = fVar5 * -2.0 + (this->players[(int)local_38]->pos).z;
             this->i404 = (int)local_38;
             this->i268 = -1;
             this->b414 = '\0';
@@ -455,31 +453,31 @@ void __thiscall Game::State6(Game *this)
         }
         else if (this->i40c == 2) {
           if (this->i3b0 == 2) {
-            fVar7 = -1.54;
+            fVar5 = -1.54;
             pVVar2 = Vec3::Ctor(&local_12c,-40.0,0.0,this->f410);
-            Player::SetPos(this->players[this->slot[5]],pVVar2->x,pVVar2->y,pVVar2->z,fVar7);
+            Player::SetPos(this->players[this->slot[5]],pVVar2->x,pVVar2->y,pVVar2->z,fVar5);
             Sound::Play(this->sound,1);
             this->players[this->slot[5]]->f198 = 0.0;
             this->players[this->slot[5]]->yaw = -1.54;
             this->players[this->slot[5]]->i190 = 10;
             Player::Motion_4305b1(this->players[this->slot[5]]);
-            fVar7 = 1.54;
+            fVar5 = 1.54;
             pVVar2 = Vec3::Ctor(&local_138,-10.0,0.0,this->f410);
-            Player::SetPos(this->players[(int)local_8],pVVar2->x,pVVar2->y,pVVar2->z,fVar7);
-            fVar7 = 1.54;
+            Player::SetPos(this->players[(int)local_8],pVVar2->x,pVVar2->y,pVVar2->z,fVar5);
+            fVar5 = 1.54;
             pVVar2 = Vec3::Ctor(&local_144,-15.0,0.0,this->f410 + 5.0);
-            Player::SetPos(this->players[(int)local_18],pVVar2->x,pVVar2->y,pVVar2->z,fVar7);
-            fVar7 = 1.54;
+            Player::SetPos(this->players[(int)local_18],pVVar2->x,pVVar2->y,pVVar2->z,fVar5);
+            fVar5 = 1.54;
             pVVar2 = Vec3::Ctor(&local_150,-16.0,0.0,this->f410 - 5.0);
-            Player::SetPos(this->players[(int)local_14],pVVar2->x,pVVar2->y,pVVar2->z,fVar7);
+            Player::SetPos(this->players[(int)local_14],pVVar2->x,pVVar2->y,pVVar2->z,fVar5);
             this->f260 = this->players[this->slot[5]]->yaw - 3.14;
             this->f25c = this->players[this->slot[5]]->stat174;
             this->f258 = this->players[this->slot[5]]->stat178;
-            fVar7 = sinf((float)this);
-            (this->v24c).x = -fVar7 * -2.0 + (this->players[this->slot[5]]->pos).x;
+            fVar5 = sinf((float)this);
+            (this->v24c).x = -fVar5 * -2.0 + (this->players[this->slot[5]]->pos).x;
             (this->v24c).y = this->players[this->slot[5]]->stat170 * 0.9;
-            fVar7 = cosf((float)this->players[this->slot[5]]);
-            (this->v24c).z = fVar7 * -2.0 + (this->players[this->slot[5]]->pos).z;
+            fVar5 = cosf((float)this->players[this->slot[5]]);
+            (this->v24c).z = fVar5 * -2.0 + (this->players[this->slot[5]]->pos).z;
             this->i404 = this->slot[5];
             this->i268 = -1;
             this->b414 = '\0';
@@ -495,41 +493,41 @@ void __thiscall Game::State6(Game *this)
               this->f410 = -35.0;
             }
             else {
-              fVar7 = -1.54;
+              fVar5 = -1.54;
               pVVar2 = Vec3::Ctor(&local_1a4,-38.0,0.0,this->f410);
-              Player::SetPos(this->players[(int)local_38],pVVar2->x,pVVar2->y,pVVar2->z,fVar7);
-              fVar7 = 1.54;
+              Player::SetPos(this->players[(int)local_38],pVVar2->x,pVVar2->y,pVVar2->z,fVar5);
+              fVar5 = 1.54;
               pVVar2 = Vec3::Ctor(&local_1b0,-30.0,0.0,this->f410 + 5.0);
-              Player::SetPos(this->players[(int)local_30],pVVar2->x,pVVar2->y,pVVar2->z,fVar7);
-              fVar7 = 1.54;
+              Player::SetPos(this->players[(int)local_30],pVVar2->x,pVVar2->y,pVVar2->z,fVar5);
+              fVar5 = 1.54;
               pVVar2 = Vec3::Ctor(&local_1bc,-32.0,0.0,this->f410 - 5.0);
-              Player::SetPos(this->players[(int)local_2c],pVVar2->x,pVVar2->y,pVVar2->z,fVar7);
-              fVar7 = 1.54;
+              Player::SetPos(this->players[(int)local_2c],pVVar2->x,pVVar2->y,pVVar2->z,fVar5);
+              fVar5 = 1.54;
               pVVar2 = Vec3::Ctor(&local_1c8,-10.0,0.0,4.0);
-              Player::SetPos(this->players[(int)local_18],pVVar2->x,pVVar2->y,pVVar2->z,fVar7);
-              fVar7 = -1.54;
+              Player::SetPos(this->players[(int)local_18],pVVar2->x,pVVar2->y,pVVar2->z,fVar5);
+              fVar5 = -1.54;
               pVVar2 = Vec3::Ctor(&local_1d4,2.0,0.0,-4.0);
-              Player::SetPos(this->players[(int)local_14],pVVar2->x,pVVar2->y,pVVar2->z,fVar7);
-              fVar7 = -1.54;
+              Player::SetPos(this->players[(int)local_14],pVVar2->x,pVVar2->y,pVVar2->z,fVar5);
+              fVar5 = -1.54;
               pVVar2 = Vec3::Ctor(&local_1e0,3.0,0.0,0.0);
-              Player::SetPos(this->players[(int)local_8],pVVar2->x,pVVar2->y,pVVar2->z,fVar7);
+              Player::SetPos(this->players[(int)local_8],pVVar2->x,pVVar2->y,pVVar2->z,fVar5);
               Sound::Play(this->sound,1);
               this->players[(int)local_38]->f198 = 0.0;
-              fVar7 = Atan2((this->players[(int)local_38]->pos).x -
+              fVar5 = Atan2((this->players[(int)local_38]->pos).x -
                             (this->players[(int)local_30]->pos).x,
                             (this->players[(int)local_38]->pos).z -
                             (this->players[(int)local_30]->pos).z);
-              this->players[(int)local_38]->yaw = fVar7;
+              this->players[(int)local_38]->yaw = fVar5;
               this->players[(int)local_38]->i190 = 10;
               Player::Motion_4305b1(this->players[(int)local_38]);
               this->f260 = this->players[(int)local_38]->yaw - 3.14;
               this->f25c = this->players[(int)local_38]->stat174;
               this->f258 = this->players[(int)local_38]->stat178;
-              fVar7 = sinf(local_38);
-              (this->v24c).x = -fVar7 * -2.0 + (this->players[(int)local_38]->pos).x;
+              fVar5 = sinf(local_38);
+              (this->v24c).x = -fVar5 * -2.0 + (this->players[(int)local_38]->pos).x;
               (this->v24c).y = this->players[(int)local_38]->stat170 * 0.9;
-              fVar7 = cosf((float)this);
-              (this->v24c).z = fVar7 * -2.0 + (this->players[(int)local_38]->pos).z;
+              fVar5 = cosf((float)this);
+              (this->v24c).z = fVar5 * -2.0 + (this->players[(int)local_38]->pos).z;
               this->i404 = (int)local_38;
               this->i268 = -1;
               this->b414 = '\0';
@@ -542,24 +540,24 @@ void __thiscall Game::State6(Game *this)
             this->players[(int)local_8]->i190 = 4;
             Player::Motion_430497(this->players[(int)local_8]);
             this->i268 = (int)local_8;
-            fVar7 = -1.54;
+            fVar5 = -1.54;
             pVVar2 = Vec3::Ctor(&local_15c,-38.0,0.0,this->f410);
-            Player::SetPos(this->players[(int)local_8],pVVar2->x,pVVar2->y,pVVar2->z,fVar7);
-            fVar7 = 1.54;
+            Player::SetPos(this->players[(int)local_8],pVVar2->x,pVVar2->y,pVVar2->z,fVar5);
+            fVar5 = 1.54;
             pVVar2 = Vec3::Ctor(&local_168,-30.0,0.0,this->f410 + 5.0);
-            Player::SetPos(this->players[(int)local_18],pVVar2->x,pVVar2->y,pVVar2->z,fVar7);
-            fVar7 = 1.54;
+            Player::SetPos(this->players[(int)local_18],pVVar2->x,pVVar2->y,pVVar2->z,fVar5);
+            fVar5 = 1.54;
             pVVar2 = Vec3::Ctor(&local_174,-32.0,0.0,this->f410 - 5.0);
-            Player::SetPos(this->players[(int)local_14],pVVar2->x,pVVar2->y,pVVar2->z,fVar7);
-            fVar7 = -1.54;
+            Player::SetPos(this->players[(int)local_14],pVVar2->x,pVVar2->y,pVVar2->z,fVar5);
+            fVar5 = -1.54;
             pVVar2 = Vec3::Ctor(&local_180,1.0,0.0,4.0);
-            Player::SetPos(this->players[(int)local_30],pVVar2->x,pVVar2->y,pVVar2->z,fVar7);
-            fVar7 = -1.54;
+            Player::SetPos(this->players[(int)local_30],pVVar2->x,pVVar2->y,pVVar2->z,fVar5);
+            fVar5 = -1.54;
             pVVar2 = Vec3::Ctor(&local_18c,2.0,0.0,-4.0);
-            Player::SetPos(this->players[(int)local_2c],pVVar2->x,pVVar2->y,pVVar2->z,fVar7);
-            fVar7 = -1.54;
+            Player::SetPos(this->players[(int)local_2c],pVVar2->x,pVVar2->y,pVVar2->z,fVar5);
+            fVar5 = -1.54;
             pVVar2 = Vec3::Ctor(&local_198,3.0,0.0,0.0);
-            Player::SetPos(this->players[(int)local_38],pVVar2->x,pVVar2->y,pVVar2->z,fVar7);
+            Player::SetPos(this->players[(int)local_38],pVVar2->x,pVVar2->y,pVVar2->z,fVar5);
             this->i404 = (int)local_8;
             this->b414 = '\0';
           }
@@ -575,31 +573,31 @@ void __thiscall Game::State6(Game *this)
         }
         if (this->i40c == 3) {
           if (this->i3b0 == 2) {
-            fVar7 = 0.0;
+            fVar5 = 0.0;
             pVVar2 = Vec3::Ctor(&local_1ec,this->f410,0.0,20.0);
-            Player::SetPos(this->players[this->slot[5]],pVVar2->x,pVVar2->y,pVVar2->z,fVar7);
+            Player::SetPos(this->players[this->slot[5]],pVVar2->x,pVVar2->y,pVVar2->z,fVar5);
             Sound::Play(this->sound,1);
             this->players[this->slot[5]]->f198 = 0.0;
             this->players[this->slot[5]]->yaw = 0.0;
             this->players[this->slot[5]]->i190 = 10;
             Player::Motion_4305b1(this->players[this->slot[5]]);
-            fVar7 = 3.14;
+            fVar5 = 3.14;
             pVVar2 = Vec3::Ctor(&local_1f8,this->f410,0.0,0.0);
-            Player::SetPos(this->players[(int)local_8],pVVar2->x,pVVar2->y,pVVar2->z,fVar7);
-            fVar7 = 3.14;
+            Player::SetPos(this->players[(int)local_8],pVVar2->x,pVVar2->y,pVVar2->z,fVar5);
+            fVar5 = 3.14;
             pVVar2 = Vec3::Ctor(&local_204,this->f410 + 5.0,0.0,3.0);
-            Player::SetPos(this->players[(int)local_18],pVVar2->x,pVVar2->y,pVVar2->z,fVar7);
-            fVar7 = 3.14;
+            Player::SetPos(this->players[(int)local_18],pVVar2->x,pVVar2->y,pVVar2->z,fVar5);
+            fVar5 = 3.14;
             pVVar2 = Vec3::Ctor(&local_210,this->f410 - 1.0,0.0,4.0);
-            Player::SetPos(this->players[(int)local_14],pVVar2->x,pVVar2->y,pVVar2->z,fVar7);
+            Player::SetPos(this->players[(int)local_14],pVVar2->x,pVVar2->y,pVVar2->z,fVar5);
             this->f260 = this->players[this->slot[5]]->yaw - 3.14;
             this->f25c = this->players[this->slot[5]]->stat174;
             this->f258 = this->players[this->slot[5]]->stat178;
-            fVar7 = sinf((float)this);
-            (this->v24c).x = -fVar7 * -2.0 + (this->players[this->slot[5]]->pos).x;
+            fVar5 = sinf((float)this);
+            (this->v24c).x = -fVar5 * -2.0 + (this->players[this->slot[5]]->pos).x;
             (this->v24c).y = this->players[this->slot[5]]->stat170 * 0.9;
-            fVar7 = cosf((float)this->players[this->slot[5]]);
-            (this->v24c).z = fVar7 * -2.0 + (this->players[this->slot[5]]->pos).z;
+            fVar5 = cosf((float)this->players[this->slot[5]]);
+            (this->v24c).z = fVar5 * -2.0 + (this->players[this->slot[5]]->pos).z;
             this->i404 = this->slot[5];
             this->i268 = -1;
             this->b414 = '\0';
@@ -611,63 +609,63 @@ void __thiscall Game::State6(Game *this)
             this->players[(int)local_8]->i190 = 4;
             Player::Motion_430497(this->players[(int)local_8]);
             this->i268 = (int)local_8;
-            fVar7 = 0.0;
+            fVar5 = 0.0;
             pVVar2 = Vec3::Ctor(&local_264,this->f410,0.0,20.0);
-            Player::SetPos(this->players[(int)local_8],pVVar2->x,pVVar2->y,pVVar2->z,fVar7);
-            fVar7 = 3.14;
+            Player::SetPos(this->players[(int)local_8],pVVar2->x,pVVar2->y,pVVar2->z,fVar5);
+            fVar5 = 3.14;
             pVVar2 = Vec3::Ctor(&local_270,this->f410 + 5.0,0.0,10.0);
-            Player::SetPos(this->players[(int)local_18],pVVar2->x,pVVar2->y,pVVar2->z,fVar7);
-            fVar7 = 3.14;
+            Player::SetPos(this->players[(int)local_18],pVVar2->x,pVVar2->y,pVVar2->z,fVar5);
+            fVar5 = 3.14;
             pVVar2 = Vec3::Ctor(&local_27c,this->f410 - 1.0,0.0,12.0);
-            Player::SetPos(this->players[(int)local_14],pVVar2->x,pVVar2->y,pVVar2->z,fVar7);
-            fVar7 = 3.14;
+            Player::SetPos(this->players[(int)local_14],pVVar2->x,pVVar2->y,pVVar2->z,fVar5);
+            fVar5 = 3.14;
             pVVar2 = Vec3::Ctor(&local_288,this->f410 + 8.0,0.0,5.0);
-            Player::SetPos(this->players[(int)local_30],pVVar2->x,pVVar2->y,pVVar2->z,fVar7);
-            fVar7 = 3.14;
+            Player::SetPos(this->players[(int)local_30],pVVar2->x,pVVar2->y,pVVar2->z,fVar5);
+            fVar5 = 3.14;
             pVVar2 = Vec3::Ctor(&local_294,this->f410 - 8.0,0.0,4.0);
-            Player::SetPos(this->players[(int)local_2c],pVVar2->x,pVVar2->y,pVVar2->z,fVar7);
-            fVar7 = 3.14;
+            Player::SetPos(this->players[(int)local_2c],pVVar2->x,pVVar2->y,pVVar2->z,fVar5);
+            fVar5 = 3.14;
             pVVar2 = Vec3::Ctor(&local_2a0,this->f410,0.0,0.0);
-            Player::SetPos(this->players[(int)local_38],pVVar2->x,pVVar2->y,pVVar2->z,fVar7);
+            Player::SetPos(this->players[(int)local_38],pVVar2->x,pVVar2->y,pVVar2->z,fVar5);
             this->i404 = (int)local_8;
             this->b414 = '\0';
           }
           else {
-            fVar7 = 0.0;
+            fVar5 = 0.0;
             pVVar2 = Vec3::Ctor(&local_21c,this->f410,0.0,20.0);
-            Player::SetPos(this->players[(int)local_38],pVVar2->x,pVVar2->y,pVVar2->z,fVar7);
-            fVar7 = 3.14;
+            Player::SetPos(this->players[(int)local_38],pVVar2->x,pVVar2->y,pVVar2->z,fVar5);
+            fVar5 = 3.14;
             pVVar2 = Vec3::Ctor(&local_228,this->f410 + 5.0,0.0,10.0);
-            Player::SetPos(this->players[(int)local_30],pVVar2->x,pVVar2->y,pVVar2->z,fVar7);
-            fVar7 = 3.14;
+            Player::SetPos(this->players[(int)local_30],pVVar2->x,pVVar2->y,pVVar2->z,fVar5);
+            fVar5 = 3.14;
             pVVar2 = Vec3::Ctor(&local_234,this->f410 - 1.0,0.0,12.0);
-            Player::SetPos(this->players[(int)local_2c],pVVar2->x,pVVar2->y,pVVar2->z,fVar7);
-            fVar7 = 3.14;
+            Player::SetPos(this->players[(int)local_2c],pVVar2->x,pVVar2->y,pVVar2->z,fVar5);
+            fVar5 = 3.14;
             pVVar2 = Vec3::Ctor(&local_240,this->f410 + 8.0,0.0,1.0);
-            Player::SetPos(this->players[(int)local_18],pVVar2->x,pVVar2->y,pVVar2->z,fVar7);
-            fVar7 = 3.14;
+            Player::SetPos(this->players[(int)local_18],pVVar2->x,pVVar2->y,pVVar2->z,fVar5);
+            fVar5 = 3.14;
             pVVar2 = Vec3::Ctor(&local_24c,this->f410 - 8.0,0.0,2.0);
-            Player::SetPos(this->players[(int)local_14],pVVar2->x,pVVar2->y,pVVar2->z,fVar7);
-            fVar7 = 3.14;
+            Player::SetPos(this->players[(int)local_14],pVVar2->x,pVVar2->y,pVVar2->z,fVar5);
+            fVar5 = 3.14;
             pVVar2 = Vec3::Ctor(&local_258,this->f410,0.0,3.0);
-            Player::SetPos(this->players[(int)local_8],pVVar2->x,pVVar2->y,pVVar2->z,fVar7);
+            Player::SetPos(this->players[(int)local_8],pVVar2->x,pVVar2->y,pVVar2->z,fVar5);
             Sound::Play(this->sound,1);
             this->players[(int)local_38]->f198 = 0.0;
-            fVar7 = Atan2((this->players[(int)local_38]->pos).x -
+            fVar5 = Atan2((this->players[(int)local_38]->pos).x -
                           (this->players[(int)local_30]->pos).x,
                           (this->players[(int)local_38]->pos).z -
                           (this->players[(int)local_30]->pos).z);
-            this->players[(int)local_38]->yaw = fVar7;
+            this->players[(int)local_38]->yaw = fVar5;
             this->players[(int)local_38]->i190 = 10;
             Player::Motion_4305b1(this->players[(int)local_38]);
             this->f260 = this->players[(int)local_38]->yaw - 3.14;
             this->f25c = this->players[(int)local_38]->stat174;
             this->f258 = this->players[(int)local_38]->stat178;
-            fVar7 = sinf(local_38);
-            (this->v24c).x = -fVar7 * -2.0 + (this->players[(int)local_38]->pos).x;
+            fVar5 = sinf(local_38);
+            (this->v24c).x = -fVar5 * -2.0 + (this->players[(int)local_38]->pos).x;
             (this->v24c).y = this->players[(int)local_38]->stat170 * 0.9;
-            fVar7 = cosf((float)this);
-            (this->v24c).z = fVar7 * -2.0 + (this->players[(int)local_38]->pos).z;
+            fVar5 = cosf((float)this);
+            (this->v24c).z = fVar5 * -2.0 + (this->players[(int)local_38]->pos).z;
             this->i404 = (int)local_38;
             this->i268 = -1;
             this->b414 = '\0';
@@ -675,31 +673,31 @@ void __thiscall Game::State6(Game *this)
         }
         else if (this->i40c == 4) {
           if (this->i3b0 == 2) {
-            fVar7 = 3.14;
+            fVar5 = 3.14;
             pVVar2 = Vec3::Ctor(&local_2ac,this->f410,0.0,-20.0);
-            Player::SetPos(this->players[this->slot[5]],pVVar2->x,pVVar2->y,pVVar2->z,fVar7);
+            Player::SetPos(this->players[this->slot[5]],pVVar2->x,pVVar2->y,pVVar2->z,fVar5);
             Sound::Play(this->sound,1);
             this->players[this->slot[5]]->f198 = 0.0;
             this->players[this->slot[5]]->yaw = 3.14;
             this->players[this->slot[5]]->i190 = 10;
             Player::Motion_4305b1(this->players[this->slot[5]]);
-            fVar7 = 0.0;
+            fVar5 = 0.0;
             pVVar2 = Vec3::Ctor(&local_2b8,this->f410,0.0,0.0);
-            Player::SetPos(this->players[(int)local_8],pVVar2->x,pVVar2->y,pVVar2->z,fVar7);
-            fVar7 = 0.0;
+            Player::SetPos(this->players[(int)local_8],pVVar2->x,pVVar2->y,pVVar2->z,fVar5);
+            fVar5 = 0.0;
             pVVar2 = Vec3::Ctor(&local_2c4,this->f410 + 5.0,0.0,-3.0);
-            Player::SetPos(this->players[(int)local_18],pVVar2->x,pVVar2->y,pVVar2->z,fVar7);
-            fVar7 = 0.0;
+            Player::SetPos(this->players[(int)local_18],pVVar2->x,pVVar2->y,pVVar2->z,fVar5);
+            fVar5 = 0.0;
             pVVar2 = Vec3::Ctor(&local_2d0,this->f410 - 1.0,0.0,-4.0);
-            Player::SetPos(this->players[(int)local_14],pVVar2->x,pVVar2->y,pVVar2->z,fVar7);
+            Player::SetPos(this->players[(int)local_14],pVVar2->x,pVVar2->y,pVVar2->z,fVar5);
             this->f260 = this->players[this->slot[5]]->yaw - 3.14;
             this->f25c = this->players[this->slot[5]]->stat174;
             this->f258 = this->players[this->slot[5]]->stat178;
-            fVar7 = sinf((float)this);
-            (this->v24c).x = -fVar7 * -2.0 + (this->players[this->slot[5]]->pos).x;
+            fVar5 = sinf((float)this);
+            (this->v24c).x = -fVar5 * -2.0 + (this->players[this->slot[5]]->pos).x;
             (this->v24c).y = this->players[this->slot[5]]->stat170 * 0.9;
-            fVar7 = cosf((float)this->players[this->slot[5]]);
-            (this->v24c).z = fVar7 * -2.0 + (this->players[this->slot[5]]->pos).z;
+            fVar5 = cosf((float)this->players[this->slot[5]]);
+            (this->v24c).z = fVar5 * -2.0 + (this->players[this->slot[5]]->pos).z;
             this->i404 = this->slot[5];
             this->i268 = -1;
             this->b414 = '\0';
@@ -711,63 +709,63 @@ void __thiscall Game::State6(Game *this)
             this->players[(int)local_8]->i190 = 4;
             Player::Motion_430497(this->players[(int)local_8]);
             this->i268 = (int)local_8;
-            fVar7 = 3.14;
+            fVar5 = 3.14;
             pVVar2 = Vec3::Ctor(&local_324,this->f410,0.0,-20.0);
-            Player::SetPos(this->players[(int)local_8],pVVar2->x,pVVar2->y,pVVar2->z,fVar7);
-            fVar7 = 0.0;
+            Player::SetPos(this->players[(int)local_8],pVVar2->x,pVVar2->y,pVVar2->z,fVar5);
+            fVar5 = 0.0;
             pVVar2 = Vec3::Ctor(&local_330,this->f410 + 5.0,0.0,-10.0);
-            Player::SetPos(this->players[(int)local_18],pVVar2->x,pVVar2->y,pVVar2->z,fVar7);
-            fVar7 = 0.0;
+            Player::SetPos(this->players[(int)local_18],pVVar2->x,pVVar2->y,pVVar2->z,fVar5);
+            fVar5 = 0.0;
             pVVar2 = Vec3::Ctor(&local_33c,this->f410 - 1.0,0.0,-12.0);
-            Player::SetPos(this->players[(int)local_14],pVVar2->x,pVVar2->y,pVVar2->z,fVar7);
-            fVar7 = 0.0;
+            Player::SetPos(this->players[(int)local_14],pVVar2->x,pVVar2->y,pVVar2->z,fVar5);
+            fVar5 = 0.0;
             pVVar2 = Vec3::Ctor(&local_348,this->f410 + 8.0,0.0,-5.0);
-            Player::SetPos(this->players[(int)local_30],pVVar2->x,pVVar2->y,pVVar2->z,fVar7);
-            fVar7 = 0.0;
+            Player::SetPos(this->players[(int)local_30],pVVar2->x,pVVar2->y,pVVar2->z,fVar5);
+            fVar5 = 0.0;
             pVVar2 = Vec3::Ctor(&local_354,this->f410 - 8.0,0.0,-4.0);
-            Player::SetPos(this->players[(int)local_2c],pVVar2->x,pVVar2->y,pVVar2->z,fVar7);
-            fVar7 = 0.0;
+            Player::SetPos(this->players[(int)local_2c],pVVar2->x,pVVar2->y,pVVar2->z,fVar5);
+            fVar5 = 0.0;
             pVVar2 = Vec3::Ctor(&local_360,this->f410,0.0,0.0);
-            Player::SetPos(this->players[(int)local_38],pVVar2->x,pVVar2->y,pVVar2->z,fVar7);
+            Player::SetPos(this->players[(int)local_38],pVVar2->x,pVVar2->y,pVVar2->z,fVar5);
             this->i404 = (int)local_8;
             this->b414 = '\0';
           }
           else {
-            fVar7 = 3.14;
+            fVar5 = 3.14;
             pVVar2 = Vec3::Ctor(&local_2dc,this->f410,0.0,-20.0);
-            Player::SetPos(this->players[(int)local_38],pVVar2->x,pVVar2->y,pVVar2->z,fVar7);
-            fVar7 = 0.0;
+            Player::SetPos(this->players[(int)local_38],pVVar2->x,pVVar2->y,pVVar2->z,fVar5);
+            fVar5 = 0.0;
             pVVar2 = Vec3::Ctor(&local_2e8,this->f410 + 5.0,0.0,-10.0);
-            Player::SetPos(this->players[(int)local_30],pVVar2->x,pVVar2->y,pVVar2->z,fVar7);
-            fVar7 = 0.0;
+            Player::SetPos(this->players[(int)local_30],pVVar2->x,pVVar2->y,pVVar2->z,fVar5);
+            fVar5 = 0.0;
             pVVar2 = Vec3::Ctor(&local_2f4,this->f410 - 1.0,0.0,-12.0);
-            Player::SetPos(this->players[(int)local_2c],pVVar2->x,pVVar2->y,pVVar2->z,fVar7);
-            fVar7 = 0.0;
+            Player::SetPos(this->players[(int)local_2c],pVVar2->x,pVVar2->y,pVVar2->z,fVar5);
+            fVar5 = 0.0;
             pVVar2 = Vec3::Ctor(&local_300,this->f410 + 8.0,0.0,-5.0);
-            Player::SetPos(this->players[(int)local_18],pVVar2->x,pVVar2->y,pVVar2->z,fVar7);
-            fVar7 = 0.0;
+            Player::SetPos(this->players[(int)local_18],pVVar2->x,pVVar2->y,pVVar2->z,fVar5);
+            fVar5 = 0.0;
             pVVar2 = Vec3::Ctor(&local_30c,this->f410 - 8.0,0.0,-4.0);
-            Player::SetPos(this->players[(int)local_14],pVVar2->x,pVVar2->y,pVVar2->z,fVar7);
-            fVar7 = 0.0;
+            Player::SetPos(this->players[(int)local_14],pVVar2->x,pVVar2->y,pVVar2->z,fVar5);
+            fVar5 = 0.0;
             pVVar2 = Vec3::Ctor(&local_318,this->f410,0.0,0.0);
-            Player::SetPos(this->players[(int)local_8],pVVar2->x,pVVar2->y,pVVar2->z,fVar7);
+            Player::SetPos(this->players[(int)local_8],pVVar2->x,pVVar2->y,pVVar2->z,fVar5);
             Sound::Play(this->sound,1);
             this->players[(int)local_38]->f198 = 0.0;
-            fVar7 = Atan2((this->players[(int)local_38]->pos).x -
+            fVar5 = Atan2((this->players[(int)local_38]->pos).x -
                           (this->players[(int)local_30]->pos).x,
                           (this->players[(int)local_38]->pos).z -
                           (this->players[(int)local_30]->pos).z);
-            this->players[(int)local_38]->yaw = fVar7;
+            this->players[(int)local_38]->yaw = fVar5;
             this->players[(int)local_38]->i190 = 10;
             Player::Motion_4305b1(this->players[(int)local_38]);
             this->f260 = this->players[(int)local_38]->yaw - 3.14;
             this->f25c = this->players[(int)local_38]->stat174;
             this->f258 = this->players[(int)local_38]->stat178;
-            fVar7 = sinf(local_38);
-            (this->v24c).x = -fVar7 * -2.0 + (this->players[(int)local_38]->pos).x;
+            fVar5 = sinf(local_38);
+            (this->v24c).x = -fVar5 * -2.0 + (this->players[(int)local_38]->pos).x;
             (this->v24c).y = this->players[(int)local_38]->stat170 * 0.9;
-            fVar7 = cosf((float)this);
-            (this->v24c).z = fVar7 * -2.0 + (this->players[(int)local_38]->pos).z;
+            fVar5 = cosf((float)this);
+            (this->v24c).z = fVar5 * -2.0 + (this->players[(int)local_38]->pos).z;
             this->i404 = (int)local_38;
             this->i268 = -1;
             this->b414 = '\0';
@@ -777,11 +775,11 @@ void __thiscall Game::State6(Game *this)
     }
     if (this->players[(int)local_8]->i190 < 3 &&
         (this->keyUp == KEY_HOLD || this->keyNum8 == KEY_HOLD)) {
-      pfVar3 = thunk_FUN_00419ae5(this,local_36c,(int)local_8);
+      pVVar2 = CalcStep(this,&local_36c,(int)local_8);
       pPVar1 = this->players[(int)local_8];
-      (pPVar1->pos).x = *pfVar3;
-      (pPVar1->pos).y = pfVar3[1];
-      (pPVar1->pos).z = pfVar3[2];
+      (pPVar1->pos).x = pVVar2->x;
+      (pPVar1->pos).y = pVVar2->y;
+      (pPVar1->pos).z = pVVar2->z;
       this->players[(int)local_8]->i190 = 1;
       Player::Motion_42f1a9(this->players[(int)local_8]);
     }
@@ -790,13 +788,13 @@ void __thiscall Game::State6(Game *this)
       if (this->players[(int)local_8]->i190 < 3 &&
           (this->keyDown == KEY_HOLD || this->keyNum2 == KEY_HOLD)) {
         pPVar1 = this->players[(int)local_8];
-        fVar7 = sinf((float)this->players[(int)local_8]);
+        fVar5 = sinf((float)this->players[(int)local_8]);
         (this->players[(int)local_8]->pos).x =
-             fVar7 * this->players[(int)local_8]->stat168 * 0.6 * this->dt + (pPVar1->pos).x;
+             fVar5 * this->players[(int)local_8]->stat168 * 0.6 * this->dt + (pPVar1->pos).x;
         pPVar1 = this->players[(int)local_8];
-        fVar7 = cosf((float)this);
+        fVar5 = cosf((float)this);
         (this->players[(int)local_8]->pos).z =
-             fVar7 * this->players[(int)local_8]->stat168 * 0.6 * this->dt + (pPVar1->pos).z;
+             fVar5 * this->players[(int)local_8]->stat168 * 0.6 * this->dt + (pPVar1->pos).z;
         this->players[(int)local_8]->i190 = 2;
         Player::Motion_42fb3f(this->players[(int)local_8]);
       }
@@ -808,28 +806,28 @@ void __thiscall Game::State6(Game *this)
         }
         else if (6 < this->players[(int)local_8]->i190 && this->players[(int)local_8]->i190 < 10) {
           this->players[(int)local_8]->i190 = 7;
-          Player::Motion_42df38(this->players[(int)local_8]);
+          Player::Motion_Stand(this->players[(int)local_8]);
         }
       }
       else {
         pPVar1 = this->players[(int)local_8];
-        fVar7 = sinf((float)this);
+        fVar5 = sinf((float)this);
         (this->players[(int)local_8]->pos).x =
-             fVar7 * this->players[(int)local_8]->stat168 * 0.6 * this->dt + (pPVar1->pos).x;
+             fVar5 * this->players[(int)local_8]->stat168 * 0.6 * this->dt + (pPVar1->pos).x;
         pPVar1 = this->players[(int)local_8];
-        fVar7 = cosf(this->players[(int)local_8]->yaw);
+        fVar5 = cosf(this->players[(int)local_8]->yaw);
         (this->players[(int)local_8]->pos).z =
-             fVar7 * this->players[(int)local_8]->stat168 * 0.6 * this->dt + (pPVar1->pos).z;
+             fVar5 * this->players[(int)local_8]->stat168 * 0.6 * this->dt + (pPVar1->pos).z;
         this->players[(int)local_8]->i190 = 9;
         Player::Motion_42e9cd(this->players[(int)local_8]);
       }
     }
     else {
-      pfVar3 = thunk_FUN_00419ae5(this,local_378,(int)local_8);
+      pVVar2 = CalcStep(this,&local_378,(int)local_8);
       pPVar1 = this->players[(int)local_8];
-      (pPVar1->pos).x = *pfVar3;
-      (pPVar1->pos).y = pfVar3[1];
-      (pPVar1->pos).z = pfVar3[2];
+      (pPVar1->pos).x = pVVar2->x;
+      (pPVar1->pos).y = pVVar2->y;
+      (pPVar1->pos).z = pVVar2->z;
       this->players[(int)local_8]->i190 = 8;
       Player::Motion_42dfc0(this->players[(int)local_8]);
     }
@@ -854,10 +852,10 @@ void __thiscall Game::State6(Game *this)
       this->f260 = this->players[(int)local_8]->yaw - 3.14;
       this->f25c = this->players[(int)local_8]->stat174;
       this->f258 = this->players[(int)local_8]->stat178;
-      fVar7 = sinf((float)this);
-      (this->v24c).x = -fVar7 * -2.0 + (this->players[(int)local_8]->pos).x;
-      fVar7 = cosf(local_8);
-      (this->v24c).z = fVar7 * -2.0 + (this->players[(int)local_8]->pos).z;
+      fVar5 = sinf((float)this);
+      (this->v24c).x = -fVar5 * -2.0 + (this->players[(int)local_8]->pos).x;
+      fVar5 = cosf(local_8);
+      (this->v24c).z = fVar5 * -2.0 + (this->players[(int)local_8]->pos).z;
       this->i404 = (int)local_8;
       this->i268 = -1;
     }
@@ -892,10 +890,10 @@ void __thiscall Game::State6(Game *this)
         this->f260 = this->players[(int)local_8]->yaw - 3.14;
         this->f25c = 23.0;
         this->f258 = this->f3a0 * this->players[(int)local_8]->stat17c + 1.0;
-        fVar7 = sinf((float)this);
-        (this->v24c).x = -fVar7 * -2.0 + (this->players[(int)local_8]->pos).x;
-        fVar7 = cosf(local_8);
-        (this->v24c).z = fVar7 * -2.0 + (this->players[(int)local_8]->pos).z;
+        fVar5 = sinf((float)this);
+        (this->v24c).x = -fVar5 * -2.0 + (this->players[(int)local_8]->pos).x;
+        fVar5 = cosf(local_8);
+        (this->v24c).z = fVar5 * -2.0 + (this->players[(int)local_8]->pos).z;
         this->i404 = (int)local_8;
         this->f41c = 0.0;
         this->i268 = -1;
@@ -942,46 +940,46 @@ void __thiscall Game::State6(Game *this)
     }
     else if (this->i418 == 5) {
       if (this->b3a6 == '\0') {
-        fVar8 = 2.0;
-        fVar7 = this->players[(int)local_8]->yaw;
-        fVar6 = Atan2((this->players[(int)local_8]->pos).x - 35.0,
+        fVar6 = 2.0;
+        fVar5 = this->players[(int)local_8]->yaw;
+        fVar4 = Atan2((this->players[(int)local_8]->pos).x - 35.0,
                       (this->players[(int)local_8]->pos).z);
-        fVar4 = thunk_FUN_004199d4((int)this,fVar6,fVar7,fVar8);
-        this->players[(int)local_8]->yaw = (float)fVar4;
-        pfVar3 = thunk_FUN_00419ae5(this,local_390,(int)local_8);
+        fVar5 = RotateToward(this,fVar4,fVar5,fVar6);
+        this->players[(int)local_8]->yaw = fVar5;
+        pVVar2 = CalcStep(this,&local_390,(int)local_8);
         pPVar1 = this->players[(int)local_8];
-        (pPVar1->pos).x = *pfVar3;
-        (pPVar1->pos).y = pfVar3[1];
-        (pPVar1->pos).z = pfVar3[2];
+        (pPVar1->pos).x = pVVar2->x;
+        (pPVar1->pos).y = pVVar2->y;
+        (pPVar1->pos).z = pVVar2->z;
         Player::Motion_42dfc0(this->players[(int)local_8]);
       }
       else {
-        fVar8 = 2.0;
-        fVar7 = this->players[(int)local_8]->yaw;
-        fVar6 = Atan2((this->players[(int)local_8]->pos).x + 35.0,
+        fVar6 = 2.0;
+        fVar5 = this->players[(int)local_8]->yaw;
+        fVar4 = Atan2((this->players[(int)local_8]->pos).x + 35.0,
                       (this->players[(int)local_8]->pos).z);
-        fVar4 = thunk_FUN_004199d4((int)this,fVar6,fVar7,fVar8);
-        this->players[(int)local_8]->yaw = (float)fVar4;
-        pfVar3 = thunk_FUN_00419ae5(this,local_384,(int)local_8);
+        fVar5 = RotateToward(this,fVar4,fVar5,fVar6);
+        this->players[(int)local_8]->yaw = fVar5;
+        pVVar2 = CalcStep(this,&local_384,(int)local_8);
         pPVar1 = this->players[(int)local_8];
-        (pPVar1->pos).x = *pfVar3;
-        (pPVar1->pos).y = pfVar3[1];
-        (pPVar1->pos).z = pfVar3[2];
+        (pPVar1->pos).x = pVVar2->x;
+        (pPVar1->pos).y = pVVar2->y;
+        (pPVar1->pos).z = pVVar2->z;
         Player::Motion_42dfc0(this->players[(int)local_8]);
       }
     }
     else if (this->players[(int)local_8]->i190 == 7 && this->i268 < 0) {
-      fVar8 = 10.0;
-      fVar7 = this->players[(int)local_8]->yaw;
-      fVar6 = Atan2((this->players[(int)local_8]->pos).x - (this->v24c).x,
+      fVar6 = 10.0;
+      fVar5 = this->players[(int)local_8]->yaw;
+      fVar4 = Atan2((this->players[(int)local_8]->pos).x - (this->v24c).x,
                     (this->players[(int)local_8]->pos).z - (this->v24c).z);
-      fVar4 = thunk_FUN_004199d4((int)this,fVar6,fVar7,fVar8);
-      this->players[(int)local_8]->yaw = (float)fVar4;
-      pfVar3 = thunk_FUN_00419ae5(this,local_39c,(int)local_8);
+      fVar5 = RotateToward(this,fVar4,fVar5,fVar6);
+      this->players[(int)local_8]->yaw = fVar5;
+      pVVar2 = CalcStep(this,&local_39c,(int)local_8);
       pPVar1 = this->players[(int)local_8];
-      (pPVar1->pos).x = *pfVar3;
-      (pPVar1->pos).y = pfVar3[1];
-      (pPVar1->pos).z = pfVar3[2];
+      (pPVar1->pos).x = pVVar2->x;
+      (pPVar1->pos).y = pVVar2->y;
+      (pPVar1->pos).z = pVVar2->z;
       Player::Motion_42dfc0(this->players[(int)local_8]);
     }
     if (this->b3a6 == '\0') {
@@ -990,26 +988,26 @@ void __thiscall Game::State6(Game *this)
           if (-18.0 <= (this->players[(int)local_18]->pos).z) {
             if ((this->players[(int)local_8]->pos).x <= -25.0) {
               if ((this->players[(int)local_8]->pos).z <= 0.0) {
-                fVar8 = 5.0;
-                fVar7 = this->players[(int)local_18]->yaw;
-                fVar6 = Atan2((this->players[(int)local_18]->pos).x + 30.0,
+                fVar6 = 5.0;
+                fVar5 = this->players[(int)local_18]->yaw;
+                fVar4 = Atan2((this->players[(int)local_18]->pos).x + 30.0,
                               (this->players[(int)local_18]->pos).z - 15.0);
-                fVar4 = thunk_FUN_004199d4((int)this,fVar6,fVar7,fVar8);
-                this->players[(int)local_18]->yaw = (float)fVar4;
+                fVar5 = RotateToward(this,fVar4,fVar5,fVar6);
+                this->players[(int)local_18]->yaw = fVar5;
               }
               else {
-                fVar8 = 5.0;
-                fVar7 = this->players[(int)local_18]->yaw;
-                fVar6 = Atan2((this->players[(int)local_18]->pos).x + 30.0,
+                fVar6 = 5.0;
+                fVar5 = this->players[(int)local_18]->yaw;
+                fVar4 = Atan2((this->players[(int)local_18]->pos).x + 30.0,
                               (this->players[(int)local_18]->pos).z + 15.0);
-                fVar4 = thunk_FUN_004199d4((int)this,fVar6,fVar7,fVar8);
-                this->players[(int)local_18]->yaw = (float)fVar4;
+                fVar5 = RotateToward(this,fVar4,fVar5,fVar6);
+                this->players[(int)local_18]->yaw = fVar5;
               }
-              pfVar3 = thunk_FUN_00419ae5(this,local_480,(int)local_18);
+              pVVar2 = CalcStep(this,&local_480,(int)local_18);
               pPVar1 = this->players[(int)local_18];
-              (pPVar1->pos).x = *pfVar3;
-              (pPVar1->pos).y = pfVar3[1];
-              (pPVar1->pos).z = pfVar3[2];
+              (pPVar1->pos).x = pVVar2->x;
+              (pPVar1->pos).y = pVVar2->y;
+              (pPVar1->pos).z = pVVar2->z;
               Player::Motion_42dfc0(this->players[(int)local_18]);
             }
             else if ((this->players[(int)local_18]->pos).x - (this->players[(int)local_8]->pos).x <=
@@ -1017,56 +1015,56 @@ void __thiscall Game::State6(Game *this)
               if (-15.0 <= (this->players[(int)local_18]->pos).x -
                            (this->players[(int)local_8]->pos).x) {
                 if (this->keyUp == KEY_FREE && this->keyNum8 == KEY_FREE) {
-                  fVar8 = 5.0;
-                  fVar7 = this->players[(int)local_18]->yaw;
-                  fVar6 = Atan2((this->players[(int)local_18]->pos).x - (this->v24c).x,
+                  fVar6 = 5.0;
+                  fVar5 = this->players[(int)local_18]->yaw;
+                  fVar4 = Atan2((this->players[(int)local_18]->pos).x - (this->v24c).x,
                                 (this->players[(int)local_18]->pos).z - (this->v24c).z);
-                  fVar4 = thunk_FUN_004199d4((int)this,fVar6,fVar7,fVar8);
-                  this->players[(int)local_18]->yaw = (float)fVar4;
-                  Player::Motion_42df38(this->players[(int)local_18]);
+                  fVar5 = RotateToward(this,fVar4,fVar5,fVar6);
+                  this->players[(int)local_18]->yaw = fVar5;
+                  Player::Motion_Stand(this->players[(int)local_18]);
                 }
               }
               else {
-                fVar4 = thunk_FUN_004199d4((int)this,-1.57,this->players[(int)local_18]->yaw,5.0);
-                this->players[(int)local_18]->yaw = (float)fVar4;
-                pfVar3 = thunk_FUN_00419ae5(this,local_474,(int)local_18);
+                fVar5 = RotateToward(this,-1.57,this->players[(int)local_18]->yaw,5.0);
+                this->players[(int)local_18]->yaw = fVar5;
+                pVVar2 = CalcStep(this,&local_474,(int)local_18);
                 pPVar1 = this->players[(int)local_18];
-                (pPVar1->pos).x = *pfVar3;
-                (pPVar1->pos).y = pfVar3[1];
-                (pPVar1->pos).z = pfVar3[2];
+                (pPVar1->pos).x = pVVar2->x;
+                (pPVar1->pos).y = pVVar2->y;
+                (pPVar1->pos).z = pVVar2->z;
                 Player::Motion_42dfc0(this->players[(int)local_18]);
               }
             }
             else {
-              fVar4 = thunk_FUN_004199d4((int)this,1.57,this->players[(int)local_18]->yaw,5.0);
-              this->players[(int)local_18]->yaw = (float)fVar4;
-              pfVar3 = thunk_FUN_00419ae5(this,local_468,(int)local_18);
+              fVar5 = RotateToward(this,1.57,this->players[(int)local_18]->yaw,5.0);
+              this->players[(int)local_18]->yaw = fVar5;
+              pVVar2 = CalcStep(this,&local_468,(int)local_18);
               pPVar1 = this->players[(int)local_18];
-              (pPVar1->pos).x = *pfVar3;
-              (pPVar1->pos).y = pfVar3[1];
-              (pPVar1->pos).z = pfVar3[2];
+              (pPVar1->pos).x = pVVar2->x;
+              (pPVar1->pos).y = pVVar2->y;
+              (pPVar1->pos).z = pVVar2->z;
               Player::Motion_42dfc0(this->players[(int)local_18]);
             }
           }
           else {
-            fVar4 = thunk_FUN_004199d4((int)this,3.14,this->players[(int)local_18]->yaw,5.0);
-            this->players[(int)local_18]->yaw = (float)fVar4;
-            pfVar3 = thunk_FUN_00419ae5(this,local_45c,(int)local_18);
+            fVar5 = RotateToward(this,3.14,this->players[(int)local_18]->yaw,5.0);
+            this->players[(int)local_18]->yaw = fVar5;
+            pVVar2 = CalcStep(this,&local_45c,(int)local_18);
             pPVar1 = this->players[(int)local_18];
-            (pPVar1->pos).x = *pfVar3;
-            (pPVar1->pos).y = pfVar3[1];
-            (pPVar1->pos).z = pfVar3[2];
+            (pPVar1->pos).x = pVVar2->x;
+            (pPVar1->pos).y = pVVar2->y;
+            (pPVar1->pos).z = pVVar2->z;
             Player::Motion_42dfc0(this->players[(int)local_18]);
           }
         }
         else {
-          fVar4 = thunk_FUN_004199d4((int)this,0.0,this->players[(int)local_18]->yaw,5.0);
-          this->players[(int)local_18]->yaw = (float)fVar4;
-          pfVar3 = thunk_FUN_00419ae5(this,local_450,(int)local_18);
+          fVar5 = RotateToward(this,0.0,this->players[(int)local_18]->yaw,5.0);
+          this->players[(int)local_18]->yaw = fVar5;
+          pVVar2 = CalcStep(this,&local_450,(int)local_18);
           pPVar1 = this->players[(int)local_18];
-          (pPVar1->pos).x = *pfVar3;
-          (pPVar1->pos).y = pfVar3[1];
-          (pPVar1->pos).z = pfVar3[2];
+          (pPVar1->pos).x = pVVar2->x;
+          (pPVar1->pos).y = pVVar2->y;
+          (pPVar1->pos).z = pVVar2->z;
           Player::Motion_42dfc0(this->players[(int)local_18]);
         }
       }
@@ -1086,111 +1084,108 @@ void __thiscall Game::State6(Game *this)
                         if (this->keyX == KEY_HOLD) {
                           this->players[(int)local_14]->yaw =
                                this->dt * 5.0 + this->players[(int)local_14]->yaw;
-                          pfVar3 = thunk_FUN_00419ae5(this,local_4ec,(int)local_14);
+                          pVVar2 = CalcStep(this,&local_4ec,(int)local_14);
                           pPVar1 = this->players[(int)local_14];
-                          (pPVar1->pos).x = *pfVar3;
-                          (pPVar1->pos).y = pfVar3[1];
-                          (pPVar1->pos).z = pfVar3[2];
+                          (pPVar1->pos).x = pVVar2->x;
+                          (pPVar1->pos).y = pVVar2->y;
+                          (pPVar1->pos).z = pVVar2->z;
                           Player::Motion_42dfc0(this->players[(int)local_14]);
                         }
                         else if (this->keyUp == KEY_FREE && this->keyNum8 == KEY_FREE) {
-                          fVar8 = 5.0;
-                          fVar7 = this->players[(int)local_14]->yaw;
-                          fVar6 = Atan2((this->players[(int)local_14]->pos).x - (this->v24c).x,
+                          fVar6 = 5.0;
+                          fVar5 = this->players[(int)local_14]->yaw;
+                          fVar4 = Atan2((this->players[(int)local_14]->pos).x - (this->v24c).x,
                                         (this->players[(int)local_14]->pos).z - (this->v24c).z);
-                          fVar4 = thunk_FUN_004199d4((int)this,fVar6,fVar7,fVar8);
-                          this->players[(int)local_14]->yaw = (float)fVar4;
-                          Player::Motion_42df38(this->players[(int)local_14]);
+                          fVar5 = RotateToward(this,fVar4,fVar5,fVar6);
+                          this->players[(int)local_14]->yaw = fVar5;
+                          Player::Motion_Stand(this->players[(int)local_14]);
                         }
                       }
                       else {
-                        fVar4 = thunk_FUN_004199d4((int)this,3.14,this->players[(int)local_14]->yaw,
-                                                   5.0);
-                        this->players[(int)local_14]->yaw = (float)fVar4;
-                        pfVar3 = thunk_FUN_00419ae5(this,local_4e0,(int)local_14);
+                        fVar5 = RotateToward(this,3.14,this->players[(int)local_14]->yaw,5.0);
+                        this->players[(int)local_14]->yaw = fVar5;
+                        pVVar2 = CalcStep(this,&local_4e0,(int)local_14);
                         pPVar1 = this->players[(int)local_14];
-                        (pPVar1->pos).x = *pfVar3;
-                        (pPVar1->pos).y = pfVar3[1];
-                        (pPVar1->pos).z = pfVar3[2];
+                        (pPVar1->pos).x = pVVar2->x;
+                        (pPVar1->pos).y = pVVar2->y;
+                        (pPVar1->pos).z = pVVar2->z;
                         Player::Motion_42dfc0(this->players[(int)local_14]);
                       }
                     }
                     else {
-                      fVar4 = thunk_FUN_004199d4((int)this,0.0,this->players[(int)local_14]->yaw,5.0
-                                                );
-                      this->players[(int)local_14]->yaw = (float)fVar4;
-                      pfVar3 = thunk_FUN_00419ae5(this,local_4d4,(int)local_14);
+                      fVar5 = RotateToward(this,0.0,this->players[(int)local_14]->yaw,5.0);
+                      this->players[(int)local_14]->yaw = fVar5;
+                      pVVar2 = CalcStep(this,&local_4d4,(int)local_14);
                       pPVar1 = this->players[(int)local_14];
-                      (pPVar1->pos).x = *pfVar3;
-                      (pPVar1->pos).y = pfVar3[1];
-                      (pPVar1->pos).z = pfVar3[2];
+                      (pPVar1->pos).x = pVVar2->x;
+                      (pPVar1->pos).y = pVVar2->y;
+                      (pPVar1->pos).z = pVVar2->z;
                       Player::Motion_42dfc0(this->players[(int)local_14]);
                     }
                   }
                   else {
-                    fVar4 = thunk_FUN_004199d4((int)this,-1.57,this->players[(int)local_14]->yaw,5.0
-                                              );
-                    this->players[(int)local_14]->yaw = (float)fVar4;
-                    pfVar3 = thunk_FUN_00419ae5(this,local_4c8,(int)local_14);
+                    fVar5 = RotateToward(this,-1.57,this->players[(int)local_14]->yaw,5.0);
+                    this->players[(int)local_14]->yaw = fVar5;
+                    pVVar2 = CalcStep(this,&local_4c8,(int)local_14);
                     pPVar1 = this->players[(int)local_14];
-                    (pPVar1->pos).x = *pfVar3;
-                    (pPVar1->pos).y = pfVar3[1];
-                    (pPVar1->pos).z = pfVar3[2];
+                    (pPVar1->pos).x = pVVar2->x;
+                    (pPVar1->pos).y = pVVar2->y;
+                    (pPVar1->pos).z = pVVar2->z;
                     Player::Motion_42dfc0(this->players[(int)local_14]);
                   }
                 }
                 else {
-                  fVar4 = thunk_FUN_004199d4((int)this,1.57,this->players[(int)local_14]->yaw,5.0);
-                  this->players[(int)local_14]->yaw = (float)fVar4;
-                  pfVar3 = thunk_FUN_00419ae5(this,local_4bc,(int)local_14);
+                  fVar5 = RotateToward(this,1.57,this->players[(int)local_14]->yaw,5.0);
+                  this->players[(int)local_14]->yaw = fVar5;
+                  pVVar2 = CalcStep(this,&local_4bc,(int)local_14);
                   pPVar1 = this->players[(int)local_14];
-                  (pPVar1->pos).x = *pfVar3;
-                  (pPVar1->pos).y = pfVar3[1];
-                  (pPVar1->pos).z = pfVar3[2];
+                  (pPVar1->pos).x = pVVar2->x;
+                  (pPVar1->pos).y = pVVar2->y;
+                  (pPVar1->pos).z = pVVar2->z;
                   Player::Motion_42dfc0(this->players[(int)local_14]);
                 }
               }
               else {
-                fVar4 = thunk_FUN_004199d4((int)this,1.57,this->players[(int)local_14]->yaw,5.0);
-                this->players[(int)local_14]->yaw = (float)fVar4;
-                pfVar3 = thunk_FUN_00419ae5(this,local_4b0,(int)local_14);
+                fVar5 = RotateToward(this,1.57,this->players[(int)local_14]->yaw,5.0);
+                this->players[(int)local_14]->yaw = fVar5;
+                pVVar2 = CalcStep(this,&local_4b0,(int)local_14);
                 pPVar1 = this->players[(int)local_14];
-                (pPVar1->pos).x = *pfVar3;
-                (pPVar1->pos).y = pfVar3[1];
-                (pPVar1->pos).z = pfVar3[2];
+                (pPVar1->pos).x = pVVar2->x;
+                (pPVar1->pos).y = pVVar2->y;
+                (pPVar1->pos).z = pVVar2->z;
                 Player::Motion_42dfc0(this->players[(int)local_14]);
               }
             }
             else {
-              fVar4 = thunk_FUN_004199d4((int)this,-1.57,this->players[(int)local_14]->yaw,5.0);
-              this->players[(int)local_14]->yaw = (float)fVar4;
-              pfVar3 = thunk_FUN_00419ae5(this,local_4a4,(int)local_14);
+              fVar5 = RotateToward(this,-1.57,this->players[(int)local_14]->yaw,5.0);
+              this->players[(int)local_14]->yaw = fVar5;
+              pVVar2 = CalcStep(this,&local_4a4,(int)local_14);
               pPVar1 = this->players[(int)local_14];
-              (pPVar1->pos).x = *pfVar3;
-              (pPVar1->pos).y = pfVar3[1];
-              (pPVar1->pos).z = pfVar3[2];
+              (pPVar1->pos).x = pVVar2->x;
+              (pPVar1->pos).y = pVVar2->y;
+              (pPVar1->pos).z = pVVar2->z;
               Player::Motion_42dfc0(this->players[(int)local_14]);
             }
           }
           else {
-            fVar4 = thunk_FUN_004199d4((int)this,3.14,this->players[(int)local_14]->yaw,5.0);
-            this->players[(int)local_14]->yaw = (float)fVar4;
-            pfVar3 = thunk_FUN_00419ae5(this,local_498,(int)local_14);
+            fVar5 = RotateToward(this,3.14,this->players[(int)local_14]->yaw,5.0);
+            this->players[(int)local_14]->yaw = fVar5;
+            pVVar2 = CalcStep(this,&local_498,(int)local_14);
             pPVar1 = this->players[(int)local_14];
-            (pPVar1->pos).x = *pfVar3;
-            (pPVar1->pos).y = pfVar3[1];
-            (pPVar1->pos).z = pfVar3[2];
+            (pPVar1->pos).x = pVVar2->x;
+            (pPVar1->pos).y = pVVar2->y;
+            (pPVar1->pos).z = pVVar2->z;
             Player::Motion_42dfc0(this->players[(int)local_14]);
           }
         }
         else {
-          fVar4 = thunk_FUN_004199d4((int)this,0.0,this->players[(int)local_14]->yaw,5.0);
-          this->players[(int)local_14]->yaw = (float)fVar4;
-          pfVar3 = thunk_FUN_00419ae5(this,local_48c,(int)local_14);
+          fVar5 = RotateToward(this,0.0,this->players[(int)local_14]->yaw,5.0);
+          this->players[(int)local_14]->yaw = fVar5;
+          pVVar2 = CalcStep(this,&local_48c,(int)local_14);
           pPVar1 = this->players[(int)local_14];
-          (pPVar1->pos).x = *pfVar3;
-          (pPVar1->pos).y = pfVar3[1];
-          (pPVar1->pos).z = pfVar3[2];
+          (pPVar1->pos).x = pVVar2->x;
+          (pPVar1->pos).y = pVVar2->y;
+          (pPVar1->pos).z = pVVar2->z;
           Player::Motion_42dfc0(this->players[(int)local_14]);
         }
       }
@@ -1201,26 +1196,26 @@ void __thiscall Game::State6(Game *this)
           if (-18.0 <= (this->players[(int)local_18]->pos).z) {
             if (25.0 <= (this->players[(int)local_8]->pos).x) {
               if ((this->players[(int)local_8]->pos).z <= 0.0) {
-                fVar8 = 5.0;
-                fVar7 = this->players[(int)local_18]->yaw;
-                fVar6 = Atan2((this->players[(int)local_18]->pos).x - 30.0,
+                fVar6 = 5.0;
+                fVar5 = this->players[(int)local_18]->yaw;
+                fVar4 = Atan2((this->players[(int)local_18]->pos).x - 30.0,
                               (this->players[(int)local_18]->pos).z - 15.0);
-                fVar4 = thunk_FUN_004199d4((int)this,fVar6,fVar7,fVar8);
-                this->players[(int)local_18]->yaw = (float)fVar4;
+                fVar5 = RotateToward(this,fVar4,fVar5,fVar6);
+                this->players[(int)local_18]->yaw = fVar5;
               }
               else {
-                fVar8 = 5.0;
-                fVar7 = this->players[(int)local_18]->yaw;
-                fVar6 = Atan2((this->players[(int)local_18]->pos).x - 30.0,
+                fVar6 = 5.0;
+                fVar5 = this->players[(int)local_18]->yaw;
+                fVar4 = Atan2((this->players[(int)local_18]->pos).x - 30.0,
                               (this->players[(int)local_18]->pos).z + 15.0);
-                fVar4 = thunk_FUN_004199d4((int)this,fVar6,fVar7,fVar8);
-                this->players[(int)local_18]->yaw = (float)fVar4;
+                fVar5 = RotateToward(this,fVar4,fVar5,fVar6);
+                this->players[(int)local_18]->yaw = fVar5;
               }
-              pfVar3 = thunk_FUN_00419ae5(this,local_3d8,(int)local_18);
+              pVVar2 = CalcStep(this,&local_3d8,(int)local_18);
               pPVar1 = this->players[(int)local_18];
-              (pPVar1->pos).x = *pfVar3;
-              (pPVar1->pos).y = pfVar3[1];
-              (pPVar1->pos).z = pfVar3[2];
+              (pPVar1->pos).x = pVVar2->x;
+              (pPVar1->pos).y = pVVar2->y;
+              (pPVar1->pos).z = pVVar2->z;
               Player::Motion_42dfc0(this->players[(int)local_18]);
             }
             else if (10.0 <= (this->players[(int)local_18]->pos).x -
@@ -1228,56 +1223,56 @@ void __thiscall Game::State6(Game *this)
               if ((this->players[(int)local_18]->pos).x - (this->players[(int)local_8]->pos).x <=
                   15.0) {
                 if (this->keyUp == KEY_FREE && this->keyNum8 == KEY_FREE) {
-                  fVar8 = 5.0;
-                  fVar7 = this->players[(int)local_18]->yaw;
-                  fVar6 = Atan2((this->players[(int)local_18]->pos).x - (this->v24c).x,
+                  fVar6 = 5.0;
+                  fVar5 = this->players[(int)local_18]->yaw;
+                  fVar4 = Atan2((this->players[(int)local_18]->pos).x - (this->v24c).x,
                                 (this->players[(int)local_18]->pos).z - (this->v24c).z);
-                  fVar4 = thunk_FUN_004199d4((int)this,fVar6,fVar7,fVar8);
-                  this->players[(int)local_18]->yaw = (float)fVar4;
-                  Player::Motion_42df38(this->players[(int)local_18]);
+                  fVar5 = RotateToward(this,fVar4,fVar5,fVar6);
+                  this->players[(int)local_18]->yaw = fVar5;
+                  Player::Motion_Stand(this->players[(int)local_18]);
                 }
               }
               else {
-                fVar4 = thunk_FUN_004199d4((int)this,1.57,this->players[(int)local_18]->yaw,5.0);
-                this->players[(int)local_18]->yaw = (float)fVar4;
-                pfVar3 = thunk_FUN_00419ae5(this,local_3cc,(int)local_18);
+                fVar5 = RotateToward(this,1.57,this->players[(int)local_18]->yaw,5.0);
+                this->players[(int)local_18]->yaw = fVar5;
+                pVVar2 = CalcStep(this,&local_3cc,(int)local_18);
                 pPVar1 = this->players[(int)local_18];
-                (pPVar1->pos).x = *pfVar3;
-                (pPVar1->pos).y = pfVar3[1];
-                (pPVar1->pos).z = pfVar3[2];
+                (pPVar1->pos).x = pVVar2->x;
+                (pPVar1->pos).y = pVVar2->y;
+                (pPVar1->pos).z = pVVar2->z;
                 Player::Motion_42dfc0(this->players[(int)local_18]);
               }
             }
             else {
-              fVar4 = thunk_FUN_004199d4((int)this,-1.57,this->players[(int)local_18]->yaw,5.0);
-              this->players[(int)local_18]->yaw = (float)fVar4;
-              pfVar3 = thunk_FUN_00419ae5(this,local_3c0,(int)local_18);
+              fVar5 = RotateToward(this,-1.57,this->players[(int)local_18]->yaw,5.0);
+              this->players[(int)local_18]->yaw = fVar5;
+              pVVar2 = CalcStep(this,&local_3c0,(int)local_18);
               pPVar1 = this->players[(int)local_18];
-              (pPVar1->pos).x = *pfVar3;
-              (pPVar1->pos).y = pfVar3[1];
-              (pPVar1->pos).z = pfVar3[2];
+              (pPVar1->pos).x = pVVar2->x;
+              (pPVar1->pos).y = pVVar2->y;
+              (pPVar1->pos).z = pVVar2->z;
               Player::Motion_42dfc0(this->players[(int)local_18]);
             }
           }
           else {
-            fVar4 = thunk_FUN_004199d4((int)this,3.14,this->players[(int)local_18]->yaw,5.0);
-            this->players[(int)local_18]->yaw = (float)fVar4;
-            pfVar3 = thunk_FUN_00419ae5(this,local_3b4,(int)local_18);
+            fVar5 = RotateToward(this,3.14,this->players[(int)local_18]->yaw,5.0);
+            this->players[(int)local_18]->yaw = fVar5;
+            pVVar2 = CalcStep(this,&local_3b4,(int)local_18);
             pPVar1 = this->players[(int)local_18];
-            (pPVar1->pos).x = *pfVar3;
-            (pPVar1->pos).y = pfVar3[1];
-            (pPVar1->pos).z = pfVar3[2];
+            (pPVar1->pos).x = pVVar2->x;
+            (pPVar1->pos).y = pVVar2->y;
+            (pPVar1->pos).z = pVVar2->z;
             Player::Motion_42dfc0(this->players[(int)local_18]);
           }
         }
         else {
-          fVar4 = thunk_FUN_004199d4((int)this,0.0,this->players[(int)local_18]->yaw,5.0);
-          this->players[(int)local_18]->yaw = (float)fVar4;
-          pfVar3 = thunk_FUN_00419ae5(this,local_3a8,(int)local_18);
+          fVar5 = RotateToward(this,0.0,this->players[(int)local_18]->yaw,5.0);
+          this->players[(int)local_18]->yaw = fVar5;
+          pVVar2 = CalcStep(this,&local_3a8,(int)local_18);
           pPVar1 = this->players[(int)local_18];
-          (pPVar1->pos).x = *pfVar3;
-          (pPVar1->pos).y = pfVar3[1];
-          (pPVar1->pos).z = pfVar3[2];
+          (pPVar1->pos).x = pVVar2->x;
+          (pPVar1->pos).y = pVVar2->y;
+          (pPVar1->pos).z = pVVar2->z;
           Player::Motion_42dfc0(this->players[(int)local_18]);
         }
       }
@@ -1297,111 +1292,108 @@ void __thiscall Game::State6(Game *this)
                         if (this->keyX == KEY_HOLD) {
                           this->players[(int)local_14]->yaw =
                                this->dt * 5.0 + this->players[(int)local_14]->yaw;
-                          pfVar3 = thunk_FUN_00419ae5(this,local_444,(int)local_14);
+                          pVVar2 = CalcStep(this,&local_444,(int)local_14);
                           pPVar1 = this->players[(int)local_14];
-                          (pPVar1->pos).x = *pfVar3;
-                          (pPVar1->pos).y = pfVar3[1];
-                          (pPVar1->pos).z = pfVar3[2];
+                          (pPVar1->pos).x = pVVar2->x;
+                          (pPVar1->pos).y = pVVar2->y;
+                          (pPVar1->pos).z = pVVar2->z;
                           Player::Motion_42dfc0(this->players[(int)local_14]);
                         }
                         else if (this->keyUp == KEY_FREE && this->keyNum8 == KEY_FREE) {
-                          fVar8 = 5.0;
-                          fVar7 = this->players[(int)local_14]->yaw;
-                          fVar6 = Atan2((this->players[(int)local_14]->pos).x - (this->v24c).x,
+                          fVar6 = 5.0;
+                          fVar5 = this->players[(int)local_14]->yaw;
+                          fVar4 = Atan2((this->players[(int)local_14]->pos).x - (this->v24c).x,
                                         (this->players[(int)local_14]->pos).z - (this->v24c).z);
-                          fVar4 = thunk_FUN_004199d4((int)this,fVar6,fVar7,fVar8);
-                          this->players[(int)local_14]->yaw = (float)fVar4;
-                          Player::Motion_42df38(this->players[(int)local_14]);
+                          fVar5 = RotateToward(this,fVar4,fVar5,fVar6);
+                          this->players[(int)local_14]->yaw = fVar5;
+                          Player::Motion_Stand(this->players[(int)local_14]);
                         }
                       }
                       else {
-                        fVar4 = thunk_FUN_004199d4((int)this,3.14,this->players[(int)local_14]->yaw,
-                                                   5.0);
-                        this->players[(int)local_14]->yaw = (float)fVar4;
-                        pfVar3 = thunk_FUN_00419ae5(this,local_438,(int)local_14);
+                        fVar5 = RotateToward(this,3.14,this->players[(int)local_14]->yaw,5.0);
+                        this->players[(int)local_14]->yaw = fVar5;
+                        pVVar2 = CalcStep(this,&local_438,(int)local_14);
                         pPVar1 = this->players[(int)local_14];
-                        (pPVar1->pos).x = *pfVar3;
-                        (pPVar1->pos).y = pfVar3[1];
-                        (pPVar1->pos).z = pfVar3[2];
+                        (pPVar1->pos).x = pVVar2->x;
+                        (pPVar1->pos).y = pVVar2->y;
+                        (pPVar1->pos).z = pVVar2->z;
                         Player::Motion_42dfc0(this->players[(int)local_14]);
                       }
                     }
                     else {
-                      fVar4 = thunk_FUN_004199d4((int)this,0.0,this->players[(int)local_14]->yaw,5.0
-                                                );
-                      this->players[(int)local_14]->yaw = (float)fVar4;
-                      pfVar3 = thunk_FUN_00419ae5(this,local_42c,(int)local_14);
+                      fVar5 = RotateToward(this,0.0,this->players[(int)local_14]->yaw,5.0);
+                      this->players[(int)local_14]->yaw = fVar5;
+                      pVVar2 = CalcStep(this,&local_42c,(int)local_14);
                       pPVar1 = this->players[(int)local_14];
-                      (pPVar1->pos).x = *pfVar3;
-                      (pPVar1->pos).y = pfVar3[1];
-                      (pPVar1->pos).z = pfVar3[2];
+                      (pPVar1->pos).x = pVVar2->x;
+                      (pPVar1->pos).y = pVVar2->y;
+                      (pPVar1->pos).z = pVVar2->z;
                       Player::Motion_42dfc0(this->players[(int)local_14]);
                     }
                   }
                   else {
-                    fVar4 = thunk_FUN_004199d4((int)this,1.57,this->players[(int)local_14]->yaw,5.0)
-                    ;
-                    this->players[(int)local_14]->yaw = (float)fVar4;
-                    pfVar3 = thunk_FUN_00419ae5(this,local_420,(int)local_14);
+                    fVar5 = RotateToward(this,1.57,this->players[(int)local_14]->yaw,5.0);
+                    this->players[(int)local_14]->yaw = fVar5;
+                    pVVar2 = CalcStep(this,&local_420,(int)local_14);
                     pPVar1 = this->players[(int)local_14];
-                    (pPVar1->pos).x = *pfVar3;
-                    (pPVar1->pos).y = pfVar3[1];
-                    (pPVar1->pos).z = pfVar3[2];
+                    (pPVar1->pos).x = pVVar2->x;
+                    (pPVar1->pos).y = pVVar2->y;
+                    (pPVar1->pos).z = pVVar2->z;
                     Player::Motion_42dfc0(this->players[(int)local_14]);
                   }
                 }
                 else {
-                  fVar4 = thunk_FUN_004199d4((int)this,-1.57,this->players[(int)local_14]->yaw,5.0);
-                  this->players[(int)local_14]->yaw = (float)fVar4;
-                  pfVar3 = thunk_FUN_00419ae5(this,local_414,(int)local_14);
+                  fVar5 = RotateToward(this,-1.57,this->players[(int)local_14]->yaw,5.0);
+                  this->players[(int)local_14]->yaw = fVar5;
+                  pVVar2 = CalcStep(this,&local_414,(int)local_14);
                   pPVar1 = this->players[(int)local_14];
-                  (pPVar1->pos).x = *pfVar3;
-                  (pPVar1->pos).y = pfVar3[1];
-                  (pPVar1->pos).z = pfVar3[2];
+                  (pPVar1->pos).x = pVVar2->x;
+                  (pPVar1->pos).y = pVVar2->y;
+                  (pPVar1->pos).z = pVVar2->z;
                   Player::Motion_42dfc0(this->players[(int)local_14]);
                 }
               }
               else {
-                fVar4 = thunk_FUN_004199d4((int)this,1.57,this->players[(int)local_14]->yaw,5.0);
-                this->players[(int)local_14]->yaw = (float)fVar4;
-                pfVar3 = thunk_FUN_00419ae5(this,local_408,(int)local_14);
+                fVar5 = RotateToward(this,1.57,this->players[(int)local_14]->yaw,5.0);
+                this->players[(int)local_14]->yaw = fVar5;
+                pVVar2 = CalcStep(this,&local_408,(int)local_14);
                 pPVar1 = this->players[(int)local_14];
-                (pPVar1->pos).x = *pfVar3;
-                (pPVar1->pos).y = pfVar3[1];
-                (pPVar1->pos).z = pfVar3[2];
+                (pPVar1->pos).x = pVVar2->x;
+                (pPVar1->pos).y = pVVar2->y;
+                (pPVar1->pos).z = pVVar2->z;
                 Player::Motion_42dfc0(this->players[(int)local_14]);
               }
             }
             else {
-              fVar4 = thunk_FUN_004199d4((int)this,-1.57,this->players[(int)local_14]->yaw,5.0);
-              this->players[(int)local_14]->yaw = (float)fVar4;
-              pfVar3 = thunk_FUN_00419ae5(this,local_3fc,(int)local_14);
+              fVar5 = RotateToward(this,-1.57,this->players[(int)local_14]->yaw,5.0);
+              this->players[(int)local_14]->yaw = fVar5;
+              pVVar2 = CalcStep(this,&local_3fc,(int)local_14);
               pPVar1 = this->players[(int)local_14];
-              (pPVar1->pos).x = *pfVar3;
-              (pPVar1->pos).y = pfVar3[1];
-              (pPVar1->pos).z = pfVar3[2];
+              (pPVar1->pos).x = pVVar2->x;
+              (pPVar1->pos).y = pVVar2->y;
+              (pPVar1->pos).z = pVVar2->z;
               Player::Motion_42dfc0(this->players[(int)local_14]);
             }
           }
           else {
-            fVar4 = thunk_FUN_004199d4((int)this,3.14,this->players[(int)local_14]->yaw,5.0);
-            this->players[(int)local_14]->yaw = (float)fVar4;
-            pfVar3 = thunk_FUN_00419ae5(this,local_3f0,(int)local_14);
+            fVar5 = RotateToward(this,3.14,this->players[(int)local_14]->yaw,5.0);
+            this->players[(int)local_14]->yaw = fVar5;
+            pVVar2 = CalcStep(this,&local_3f0,(int)local_14);
             pPVar1 = this->players[(int)local_14];
-            (pPVar1->pos).x = *pfVar3;
-            (pPVar1->pos).y = pfVar3[1];
-            (pPVar1->pos).z = pfVar3[2];
+            (pPVar1->pos).x = pVVar2->x;
+            (pPVar1->pos).y = pVVar2->y;
+            (pPVar1->pos).z = pVVar2->z;
             Player::Motion_42dfc0(this->players[(int)local_14]);
           }
         }
         else {
-          fVar4 = thunk_FUN_004199d4((int)this,0.0,this->players[(int)local_14]->yaw,5.0);
-          this->players[(int)local_14]->yaw = (float)fVar4;
-          pfVar3 = thunk_FUN_00419ae5(this,local_3e4,(int)local_14);
+          fVar5 = RotateToward(this,0.0,this->players[(int)local_14]->yaw,5.0);
+          this->players[(int)local_14]->yaw = fVar5;
+          pVVar2 = CalcStep(this,&local_3e4,(int)local_14);
           pPVar1 = this->players[(int)local_14];
-          (pPVar1->pos).x = *pfVar3;
-          (pPVar1->pos).y = pfVar3[1];
-          (pPVar1->pos).z = pfVar3[2];
+          (pPVar1->pos).x = pVVar2->x;
+          (pPVar1->pos).y = pVVar2->y;
+          (pPVar1->pos).z = pVVar2->z;
           Player::Motion_42dfc0(this->players[(int)local_14]);
         }
       }
@@ -1411,34 +1403,34 @@ void __thiscall Game::State6(Game *this)
         if (this->players[(int)local_8]->i190 != 3 && this->players[(int)local_8]->i190 != 4 ||
             10.0 <= local_34) {
           if (this->i268 == this->slot[5]) {
-            fVar8 = 5.0;
-            fVar7 = this->players[this->slot[5]]->yaw;
-            fVar6 = Atan2((this->players[this->slot[5]]->pos).x + 30.0,
+            fVar6 = 5.0;
+            fVar5 = this->players[this->slot[5]]->yaw;
+            fVar4 = Atan2((this->players[this->slot[5]]->pos).x + 30.0,
                           (this->players[this->slot[5]]->pos).z);
-            fVar4 = thunk_FUN_004199d4((int)this,fVar6,fVar7,fVar8);
-            this->players[this->slot[5]]->yaw = (float)fVar4;
+            fVar5 = RotateToward(this,fVar4,fVar5,fVar6);
+            this->players[this->slot[5]]->yaw = fVar5;
             if (this->b3a6 != '\0') {
-              pfVar3 = thunk_FUN_00419ae5(this,local_510,this->slot[5]);
+              pVVar2 = CalcStep(this,&local_510,this->slot[5]);
               pPVar1 = this->players[this->slot[5]];
-              (pPVar1->pos).x = *pfVar3;
-              (pPVar1->pos).y = pfVar3[1];
-              (pPVar1->pos).z = pfVar3[2];
+              (pPVar1->pos).x = pVVar2->x;
+              (pPVar1->pos).y = pVVar2->y;
+              (pPVar1->pos).z = pVVar2->z;
               Player::Motion_42f1a9(this->players[this->slot[5]]);
             }
           }
           else {
-            fVar8 = 5.0;
-            fVar7 = this->players[this->slot[5]]->yaw;
-            fVar6 = Atan2((this->players[this->slot[5]]->pos).x - (this->v24c).x,
+            fVar6 = 5.0;
+            fVar5 = this->players[this->slot[5]]->yaw;
+            fVar4 = Atan2((this->players[this->slot[5]]->pos).x - (this->v24c).x,
                           (this->players[this->slot[5]]->pos).z - (this->v24c).z);
-            fVar4 = thunk_FUN_004199d4((int)this,fVar6,fVar7,fVar8);
-            this->players[this->slot[5]]->yaw = (float)fVar4;
+            fVar5 = RotateToward(this,fVar4,fVar5,fVar6);
+            this->players[this->slot[5]]->yaw = fVar5;
             if (this->b3a6 != '\0') {
-              pfVar3 = thunk_FUN_00419ae5(this,local_504,this->slot[5]);
+              pVVar2 = CalcStep(this,&local_504,this->slot[5]);
               pPVar1 = this->players[this->slot[5]];
-              (pPVar1->pos).x = *pfVar3;
-              (pPVar1->pos).y = pfVar3[1];
-              (pPVar1->pos).z = pfVar3[2];
+              (pPVar1->pos).x = pVVar2->x;
+              (pPVar1->pos).y = pVVar2->y;
+              (pPVar1->pos).z = pVVar2->z;
               Player::Motion_42dfc0(this->players[this->slot[5]]);
             }
           }
@@ -1446,56 +1438,56 @@ void __thiscall Game::State6(Game *this)
         else {
           this->players[this->slot[5]]->yaw = this->dt * 2.0 + this->players[this->slot[5]]->yaw;
           if (this->b3a6 != '\0') {
-            pfVar3 = thunk_FUN_00419ae5(this,local_4f8,this->slot[5]);
+            pVVar2 = CalcStep(this,&local_4f8,this->slot[5]);
             pPVar1 = this->players[this->slot[5]];
-            (pPVar1->pos).x = *pfVar3;
-            (pPVar1->pos).y = pfVar3[1];
-            (pPVar1->pos).z = pfVar3[2];
+            (pPVar1->pos).x = pVVar2->x;
+            (pPVar1->pos).y = pVVar2->y;
+            (pPVar1->pos).z = pVVar2->z;
             Player::Motion_42dfc0(this->players[this->slot[5]]);
           }
         }
       }
-      fVar8 = 2.0;
-      fVar7 = this->players[this->slot[4]]->yaw;
-      fVar6 = Atan2((this->players[this->slot[4]]->pos).x - (this->v24c).x,
+      fVar6 = 2.0;
+      fVar5 = this->players[this->slot[4]]->yaw;
+      fVar4 = Atan2((this->players[this->slot[4]]->pos).x - (this->v24c).x,
                     (this->players[this->slot[4]]->pos).z - (this->v24c).z);
-      fVar4 = thunk_FUN_004199d4((int)this,fVar6,fVar7,fVar8);
-      this->players[this->slot[4]]->yaw = (float)fVar4;
-      fVar8 = 2.0;
-      fVar7 = this->players[this->slot[3]]->yaw;
-      fVar6 = Atan2((this->players[this->slot[3]]->pos).x - (this->v24c).x,
+      fVar5 = RotateToward(this,fVar4,fVar5,fVar6);
+      this->players[this->slot[4]]->yaw = fVar5;
+      fVar6 = 2.0;
+      fVar5 = this->players[this->slot[3]]->yaw;
+      fVar4 = Atan2((this->players[this->slot[3]]->pos).x - (this->v24c).x,
                     (this->players[this->slot[3]]->pos).z - (this->v24c).z);
-      fVar4 = thunk_FUN_004199d4((int)this,fVar6,fVar7,fVar8);
-      this->players[this->slot[3]]->yaw = (float)fVar4;
+      fVar5 = RotateToward(this,fVar4,fVar5,fVar6);
+      this->players[this->slot[3]]->yaw = fVar5;
     }
     else {
       if (this->i418 == 5) {
         if (this->b3a6 == '\0') {
-          fVar8 = 2.0;
-          fVar7 = this->players[(int)local_38]->yaw;
-          fVar6 = Atan2((this->players[(int)local_38]->pos).x + 35.0,
+          fVar6 = 2.0;
+          fVar5 = this->players[(int)local_38]->yaw;
+          fVar4 = Atan2((this->players[(int)local_38]->pos).x + 35.0,
                         (this->players[(int)local_38]->pos).z);
-          fVar4 = thunk_FUN_004199d4((int)this,fVar6,fVar7,fVar8);
-          this->players[(int)local_38]->yaw = (float)fVar4;
-          pfVar3 = thunk_FUN_00419ae5(this,local_528,(int)local_38);
+          fVar5 = RotateToward(this,fVar4,fVar5,fVar6);
+          this->players[(int)local_38]->yaw = fVar5;
+          pVVar2 = CalcStep(this,&local_528,(int)local_38);
           pPVar1 = this->players[(int)local_38];
-          (pPVar1->pos).x = *pfVar3;
-          (pPVar1->pos).y = pfVar3[1];
-          (pPVar1->pos).z = pfVar3[2];
+          (pPVar1->pos).x = pVVar2->x;
+          (pPVar1->pos).y = pVVar2->y;
+          (pPVar1->pos).z = pVVar2->z;
           Player::Motion_42dfc0(this->players[(int)local_38]);
         }
         else {
-          fVar8 = 2.0;
-          fVar7 = this->players[(int)local_38]->yaw;
-          fVar6 = Atan2((this->players[(int)local_38]->pos).x - 35.0,
+          fVar6 = 2.0;
+          fVar5 = this->players[(int)local_38]->yaw;
+          fVar4 = Atan2((this->players[(int)local_38]->pos).x - 35.0,
                         (this->players[(int)local_38]->pos).z);
-          fVar4 = thunk_FUN_004199d4((int)this,fVar6,fVar7,fVar8);
-          this->players[(int)local_38]->yaw = (float)fVar4;
-          pfVar3 = thunk_FUN_00419ae5(this,local_51c,(int)local_38);
+          fVar5 = RotateToward(this,fVar4,fVar5,fVar6);
+          this->players[(int)local_38]->yaw = fVar5;
+          pVVar2 = CalcStep(this,&local_51c,(int)local_38);
           pPVar1 = this->players[(int)local_38];
-          (pPVar1->pos).x = *pfVar3;
-          (pPVar1->pos).y = pfVar3[1];
-          (pPVar1->pos).z = pfVar3[2];
+          (pPVar1->pos).x = pVVar2->x;
+          (pPVar1->pos).y = pVVar2->y;
+          (pPVar1->pos).z = pVVar2->z;
           Player::Motion_42dfc0(this->players[(int)local_38]);
         }
       }
@@ -1546,17 +1538,17 @@ void __thiscall Game::State6(Game *this)
                                   (this->players[(int)local_8]->pos).x) *
                                   ((this->players[(int)local_38]->pos).x -
                                   (this->players[(int)local_8]->pos).x)) {
-                        fVar8 = 10.0;
-                        fVar7 = this->players[(int)local_38]->yaw;
-                        fVar6 = Atan2((this->players[(int)local_38]->pos).x - 30.0,
+                        fVar6 = 10.0;
+                        fVar5 = this->players[(int)local_38]->yaw;
+                        fVar4 = Atan2((this->players[(int)local_38]->pos).x - 30.0,
                                       (this->players[(int)local_38]->pos).z);
-                        fVar4 = thunk_FUN_004199d4((int)this,fVar6,fVar7,fVar8);
-                        this->players[(int)local_38]->yaw = (float)fVar4;
-                        pfVar3 = thunk_FUN_00419ae5(this,local_594,(int)local_38);
+                        fVar5 = RotateToward(this,fVar4,fVar5,fVar6);
+                        this->players[(int)local_38]->yaw = fVar5;
+                        pVVar2 = CalcStep(this,&local_594,(int)local_38);
                         pPVar1 = this->players[(int)local_38];
-                        (pPVar1->pos).x = *pfVar3;
-                        (pPVar1->pos).y = pfVar3[1];
-                        (pPVar1->pos).z = pfVar3[2];
+                        (pPVar1->pos).x = pVVar2->x;
+                        (pPVar1->pos).y = pVVar2->y;
+                        (pPVar1->pos).z = pVVar2->z;
                         Player::Motion_42f1a9(this->players[(int)local_38]);
                       }
                       else {
@@ -1564,16 +1556,16 @@ void __thiscall Game::State6(Game *this)
                         this->players[(int)local_38]->f198 = 0.0;
                         this->players[(int)local_38]->i190 = 0xb;
                         Player::Motion_430701(this->players[(int)local_38]);
-                        fVar7 = Atan2((this->players[(int)local_38]->pos).x - 35.0,
+                        fVar5 = Atan2((this->players[(int)local_38]->pos).x - 35.0,
                                       (this->players[(int)local_38]->pos).z);
-                        this->players[(int)local_38]->yaw = fVar7;
+                        this->players[(int)local_38]->yaw = fVar5;
                         this->f260 = this->players[(int)local_38]->yaw - 3.14;
                         this->f25c = 23.0;
                         this->f258 = local_50 * this->players[(int)local_38]->stat17c + 1.0;
-                        fVar7 = sinf((float)this->players[(int)local_38]);
-                        (this->v24c).x = -fVar7 * -2.0 + (this->players[(int)local_38]->pos).x;
-                        fVar7 = cosf((float)this);
-                        (this->v24c).z = fVar7 * -2.0 + (this->players[(int)local_38]->pos).z;
+                        fVar5 = sinf((float)this->players[(int)local_38]);
+                        (this->v24c).x = -fVar5 * -2.0 + (this->players[(int)local_38]->pos).x;
+                        fVar5 = cosf((float)this);
+                        (this->v24c).z = fVar5 * -2.0 + (this->players[(int)local_38]->pos).z;
                         this->i404 = (int)local_38;
                         this->i268 = -1;
                         if (15.0 <= local_54) {
@@ -1587,21 +1579,21 @@ void __thiscall Game::State6(Game *this)
                     else {
                       Sound::Play(this->sound,1);
                       this->players[(int)local_38]->f198 = 0.0;
-                      fVar7 = Atan2((this->players[(int)local_38]->pos).x -
+                      fVar5 = Atan2((this->players[(int)local_38]->pos).x -
                                     (this->players[(int)local_30]->pos).x,
                                     (this->players[(int)local_38]->pos).z -
                                     (this->players[(int)local_30]->pos).z);
-                      this->players[(int)local_38]->yaw = fVar7;
+                      this->players[(int)local_38]->yaw = fVar5;
                       this->players[(int)local_38]->i190 = 10;
                       Player::Motion_4305b1(this->players[(int)local_38]);
                       this->f260 = this->players[(int)local_38]->yaw - 3.14;
                       this->f25c = this->players[(int)local_38]->stat174;
                       this->f258 = this->players[(int)local_38]->stat178;
-                      fVar7 = sinf(local_38);
-                      (this->v24c).x = -fVar7 * -2.0 + (this->players[(int)local_38]->pos).x;
+                      fVar5 = sinf(local_38);
+                      (this->v24c).x = -fVar5 * -2.0 + (this->players[(int)local_38]->pos).x;
                       (this->v24c).y = this->players[(int)local_38]->stat170 * 0.9;
-                      fVar7 = cosf((float)this);
-                      (this->v24c).z = fVar7 * -2.0 + (this->players[(int)local_38]->pos).z;
+                      fVar5 = cosf((float)this);
+                      (this->v24c).z = fVar5 * -2.0 + (this->players[(int)local_38]->pos).z;
                       this->i404 = (int)local_38;
                       this->i268 = -1;
                     }
@@ -1632,17 +1624,17 @@ void __thiscall Game::State6(Game *this)
                                 (this->players[(int)local_8]->pos).x) *
                                 ((this->players[(int)local_38]->pos).x -
                                 (this->players[(int)local_8]->pos).x)) {
-                      fVar8 = 10.0;
-                      fVar7 = this->players[(int)local_38]->yaw;
-                      fVar6 = Atan2((this->players[(int)local_38]->pos).x + 30.0,
+                      fVar6 = 10.0;
+                      fVar5 = this->players[(int)local_38]->yaw;
+                      fVar4 = Atan2((this->players[(int)local_38]->pos).x + 30.0,
                                     (this->players[(int)local_38]->pos).z);
-                      fVar4 = thunk_FUN_004199d4((int)this,fVar6,fVar7,fVar8);
-                      this->players[(int)local_38]->yaw = (float)fVar4;
-                      pfVar3 = thunk_FUN_00419ae5(this,local_588,(int)local_38);
+                      fVar5 = RotateToward(this,fVar4,fVar5,fVar6);
+                      this->players[(int)local_38]->yaw = fVar5;
+                      pVVar2 = CalcStep(this,&local_588,(int)local_38);
                       pPVar1 = this->players[(int)local_38];
-                      (pPVar1->pos).x = *pfVar3;
-                      (pPVar1->pos).y = pfVar3[1];
-                      (pPVar1->pos).z = pfVar3[2];
+                      (pPVar1->pos).x = pVVar2->x;
+                      (pPVar1->pos).y = pVVar2->y;
+                      (pPVar1->pos).z = pVVar2->z;
                       Player::Motion_42f1a9(this->players[(int)local_38]);
                     }
                     else {
@@ -1650,16 +1642,16 @@ void __thiscall Game::State6(Game *this)
                       this->players[(int)local_38]->f198 = 0.0;
                       this->players[(int)local_38]->i190 = 0xb;
                       Player::Motion_430701(this->players[(int)local_38]);
-                      fVar7 = Atan2((this->players[(int)local_38]->pos).x + 35.0,
+                      fVar5 = Atan2((this->players[(int)local_38]->pos).x + 35.0,
                                     (this->players[(int)local_38]->pos).z);
-                      this->players[(int)local_38]->yaw = fVar7;
+                      this->players[(int)local_38]->yaw = fVar5;
                       this->f260 = this->players[(int)local_38]->yaw - 3.14;
                       this->f25c = 23.0;
                       this->f258 = local_48 * this->players[(int)local_38]->stat17c + 1.0;
-                      fVar7 = sinf((float)this);
-                      (this->v24c).x = -fVar7 * -2.0 + (this->players[(int)local_38]->pos).x;
-                      fVar7 = cosf(local_38);
-                      (this->v24c).z = fVar7 * -2.0 + (this->players[(int)local_38]->pos).z;
+                      fVar5 = sinf((float)this);
+                      (this->v24c).x = -fVar5 * -2.0 + (this->players[(int)local_38]->pos).x;
+                      fVar5 = cosf(local_38);
+                      (this->v24c).z = fVar5 * -2.0 + (this->players[(int)local_38]->pos).z;
                       this->i404 = (int)local_38;
                       this->i268 = -1;
                       if (15.0 <= local_4c) {
@@ -1673,29 +1665,29 @@ void __thiscall Game::State6(Game *this)
                   else {
                     Sound::Play(this->sound,1);
                     this->players[(int)local_38]->f198 = 0.0;
-                    fVar7 = Atan2((this->players[(int)local_38]->pos).x -
+                    fVar5 = Atan2((this->players[(int)local_38]->pos).x -
                                   (this->players[(int)local_30]->pos).x,
                                   (this->players[(int)local_38]->pos).z -
                                   (this->players[(int)local_30]->pos).z);
-                    this->players[(int)local_38]->yaw = fVar7;
+                    this->players[(int)local_38]->yaw = fVar5;
                     this->players[(int)local_38]->i190 = 10;
                     Player::Motion_4305b1(this->players[(int)local_38]);
                     this->f260 = this->players[(int)local_38]->yaw - 3.14;
                     this->f25c = this->players[(int)local_38]->stat174;
                     this->f258 = this->players[(int)local_38]->stat178;
-                    fVar7 = sinf((float)this->players[(int)local_38]);
-                    (this->v24c).x = -fVar7 * -2.0 + (this->players[(int)local_38]->pos).x;
+                    fVar5 = sinf((float)this->players[(int)local_38]);
+                    (this->v24c).x = -fVar5 * -2.0 + (this->players[(int)local_38]->pos).x;
                     (this->v24c).y = this->players[(int)local_38]->stat170 * 0.9;
-                    fVar7 = cosf(local_38);
-                    (this->v24c).z = fVar7 * -2.0 + (this->players[(int)local_38]->pos).z;
+                    fVar5 = cosf(local_38);
+                    (this->v24c).z = fVar5 * -2.0 + (this->players[(int)local_38]->pos).z;
                     this->i404 = (int)local_38;
                     this->i268 = -1;
                   }
                 }
                 else {
-                  fVar7 = Atan2((this->players[(int)local_38]->pos).x - 37.0,
+                  fVar5 = Atan2((this->players[(int)local_38]->pos).x - 37.0,
                                 (this->players[(int)local_38]->pos).z);
-                  this->players[(int)local_38]->yaw = fVar7;
+                  this->players[(int)local_38]->yaw = fVar5;
                   Sound::Play(this->sound,1);
                   this->players[(int)local_38]->i190 = 6;
                   Player::Motion_430a58(this->players[(int)local_38]);
@@ -1704,9 +1696,9 @@ void __thiscall Game::State6(Game *this)
                 }
               }
               else {
-                fVar7 = Atan2((this->players[(int)local_38]->pos).x + 37.0,
+                fVar5 = Atan2((this->players[(int)local_38]->pos).x + 37.0,
                               (this->players[(int)local_38]->pos).z);
-                this->players[(int)local_38]->yaw = fVar7;
+                this->players[(int)local_38]->yaw = fVar5;
                 Sound::Play(this->sound,1);
                 this->players[(int)local_38]->i190 = 6;
                 Player::Motion_430a58(this->players[(int)local_38]);
@@ -1715,32 +1707,32 @@ void __thiscall Game::State6(Game *this)
               }
             }
             else {
-              fVar6 = 5.0 / this->f400;
-              fVar7 = this->players[(int)local_38]->yaw;
-              fVar8 = Atan2((this->players[(int)local_38]->pos).x + 30.0,
+              fVar4 = 5.0 / this->f400;
+              fVar5 = this->players[(int)local_38]->yaw;
+              fVar6 = Atan2((this->players[(int)local_38]->pos).x + 30.0,
                             (this->players[(int)local_38]->pos).z);
-              fVar4 = thunk_FUN_004199d4((int)this,fVar8,fVar7,fVar6);
-              this->players[(int)local_38]->yaw = (float)fVar4;
-              pfVar3 = thunk_FUN_00419ae5(this,local_57c,(int)local_38);
+              fVar5 = RotateToward(this,fVar6,fVar5,fVar4);
+              this->players[(int)local_38]->yaw = fVar5;
+              pVVar2 = CalcStep(this,&local_57c,(int)local_38);
               pPVar1 = this->players[(int)local_38];
-              (pPVar1->pos).x = *pfVar3;
-              (pPVar1->pos).y = pfVar3[1];
-              (pPVar1->pos).z = pfVar3[2];
+              (pPVar1->pos).x = pVVar2->x;
+              (pPVar1->pos).y = pVVar2->y;
+              (pPVar1->pos).z = pVVar2->z;
               Player::Motion_42f1a9(this->players[(int)local_38]);
             }
           }
           else {
-            fVar6 = 5.0 / this->f400;
-            fVar7 = this->players[(int)local_38]->yaw;
-            fVar8 = Atan2((this->players[(int)local_38]->pos).x - 30.0,
+            fVar4 = 5.0 / this->f400;
+            fVar5 = this->players[(int)local_38]->yaw;
+            fVar6 = Atan2((this->players[(int)local_38]->pos).x - 30.0,
                           (this->players[(int)local_38]->pos).z);
-            fVar4 = thunk_FUN_004199d4((int)this,fVar8,fVar7,fVar6);
-            this->players[(int)local_38]->yaw = (float)fVar4;
-            pfVar3 = thunk_FUN_00419ae5(this,local_570,(int)local_38);
+            fVar5 = RotateToward(this,fVar6,fVar5,fVar4);
+            this->players[(int)local_38]->yaw = fVar5;
+            pVVar2 = CalcStep(this,&local_570,(int)local_38);
             pPVar1 = this->players[(int)local_38];
-            (pPVar1->pos).x = *pfVar3;
-            (pPVar1->pos).y = pfVar3[1];
-            (pPVar1->pos).z = pfVar3[2];
+            (pPVar1->pos).x = pVVar2->x;
+            (pPVar1->pos).y = pVVar2->y;
+            (pPVar1->pos).z = pVVar2->z;
             Player::Motion_42f1a9(this->players[(int)local_38]);
           }
         }
@@ -1753,20 +1745,20 @@ void __thiscall Game::State6(Game *this)
                 if ((this->i3b0 != 0 || this->players[(int)local_8]->i190 != 3) &&
                     this->players[(int)local_8]->i190 != 4 || 10.0 <= local_34) {
                   if (this->players[this->i404]->b154 == '\0') {
-                    fVar8 = 10.0;
-                    fVar7 = this->players[(int)local_38]->yaw;
-                    fVar6 = Atan2((this->players[(int)local_38]->pos).x - (this->v24c).x,
+                    fVar6 = 10.0;
+                    fVar5 = this->players[(int)local_38]->yaw;
+                    fVar4 = Atan2((this->players[(int)local_38]->pos).x - (this->v24c).x,
                                   (this->players[(int)local_38]->pos).z - (this->v24c).z);
-                    fVar4 = thunk_FUN_004199d4((int)this,fVar6,fVar7,fVar8);
-                    this->players[(int)local_38]->yaw = (float)fVar4;
+                    fVar5 = RotateToward(this,fVar4,fVar5,fVar6);
+                    this->players[(int)local_38]->yaw = fVar5;
                   }
                   else {
-                    fVar6 = 5.0 / this->f400;
-                    fVar7 = this->players[(int)local_38]->yaw;
-                    fVar8 = Atan2((this->players[(int)local_38]->pos).x - (this->v24c).x,
+                    fVar4 = 5.0 / this->f400;
+                    fVar5 = this->players[(int)local_38]->yaw;
+                    fVar6 = Atan2((this->players[(int)local_38]->pos).x - (this->v24c).x,
                                   (this->players[(int)local_38]->pos).z - (this->v24c).z);
-                    fVar4 = thunk_FUN_004199d4((int)this,fVar8,fVar7,fVar6);
-                    this->players[(int)local_38]->yaw = (float)fVar4;
+                    fVar5 = RotateToward(this,fVar6,fVar5,fVar4);
+                    this->players[(int)local_38]->yaw = fVar5;
                   }
                 }
                 else {
@@ -1775,53 +1767,53 @@ void __thiscall Game::State6(Game *this)
                 }
               }
               else {
-                fVar4 = thunk_FUN_004199d4((int)this,1.57,this->players[(int)local_38]->yaw,5.0);
-                this->players[(int)local_38]->yaw = (float)fVar4;
-                pfVar3 = thunk_FUN_00419ae5(this,local_558,(int)local_38);
+                fVar5 = RotateToward(this,1.57,this->players[(int)local_38]->yaw,5.0);
+                this->players[(int)local_38]->yaw = fVar5;
+                pVVar2 = CalcStep(this,&local_558,(int)local_38);
                 pPVar1 = this->players[(int)local_38];
-                (pPVar1->pos).x = *pfVar3;
-                (pPVar1->pos).y = pfVar3[1];
-                (pPVar1->pos).z = pfVar3[2];
+                (pPVar1->pos).x = pVVar2->x;
+                (pPVar1->pos).y = pVVar2->y;
+                (pPVar1->pos).z = pVVar2->z;
                 Player::Motion_42dfc0(this->players[(int)local_38]);
               }
             }
             else {
-              fVar4 = thunk_FUN_004199d4((int)this,-1.57,this->players[(int)local_38]->yaw,5.0);
-              this->players[(int)local_38]->yaw = (float)fVar4;
-              pfVar3 = thunk_FUN_00419ae5(this,local_54c,(int)local_38);
+              fVar5 = RotateToward(this,-1.57,this->players[(int)local_38]->yaw,5.0);
+              this->players[(int)local_38]->yaw = fVar5;
+              pVVar2 = CalcStep(this,&local_54c,(int)local_38);
               pPVar1 = this->players[(int)local_38];
-              (pPVar1->pos).x = *pfVar3;
-              (pPVar1->pos).y = pfVar3[1];
-              (pPVar1->pos).z = pfVar3[2];
+              (pPVar1->pos).x = pVVar2->x;
+              (pPVar1->pos).y = pVVar2->y;
+              (pPVar1->pos).z = pVVar2->z;
               Player::Motion_42dfc0(this->players[(int)local_38]);
             }
           }
           else {
-            fVar4 = thunk_FUN_004199d4((int)this,3.14,this->players[(int)local_38]->yaw,5.0);
-            this->players[(int)local_38]->yaw = (float)fVar4;
-            pfVar3 = thunk_FUN_00419ae5(this,local_540,(int)local_38);
+            fVar5 = RotateToward(this,3.14,this->players[(int)local_38]->yaw,5.0);
+            this->players[(int)local_38]->yaw = fVar5;
+            pVVar2 = CalcStep(this,&local_540,(int)local_38);
             pPVar1 = this->players[(int)local_38];
-            (pPVar1->pos).x = *pfVar3;
-            (pPVar1->pos).y = pfVar3[1];
-            (pPVar1->pos).z = pfVar3[2];
+            (pPVar1->pos).x = pVVar2->x;
+            (pPVar1->pos).y = pVVar2->y;
+            (pPVar1->pos).z = pVVar2->z;
             Player::Motion_42dfc0(this->players[(int)local_38]);
           }
         }
         else {
-          fVar4 = thunk_FUN_004199d4((int)this,0.0,this->players[(int)local_38]->yaw,5.0);
-          this->players[(int)local_38]->yaw = (float)fVar4;
-          pfVar3 = thunk_FUN_00419ae5(this,local_534,(int)local_38);
+          fVar5 = RotateToward(this,0.0,this->players[(int)local_38]->yaw,5.0);
+          this->players[(int)local_38]->yaw = fVar5;
+          pVVar2 = CalcStep(this,&local_534,(int)local_38);
           pPVar1 = this->players[(int)local_38];
-          (pPVar1->pos).x = *pfVar3;
-          (pPVar1->pos).y = pfVar3[1];
-          (pPVar1->pos).z = pfVar3[2];
+          (pPVar1->pos).x = pVVar2->x;
+          (pPVar1->pos).y = pVVar2->y;
+          (pPVar1->pos).z = pVVar2->z;
           Player::Motion_42dfc0(this->players[(int)local_38]);
         }
-        pfVar3 = thunk_FUN_00419ae5(this,local_564,(int)local_38);
+        pVVar2 = CalcStep(this,&local_564,(int)local_38);
         pPVar1 = this->players[(int)local_38];
-        (pPVar1->pos).x = *pfVar3;
-        (pPVar1->pos).y = pfVar3[1];
-        (pPVar1->pos).z = pfVar3[2];
+        (pPVar1->pos).x = pVVar2->x;
+        (pPVar1->pos).y = pVVar2->y;
+        (pPVar1->pos).z = pVVar2->z;
         Player::Motion_42dfc0(this->players[(int)local_38]);
       }
       if (6 < this->players[(int)local_30]->i190 && this->players[(int)local_30]->i190 < 10) {
@@ -1835,165 +1827,163 @@ void __thiscall Game::State6(Game *this)
                       if (this->b3a6 != '\0' ||
                           8.0 <= (this->players[(int)local_30]->pos).x -
                                  (this->players[(int)local_38]->pos).x) {
-                        fVar8 = 5.0;
-                        fVar7 = this->players[(int)local_30]->yaw;
-                        fVar6 = Atan2((this->players[(int)local_30]->pos).x - 28.0,
+                        fVar6 = 5.0;
+                        fVar5 = this->players[(int)local_30]->yaw;
+                        fVar4 = Atan2((this->players[(int)local_30]->pos).x - 28.0,
                                       (this->players[(int)local_30]->pos).z);
-                        fVar4 = thunk_FUN_004199d4((int)this,fVar6,fVar7,fVar8);
-                        this->players[(int)local_30]->yaw = (float)fVar4;
-                        pfVar3 = thunk_FUN_00419ae5(this,local_60c,(int)local_30);
+                        fVar5 = RotateToward(this,fVar4,fVar5,fVar6);
+                        this->players[(int)local_30]->yaw = fVar5;
+                        pVVar2 = CalcStep(this,&local_60c,(int)local_30);
                         pPVar1 = this->players[(int)local_30];
-                        (pPVar1->pos).x = *pfVar3;
-                        (pPVar1->pos).y = pfVar3[1];
-                        (pPVar1->pos).z = pfVar3[2];
+                        (pPVar1->pos).x = pVVar2->x;
+                        (pPVar1->pos).y = pVVar2->y;
+                        (pPVar1->pos).z = pVVar2->z;
                         Player::Motion_42dfc0(this->players[(int)local_30]);
                       }
                       else {
-                        fVar4 = thunk_FUN_004199d4((int)this,-1.57,this->players[(int)local_30]->yaw
-                                                   ,5.0);
-                        this->players[(int)local_30]->yaw = (float)fVar4;
-                        pfVar3 = thunk_FUN_00419ae5(this,local_600,(int)local_30);
+                        fVar5 = RotateToward(this,-1.57,this->players[(int)local_30]->yaw,5.0);
+                        this->players[(int)local_30]->yaw = fVar5;
+                        pVVar2 = CalcStep(this,&local_600,(int)local_30);
                         pPVar1 = this->players[(int)local_30];
-                        (pPVar1->pos).x = *pfVar3;
-                        (pPVar1->pos).y = pfVar3[1];
-                        (pPVar1->pos).z = pfVar3[2];
+                        (pPVar1->pos).x = pVVar2->x;
+                        (pPVar1->pos).y = pVVar2->y;
+                        (pPVar1->pos).z = pVVar2->z;
                         Player::Motion_42dfc0(this->players[(int)local_30]);
                       }
                     }
                     else if ((this->players[(int)local_38]->pos).x <= 18.0) {
-                      fVar8 = 5.0;
-                      fVar7 = this->players[(int)local_30]->yaw;
-                      fVar6 = Atan2((this->players[(int)local_30]->pos).x - (this->v24c).x,
+                      fVar6 = 5.0;
+                      fVar5 = this->players[(int)local_30]->yaw;
+                      fVar4 = Atan2((this->players[(int)local_30]->pos).x - (this->v24c).x,
                                     (this->players[(int)local_30]->pos).z - (this->v24c).z);
-                      fVar4 = thunk_FUN_004199d4((int)this,fVar6,fVar7,fVar8);
-                      this->players[(int)local_30]->yaw = (float)fVar4;
-                      Player::Motion_42df38(this->players[(int)local_30]);
+                      fVar5 = RotateToward(this,fVar4,fVar5,fVar6);
+                      this->players[(int)local_30]->yaw = fVar5;
+                      Player::Motion_Stand(this->players[(int)local_30]);
                     }
                     else {
-                      fVar8 = 5.0;
-                      fVar7 = this->players[(int)local_30]->yaw;
-                      fVar6 = Atan2((this->players[(int)local_30]->pos).x - 30.0,
+                      fVar6 = 5.0;
+                      fVar5 = this->players[(int)local_30]->yaw;
+                      fVar4 = Atan2((this->players[(int)local_30]->pos).x - 30.0,
                                     (this->players[(int)local_30]->pos).z - 15.0);
-                      fVar4 = thunk_FUN_004199d4((int)this,fVar6,fVar7,fVar8);
-                      this->players[(int)local_30]->yaw = (float)fVar4;
-                      pfVar3 = thunk_FUN_00419ae5(this,local_5f4,(int)local_30);
+                      fVar5 = RotateToward(this,fVar4,fVar5,fVar6);
+                      this->players[(int)local_30]->yaw = fVar5;
+                      pVVar2 = CalcStep(this,&local_5f4,(int)local_30);
                       pPVar1 = this->players[(int)local_30];
-                      (pPVar1->pos).x = *pfVar3;
-                      (pPVar1->pos).y = pfVar3[1];
-                      (pPVar1->pos).z = pfVar3[2];
+                      (pPVar1->pos).x = pVVar2->x;
+                      (pPVar1->pos).y = pVVar2->y;
+                      (pPVar1->pos).z = pVVar2->z;
                       Player::Motion_42dfc0(this->players[(int)local_30]);
                     }
                   }
                   else if (-25.0 <= (this->players[(int)local_30]->pos).x) {
                     if ((this->players[(int)local_30]->pos).x -
                         (this->players[(int)local_38]->pos).x <= -8.0) {
-                      fVar8 = 5.0;
-                      fVar7 = this->players[(int)local_30]->yaw;
-                      fVar6 = Atan2((this->players[(int)local_30]->pos).x + 28.0,
+                      fVar6 = 5.0;
+                      fVar5 = this->players[(int)local_30]->yaw;
+                      fVar4 = Atan2((this->players[(int)local_30]->pos).x + 28.0,
                                     (this->players[(int)local_30]->pos).z);
-                      fVar4 = thunk_FUN_004199d4((int)this,fVar6,fVar7,fVar8);
-                      this->players[(int)local_30]->yaw = (float)fVar4;
-                      pfVar3 = thunk_FUN_00419ae5(this,local_5e8,(int)local_30);
+                      fVar5 = RotateToward(this,fVar4,fVar5,fVar6);
+                      this->players[(int)local_30]->yaw = fVar5;
+                      pVVar2 = CalcStep(this,&local_5e8,(int)local_30);
                       pPVar1 = this->players[(int)local_30];
-                      (pPVar1->pos).x = *pfVar3;
-                      (pPVar1->pos).y = pfVar3[1];
-                      (pPVar1->pos).z = pfVar3[2];
+                      (pPVar1->pos).x = pVVar2->x;
+                      (pPVar1->pos).y = pVVar2->y;
+                      (pPVar1->pos).z = pVVar2->z;
                       Player::Motion_42dfc0(this->players[(int)local_30]);
                     }
                     else {
-                      fVar4 = thunk_FUN_004199d4((int)this,1.57,this->players[(int)local_30]->yaw,
-                                                 5.0);
-                      this->players[(int)local_30]->yaw = (float)fVar4;
-                      pfVar3 = thunk_FUN_00419ae5(this,local_5dc,(int)local_30);
+                      fVar5 = RotateToward(this,1.57,this->players[(int)local_30]->yaw,5.0);
+                      this->players[(int)local_30]->yaw = fVar5;
+                      pVVar2 = CalcStep(this,&local_5dc,(int)local_30);
                       pPVar1 = this->players[(int)local_30];
-                      (pPVar1->pos).x = *pfVar3;
-                      (pPVar1->pos).y = pfVar3[1];
-                      (pPVar1->pos).z = pfVar3[2];
+                      (pPVar1->pos).x = pVVar2->x;
+                      (pPVar1->pos).y = pVVar2->y;
+                      (pPVar1->pos).z = pVVar2->z;
                       Player::Motion_42dfc0(this->players[(int)local_30]);
                     }
                   }
                   else if (-18.0 <= (this->players[(int)local_38]->pos).x) {
-                    fVar8 = 5.0;
-                    fVar7 = this->players[(int)local_30]->yaw;
-                    fVar6 = Atan2((this->players[(int)local_30]->pos).x - (this->v24c).x,
+                    fVar6 = 5.0;
+                    fVar5 = this->players[(int)local_30]->yaw;
+                    fVar4 = Atan2((this->players[(int)local_30]->pos).x - (this->v24c).x,
                                   (this->players[(int)local_30]->pos).z - (this->v24c).z);
-                    fVar4 = thunk_FUN_004199d4((int)this,fVar6,fVar7,fVar8);
-                    this->players[(int)local_30]->yaw = (float)fVar4;
-                    Player::Motion_42df38(this->players[(int)local_30]);
+                    fVar5 = RotateToward(this,fVar4,fVar5,fVar6);
+                    this->players[(int)local_30]->yaw = fVar5;
+                    Player::Motion_Stand(this->players[(int)local_30]);
                   }
                   else {
-                    fVar8 = 5.0;
-                    fVar7 = this->players[(int)local_30]->yaw;
-                    fVar6 = Atan2((this->players[(int)local_30]->pos).x + 30.0,
+                    fVar6 = 5.0;
+                    fVar5 = this->players[(int)local_30]->yaw;
+                    fVar4 = Atan2((this->players[(int)local_30]->pos).x + 30.0,
                                   (this->players[(int)local_30]->pos).z - 15.0);
-                    fVar4 = thunk_FUN_004199d4((int)this,fVar6,fVar7,fVar8);
-                    this->players[(int)local_30]->yaw = (float)fVar4;
-                    pfVar3 = thunk_FUN_00419ae5(this,local_5d0,(int)local_30);
+                    fVar5 = RotateToward(this,fVar4,fVar5,fVar6);
+                    this->players[(int)local_30]->yaw = fVar5;
+                    pVVar2 = CalcStep(this,&local_5d0,(int)local_30);
                     pPVar1 = this->players[(int)local_30];
-                    (pPVar1->pos).x = *pfVar3;
-                    (pPVar1->pos).y = pfVar3[1];
-                    (pPVar1->pos).z = pfVar3[2];
+                    (pPVar1->pos).x = pVVar2->x;
+                    (pPVar1->pos).y = pVVar2->y;
+                    (pPVar1->pos).z = pVVar2->z;
                     Player::Motion_42dfc0(this->players[(int)local_30]);
                   }
                 }
                 else {
-                  fVar6 = 5.0 / this->f400;
-                  fVar7 = this->players[(int)local_30]->yaw;
-                  fVar8 = Atan2((this->players[(int)local_30]->pos).x -
+                  fVar4 = 5.0 / this->f400;
+                  fVar5 = this->players[(int)local_30]->yaw;
+                  fVar6 = Atan2((this->players[(int)local_30]->pos).x -
                                 ((this->players[(int)local_14]->pos).x + (this->v24c).x) / 2.0,
                                 (this->players[(int)local_30]->pos).z -
                                 ((this->players[(int)local_14]->pos).z + (this->v24c).z) / 2.0);
-                  fVar4 = thunk_FUN_004199d4((int)this,fVar8,fVar7,fVar6);
-                  this->players[(int)local_30]->yaw = (float)fVar4;
-                  pfVar3 = thunk_FUN_00419ae5(this,local_618,(int)local_30);
+                  fVar5 = RotateToward(this,fVar6,fVar5,fVar4);
+                  this->players[(int)local_30]->yaw = fVar5;
+                  pVVar2 = CalcStep(this,&local_618,(int)local_30);
                   pPVar1 = this->players[(int)local_30];
-                  (pPVar1->pos).x = *pfVar3;
-                  (pPVar1->pos).y = pfVar3[1];
-                  (pPVar1->pos).z = pfVar3[2];
+                  (pPVar1->pos).x = pVVar2->x;
+                  (pPVar1->pos).y = pVVar2->y;
+                  (pPVar1->pos).z = pVVar2->z;
                   Player::Motion_42dfc0(this->players[(int)local_30]);
                 }
               }
               else {
-                fVar4 = thunk_FUN_004199d4((int)this,1.57,this->players[(int)local_30]->yaw,5.0);
-                this->players[(int)local_30]->yaw = (float)fVar4;
-                pfVar3 = thunk_FUN_00419ae5(this,local_5c4,(int)local_30);
+                fVar5 = RotateToward(this,1.57,this->players[(int)local_30]->yaw,5.0);
+                this->players[(int)local_30]->yaw = fVar5;
+                pVVar2 = CalcStep(this,&local_5c4,(int)local_30);
                 pPVar1 = this->players[(int)local_30];
-                (pPVar1->pos).x = *pfVar3;
-                (pPVar1->pos).y = pfVar3[1];
-                (pPVar1->pos).z = pfVar3[2];
+                (pPVar1->pos).x = pVVar2->x;
+                (pPVar1->pos).y = pVVar2->y;
+                (pPVar1->pos).z = pVVar2->z;
                 Player::Motion_42dfc0(this->players[(int)local_30]);
               }
             }
             else {
-              fVar4 = thunk_FUN_004199d4((int)this,-1.57,this->players[(int)local_30]->yaw,5.0);
-              this->players[(int)local_30]->yaw = (float)fVar4;
-              pfVar3 = thunk_FUN_00419ae5(this,local_5b8,(int)local_30);
+              fVar5 = RotateToward(this,-1.57,this->players[(int)local_30]->yaw,5.0);
+              this->players[(int)local_30]->yaw = fVar5;
+              pVVar2 = CalcStep(this,&local_5b8,(int)local_30);
               pPVar1 = this->players[(int)local_30];
-              (pPVar1->pos).x = *pfVar3;
-              (pPVar1->pos).y = pfVar3[1];
-              (pPVar1->pos).z = pfVar3[2];
+              (pPVar1->pos).x = pVVar2->x;
+              (pPVar1->pos).y = pVVar2->y;
+              (pPVar1->pos).z = pVVar2->z;
               Player::Motion_42dfc0(this->players[(int)local_30]);
             }
           }
           else {
-            fVar4 = thunk_FUN_004199d4((int)this,3.14,this->players[(int)local_30]->yaw,5.0);
-            this->players[(int)local_30]->yaw = (float)fVar4;
-            pfVar3 = thunk_FUN_00419ae5(this,local_5ac,(int)local_30);
+            fVar5 = RotateToward(this,3.14,this->players[(int)local_30]->yaw,5.0);
+            this->players[(int)local_30]->yaw = fVar5;
+            pVVar2 = CalcStep(this,&local_5ac,(int)local_30);
             pPVar1 = this->players[(int)local_30];
-            (pPVar1->pos).x = *pfVar3;
-            (pPVar1->pos).y = pfVar3[1];
-            (pPVar1->pos).z = pfVar3[2];
+            (pPVar1->pos).x = pVVar2->x;
+            (pPVar1->pos).y = pVVar2->y;
+            (pPVar1->pos).z = pVVar2->z;
             Player::Motion_42dfc0(this->players[(int)local_30]);
           }
         }
         else {
-          fVar4 = thunk_FUN_004199d4((int)this,0.0,this->players[(int)local_30]->yaw,5.0);
-          this->players[(int)local_30]->yaw = (float)fVar4;
-          pfVar3 = thunk_FUN_00419ae5(this,local_5a0,(int)local_30);
+          fVar5 = RotateToward(this,0.0,this->players[(int)local_30]->yaw,5.0);
+          this->players[(int)local_30]->yaw = fVar5;
+          pVVar2 = CalcStep(this,&local_5a0,(int)local_30);
           pPVar1 = this->players[(int)local_30];
-          (pPVar1->pos).x = *pfVar3;
-          (pPVar1->pos).y = pfVar3[1];
-          (pPVar1->pos).z = pfVar3[2];
+          (pPVar1->pos).x = pVVar2->x;
+          (pPVar1->pos).y = pVVar2->y;
+          (pPVar1->pos).z = pVVar2->z;
           Player::Motion_42dfc0(this->players[(int)local_30]);
         }
       }
@@ -2006,114 +1996,114 @@ void __thiscall Game::State6(Game *this)
                   if (this->b3a6 == '\0') {
                     if (2.0 <= (this->players[(int)local_18]->pos).x -
                                (this->players[(int)local_2c]->pos).x) {
-                      fVar8 = 5.0;
-                      fVar7 = this->players[(int)local_2c]->yaw;
-                      fVar6 = Atan2((this->players[(int)local_2c]->pos).x - (this->v24c).x,
+                      fVar6 = 5.0;
+                      fVar5 = this->players[(int)local_2c]->yaw;
+                      fVar4 = Atan2((this->players[(int)local_2c]->pos).x - (this->v24c).x,
                                     (this->players[(int)local_2c]->pos).z - (this->v24c).z);
-                      fVar4 = thunk_FUN_004199d4((int)this,fVar6,fVar7,fVar8);
-                      this->players[(int)local_2c]->yaw = (float)fVar4;
-                      Player::Motion_42df38(this->players[(int)local_2c]);
+                      fVar5 = RotateToward(this,fVar4,fVar5,fVar6);
+                      this->players[(int)local_2c]->yaw = fVar5;
+                      Player::Motion_Stand(this->players[(int)local_2c]);
                     }
                     else {
-                      fVar8 = 5.0;
-                      fVar7 = this->players[(int)local_2c]->yaw;
-                      fVar6 = Atan2((this->players[(int)local_2c]->pos).x -
+                      fVar6 = 5.0;
+                      fVar5 = this->players[(int)local_2c]->yaw;
+                      fVar4 = Atan2((this->players[(int)local_2c]->pos).x -
                                     ((this->players[(int)local_18]->pos).x - 2.0),
                                     (this->players[(int)local_2c]->pos).z);
-                      fVar4 = thunk_FUN_004199d4((int)this,fVar6,fVar7,fVar8);
-                      this->players[(int)local_2c]->yaw = (float)fVar4;
-                      pfVar3 = thunk_FUN_00419ae5(this,local_660,(int)local_2c);
+                      fVar5 = RotateToward(this,fVar4,fVar5,fVar6);
+                      this->players[(int)local_2c]->yaw = fVar5;
+                      pVVar2 = CalcStep(this,&local_660,(int)local_2c);
                       pPVar1 = this->players[(int)local_2c];
-                      (pPVar1->pos).x = *pfVar3;
-                      (pPVar1->pos).y = pfVar3[1];
-                      (pPVar1->pos).z = pfVar3[2];
+                      (pPVar1->pos).x = pVVar2->x;
+                      (pPVar1->pos).y = pVVar2->y;
+                      (pPVar1->pos).z = pVVar2->z;
                       Player::Motion_42dfc0(this->players[(int)local_2c]);
                     }
                   }
                   else if ((this->players[(int)local_18]->pos).x -
                            (this->players[(int)local_2c]->pos).x <= -2.0) {
-                    fVar8 = 5.0;
-                    fVar7 = this->players[(int)local_2c]->yaw;
-                    fVar6 = Atan2((this->players[(int)local_2c]->pos).x - (this->v24c).x,
+                    fVar6 = 5.0;
+                    fVar5 = this->players[(int)local_2c]->yaw;
+                    fVar4 = Atan2((this->players[(int)local_2c]->pos).x - (this->v24c).x,
                                   (this->players[(int)local_2c]->pos).z - (this->v24c).z);
-                    fVar4 = thunk_FUN_004199d4((int)this,fVar6,fVar7,fVar8);
-                    this->players[(int)local_2c]->yaw = (float)fVar4;
-                    Player::Motion_42df38(this->players[(int)local_2c]);
+                    fVar5 = RotateToward(this,fVar4,fVar5,fVar6);
+                    this->players[(int)local_2c]->yaw = fVar5;
+                    Player::Motion_Stand(this->players[(int)local_2c]);
                   }
                   else {
-                    fVar8 = 5.0;
-                    fVar7 = this->players[(int)local_2c]->yaw;
-                    fVar6 = Atan2((this->players[(int)local_2c]->pos).x -
+                    fVar6 = 5.0;
+                    fVar5 = this->players[(int)local_2c]->yaw;
+                    fVar4 = Atan2((this->players[(int)local_2c]->pos).x -
                                   ((this->players[(int)local_18]->pos).x + 2.0),
                                   (this->players[(int)local_2c]->pos).z);
-                    fVar4 = thunk_FUN_004199d4((int)this,fVar6,fVar7,fVar8);
-                    this->players[(int)local_2c]->yaw = (float)fVar4;
-                    pfVar3 = thunk_FUN_00419ae5(this,local_654,(int)local_2c);
+                    fVar5 = RotateToward(this,fVar4,fVar5,fVar6);
+                    this->players[(int)local_2c]->yaw = fVar5;
+                    pVVar2 = CalcStep(this,&local_654,(int)local_2c);
                     pPVar1 = this->players[(int)local_2c];
-                    (pPVar1->pos).x = *pfVar3;
-                    (pPVar1->pos).y = pfVar3[1];
-                    (pPVar1->pos).z = pfVar3[2];
+                    (pPVar1->pos).x = pVVar2->x;
+                    (pPVar1->pos).y = pVVar2->y;
+                    (pPVar1->pos).z = pVVar2->z;
                     Player::Motion_42dfc0(this->players[(int)local_2c]);
                   }
                 }
                 else {
-                  fVar6 = 5.0 / this->f400;
-                  fVar7 = this->players[(int)local_2c]->yaw;
-                  fVar8 = Atan2((this->players[(int)local_2c]->pos).x -
+                  fVar4 = 5.0 / this->f400;
+                  fVar5 = this->players[(int)local_2c]->yaw;
+                  fVar6 = Atan2((this->players[(int)local_2c]->pos).x -
                                 ((this->players[(int)local_18]->pos).x + (this->v24c).x) / 2.0,
                                 (this->players[(int)local_2c]->pos).z -
                                 ((this->players[(int)local_18]->pos).z + (this->v24c).z) / 2.0);
-                  fVar4 = thunk_FUN_004199d4((int)this,fVar8,fVar7,fVar6);
-                  this->players[(int)local_2c]->yaw = (float)fVar4;
-                  pfVar3 = thunk_FUN_00419ae5(this,local_66c,(int)local_2c);
+                  fVar5 = RotateToward(this,fVar6,fVar5,fVar4);
+                  this->players[(int)local_2c]->yaw = fVar5;
+                  pVVar2 = CalcStep(this,&local_66c,(int)local_2c);
                   pPVar1 = this->players[(int)local_2c];
-                  (pPVar1->pos).x = *pfVar3;
-                  (pPVar1->pos).y = pfVar3[1];
-                  (pPVar1->pos).z = pfVar3[2];
+                  (pPVar1->pos).x = pVVar2->x;
+                  (pPVar1->pos).y = pVVar2->y;
+                  (pPVar1->pos).z = pVVar2->z;
                   Player::Motion_42dfc0(this->players[(int)local_2c]);
                 }
               }
               else {
-                fVar4 = thunk_FUN_004199d4((int)this,1.57,this->players[(int)local_2c]->yaw,5.0);
-                this->players[(int)local_2c]->yaw = (float)fVar4;
-                pfVar3 = thunk_FUN_00419ae5(this,local_648,(int)local_2c);
+                fVar5 = RotateToward(this,1.57,this->players[(int)local_2c]->yaw,5.0);
+                this->players[(int)local_2c]->yaw = fVar5;
+                pVVar2 = CalcStep(this,&local_648,(int)local_2c);
                 pPVar1 = this->players[(int)local_2c];
-                (pPVar1->pos).x = *pfVar3;
-                (pPVar1->pos).y = pfVar3[1];
-                (pPVar1->pos).z = pfVar3[2];
+                (pPVar1->pos).x = pVVar2->x;
+                (pPVar1->pos).y = pVVar2->y;
+                (pPVar1->pos).z = pVVar2->z;
                 Player::Motion_42dfc0(this->players[(int)local_2c]);
               }
             }
             else {
-              fVar4 = thunk_FUN_004199d4((int)this,-1.57,this->players[(int)local_2c]->yaw,5.0);
-              this->players[(int)local_2c]->yaw = (float)fVar4;
-              pfVar3 = thunk_FUN_00419ae5(this,local_63c,(int)local_2c);
+              fVar5 = RotateToward(this,-1.57,this->players[(int)local_2c]->yaw,5.0);
+              this->players[(int)local_2c]->yaw = fVar5;
+              pVVar2 = CalcStep(this,&local_63c,(int)local_2c);
               pPVar1 = this->players[(int)local_2c];
-              (pPVar1->pos).x = *pfVar3;
-              (pPVar1->pos).y = pfVar3[1];
-              (pPVar1->pos).z = pfVar3[2];
+              (pPVar1->pos).x = pVVar2->x;
+              (pPVar1->pos).y = pVVar2->y;
+              (pPVar1->pos).z = pVVar2->z;
               Player::Motion_42dfc0(this->players[(int)local_2c]);
             }
           }
           else {
-            fVar4 = thunk_FUN_004199d4((int)this,3.14,this->players[(int)local_2c]->yaw,5.0);
-            this->players[(int)local_2c]->yaw = (float)fVar4;
-            pfVar3 = thunk_FUN_00419ae5(this,local_630,(int)local_2c);
+            fVar5 = RotateToward(this,3.14,this->players[(int)local_2c]->yaw,5.0);
+            this->players[(int)local_2c]->yaw = fVar5;
+            pVVar2 = CalcStep(this,&local_630,(int)local_2c);
             pPVar1 = this->players[(int)local_2c];
-            (pPVar1->pos).x = *pfVar3;
-            (pPVar1->pos).y = pfVar3[1];
-            (pPVar1->pos).z = pfVar3[2];
+            (pPVar1->pos).x = pVVar2->x;
+            (pPVar1->pos).y = pVVar2->y;
+            (pPVar1->pos).z = pVVar2->z;
             Player::Motion_42dfc0(this->players[(int)local_2c]);
           }
         }
         else {
-          fVar4 = thunk_FUN_004199d4((int)this,0.0,this->players[(int)local_2c]->yaw,5.0);
-          this->players[(int)local_2c]->yaw = (float)fVar4;
-          pfVar3 = thunk_FUN_00419ae5(this,local_624,(int)local_2c);
+          fVar5 = RotateToward(this,0.0,this->players[(int)local_2c]->yaw,5.0);
+          this->players[(int)local_2c]->yaw = fVar5;
+          pVVar2 = CalcStep(this,&local_624,(int)local_2c);
           pPVar1 = this->players[(int)local_2c];
-          (pPVar1->pos).x = *pfVar3;
-          (pPVar1->pos).y = pfVar3[1];
-          (pPVar1->pos).z = pfVar3[2];
+          (pPVar1->pos).x = pVVar2->x;
+          (pPVar1->pos).y = pVVar2->y;
+          (pPVar1->pos).z = pVVar2->z;
           Player::Motion_42dfc0(this->players[(int)local_2c]);
         }
       }
@@ -2133,7 +2123,7 @@ void __thiscall Game::State6(Game *this)
             this->players[(int)local_20]->i190 = 0xf;
             this->players[(int)local_20]->f198 = 0.0;
             (this->players[(int)local_20]->pos).y = 0.0;
-            Player::Motion_42df38(this->players[(int)local_20]);
+            Player::Motion_Stand(this->players[(int)local_20]);
             Sound::Play(this->sound,2);
             this->f260 = this->players[(int)local_20]->yaw - 3.14;
             this->f25c = 14.0;
@@ -2145,16 +2135,16 @@ void __thiscall Game::State6(Game *this)
           }
           else {
             pPVar1 = this->players[(int)local_20];
-            fVar7 = sinf((float)this);
+            fVar5 = sinf((float)this);
             (this->players[(int)local_20]->pos).x =
-                 (pPVar1->pos).x - fVar7 * this->players[(int)local_20]->stat168 * 0.6 * this->dt;
+                 (pPVar1->pos).x - fVar5 * this->players[(int)local_20]->stat168 * 0.6 * this->dt;
             (this->players[(int)local_20]->pos).y =
                  this->players[(int)local_20]->f18c * this->dt +
                  (this->players[(int)local_20]->pos).y;
             pPVar1 = this->players[(int)local_20];
-            fVar7 = cosf((float)this);
+            fVar5 = cosf((float)this);
             (this->players[(int)local_20]->pos).z =
-                 (pPVar1->pos).z - fVar7 * this->players[(int)local_20]->stat168 * 0.6 * this->dt;
+                 (pPVar1->pos).z - fVar5 * this->players[(int)local_20]->stat168 * 0.6 * this->dt;
           }
         }
       }
@@ -2163,7 +2153,7 @@ void __thiscall Game::State6(Game *this)
         if (0.8 < this->players[(int)local_20]->f198) {
           this->players[(int)local_20]->i190 = 7;
           this->players[(int)local_20]->f198 = 0.0;
-          Player::Motion_42df38(this->players[(int)local_20]);
+          Player::Motion_Stand(this->players[(int)local_20]);
         }
       }
       else if (this->players[(int)local_20]->i190 == 10) {
@@ -2171,7 +2161,7 @@ void __thiscall Game::State6(Game *this)
         if (0.8 < this->players[(int)local_20]->f198) {
           this->players[(int)local_20]->i190 = 0xf;
           this->players[(int)local_20]->f198 = 0.0;
-          Player::Motion_42df38(this->players[(int)local_20]);
+          Player::Motion_Stand(this->players[(int)local_20]);
         }
       }
       else if (this->players[(int)local_20]->i190 == 0xb) {
@@ -2179,7 +2169,7 @@ void __thiscall Game::State6(Game *this)
         if (0.8 < this->players[(int)local_20]->f198) {
           this->players[(int)local_20]->i190 = 0xf;
           this->players[(int)local_20]->f198 = 0.0;
-          Player::Motion_42df38(this->players[(int)local_20]);
+          Player::Motion_Stand(this->players[(int)local_20]);
           this->i3b8 = 1;
         }
       }
@@ -2233,14 +2223,14 @@ void __thiscall Game::State6(Game *this)
         local_5c = -1.3;
         local_60 = -0.8;
       }
-      fVar7 = cosf((float)this);
-      fVar7 = fVar7 * local_5c;
-      fVar6 = sinf((float)this->i268);
-      (this->v24c).x = (fVar7 - fVar6 * local_60) + (this->players[this->i268]->pos).x;
-      fVar7 = sinf((float)this->i268);
-      fVar7 = fVar7 * local_5c;
-      fVar6 = cosf((float)this->players[this->i268]);
-      (this->v24c).z = fVar6 * local_60 + fVar7 + (this->players[this->i268]->pos).z;
+      fVar5 = cosf((float)this);
+      fVar5 = fVar5 * local_5c;
+      fVar4 = sinf((float)this->i268);
+      (this->v24c).x = (fVar5 - fVar4 * local_60) + (this->players[this->i268]->pos).x;
+      fVar5 = sinf((float)this->i268);
+      fVar5 = fVar5 * local_5c;
+      fVar4 = cosf((float)this->players[this->i268]);
+      (this->v24c).z = fVar4 * local_60 + fVar5 + (this->players[this->i268]->pos).z;
       if (this->players[this->i268]->i190 == 3) {
         (this->v24c).y = 3.5;
       }
@@ -2280,11 +2270,11 @@ void __thiscall Game::State6(Game *this)
     }
     if (this->i3b8 == 2) {
       pPVar1 = this->players[this->i3fc];
-      fVar7 = sinf((float)this->players[this->i3fc]);
-      (this->camPos).x = (pPVar1->pos).x - fVar7 * 8.0;
+      fVar5 = sinf((float)this->players[this->i3fc]);
+      (this->camPos).x = (pPVar1->pos).x - fVar5 * 8.0;
       pPVar1 = this->players[this->i3fc];
-      fVar7 = cosf((float)this->i3fc);
-      (this->camPos).z = fVar7 * 8.0 + (pPVar1->pos).z;
+      fVar5 = cosf((float)this->i3fc);
+      (this->camPos).z = fVar5 * 8.0 + (pPVar1->pos).z;
       (this->camPos).y = this->players[this->i3fc]->stat170 * 1.8;
       (this->camDir).x = (this->players[this->i3fc]->pos).x - (this->camPos).x;
       (this->camDir).y = 0.0;
@@ -2344,8 +2334,8 @@ void __thiscall Game::State6(Game *this)
       else {
         this->i3ac = 2;
         if (0.0001 < this->f3a0) {
-          lVar5 = __ftol();
-          this->i39c = (int)lVar5;
+          lVar3 = __ftol();
+          this->i39c = (int)lVar3;
         }
       }
     }
@@ -2367,11 +2357,11 @@ void __thiscall Game::State6(Game *this)
         Sound::Play(this->sound,0);
         for (local_3c = 0; local_3c < 6; local_3c = local_3c + 1) {
           this->players[local_3c]->i190 = 7;
-          Player::Motion_42df38(this->players[local_3c]);
+          Player::Motion_Stand(this->players[local_3c]);
         }
       }
       else {
-        fn_42b0bb(this);
+        LoadSoundSet(this,0);
         Sound::Play(this->sound,6);
       }
     }

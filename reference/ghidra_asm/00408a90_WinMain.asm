@@ -8,7 +8,7 @@
 00408aa8  SUB ESP,0x34
 00408aab  PUSH 0x4531f8
 00408ab0  PUSH 0x4531fc {'WAV\\fly.wav'}
-00408ab5  CALL 0x00434050
+00408ab5  CALL 0x00434050  ; fopen
 00408aba  ADD ESP,0x8
 00408abd  MOV dword ptr [EBP + -0x34],EAX
 00408ac0  CMP dword ptr [EBP + -0x34],0x0
@@ -17,17 +17,17 @@
 00408ac8  PUSH 0x453208 {'basket.exe'}
 00408acd  PUSH 0x453214 {'”basket.exe”、および”basketフォルダ”を\n”ひぐらしのなく頃に”のフォルダ内に移動してから実行してください'}
 00408ad2  PUSH 0x0
-00408ad4  CALL dword ptr [0x0045a644] {370682}
+00408ad4  CALL dword ptr [0x0045a644] {370682}  ; USER32.DLL::MessageBoxA
 00408ada  PUSH 0x0
-00408adc  CALL 0x00434b80
+00408adc  CALL 0x00434b80  ; FUN_00434b80
 00408ae1  ADD ESP,0x4
 00408ae4  MOV EAX,dword ptr [EBP + -0x34]
 00408ae7  PUSH EAX
-00408ae8  CALL 0x00433e80
+00408ae8  CALL 0x00433e80  ; fclose
 00408aed  ADD ESP,0x4
 00408af0  PUSH 0x453280
 00408af5  PUSH 0x453284 {'basket\\mion.osm'}
-00408afa  CALL 0x00434050
+00408afa  CALL 0x00434050  ; fopen
 00408aff  ADD ESP,0x8
 00408b02  MOV dword ptr [EBP + -0x34],EAX
 00408b05  CMP dword ptr [EBP + -0x34],0x0
@@ -36,23 +36,23 @@
 00408b0d  PUSH 0x453294 {'basket.exe'}
 00408b12  PUSH 0x4532a0 {'”basket.exe”、および”basketフォルダ”を\n”ひぐらしのなく頃に”のフォルダ内に移動してから実行してください'}
 00408b17  PUSH 0x0
-00408b19  CALL dword ptr [0x0045a644] {370682}
+00408b19  CALL dword ptr [0x0045a644] {370682}  ; USER32.DLL::MessageBoxA
 00408b1f  PUSH 0x0
-00408b21  CALL 0x00434b80
+00408b21  CALL 0x00434b80  ; FUN_00434b80
 00408b26  ADD ESP,0x4
 00408b29  MOV ECX,dword ptr [EBP + -0x34]
 00408b2c  PUSH ECX
-00408b2d  CALL 0x00433e80
+00408b2d  CALL 0x00433e80  ; fclose
 00408b32  ADD ESP,0x4
 00408b35  PUSH 0x420
-00408b3a  CALL 0x00434250
+00408b3a  CALL 0x00434250  ; operator_new
 00408b3f  ADD ESP,0x4
 00408b42  MOV dword ptr [EBP + -0x38],EAX
 00408b45  MOV dword ptr [EBP + -0x4],0x0
 00408b4c  CMP dword ptr [EBP + -0x38],0x0
 00408b50  JZ 0x00408b5f
 00408b52  MOV ECX,dword ptr [EBP + -0x38]
-00408b55  CALL 0x0040120d
+00408b55  CALL 0x0040120d  ; Game::Ctor
 00408b5a  MOV dword ptr [EBP + -0x40],EAX
 00408b5d  JMP 0x00408b66
 00408b5f  MOV dword ptr [EBP + -0x40],0x0
@@ -66,25 +66,25 @@
 00408b7d  MOV EDX,dword ptr [EBP + 0x8]
 00408b80  PUSH EDX
 00408b81  MOV ECX,dword ptr [EBP + -0x14]
-00408b84  CALL 0x00401352
+00408b84  CALL 0x00401352  ; Game::Create
 00408b89  AND EAX,0xff
 00408b8e  TEST EAX,EAX
 00408b90  JNZ 0x00408ba1
 00408b92  MOV ECX,dword ptr [EBP + -0x14]
-00408b95  CALL 0x004011ea
+00408b95  CALL 0x004011ea  ; Game::Cleanup
 00408b9a  XOR EAX,EAX
 00408b9c  JMP 0x00408c69
 00408ba1  MOV ECX,dword ptr [EBP + -0x14]
-00408ba4  CALL 0x0040132a
+00408ba4  CALL 0x0040132a  ; Game::InitGame
 00408ba9  PUSH 0x0
-00408bab  CALL dword ptr [0x0045a678] {370882}
+00408bab  CALL dword ptr [0x0045a678] {370882}  ; USER32.DLL::ShowCursor
 00408bb1  PUSH 0x0
 00408bb3  PUSH 0x0
 00408bb5  PUSH 0x0
 00408bb7  PUSH 0x0
 00408bb9  LEA EAX,[EBP + -0x30]
 00408bbc  PUSH EAX
-00408bbd  CALL dword ptr [0x0045a674] {370866}
+00408bbd  CALL dword ptr [0x0045a674] {370866}  ; USER32.DLL::PeekMessageA
 00408bc3  XOR ECX,ECX
 00408bc5  CMP dword ptr [EBP + -0x2c],0x12
 00408bc9  SETNZ CL
@@ -103,23 +103,23 @@
 00408be8  PUSH 0x0
 00408bea  LEA ECX,[EBP + -0x30]
 00408bed  PUSH ECX
-00408bee  CALL dword ptr [0x0045a674] {370866}
+00408bee  CALL dword ptr [0x0045a674] {370866}  ; USER32.DLL::PeekMessageA
 00408bf4  MOV dword ptr [EBP + -0x10],EAX
 00408bf7  CMP dword ptr [EBP + -0x10],0x0
 00408bfb  JZ 0x00408c13
 00408bfd  LEA EDX,[EBP + -0x30]
 00408c00  PUSH EDX
-00408c01  CALL dword ptr [0x0045a664] {370846}
+00408c01  CALL dword ptr [0x0045a664] {370846}  ; USER32.DLL::TranslateMessage
 00408c07  LEA EAX,[EBP + -0x30]
 00408c0a  PUSH EAX
-00408c0b  CALL dword ptr [0x0045a66c] {370826}
+00408c0b  CALL dword ptr [0x0045a66c] {370826}  ; USER32.DLL::DispatchMessageA
 00408c11  JMP 0x00408c49
 00408c13  MOV ECX,dword ptr [EBP + -0x14]
-00408c16  CALL 0x00401041
+00408c16  CALL 0x00401041  ; Game::UpdateTimer
 00408c1b  MOV ECX,dword ptr [EBP + -0x14]
-00408c1e  CALL 0x004012a8
+00408c1e  CALL 0x004012a8  ; Game::UpdateInput
 00408c23  MOV ECX,dword ptr [EBP + -0x14]
-00408c26  CALL 0x004010e1
+00408c26  CALL 0x004010e1  ; Game::Frame
 00408c2b  MOV ECX,dword ptr [EBP + -0x14]
 00408c2e  MOV EDX,dword ptr [0x004581dc] {None}
 00408c34  MOV dword ptr [ECX + 0xb4],EDX
@@ -128,11 +128,11 @@
 00408c43  MOV dword ptr [EAX + 0xb8],ECX
 00408c49  JMP 0x00408bc3
 00408c4e  MOV ECX,dword ptr [EBP + -0x14]
-00408c51  CALL 0x004011cc
+00408c51  CALL 0x004011cc  ; Game::ShutdownGame
 00408c56  MOV ECX,dword ptr [EBP + -0x14]
-00408c59  CALL 0x004011ea
+00408c59  CALL 0x004011ea  ; Game::Cleanup
 00408c5e  PUSH 0x1
-00408c60  CALL dword ptr [0x0045a678] {370882}
+00408c60  CALL dword ptr [0x0045a678] {370882}  ; USER32.DLL::ShowCursor
 00408c66  MOV EAX,dword ptr [EBP + -0x28]
 00408c69  MOV ECX,dword ptr [EBP + -0xc]
 00408c6c  MOV dword ptr FS:[0x0],ECX

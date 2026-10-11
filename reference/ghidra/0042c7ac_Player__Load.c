@@ -57,7 +57,7 @@ void __thiscall Player::Load(Player *this,IDirect3DDevice7 *dev,int charId)
     this->stat180 = 5.3;
     break;
   case 3:
-    sprintf(local_114,(byte *)s_satoko_004543e8);
+    sprintf(local_114,s_satoko_004543e8);
     this->stat168 = 10.5;
     this->stat16c = 13.0;
     this->stat170 = 3.1;
@@ -97,7 +97,7 @@ void __thiscall Player::Load(Player *this,IDirect3DDevice7 *dev,int charId)
   local_8 = 0xffffffff;
   this->model = local_138;
   SkinModel::Load(this->model,local_114);
-  sprintf(this->texName,(byte *)s_basket__s_tga_00454400);
+  sprintf(this->texName,s_basket__s_tga_00454400,local_114);
   D3DTextr_CreateTextureFromFile(this->texName,0,0);
   pMVar5 = operator_new(0x78);
   this->keys = pMVar5;
@@ -140,7 +140,7 @@ void __thiscall Player::Load(Player *this,IDirect3DDevice7 *dev,int charId)
   (this->model->bones->rot).y = this->yaw;
   (this->model->bones->rot).x = 0.0;
   (this->model->bones->rot).z = 0.0;
-  Motion_42df38(this);
+  Motion_Stand(this);
   _memset(&this->mtl,0,0x44);
   (this->mtl).diffuse.r = 0.8;
   (this->mtl).diffuse.g = 0.8;

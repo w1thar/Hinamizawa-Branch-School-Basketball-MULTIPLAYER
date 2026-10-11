@@ -110,14 +110,14 @@
 00429bc0  MOV EDX,dword ptr [EBP + -0x4c]
 00429bc3  MOV dword ptr [EDX + 0x41c],0x0
 00429bcd  PUSH 0x4c
-00429bcf  CALL 0x00434250
+00429bcf  CALL 0x00434250  ; operator_new
 00429bd4  ADD ESP,0x4
 00429bd7  MOV dword ptr [EBP + -0x14],EAX
 00429bda  MOV dword ptr [EBP + -0x4],0x0
 00429be1  CMP dword ptr [EBP + -0x14],0x0
 00429be5  JZ 0x00429bf4
 00429be7  MOV ECX,dword ptr [EBP + -0x14]
-00429bea  CALL 0x0040129e
+00429bea  CALL 0x0040129e  ; Sound::Ctor
 00429bef  MOV dword ptr [EBP + -0x50],EAX
 00429bf2  JMP 0x00429bfb
 00429bf4  MOV dword ptr [EBP + -0x50],0x0
@@ -167,32 +167,32 @@
 00429c71  PUSH 0x0
 00429c73  PUSH 0x0
 00429c75  PUSH 0x4541ac {'basket\\clouds.bmp'}
-00429c7a  CALL 0x004012d5
+00429c7a  CALL 0x004012d5  ; D3DTextr_CreateTextureFromFile
 00429c7f  ADD ESP,0xc
 00429c82  PUSH 0x0
 00429c84  PUSH 0x0
 00429c86  PUSH 0x4541c0 {'basket\\cloud2.bmp'}
-00429c8b  CALL 0x004012d5
+00429c8b  CALL 0x004012d5  ; D3DTextr_CreateTextureFromFile
 00429c90  ADD ESP,0xc
 00429c93  PUSH 0x0
 00429c95  PUSH 0x0
 00429c97  PUSH 0x4541d4 {'basket\\court.tga'}
-00429c9c  CALL 0x004012d5
+00429c9c  CALL 0x004012d5  ; D3DTextr_CreateTextureFromFile
 00429ca1  ADD ESP,0xc
 00429ca4  PUSH 0x0
 00429ca6  PUSH 0x0
 00429ca8  PUSH 0x4541e8 {'basket\\efect.tga'}
-00429cad  CALL 0x004012d5
+00429cad  CALL 0x004012d5  ; D3DTextr_CreateTextureFromFile
 00429cb2  ADD ESP,0xc
 00429cb5  PUSH 0x24
-00429cb7  CALL 0x00434250
+00429cb7  CALL 0x00434250  ; operator_new
 00429cbc  ADD ESP,0x4
 00429cbf  MOV dword ptr [EBP + -0x1c],EAX
 00429cc2  MOV dword ptr [EBP + -0x4],0x1
 00429cc9  CMP dword ptr [EBP + -0x1c],0x0
 00429ccd  JZ 0x00429cdc
 00429ccf  MOV ECX,dword ptr [EBP + -0x1c]
-00429cd2  CALL 0x004011c7
+00429cd2  CALL 0x004011c7  ; StaticMesh::Ctor
 00429cd7  MOV dword ptr [EBP + -0x54],EAX
 00429cda  JMP 0x00429ce3
 00429cdc  MOV dword ptr [EBP + -0x54],0x0
@@ -205,20 +205,20 @@
 00429cfc  PUSH 0x4541fc {'basket\\court.x'}
 00429d01  MOV EAX,dword ptr [EBP + -0x4c]
 00429d04  MOV ECX,dword ptr [EAX + 0xc4]
-00429d0a  CALL 0x00401398
+00429d0a  CALL 0x00401398  ; StaticMesh::Load
 00429d0f  PUSH 0x40200000
 00429d14  MOV ECX,dword ptr [EBP + -0x4c]
 00429d17  MOV ECX,dword ptr [ECX + 0xc4]
-00429d1d  CALL 0x004011ef
+00429d1d  CALL 0x004011ef  ; StaticMesh::Scale
 00429d22  PUSH 0x24
-00429d24  CALL 0x00434250
+00429d24  CALL 0x00434250  ; operator_new
 00429d29  ADD ESP,0x4
 00429d2c  MOV dword ptr [EBP + -0x24],EAX
 00429d2f  MOV dword ptr [EBP + -0x4],0x2
 00429d36  CMP dword ptr [EBP + -0x24],0x0
 00429d3a  JZ 0x00429d49
 00429d3c  MOV ECX,dword ptr [EBP + -0x24]
-00429d3f  CALL 0x004011c7
+00429d3f  CALL 0x004011c7  ; StaticMesh::Ctor
 00429d44  MOV dword ptr [EBP + -0x58],EAX
 00429d47  JMP 0x00429d50
 00429d49  MOV dword ptr [EBP + -0x58],0x0
@@ -231,20 +231,20 @@
 00429d69  PUSH 0x45420c {'basket\\build.x'}
 00429d6e  MOV EDX,dword ptr [EBP + -0x4c]
 00429d71  MOV ECX,dword ptr [EDX + 0xc8]
-00429d77  CALL 0x00401398
+00429d77  CALL 0x00401398  ; StaticMesh::Load
 00429d7c  PUSH 0x40200000
 00429d81  MOV EAX,dword ptr [EBP + -0x4c]
 00429d84  MOV ECX,dword ptr [EAX + 0xc8]
-00429d8a  CALL 0x004011ef
+00429d8a  CALL 0x004011ef  ; StaticMesh::Scale
 00429d8f  PUSH 0x24
-00429d91  CALL 0x00434250
+00429d91  CALL 0x00434250  ; operator_new
 00429d96  ADD ESP,0x4
 00429d99  MOV dword ptr [EBP + -0x2c],EAX
 00429d9c  MOV dword ptr [EBP + -0x4],0x3
 00429da3  CMP dword ptr [EBP + -0x2c],0x0
 00429da7  JZ 0x00429db6
 00429da9  MOV ECX,dword ptr [EBP + -0x2c]
-00429dac  CALL 0x004011c7
+00429dac  CALL 0x004011c7  ; StaticMesh::Ctor
 00429db1  MOV dword ptr [EBP + -0x5c],EAX
 00429db4  JMP 0x00429dbd
 00429db6  MOV dword ptr [EBP + -0x5c],0x0
@@ -257,20 +257,20 @@
 00429dd6  PUSH 0x45421c {'basket\\goal.x'}
 00429ddb  MOV ECX,dword ptr [EBP + -0x4c]
 00429dde  MOV ECX,dword ptr [ECX + 0xcc]
-00429de4  CALL 0x00401398
+00429de4  CALL 0x00401398  ; StaticMesh::Load
 00429de9  PUSH 0x40200000
 00429dee  MOV EDX,dword ptr [EBP + -0x4c]
 00429df1  MOV ECX,dword ptr [EDX + 0xcc]
-00429df7  CALL 0x004011ef
+00429df7  CALL 0x004011ef  ; StaticMesh::Scale
 00429dfc  PUSH 0x24
-00429dfe  CALL 0x00434250
+00429dfe  CALL 0x00434250  ; operator_new
 00429e03  ADD ESP,0x4
 00429e06  MOV dword ptr [EBP + -0x34],EAX
 00429e09  MOV dword ptr [EBP + -0x4],0x4
 00429e10  CMP dword ptr [EBP + -0x34],0x0
 00429e14  JZ 0x00429e23
 00429e16  MOV ECX,dword ptr [EBP + -0x34]
-00429e19  CALL 0x004011c7
+00429e19  CALL 0x004011c7  ; StaticMesh::Ctor
 00429e1e  MOV dword ptr [EBP + -0x60],EAX
 00429e21  JMP 0x00429e2a
 00429e23  MOV dword ptr [EBP + -0x60],0x0
@@ -283,20 +283,20 @@
 00429e43  PUSH 0x45422c {'basket\\ball.x'}
 00429e48  MOV EAX,dword ptr [EBP + -0x4c]
 00429e4b  MOV ECX,dword ptr [EAX + 0xd0]
-00429e51  CALL 0x00401398
+00429e51  CALL 0x00401398  ; StaticMesh::Load
 00429e56  PUSH 0x40200000
 00429e5b  MOV ECX,dword ptr [EBP + -0x4c]
 00429e5e  MOV ECX,dword ptr [ECX + 0xd0]
-00429e64  CALL 0x004011ef
+00429e64  CALL 0x004011ef  ; StaticMesh::Scale
 00429e69  PUSH 0x24
-00429e6b  CALL 0x00434250
+00429e6b  CALL 0x00434250  ; operator_new
 00429e70  ADD ESP,0x4
 00429e73  MOV dword ptr [EBP + -0x3c],EAX
 00429e76  MOV dword ptr [EBP + -0x4],0x5
 00429e7d  CMP dword ptr [EBP + -0x3c],0x0
 00429e81  JZ 0x00429e90
 00429e83  MOV ECX,dword ptr [EBP + -0x3c]
-00429e86  CALL 0x004011c7
+00429e86  CALL 0x004011c7  ; StaticMesh::Ctor
 00429e8b  MOV dword ptr [EBP + -0x64],EAX
 00429e8e  JMP 0x00429e97
 00429e90  MOV dword ptr [EBP + -0x64],0x0
@@ -309,11 +309,11 @@
 00429eb0  PUSH 0x45423c {'basket\\corn.x'}
 00429eb5  MOV EDX,dword ptr [EBP + -0x4c]
 00429eb8  MOV ECX,dword ptr [EDX + 0xd4]
-00429ebe  CALL 0x00401398
+00429ebe  CALL 0x00401398  ; StaticMesh::Load
 00429ec3  PUSH 0x40200000
 00429ec8  MOV EAX,dword ptr [EBP + -0x4c]
 00429ecb  MOV ECX,dword ptr [EAX + 0xd4]
-00429ed1  CALL 0x004011ef
+00429ed1  CALL 0x004011ef  ; StaticMesh::Scale
 00429ed6  MOV dword ptr [EBP + -0x10],0x0
 00429edd  JMP 0x00429ee8
 00429edf  MOV ECX,dword ptr [EBP + -0x10]
@@ -322,14 +322,14 @@
 00429ee8  CMP dword ptr [EBP + -0x10],0x6
 00429eec  JGE 0x00429f5b
 00429eee  PUSH 0x19c
-00429ef3  CALL 0x00434250
+00429ef3  CALL 0x00434250  ; operator_new
 00429ef8  ADD ESP,0x4
 00429efb  MOV dword ptr [EBP + -0x44],EAX
 00429efe  MOV dword ptr [EBP + -0x4],0x6
 00429f05  CMP dword ptr [EBP + -0x44],0x0
 00429f09  JZ 0x00429f18
 00429f0b  MOV ECX,dword ptr [EBP + -0x44]
-00429f0e  CALL 0x0040103c
+00429f0e  CALL 0x0040103c  ; Player::Ctor
 00429f13  MOV dword ptr [EBP + -0x68],EAX
 00429f16  JMP 0x00429f1f
 00429f18  MOV dword ptr [EBP + -0x68],0x0
@@ -348,17 +348,17 @@
 00429f47  MOV EAX,dword ptr [EBP + -0x10]
 00429f4a  MOV ECX,dword ptr [EBP + -0x4c]
 00429f4d  MOV ECX,dword ptr [ECX + EAX*0x4 + 0xd8]
-00429f54  CALL 0x004011fe
+00429f54  CALL 0x004011fe  ; Player::Load
 00429f59  JMP 0x00429edf
 00429f5b  PUSH 0x0
 00429f5d  MOV ECX,dword ptr [EBP + -0x4c]
-00429f60  CALL 0x0040117c
+00429f60  CALL 0x0040117c  ; Game::LoadSoundSet
 00429f65  PUSH 0x68
 00429f67  PUSH 0x0
 00429f69  MOV EDX,dword ptr [EBP + -0x4c]
 00429f6c  ADD EDX,0x134
 00429f72  PUSH EDX
-00429f73  CALL 0x00433440
+00429f73  CALL 0x00433440  ; _memset
 00429f78  ADD ESP,0xc
 00429f7b  MOV EAX,dword ptr [EBP + -0x4c]
 00429f7e  MOV dword ptr [EAX + 0x134],0x3
@@ -394,7 +394,7 @@
 0042a022  MOV dword ptr [EDX + 0x188],0x3f800000
 0042a02c  PUSH 0x47efffff
 0042a031  PUSH 0xe0000000
-0042a036  CALL 0x00433c84
+0042a036  CALL 0x00433c84  ; sqrt
 0042a03b  ADD ESP,0x8
 0042a03e  FST float ptr [EBP + -0x6c]
 0042a041  MOV EAX,dword ptr [EBP + -0x4c]
@@ -413,7 +413,7 @@
 0042a067  MOV ECX,dword ptr [EBP + -0x4c]
 0042a06a  ADD ECX,0xf0
 0042a070  PUSH ECX
-0042a071  CALL 0x00433440
+0042a071  CALL 0x00433440  ; _memset
 0042a076  ADD ESP,0xc
 0042a079  MOV EDX,dword ptr [EBP + -0x4c]
 0042a07c  MOV dword ptr [EDX + 0xf0],0x3f800000
@@ -492,7 +492,7 @@
 0042a239  MOV EDX,dword ptr [EBP + -0x4c]
 0042a23c  MOV EAX,dword ptr [EDX + 0x3c]
 0042a23f  PUSH EAX
-0042a240  CALL 0x00401186
+0042a240  CALL 0x00401186  ; D3DTextr_RestoreAllTextures
 0042a245  ADD ESP,0x4
 0042a248  MOV ECX,dword ptr [EBP + -0xc]
 0042a24b  MOV dword ptr FS:[0x0],ECX

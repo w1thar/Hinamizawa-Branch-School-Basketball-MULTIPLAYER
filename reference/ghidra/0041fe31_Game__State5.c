@@ -27,7 +27,7 @@ void __thiscall Game::State5(Game *this)
   this->f390 = this->f390 + this->dt;
   if (this->i3b8 == 5) {
     Sound::PlayMp3(this->sound);
-    fn_42b0bb(this);
+    LoadSoundSet(this,1);
     this->b398 = '\0';
     this->b3a5 = '\x01';
     this->b3a4 = '\x01';
@@ -47,11 +47,11 @@ void __thiscall Game::State5(Game *this)
     this->f41c = 0.0;
     for (local_8 = 0; local_8 < 6; local_8 = local_8 + 1) {
       this->players[local_8]->i190 = 0;
-      Player::Motion_42df38(this->players[local_8]);
-      Player::fn_42deb4(this->players[local_8]);
-      Player::fn_42de30(this->players[local_8]);
-      Player::fn_42ddac(this->players[local_8]);
-      Player::SetFace(this->players[local_8],0);
+      Player::Motion_Stand(this->players[local_8]);
+      Player::SetTex3(this->players[local_8],0);
+      Player::SetTex2(this->players[local_8],0);
+      Player::SetTex1(this->players[local_8],0);
+      Player::SetTex0(this->players[local_8],0);
     }
     if (this->b3a6 == '\0') {
       this->i3d8 = 0;
@@ -138,7 +138,7 @@ void __thiscall Game::State5(Game *this)
         }
         if (this->i3b8 == 3) {
           if ((this->players[this->slot[2]]->pos).y <= -0.001) {
-            Player::Motion_42df38(this->players[this->slot[2]]);
+            Player::Motion_Stand(this->players[this->slot[2]]);
             this->i3b8 = 2;
             (this->players[this->slot[2]]->pos).y = 0.0;
           }
@@ -179,8 +179,8 @@ void __thiscall Game::State5(Game *this)
             this->f258 = 8.0;
             this->i268 = -1;
             this->f3a0 = 0.0;
-            Player::Motion_42df38(this->players[this->slot[2]]);
-            Player::Motion_42df38(this->players[this->slot[5]]);
+            Player::Motion_Stand(this->players[this->slot[2]]);
+            Player::Motion_Stand(this->players[this->slot[5]]);
             (this->players[this->slot[2]]->pos).y = 0.0;
             (this->players[this->slot[5]]->pos).y = 0.0;
             this->players[this->slot[2]]->i190 = 0xf;
@@ -215,8 +215,8 @@ void __thiscall Game::State5(Game *this)
             this->f258 = 8.0;
             this->i268 = -1;
             this->f3a0 = 0.0;
-            Player::Motion_42df38(this->players[this->slot[2]]);
-            Player::Motion_42df38(this->players[this->slot[5]]);
+            Player::Motion_Stand(this->players[this->slot[2]]);
+            Player::Motion_Stand(this->players[this->slot[5]]);
             (this->players[this->slot[2]]->pos).y = 0.0;
             (this->players[this->slot[5]]->pos).y = 0.0;
             this->players[this->slot[2]]->i190 = 0xf;

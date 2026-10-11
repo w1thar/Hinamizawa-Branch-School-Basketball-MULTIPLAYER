@@ -16,7 +16,7 @@ void __thiscall Game::State8(Game *this)
         fVar2 = sqrtf((float)this->players[this->teamYou[local_8]]);
         if (fVar2 <= 0.5) {
           this->players[this->teamYou[local_8]]->yaw = 0.0;
-          Player::Motion_42df38(this->players[this->teamYou[local_8]]);
+          Player::Motion_Stand(this->players[this->teamYou[local_8]]);
           local_10 = local_10 + 1;
         }
         else {
@@ -39,7 +39,7 @@ void __thiscall Game::State8(Game *this)
         fVar2 = sqrtf((float)this);
         if (fVar2 <= 0.5) {
           this->players[*(int *)((int)this + (5 - local_8) * 4 + 0x3c0)]->yaw = 0.0;
-          Player::Motion_42df38(this->players[*(int *)((int)this + (5 - local_8) * 4 + 0x3c0)]);
+          Player::Motion_Stand(this->players[*(int *)((int)this + (5 - local_8) * 4 + 0x3c0)]);
           local_10 = local_10 + 1;
         }
         else {
@@ -97,8 +97,8 @@ void __thiscall Game::State8(Game *this)
       }
       else if (this->i3b8 == 6 && 4.0 < this->f390) {
         for (local_8 = 0; local_8 < 6; local_8 = local_8 + 1) {
-          Player::fn_42ddac(this->players[this->teamYou[local_8]]);
-          Player::fn_42de30(this->players[this->teamYou[local_8]]);
+          Player::SetTex1(this->players[this->teamYou[local_8]],0);
+          Player::SetTex2(this->players[this->teamYou[local_8]],0);
         }
         (this->camPos).x = 0.0;
         (this->camPos).y = 0.0;
@@ -159,8 +159,8 @@ void __thiscall Game::State8(Game *this)
       if (this->i3dc < this->i3d8) {
         for (local_8 = 0; local_8 < 3; local_8 = local_8 + 1) {
           Player::Motion_431118(this->players[this->teamYou[local_8]]);
-          Player::fn_42ddac(this->players[this->teamYou[local_8]]);
-          Player::fn_42de30(this->players[this->teamYou[local_8]]);
+          Player::SetTex1(this->players[this->teamYou[local_8]],1);
+          Player::SetTex2(this->players[this->teamYou[local_8]],1);
         }
         for (local_8 = 3; local_8 < 6; local_8 = local_8 + 1) {
           Player::Motion_430e6d(this->players[this->teamYou[local_8]]);
@@ -172,8 +172,8 @@ void __thiscall Game::State8(Game *this)
         }
         for (local_8 = 3; local_8 < 6; local_8 = local_8 + 1) {
           Player::Motion_431118(this->players[this->teamYou[local_8]]);
-          Player::fn_42ddac(this->players[this->teamYou[local_8]]);
-          Player::fn_42de30(this->players[this->teamYou[local_8]]);
+          Player::SetTex1(this->players[this->teamYou[local_8]],1);
+          Player::SetTex2(this->players[this->teamYou[local_8]],1);
         }
       }
       else {

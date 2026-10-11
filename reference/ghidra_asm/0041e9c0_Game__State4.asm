@@ -47,13 +47,13 @@
 0041ea96  PUSH 0x2
 0041ea98  MOV EDX,dword ptr [EBP + 0xffffff68]
 0041ea9e  MOV ECX,dword ptr [EDX + 0xc0]
-0041eaa4  CALL 0x00401258
+0041eaa4  CALL 0x00401258  ; Sound::Play
 0041eaa9  PUSH 0x0
 0041eaab  PUSH 0xc1f00000
 0041eab0  PUSH 0x0
 0041eab2  PUSH 0x40000000
 0041eab7  LEA ECX,[EBP + -0x10]
-0041eaba  CALL 0x00401348
+0041eaba  CALL 0x00401348  ; Vec3::Ctor
 0041eabf  SUB ESP,0xc
 0041eac2  MOV ECX,ESP
 0041eac4  MOV EDX,dword ptr [EAX]
@@ -66,7 +66,7 @@
 0041eada  MOV EDX,dword ptr [ECX + 0x3b4]
 0041eae0  MOV EAX,dword ptr [EBP + 0xffffff68]
 0041eae6  MOV ECX,dword ptr [EAX + EDX*0x4 + 0xd8]
-0041eaed  CALL 0x004012c6
+0041eaed  CALL 0x004012c6  ; Player::SetPos
 0041eaf2  MOV ECX,dword ptr [EBP + 0xffffff68]
 0041eaf8  MOV EDX,dword ptr [ECX + 0x3b4]
 0041eafe  ADD EDX,0x1
@@ -103,7 +103,7 @@
 0041eb9f  PUSH 0x0
 0041eba1  PUSH 0xc0000000
 0041eba6  LEA ECX,[EBP + -0x1c]
-0041eba9  CALL 0x00401348
+0041eba9  CALL 0x00401348  ; Vec3::Ctor
 0041ebae  SUB ESP,0xc
 0041ebb1  MOV ECX,ESP
 0041ebb3  MOV EDX,dword ptr [EAX]
@@ -116,7 +116,7 @@
 0041ebc9  MOV EDX,dword ptr [ECX + 0x3b4]
 0041ebcf  MOV EAX,dword ptr [EBP + 0xffffff68]
 0041ebd5  MOV ECX,dword ptr [EAX + EDX*0x4 + 0xd8]
-0041ebdc  CALL 0x004012c6
+0041ebdc  CALL 0x004012c6  ; Player::SetPos
 0041ebe1  MOV ECX,dword ptr [EBP + 0xffffff68]
 0041ebe7  XOR EDX,EDX
 0041ebe9  CMP dword ptr [ECX + 0x3b8],0x3
@@ -138,13 +138,13 @@
 0041ec27  PUSH 0x2
 0041ec29  MOV EDX,dword ptr [EBP + 0xffffff68]
 0041ec2f  MOV ECX,dword ptr [EDX + 0xc0]
-0041ec35  CALL 0x00401258
+0041ec35  CALL 0x00401258  ; Sound::Play
 0041ec3a  PUSH 0x0
 0041ec3c  PUSH 0xc1f00000
 0041ec41  PUSH 0x0
 0041ec43  PUSH 0x40000000
 0041ec48  LEA ECX,[EBP + -0x28]
-0041ec4b  CALL 0x00401348
+0041ec4b  CALL 0x00401348  ; Vec3::Ctor
 0041ec50  SUB ESP,0xc
 0041ec53  MOV ECX,ESP
 0041ec55  MOV EDX,dword ptr [EAX]
@@ -157,7 +157,7 @@
 0041ec6b  MOV EDX,dword ptr [ECX + 0x3b4]
 0041ec71  MOV EAX,dword ptr [EBP + 0xffffff68]
 0041ec77  MOV ECX,dword ptr [EAX + EDX*0x4 + 0xd8]
-0041ec7e  CALL 0x004012c6
+0041ec7e  CALL 0x004012c6  ; Player::SetPos
 0041ec83  MOV ECX,dword ptr [EBP + 0xffffff68]
 0041ec89  MOV EDX,dword ptr [ECX + 0x3b4]
 0041ec8f  SUB EDX,0x1
@@ -194,7 +194,7 @@
 0041ed30  PUSH 0x0
 0041ed32  PUSH 0xc0000000
 0041ed37  LEA ECX,[EBP + -0x34]
-0041ed3a  CALL 0x00401348
+0041ed3a  CALL 0x00401348  ; Vec3::Ctor
 0041ed3f  SUB ESP,0xc
 0041ed42  MOV ECX,ESP
 0041ed44  MOV EDX,dword ptr [EAX]
@@ -207,7 +207,7 @@
 0041ed5a  MOV EDX,dword ptr [ECX + 0x3b4]
 0041ed60  MOV EAX,dword ptr [EBP + 0xffffff68]
 0041ed66  MOV ECX,dword ptr [EAX + EDX*0x4 + 0xd8]
-0041ed6d  CALL 0x004012c6
+0041ed6d  CALL 0x004012c6  ; Player::SetPos
 0041ed72  MOV ECX,dword ptr [EBP + 0xffffff68]
 0041ed78  CMP dword ptr [ECX + 0x3b8],0x2
 0041ed7f  JLE 0x0041ed96
@@ -287,7 +287,7 @@
 0041eeb4  PUSH 0x4
 0041eeb6  MOV EAX,dword ptr [EBP + 0xffffff68]
 0041eebc  MOV ECX,dword ptr [EAX + 0xc0]
-0041eec2  CALL 0x00401258
+0041eec2  CALL 0x00401258  ; Sound::Play
 0041eec7  MOV ECX,dword ptr [EBP + 0xffffff68]
 0041eecd  CMP dword ptr [ECX + 0x3b8],0x2
 0041eed4  JGE 0x0041f0b6
@@ -304,7 +304,7 @@
 0041ef17  FSUB float ptr [0x0044e228] {2}
 0041ef1d  PUSH ECX
 0041ef1e  FSTP float ptr [ESP]
-0041ef21  CALL 0x00401127
+0041ef21  CALL 0x00401127  ; Atan2
 0041ef26  ADD ESP,0x8
 0041ef29  MOV ECX,dword ptr [EBP + 0xffffff68]
 0041ef2f  MOV EDX,dword ptr [ECX + 0x3b4]
@@ -315,7 +315,7 @@
 0041ef4e  MOV EAX,dword ptr [EDX + 0x3b4]
 0041ef54  MOV ECX,dword ptr [EBP + 0xffffff68]
 0041ef5a  MOV ECX,dword ptr [ECX + EAX*0x4 + 0xd8]
-0041ef61  CALL 0x00401212
+0041ef61  CALL 0x00401212  ; Player::Motion_42dfc0
 0041ef66  MOV EDX,dword ptr [EBP + 0xffffff68]
 0041ef6c  CMP dword ptr [EDX + 0x3b8],0x0
 0041ef73  JNZ 0x0041ef8f
@@ -369,7 +369,7 @@
 0041f06f  PUSH 0x0
 0041f071  PUSH 0xc0000000
 0041f076  LEA ECX,[EBP + -0x40]
-0041f079  CALL 0x00401348
+0041f079  CALL 0x00401348  ; Vec3::Ctor
 0041f07e  SUB ESP,0xc
 0041f081  MOV EDX,ESP
 0041f083  MOV ECX,dword ptr [EAX]
@@ -382,7 +382,7 @@
 0041f099  MOV EDX,dword ptr [ECX + 0x3b4]
 0041f09f  MOV EAX,dword ptr [EBP + 0xffffff68]
 0041f0a5  MOV ECX,dword ptr [EAX + EDX*0x4 + 0xd8]
-0041f0ac  CALL 0x004012c6
+0041f0ac  CALL 0x004012c6  ; Player::SetPos
 0041f0b1  JMP 0x0041f285
 0041f0b6  MOV ECX,dword ptr [EBP + 0xffffff68]
 0041f0bc  MOV EDX,dword ptr [ECX + 0x3b4]
@@ -391,7 +391,7 @@
 0041f0cf  MOV byte ptr [ECX + 0x154],0x1
 0041f0d6  PUSH 0xc1a00000
 0041f0db  PUSH 0x40800000
-0041f0e0  CALL 0x00401127
+0041f0e0  CALL 0x00401127  ; Atan2
 0041f0e5  ADD ESP,0x8
 0041f0e8  MOV EDX,dword ptr [EBP + 0xffffff68]
 0041f0ee  MOV EAX,dword ptr [EDX + 0x3b4]
@@ -402,7 +402,7 @@
 0041f10d  MOV ECX,dword ptr [EAX + 0x3b4]
 0041f113  MOV EDX,dword ptr [EBP + 0xffffff68]
 0041f119  MOV ECX,dword ptr [EDX + ECX*0x4 + 0xd8]
-0041f120  CALL 0x00401212
+0041f120  CALL 0x00401212  ; Player::Motion_42dfc0
 0041f125  MOV EAX,dword ptr [EBP + 0xffffff68]
 0041f12b  MOV ECX,dword ptr [EBP + 0xffffff68]
 0041f131  MOV EDX,dword ptr [ECX + 0x3b4]
@@ -435,7 +435,7 @@
 0041f1be  FADDP
 0041f1c0  PUSH ECX
 0041f1c1  FSTP float ptr [ESP]
-0041f1c4  CALL 0x00401127
+0041f1c4  CALL 0x00401127  ; Atan2
 0041f1c9  ADD ESP,0x4
 0041f1cc  FSTP float ptr [ESP]
 0041f1cf  PUSH 0xc1f00000
@@ -447,7 +447,7 @@
 0041f1ee  PUSH ECX
 0041f1ef  FSTP float ptr [ESP]
 0041f1f2  LEA ECX,[EBP + -0x4c]
-0041f1f5  CALL 0x00401348
+0041f1f5  CALL 0x00401348  ; Vec3::Ctor
 0041f1fa  SUB ESP,0xc
 0041f1fd  MOV ECX,ESP
 0041f1ff  MOV EDX,dword ptr [EAX]
@@ -459,11 +459,11 @@
 0041f20f  MOV ECX,dword ptr [EBP + -0x4]
 0041f212  MOV EDX,dword ptr [EBP + 0xffffff68]
 0041f218  MOV ECX,dword ptr [EDX + ECX*0x4 + 0xd8]
-0041f21f  CALL 0x004012c6
+0041f21f  CALL 0x004012c6  ; Player::SetPos
 0041f224  MOV EAX,dword ptr [EBP + -0x4]
 0041f227  MOV ECX,dword ptr [EBP + 0xffffff68]
 0041f22d  MOV ECX,dword ptr [ECX + EAX*0x4 + 0xd8]
-0041f234  CALL 0x00401212
+0041f234  CALL 0x00401212  ; Player::Motion_42dfc0
 0041f239  MOV EDX,dword ptr [EBP + 0xffffff68]
 0041f23f  MOV EAX,dword ptr [EDX + 0x3b8]
 0041f245  MOV ECX,dword ptr [EBP + 0xffffff68]
@@ -511,7 +511,7 @@
 0041f312  MOV EAX,dword ptr [EBP + -0x4]
 0041f315  MOV ECX,dword ptr [EBP + 0xffffff68]
 0041f31b  MOV ECX,dword ptr [ECX + EAX*0x4 + 0xd8]
-0041f322  CALL 0x00401384
+0041f322  CALL 0x00401384  ; Player::Motion_Stand
 0041f327  JMP 0x0041f400
 0041f32c  MOV EDX,dword ptr [EBP + -0x4]
 0041f32f  MOV EAX,dword ptr [EBP + 0xffffff68]
@@ -521,7 +521,7 @@
 0041f345  MOV EAX,dword ptr [EDX + ECX*0x4 + 0xd8]
 0041f34c  MOV ECX,dword ptr [EAX + 0x164]
 0041f352  PUSH ECX
-0041f353  CALL 0x00401262
+0041f353  CALL 0x00401262  ; sinf
 0041f358  ADD ESP,0x4
 0041f35b  MOV EDX,dword ptr [EBP + -0x4]
 0041f35e  MOV EAX,dword ptr [EBP + 0xffffff68]
@@ -542,7 +542,7 @@
 0041f3af  MOV ECX,dword ptr [EAX + EDX*0x4 + 0xd8]
 0041f3b6  MOV EDX,dword ptr [ECX + 0x164]
 0041f3bc  PUSH EDX
-0041f3bd  CALL 0x0040136b
+0041f3bd  CALL 0x0040136b  ; cosf
 0041f3c2  ADD ESP,0x4
 0041f3c5  MOV EAX,dword ptr [EBP + -0x4]
 0041f3c8  MOV ECX,dword ptr [EBP + 0xffffff68]
@@ -615,7 +615,7 @@
 0041f516  PUSH 0x2
 0041f518  MOV EDX,dword ptr [EBP + 0xffffff68]
 0041f51e  MOV ECX,dword ptr [EDX + 0xc0]
-0041f524  CALL 0x00401258
+0041f524  CALL 0x00401258  ; Sound::Play
 0041f529  MOV EAX,dword ptr [EBP + 0xffffff68]
 0041f52f  FLD float ptr [EAX + 0x224]
 0041f535  FCOMP float ptr [0x0044e234] {-20}
@@ -645,7 +645,7 @@
 0041f59e  PUSH 0x2
 0041f5a0  MOV ECX,dword ptr [EBP + 0xffffff68]
 0041f5a6  MOV ECX,dword ptr [ECX + 0xc0]
-0041f5ac  CALL 0x00401258
+0041f5ac  CALL 0x00401258  ; Sound::Play
 0041f5b1  MOV EDX,dword ptr [EBP + 0xffffff68]
 0041f5b7  FLD float ptr [EDX + 0x224]
 0041f5bd  FCOMP float ptr [0x0044e234] {-20}
@@ -695,7 +695,7 @@
 0041f671  PUSH 0x5
 0041f673  MOV ECX,dword ptr [EBP + 0xffffff68]
 0041f679  MOV ECX,dword ptr [ECX + 0xc0]
-0041f67f  CALL 0x00401258
+0041f67f  CALL 0x00401258  ; Sound::Play
 0041f684  MOV EDX,dword ptr [EBP + 0xffffff68]
 0041f68a  MOV dword ptr [EDX + 0x3b8],0x5
 0041f694  MOV EAX,dword ptr [EBP + 0xffffff68]
@@ -708,12 +708,12 @@
 0041f6c3  PUSH 0x452edc {'WAV\\LP\\Rika.mp3'}
 0041f6c8  MOV EAX,dword ptr [EBP + 0xffffff68]
 0041f6ce  MOV ECX,dword ptr [EAX + 0xc0]
-0041f6d4  CALL 0x00401078
+0041f6d4  CALL 0x00401078  ; Sound::OpenMp3
 0041f6d9  JMP 0x0041f6f1
 0041f6db  PUSH 0x452eec {'WAV\\LP\\4.mp3'}
 0041f6e0  MOV ECX,dword ptr [EBP + 0xffffff68]
 0041f6e6  MOV ECX,dword ptr [ECX + 0xc0]
-0041f6ec  CALL 0x00401078
+0041f6ec  CALL 0x00401078  ; Sound::OpenMp3
 0041f6f1  MOV EDX,dword ptr [EBP + 0xffffff68]
 0041f6f7  XOR EAX,EAX
 0041f6f9  CMP dword ptr [EDX + 0x3b8],0x4
@@ -755,7 +755,7 @@
 0041f788  PUSH 0x2
 0041f78a  MOV ECX,dword ptr [EBP + 0xffffff68]
 0041f790  MOV ECX,dword ptr [ECX + 0xc0]
-0041f796  CALL 0x00401258
+0041f796  CALL 0x00401258  ; Sound::Play
 0041f79b  MOV EDX,dword ptr [EBP + 0xffffff68]
 0041f7a1  FLD float ptr [EDX + 0x224]
 0041f7a7  FCOMP float ptr [0x0044e234] {-20}
@@ -792,7 +792,7 @@
 0041f82e  PUSH 0x3
 0041f830  MOV ECX,dword ptr [EBP + 0xffffff68]
 0041f836  MOV ECX,dword ptr [ECX + 0xc0]
-0041f83c  CALL 0x00401258
+0041f83c  CALL 0x00401258  ; Sound::Play
 0041f841  MOV EDX,dword ptr [EBP + 0xffffff68]
 0041f847  FLD float ptr [EDX + 0x390]
 0041f84d  FCOMP float ptr [0x0044e224] {3}
@@ -895,7 +895,7 @@
 0041fa42  PUSH 0x0
 0041fa44  PUSH 0xc0e00000
 0041fa49  LEA ECX,[EBP + -0x58]
-0041fa4c  CALL 0x00401348
+0041fa4c  CALL 0x00401348  ; Vec3::Ctor
 0041fa51  SUB ESP,0xc
 0041fa54  MOV ECX,ESP
 0041fa56  MOV EDX,dword ptr [EAX]
@@ -908,13 +908,13 @@
 0041fa6c  MOV EDX,dword ptr [ECX + 0x3e4]
 0041fa72  MOV EAX,dword ptr [EBP + 0xffffff68]
 0041fa78  MOV ECX,dword ptr [EAX + EDX*0x4 + 0xd8]
-0041fa7f  CALL 0x004012c6
+0041fa7f  CALL 0x004012c6  ; Player::SetPos
 0041fa84  PUSH 0xbf48f5c3
 0041fa89  PUSH 0x40e00000
 0041fa8e  PUSH 0x0
 0041fa90  PUSH 0xc0e00000
 0041fa95  LEA ECX,[EBP + -0x64]
-0041fa98  CALL 0x00401348
+0041fa98  CALL 0x00401348  ; Vec3::Ctor
 0041fa9d  SUB ESP,0xc
 0041faa0  MOV ECX,ESP
 0041faa2  MOV EDX,dword ptr [EAX]
@@ -927,13 +927,13 @@
 0041fab8  MOV EDX,dword ptr [ECX + 0x3e8]
 0041fabe  MOV EAX,dword ptr [EBP + 0xffffff68]
 0041fac4  MOV ECX,dword ptr [EAX + EDX*0x4 + 0xd8]
-0041facb  CALL 0x004012c6
+0041facb  CALL 0x004012c6  ; Player::SetPos
 0041fad0  PUSH 0x3fc91687
 0041fad5  PUSH 0x0
 0041fad7  PUSH 0x0
 0041fad9  PUSH 0x40000000
 0041fade  LEA ECX,[EBP + -0x70]
-0041fae1  CALL 0x00401348
+0041fae1  CALL 0x00401348  ; Vec3::Ctor
 0041fae6  SUB ESP,0xc
 0041fae9  MOV ECX,ESP
 0041faeb  MOV EDX,dword ptr [EAX]
@@ -946,13 +946,13 @@
 0041fb01  MOV EDX,dword ptr [ECX + 0x3ec]
 0041fb07  MOV EAX,dword ptr [EBP + 0xffffff68]
 0041fb0d  MOV ECX,dword ptr [EAX + EDX*0x4 + 0xd8]
-0041fb14  CALL 0x004012c6
+0041fb14  CALL 0x004012c6  ; Player::SetPos
 0041fb19  PUSH 0x0
 0041fb1b  PUSH 0x41b80000
 0041fb20  PUSH 0x0
 0041fb22  PUSH 0x0
 0041fb24  LEA ECX,[EBP + -0x7c]
-0041fb27  CALL 0x00401348
+0041fb27  CALL 0x00401348  ; Vec3::Ctor
 0041fb2c  SUB ESP,0xc
 0041fb2f  MOV ECX,ESP
 0041fb31  MOV EDX,dword ptr [EAX]
@@ -965,13 +965,13 @@
 0041fb47  MOV EDX,dword ptr [ECX + 0x3f0]
 0041fb4d  MOV EAX,dword ptr [EBP + 0xffffff68]
 0041fb53  MOV ECX,dword ptr [EAX + EDX*0x4 + 0xd8]
-0041fb5a  CALL 0x004012c6
+0041fb5a  CALL 0x004012c6  ; Player::SetPos
 0041fb5f  PUSH 0x0
 0041fb61  PUSH 0x41b80000
 0041fb66  PUSH 0x0
 0041fb68  PUSH 0xc0400000
 0041fb6d  LEA ECX,[EBP + 0xffffff78]
-0041fb73  CALL 0x00401348
+0041fb73  CALL 0x00401348  ; Vec3::Ctor
 0041fb78  SUB ESP,0xc
 0041fb7b  MOV ECX,ESP
 0041fb7d  MOV EDX,dword ptr [EAX]
@@ -984,13 +984,13 @@
 0041fb93  MOV EDX,dword ptr [ECX + 0x3f4]
 0041fb99  MOV EAX,dword ptr [EBP + 0xffffff68]
 0041fb9f  MOV ECX,dword ptr [EAX + EDX*0x4 + 0xd8]
-0041fba6  CALL 0x004012c6
+0041fba6  CALL 0x004012c6  ; Player::SetPos
 0041fbab  PUSH 0x0
 0041fbad  PUSH 0x41b80000
 0041fbb2  PUSH 0x0
 0041fbb4  PUSH 0x40400000
 0041fbb9  LEA ECX,[EBP + 0xffffff6c]
-0041fbbf  CALL 0x00401348
+0041fbbf  CALL 0x00401348  ; Vec3::Ctor
 0041fbc4  SUB ESP,0xc
 0041fbc7  MOV ECX,ESP
 0041fbc9  MOV EDX,dword ptr [EAX]
@@ -1003,13 +1003,13 @@
 0041fbdf  MOV EDX,dword ptr [ECX + 0x3f8]
 0041fbe5  MOV EAX,dword ptr [EBP + 0xffffff68]
 0041fbeb  MOV ECX,dword ptr [EAX + EDX*0x4 + 0xd8]
-0041fbf2  CALL 0x004012c6
+0041fbf2  CALL 0x004012c6  ; Player::SetPos
 0041fbf7  MOV ECX,dword ptr [EBP + 0xffffff68]
 0041fbfd  MOV ECX,dword ptr [ECX + 0xc0]
-0041fc03  CALL 0x0040100a
+0041fc03  CALL 0x0040100a  ; Sound::PlayMp3
 0041fc08  PUSH 0x1
 0041fc0a  MOV ECX,dword ptr [EBP + 0xffffff68]
-0041fc10  CALL 0x0040117c
+0041fc10  CALL 0x0040117c  ; Game::LoadSoundSet
 0041fc15  MOV EDX,dword ptr [EBP + 0xffffff68]
 0041fc1b  MOV byte ptr [EDX + 0x398],0x0
 0041fc22  MOV EAX,dword ptr [EBP + 0xffffff68]
@@ -1048,7 +1048,7 @@
 0041fcef  MOV ECX,dword ptr [EAX + EDX*0x4 + 0x3e4]
 0041fcf6  MOV EDX,dword ptr [EBP + 0xffffff68]
 0041fcfc  MOV ECX,dword ptr [EDX + ECX*0x4 + 0xd8]
-0041fd03  CALL 0x00401384
+0041fd03  CALL 0x00401384  ; Player::Motion_Stand
 0041fd08  MOV EAX,dword ptr [EBP + -0x4]
 0041fd0b  MOV ECX,dword ptr [EBP + 0xffffff68]
 0041fd11  MOV EDX,dword ptr [ECX + EAX*0x4 + 0x3e4]

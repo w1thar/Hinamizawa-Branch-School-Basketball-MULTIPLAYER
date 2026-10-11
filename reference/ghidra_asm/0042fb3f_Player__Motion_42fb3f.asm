@@ -21,7 +21,7 @@
 0042fb78  MOV EAX,dword ptr [EDX + 0x4c]
 0042fb7b  MOV ECX,dword ptr [EAX + ECX*0x1 + 0x8]
 0042fb7f  PUSH ECX
-0042fb80  CALL 0x00433440
+0042fb80  CALL 0x00433440  ; _memset
 0042fb85  ADD ESP,0xc
 0042fb88  JMP 0x0042fb51
 0042fb8a  MOV EDX,dword ptr [EBP + -0x8]

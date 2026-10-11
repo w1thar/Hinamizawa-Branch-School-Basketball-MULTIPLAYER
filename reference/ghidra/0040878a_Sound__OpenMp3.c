@@ -1,11 +1,11 @@
 // Sound::OpenMp3 @ 0040878a  size=100
 
-void __thiscall Sound::OpenMp3(Sound *this)
+void __thiscall Sound::OpenMp3(Sound *this,char *file)
 
 {
-  CHAR local_104 [256];
+  char local_104 [256];
   
-  sprintf(local_104,(byte *)s_open___s__type_mpegvideo_alias_M_00453140);
+  sprintf(local_104,s_open___s__type_mpegvideo_alias_M_00453140,file);
   if (this->mp3Playing != '\0') {
     StopMp3(this);
   }

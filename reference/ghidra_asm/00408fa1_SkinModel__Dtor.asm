@@ -27,7 +27,7 @@
 00408ff3  MOV dword ptr [EBP + -0x8],ECX
 00408ff6  MOV EDX,dword ptr [EBP + -0x8]
 00408ff9  PUSH EDX
-00408ffa  CALL 0x00433370
+00408ffa  CALL 0x00433370  ; operator_delete
 00408fff  ADD ESP,0x4
 00409002  MOV EAX,dword ptr [EBP + -0x4]
 00409005  IMUL EAX,EAX,0xc
@@ -43,7 +43,7 @@
 00409027  MOV dword ptr [EBP + -0xc],EDX
 0040902a  MOV EAX,dword ptr [EBP + -0xc]
 0040902d  PUSH EAX
-0040902e  CALL 0x00433370
+0040902e  CALL 0x00433370  ; operator_delete
 00409033  ADD ESP,0x4
 00409036  MOV ECX,dword ptr [EBP + -0x1c]
 00409039  MOV dword ptr [ECX + 0x28],0x0
@@ -55,7 +55,7 @@
 0040904f  MOV dword ptr [EBP + -0x10],ECX
 00409052  MOV EDX,dword ptr [EBP + -0x10]
 00409055  PUSH EDX
-00409056  CALL 0x00433370
+00409056  CALL 0x00433370  ; operator_delete
 0040905b  ADD ESP,0x4
 0040905e  MOV EAX,dword ptr [EBP + -0x1c]
 00409061  MOV dword ptr [EAX + 0x24],0x0
@@ -67,7 +67,7 @@
 00409077  MOV dword ptr [EBP + -0x14],EAX
 0040907a  MOV ECX,dword ptr [EBP + -0x14]
 0040907d  PUSH ECX
-0040907e  CALL 0x00433370
+0040907e  CALL 0x00433370  ; operator_delete
 00409083  ADD ESP,0x4
 00409086  MOV EDX,dword ptr [EBP + -0x1c]
 00409089  MOV dword ptr [EDX + 0x10],0x0
@@ -79,7 +79,7 @@
 0040909f  MOV dword ptr [EBP + -0x18],EDX
 004090a2  MOV EAX,dword ptr [EBP + -0x18]
 004090a5  PUSH EAX
-004090a6  CALL 0x00433370
+004090a6  CALL 0x00433370  ; operator_delete
 004090ab  ADD ESP,0x4
 004090ae  MOV ECX,dword ptr [EBP + -0x1c]
 004090b1  MOV dword ptr [ECX + 0x18],0x0

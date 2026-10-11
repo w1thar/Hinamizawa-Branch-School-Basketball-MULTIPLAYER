@@ -19,7 +19,7 @@
 00407cdd  PUSH ECX
 00407cde  FSTP float ptr [ESP]
 00407ce1  MOV ECX,dword ptr [EBP + 0x8]
-00407ce4  CALL 0x00401348
+00407ce4  CALL 0x00401348  ; Vec3::Ctor
 00407ce9  MOV EAX,dword ptr [EBP + 0x8]
 00407cec  POP EBP
 00407ced  RET

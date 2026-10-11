@@ -5,42 +5,42 @@
 00403f74  FDIV float ptr [0x0044e070] {2}
 00403f7a  PUSH ECX
 00403f7b  FSTP float ptr [ESP]
-00403f7e  CALL 0x00401262
+00403f7e  CALL 0x00401262  ; sinf
 00403f83  ADD ESP,0x4
 00403f86  FSTP float ptr [EBP + -0xc]
 00403f89  FLD float ptr [EBP + 0x1c]
 00403f8c  FDIV float ptr [0x0044e070] {2}
 00403f92  PUSH ECX
 00403f93  FSTP float ptr [ESP]
-00403f96  CALL 0x00401262
+00403f96  CALL 0x00401262  ; sinf
 00403f9b  ADD ESP,0x4
 00403f9e  FSTP float ptr [EBP + -0x10]
 00403fa1  FLD float ptr [EBP + 0x20]
 00403fa4  FDIV float ptr [0x0044e070] {2}
 00403faa  PUSH ECX
 00403fab  FSTP float ptr [ESP]
-00403fae  CALL 0x00401262
+00403fae  CALL 0x00401262  ; sinf
 00403fb3  ADD ESP,0x4
 00403fb6  FSTP float ptr [EBP + -0x18]
 00403fb9  FLD float ptr [EBP + 0x18]
 00403fbc  FDIV float ptr [0x0044e070] {2}
 00403fc2  PUSH ECX
 00403fc3  FSTP float ptr [ESP]
-00403fc6  CALL 0x0040136b
+00403fc6  CALL 0x0040136b  ; cosf
 00403fcb  ADD ESP,0x4
 00403fce  FSTP float ptr [EBP + -0x8]
 00403fd1  FLD float ptr [EBP + 0x1c]
 00403fd4  FDIV float ptr [0x0044e070] {2}
 00403fda  PUSH ECX
 00403fdb  FSTP float ptr [ESP]
-00403fde  CALL 0x0040136b
+00403fde  CALL 0x0040136b  ; cosf
 00403fe3  ADD ESP,0x4
 00403fe6  FSTP float ptr [EBP + -0x14]
 00403fe9  FLD float ptr [EBP + 0x20]
 00403fec  FDIV float ptr [0x0044e070] {2}
 00403ff2  PUSH ECX
 00403ff3  FSTP float ptr [ESP]
-00403ff6  CALL 0x0040136b
+00403ff6  CALL 0x0040136b  ; cosf
 00403ffb  ADD ESP,0x4
 00403ffe  FSTP float ptr [EBP + -0x4]
 00404001  FLD float ptr [EBP + -0x18]

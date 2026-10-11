@@ -7,7 +7,7 @@
 00404a0a  MOV ECX,dword ptr [EBP + -0x4]
 00404a0d  ADD ECX,0x4
 00404a10  PUSH ECX
-00404a11  CALL dword ptr [0x0045a4dc] {370508}
+00404a11  CALL dword ptr [0x0045a4dc] {370508}  ; KERNEL32.DLL::lstrcpyA
 00404a17  MOV EDX,dword ptr [EBP + -0x4]
 00404a1a  MOV dword ptr [EDX + 0x54],0x0
 00404a21  MOV EAX,dword ptr [EBP + -0x4]

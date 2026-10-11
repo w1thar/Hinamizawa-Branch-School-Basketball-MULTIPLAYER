@@ -3,14 +3,14 @@
 0040e3c3  PUSH ECX
 0040e3c4  MOV dword ptr [EBP + -0x4],ECX
 0040e3c7  MOV ECX,dword ptr [EBP + -0x4]
-0040e3ca  CALL 0x00401334
+0040e3ca  CALL 0x00401334  ; StaticMesh::Dtor
 0040e3cf  MOV EAX,dword ptr [EBP + 0x8]
 0040e3d2  AND EAX,0x1
 0040e3d5  TEST EAX,EAX
 0040e3d7  JZ 0x0040e3e5
 0040e3d9  MOV ECX,dword ptr [EBP + -0x4]
 0040e3dc  PUSH ECX
-0040e3dd  CALL 0x00433370
+0040e3dd  CALL 0x00433370  ; operator_delete
 0040e3e2  ADD ESP,0x4
 0040e3e5  MOV EAX,dword ptr [EBP + -0x4]
 0040e3e8  MOV ESP,EBP

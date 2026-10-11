@@ -31,7 +31,7 @@
 00402d85  PUSH EAX
 00402d86  MOV ECX,dword ptr [EBP + 0x8]
 00402d89  PUSH ECX
-00402d8a  CALL dword ptr [0x0045a470] {371142}
+00402d8a  CALL dword ptr [0x0045a470] {371142}  ; GDI32.DLL::GetPixel
 00402d90  MOV dword ptr [EBP + -0x24],EAX
 00402d93  MOV EDX,dword ptr [EBP + -0x38]
 00402d96  SHL EDX,0x1
@@ -41,7 +41,7 @@
 00402da0  PUSH ECX
 00402da1  MOV EDX,dword ptr [EBP + 0x8]
 00402da4  PUSH EDX
-00402da5  CALL dword ptr [0x0045a470] {371142}
+00402da5  CALL dword ptr [0x0045a470] {371142}  ; GDI32.DLL::GetPixel
 00402dab  MOV dword ptr [EBP + -0x34],EAX
 00402dae  MOV EAX,dword ptr [EBP + -0x38]
 00402db1  LEA ECX,[EAX + EAX*0x1 + 0x1]
@@ -51,7 +51,7 @@
 00402dbb  PUSH EDX
 00402dbc  MOV EAX,dword ptr [EBP + 0x8]
 00402dbf  PUSH EAX
-00402dc0  CALL dword ptr [0x0045a470] {371142}
+00402dc0  CALL dword ptr [0x0045a470] {371142}  ; GDI32.DLL::GetPixel
 00402dc6  MOV dword ptr [EBP + -0x28],EAX
 00402dc9  MOV ECX,dword ptr [EBP + -0x38]
 00402dcc  LEA EDX,[ECX + ECX*0x1 + 0x1]
@@ -61,7 +61,7 @@
 00402dd8  PUSH ECX
 00402dd9  MOV EDX,dword ptr [EBP + 0x8]
 00402ddc  PUSH EDX
-00402ddd  CALL dword ptr [0x0045a470] {371142}
+00402ddd  CALL dword ptr [0x0045a470] {371142}  ; GDI32.DLL::GetPixel
 00402de3  MOV dword ptr [EBP + -0x8],EAX
 00402de6  MOV EAX,dword ptr [EBP + -0x24]
 00402de9  AND EAX,0xff
@@ -155,7 +155,7 @@
 00402f15  PUSH ECX
 00402f16  MOV EDX,dword ptr [EBP + 0x8]
 00402f19  PUSH EDX
-00402f1a  CALL dword ptr [0x0045a474] {371130}
+00402f1a  CALL dword ptr [0x0045a474] {371130}  ; GDI32.DLL::SetPixel
 00402f20  MOV dword ptr [EBP + -0x30],EAX
 00402f23  JMP 0x00402d60
 00402f28  JMP 0x00402d3d

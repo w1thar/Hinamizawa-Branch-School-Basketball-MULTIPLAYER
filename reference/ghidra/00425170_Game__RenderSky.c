@@ -4,89 +4,89 @@ void __thiscall Game::RenderSky(Game *this,float yawAngle,float pitchAngle)
 
 {
   Vec3 *pVVar1;
-  undefined4 *puVar2;
+  TLVertex *pTVar2;
   void *pvVar3;
   int iVar4;
-  undefined4 *puVar5;
-  undefined4 uVar6;
-  undefined4 uVar7;
-  undefined4 uVar8;
-  undefined4 uVar9;
-  undefined4 uVar10;
+  float *pfVar5;
+  float fVar6;
+  u32 uVar7;
+  u32 uVar8;
+  float fVar9;
+  float fVar10;
   Vec3 local_138;
-  undefined1 local_12c [32];
+  TLVertex local_12c;
   Vec3 local_10c;
-  undefined1 local_100 [32];
+  TLVertex local_100;
   Vec3 local_e0;
-  undefined1 local_d4 [32];
+  TLVertex local_d4;
   Vec3 local_b4;
-  undefined1 local_a8 [32];
-  undefined4 local_88 [6];
+  TLVertex local_a8;
+  float local_88 [6];
   float local_70;
   float local_6c;
-  undefined4 local_68 [6];
+  float local_68 [6];
   float local_50;
   float local_4c;
-  undefined4 local_48 [6];
+  float local_48 [6];
   float local_30;
   float local_2c;
-  undefined4 local_28 [6];
+  float local_28 [6];
   float local_10;
   float local_c;
   float local_8;
   
   thunk_FUN_0040c3a0(local_88,0x20,4,&LAB_0040119f);
-  uVar10 = 0x3f800000;
-  uVar9 = 0;
+  fVar10 = 1.0;
+  fVar9 = 0.0;
   uVar8 = 0;
   uVar7 = 0xffffffff;
-  uVar6 = 0x3f000000;
+  fVar6 = 0.5;
   pVVar1 = Vec3::Ctor(&local_b4,0.0,480.0,0.9999);
-  puVar2 = thunk_FUN_00422870(local_a8,&pVVar1->x,uVar6,uVar7,uVar8,uVar9,uVar10);
-  puVar5 = local_88;
+  pTVar2 = TLVertex::Ctor(&local_a8,pVVar1,fVar6,uVar7,uVar8,fVar9,fVar10);
+  pfVar5 = local_88;
   for (iVar4 = 8; iVar4 != 0; iVar4 = iVar4 + -1) {
-    *puVar5 = *puVar2;
-    puVar2 = puVar2 + 1;
-    puVar5 = puVar5 + 1;
+    *pfVar5 = pTVar2->sx;
+    pTVar2 = (TLVertex *)&pTVar2->sy;
+    pfVar5 = pfVar5 + 1;
   }
-  uVar10 = 0;
-  uVar9 = 0;
+  fVar10 = 0.0;
+  fVar9 = 0.0;
   uVar8 = 0;
   uVar7 = 0xffffffff;
-  uVar6 = 0x3f000000;
+  fVar6 = 0.5;
   pVVar1 = Vec3::Ctor(&local_e0,0.0,0.0,0.9999);
-  puVar2 = thunk_FUN_00422870(local_d4,&pVVar1->x,uVar6,uVar7,uVar8,uVar9,uVar10);
-  puVar5 = local_68;
+  pTVar2 = TLVertex::Ctor(&local_d4,pVVar1,fVar6,uVar7,uVar8,fVar9,fVar10);
+  pfVar5 = local_68;
   for (iVar4 = 8; iVar4 != 0; iVar4 = iVar4 + -1) {
-    *puVar5 = *puVar2;
-    puVar2 = puVar2 + 1;
-    puVar5 = puVar5 + 1;
+    *pfVar5 = pTVar2->sx;
+    pTVar2 = (TLVertex *)&pTVar2->sy;
+    pfVar5 = pfVar5 + 1;
   }
-  uVar10 = 0x3f800000;
-  uVar9 = 0x3f800000;
+  fVar10 = 1.0;
+  fVar9 = 1.0;
   uVar8 = 0;
   uVar7 = 0xffffffff;
-  uVar6 = 0x3f000000;
+  fVar6 = 0.5;
   pVVar1 = Vec3::Ctor(&local_10c,640.0,480.0,0.9999);
-  puVar2 = thunk_FUN_00422870(local_100,&pVVar1->x,uVar6,uVar7,uVar8,uVar9,uVar10);
-  puVar5 = local_48;
+  pTVar2 = TLVertex::Ctor(&local_100,pVVar1,fVar6,uVar7,uVar8,fVar9,fVar10);
+  pfVar5 = local_48;
   for (iVar4 = 8; iVar4 != 0; iVar4 = iVar4 + -1) {
-    *puVar5 = *puVar2;
-    puVar2 = puVar2 + 1;
-    puVar5 = puVar5 + 1;
+    *pfVar5 = pTVar2->sx;
+    pTVar2 = (TLVertex *)&pTVar2->sy;
+    pfVar5 = pfVar5 + 1;
   }
-  uVar10 = 0;
-  uVar9 = 0x3f800000;
+  fVar10 = 0.0;
+  fVar9 = 1.0;
   uVar8 = 0;
   uVar7 = 0xffffffff;
-  uVar6 = 0x3f000000;
+  fVar6 = 0.5;
   pVVar1 = Vec3::Ctor(&local_138,640.0,0.0,0.9999);
-  puVar2 = thunk_FUN_00422870(local_12c,&pVVar1->x,uVar6,uVar7,uVar8,uVar9,uVar10);
-  puVar5 = local_28;
+  pTVar2 = TLVertex::Ctor(&local_12c,pVVar1,fVar6,uVar7,uVar8,fVar9,fVar10);
+  pfVar5 = local_28;
   for (iVar4 = 8; iVar4 != 0; iVar4 = iVar4 + -1) {
-    *puVar5 = *puVar2;
-    puVar2 = puVar2 + 1;
-    puVar5 = puVar5 + 1;
+    *pfVar5 = pTVar2->sx;
+    pTVar2 = (TLVertex *)&pTVar2->sy;
+    pfVar5 = pfVar5 + 1;
   }
   if (-1.57 <= (this->v37c).z || yawAngle <= 1.57) {
     if ((this->v37c).z <= 1.57 || -1.57 <= yawAngle) {

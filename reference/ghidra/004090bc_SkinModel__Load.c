@@ -48,7 +48,7 @@ bool __thiscall SkinModel::Load(SkinModel *this,char *name)
   uint local_2078;
   int *local_2074;
   void *local_2070;
-  byte local_206c;
+  char local_206c;
   undefined4 local_206b;
   uint auStackY_1f6c [1997];
   undefined4 uStackY_38;
@@ -66,7 +66,7 @@ bool __thiscall SkinModel::Load(SkinModel *this,char *name)
   local_10 = *unaff_FS_OFFSET;
   *unaff_FS_OFFSET = &local_10;
   FUN_00435010();
-  local_206c = 0;
+  local_206c = '\0';
   puVar10 = &local_206b;
   for (iVar9 = 0x3f; iVar9 != 0; iVar9 = iVar9 + -1) {
     *puVar10 = 0;
@@ -74,10 +74,10 @@ bool __thiscall SkinModel::Load(SkinModel *this,char *name)
   }
   *(undefined2 *)puVar10 = 0;
   *(undefined1 *)((int)puVar10 + 2) = 0;
-  sprintf(&local_206c,(byte *)s_basket__s_x_00453364);
-  local_2074 = (int *)fopen((LPCSTR)&local_206c,&DAT_00453370);
-  while (iVar9 = _strcmp((char *)&local_206c,s_Mesh___00453374), iVar9 != 0) {
-    fgets((char *)&local_206c,0x100,local_2074);
+  sprintf(&local_206c,s_basket__s_x_00453364);
+  local_2074 = (int *)fopen(&local_206c,&DAT_00453370);
+  while (iVar9 = _strcmp(&local_206c,s_Mesh___00453374), iVar9 != 0) {
+    fgets(&local_206c,0x100,local_2074);
   }
   fscanf(local_2074,&DAT_00453380);
   uVar1 = this_00->numVerts;
@@ -110,12 +110,12 @@ bool __thiscall SkinModel::Load(SkinModel *this,char *name)
   uVar13 = 0;
   while (uVar13 < this_00->numVerts - 1) {
     piVar16 = local_2074;
-    fscanf(local_2074,(byte *)s__f__f__f___00453388);
+    fscanf(local_2074,s__f__f__f___00453388);
     uVar13 = (int)piVar16 + 1;
   }
-  fscanf(local_2074,(byte *)s__f__f__f___00453394);
+  fscanf(local_2074,s__f__f__f___00453394);
   local_2078 = 0;
-  FUN_00434d10(local_2074);
+  fgetc(local_2074);
   fscanf(local_2074,&DAT_004533a0);
   pXVar3 = operator_new(local_2078 * 0x14);
   this_00->faces = pXVar3;
@@ -125,27 +125,27 @@ bool __thiscall SkinModel::Load(SkinModel *this,char *name)
   while (puVar14 < (undefined1 *)(local_2078 - 1)) {
     pXVar3 = this_00->faces + (int)puVar14;
     uStackY_38 = 0x40949c;
-    fscanf(local_2074,(byte *)s__d__d__d__d__d___004533a8);
+    fscanf(local_2074,s__d__d__d__d__d___004533a8);
     this_00->numIndices = this_00->numIndices + (this_00->faces[(int)pXVar3].n + -2) * 3;
     if (this_00->faces[(int)pXVar3].n == 3) {
-      fgets((char *)&local_206c,0x100,local_2074);
+      fgets(&local_206c,0x100,local_2074);
     }
     puVar14 = (undefined1 *)((int)&pXVar3->n + 1);
   }
   pXVar3 = this_00->faces + (int)puVar14;
   uStackY_38 = 0x409573;
-  fscanf(local_2074,(byte *)s__d__d__d__d__d___004533bc);
+  fscanf(local_2074,s__d__d__d__d__d___004533bc);
   this_00->numIndices = this_00->numIndices + (this_00->faces[(int)pXVar3].n + -2) * 3;
-  fgets((char *)&local_206c,0x100,local_2074);
-  fgets((char *)&local_206c,0x100,local_2074);
-  fgets((char *)&local_206c,0x100,local_2074);
-  fscanf(local_2074,(byte *)s__d__004533d0);
-  fgets((char *)&local_206c,0x100,local_2074);
-  fgets((char *)&local_206c,0x100,local_2074);
+  fgets(&local_206c,0x100,local_2074);
+  fgets(&local_206c,0x100,local_2074);
+  fgets(&local_206c,0x100,local_2074);
+  fscanf(local_2074,s__d__004533d0);
+  fgets(&local_206c,0x100,local_2074);
+  fgets(&local_206c,0x100,local_2074);
   for (uVar13 = 0; uVar13 < local_2078 - 1; uVar13 = uVar13 + 1) {
-    fscanf(local_2074,(byte *)s__d__004533d8);
+    fscanf(local_2074,s__d__004533d8);
   }
-  fscanf(local_2074,(byte *)s__d___004533e0);
+  fscanf(local_2074,s__d___004533e0);
   puVar4 = operator_new(this_00->numIndices << 1);
   this_00->indices = puVar4;
   _memset(this_00->indices,0,this_00->numIndices << 1);
@@ -187,42 +187,42 @@ bool __thiscall SkinModel::Load(SkinModel *this,char *name)
   }
   local_20c0 = this_00->faces;
   operator_delete(local_20c0);
-  fgets((char *)&local_206c,0x100,local_2074);
-  fgets((char *)&local_206c,0x100,local_2074);
+  fgets(&local_206c,0x100,local_2074);
+  fgets(&local_206c,0x100,local_2074);
   uVar13 = 0;
   while (uVar13 < this_00->numMaterials) {
     pcVar15 = s__f__f__f__f___004533e8;
-    fscanf(local_2074,(byte *)s__f__f__f__f___004533e8);
+    fscanf(local_2074,s__f__f__f__f___004533e8);
     pXVar5 = this_00->materials + (int)pcVar15;
     pMVar2 = &this_00->materials[(int)pcVar15].mtl;
     (pMVar2->ambient).r = (pXVar5->mtl).diffuse.r;
     (pMVar2->ambient).g = (pXVar5->mtl).diffuse.g;
     (pMVar2->ambient).b = (pXVar5->mtl).diffuse.b;
     (pMVar2->ambient).a = (pXVar5->mtl).diffuse.a;
-    fscanf(local_2074,(byte *)s__f__004533fc);
-    fscanf(local_2074,(byte *)s__f__f__f___00453404);
+    fscanf(local_2074,s__f__004533fc);
+    fscanf(local_2074,s__f__f__f___00453404);
     piVar16 = local_2074;
-    fscanf(local_2074,(byte *)s__f__f__f___00453414);
-    fgets((char *)&local_206c,0x100,local_2074);
+    fscanf(local_2074,s__f__f__f___00453414);
+    fgets(&local_206c,0x100,local_2074);
     fscanf(local_2074,&DAT_00453424);
-    fgets((char *)&local_206c,0x100,local_2074);
-    fscanf(local_2074,(byte *)s___c______00453428);
+    fgets(&local_206c,0x100,local_2074);
+    fscanf(local_2074,s___c______00453428);
     sprintf(this_00->materials[(int)piVar16].texName,&local_206c);
-    fgets((char *)&local_206c,0x100,local_2074);
-    fgets((char *)&local_206c,0x100,local_2074);
-    fgets((char *)&local_206c,0x100,local_2074);
-    fgets((char *)&local_206c,0x100,local_2074);
+    fgets(&local_206c,0x100,local_2074);
+    fgets(&local_206c,0x100,local_2074);
+    fgets(&local_206c,0x100,local_2074);
+    fgets(&local_206c,0x100,local_2074);
     uVar13 = (int)piVar16 + 1;
   }
-  fgets((char *)&local_206c,0x100,local_2074);
-  fgets((char *)&local_206c,0x100,local_2074);
+  fgets(&local_206c,0x100,local_2074);
+  fgets(&local_206c,0x100,local_2074);
   uVar13 = 0;
   while (uVar13 < this_00->numVerts - 1) {
     iVar9 = 0x409e3d;
-    fscanf(local_2074,(byte *)s__f__f__00453438);
+    fscanf(local_2074,s__f__f__00453438);
     uVar13 = iVar9 + 1;
   }
-  fscanf(local_2074,(byte *)s__f__f__00453444);
+  fscanf(local_2074,s__f__f__00453444);
   fclose(local_2074);
   iVar9 = 0x409ea5;
   local_20c4 = operator_new(this_00->numIndices * 0xc);
@@ -286,13 +286,13 @@ bool __thiscall SkinModel::Load(SkinModel *this,char *name)
     this_00->srcVerts[uVar13].normal.z = *(float *)((int)local_2070 + uVar13 * 0xc + 8);
   }
   operator_delete(local_2070);
-  sprintf(&local_206c,(byte *)s_basket__s_osm_00453450);
-  local_2074 = (int *)fopen((LPCSTR)&local_206c,&DAT_00453460);
-  fgets((char *)&local_206c,0x100,local_2074);
-  fgets((char *)&local_206c,0x100,local_2074);
-  fgets((char *)&local_206c,0x100,local_2074);
-  fgets((char *)&local_206c,0x100,local_2074);
-  fscanf(local_2074,(byte *)s__d__s_00453464);
+  sprintf(&local_206c,s_basket__s_osm_00453450);
+  local_2074 = (int *)fopen(&local_206c,&DAT_00453460);
+  fgets(&local_206c,0x100,local_2074);
+  fgets(&local_206c,0x100,local_2074);
+  fgets(&local_206c,0x100,local_2074);
+  fgets(&local_206c,0x100,local_2074);
+  fscanf(local_2074,s__d__s_00453464);
   iVar9 = this_00->numBones;
   local_2130 = operator_new(iVar9 * 0xa8);
   local_8 = 3;
@@ -306,54 +306,54 @@ bool __thiscall SkinModel::Load(SkinModel *this,char *name)
   this_00->bones = local_2130;
   _memset(this_00->bones,0,this_00->numBones * 0xa8);
   this_00->bones->parent = -1;
-  fgets((char *)&local_206c,0x100,local_2074);
+  fgets(&local_206c,0x100,local_2074);
   for (iVar9 = 0; iVar9 < this_00->numBones; iVar9 = iVar9 + 1) {
-    fgets((char *)&local_206c,0x100,local_2074);
-    fscanf(local_2074,(byte *)s__d__0045346c);
-    fgets((char *)&local_206c,0x100,local_2074);
-    fscanf(local_2074,(byte *)s__f__f__f__00453474);
-    fgets((char *)&local_206c,0x100,local_2074);
-    fscanf(local_2074,(byte *)s__f__f__f__00453480);
-    fgets((char *)&local_206c,0x100,local_2074);
-    fscanf(local_2074,(byte *)s__f__f__f__0045348c);
-    fgets((char *)&local_206c,0x100,local_2074);
-    fgets((char *)&local_206c,0x100,local_2074);
+    fgets(&local_206c,0x100,local_2074);
+    fscanf(local_2074,s__d__0045346c);
+    fgets(&local_206c,0x100,local_2074);
+    fscanf(local_2074,s__f__f__f__00453474);
+    fgets(&local_206c,0x100,local_2074);
+    fscanf(local_2074,s__f__f__f__00453480);
+    fgets(&local_206c,0x100,local_2074);
+    fscanf(local_2074,s__f__f__f__0045348c);
+    fgets(&local_206c,0x100,local_2074);
+    fgets(&local_206c,0x100,local_2074);
   }
-  fgets((char *)&local_206c,0x100,local_2074);
-  fgets((char *)&local_206c,0x100,local_2074);
-  fgets((char *)&local_206c,0x100,local_2074);
-  fgets((char *)&local_206c,0x100,local_2074);
-  fgets((char *)&local_206c,0x100,local_2074);
+  fgets(&local_206c,0x100,local_2074);
+  fgets(&local_206c,0x100,local_2074);
+  fgets(&local_206c,0x100,local_2074);
+  fgets(&local_206c,0x100,local_2074);
+  fgets(&local_206c,0x100,local_2074);
   for (uVar13 = 0; uVar13 < this_00->numVerts; uVar13 = uVar13 + 1) {
-    fscanf(local_2074,(byte *)s__d__00453498);
-    fgets((char *)&local_206c,0x100,local_2074);
+    fscanf(local_2074,s__d__00453498);
+    fgets(&local_206c,0x100,local_2074);
   }
-  fgets((char *)&local_206c,0x100,local_2074);
-  fgets((char *)&local_206c,0x100,local_2074);
-  fgets((char *)&local_206c,0x100,local_2074);
-  fgets((char *)&local_206c,0x100,local_2074);
+  fgets(&local_206c,0x100,local_2074);
+  fgets(&local_206c,0x100,local_2074);
+  fgets(&local_206c,0x100,local_2074);
+  fgets(&local_206c,0x100,local_2074);
   fscanf(local_2074,&DAT_004534a0);
-  fgets((char *)&local_206c,0x100,local_2074);
+  fgets(&local_206c,0x100,local_2074);
   pCVar7 = operator_new(this_00->numCTex * 0xc);
   this_00->ctex = pCVar7;
   _memset(this_00->ctex,0,this_00->numCTex * 0xc);
   for (iVar9 = 0; iVar9 < this_00->numCTex; iVar9 = iVar9 + 1) {
-    fgets((char *)&local_206c,0x100,local_2074);
-    fscanf(local_2074,(byte *)s__d__004534a8);
-    fgets((char *)&local_206c,0x100,local_2074);
+    fgets(&local_206c,0x100,local_2074);
+    fscanf(local_2074,s__d__004534a8);
+    fgets(&local_206c,0x100,local_2074);
     pCVar8 = operator_new(this_00->ctex[iVar9].count * 0xc);
     this_00->ctex[iVar9].verts = pCVar8;
     _memset(this_00->ctex[iVar9].verts,0,this_00->ctex[iVar9].count * 0xc);
-    fscanf(local_2074,(byte *)s__f__004534b0);
-    fgets((char *)&local_206c,0x100,local_2074);
-    fgets((char *)&local_206c,0x100,local_2074);
+    fscanf(local_2074,s__f__004534b0);
+    fgets(&local_206c,0x100,local_2074);
+    fgets(&local_206c,0x100,local_2074);
     for (local_20ac = 0; local_20ac < this_00->ctex[iVar9].count; local_20ac = local_20ac + 1) {
-      fscanf(local_2074,(byte *)s__d__004534b8);
-      this_00->ctex[iVar9].verts[local_20ac].tv =
-           this_00->verts[this_00->ctex[iVar9].verts[local_20ac].vtx].tu;
+      fscanf(local_2074,s__d__004534b8);
       this_00->ctex[iVar9].verts[local_20ac].tu =
+           this_00->verts[this_00->ctex[iVar9].verts[local_20ac].vtx].tu;
+      this_00->ctex[iVar9].verts[local_20ac].tv =
            this_00->verts[this_00->ctex[iVar9].verts[local_20ac].vtx].tv;
-      fgets((char *)&local_206c,0x100,local_2074);
+      fgets(&local_206c,0x100,local_2074);
     }
   }
   fclose(local_2074);

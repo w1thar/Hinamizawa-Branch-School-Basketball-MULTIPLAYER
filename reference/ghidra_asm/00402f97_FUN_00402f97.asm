@@ -4,7 +4,7 @@
 00402f9b  MOV dword ptr [EBP + -0x4],ECX
 00402f9e  MOV EAX,dword ptr [EBP + 0x8]
 00402fa1  PUSH EAX
-00402fa2  CALL dword ptr [0x0045a658] {370800}
+00402fa2  CALL dword ptr [0x0045a658] {370800}  ; USER32.DLL::GetKeyState
 00402fa8  MOVSX ECX,AX
 00402fab  AND ECX,0x80
 00402fb1  CMP ECX,0x80

@@ -115,18 +115,18 @@ void __thiscall Game::Frame(Game *this)
       shadow.m[0xf] = fVar4;
       Player::Render(this->players[local_c],this->device,shadow);
     }
-    fn_42a8fa(this);
-    fn_42134c(this);
+    RenderObjects(this);
+    DrawTeamPortraits(this);
     fn_421d0f(this);
-    fn_422100(this);
+    DrawPowerGauge(this);
     fn_428844(this);
-    fn_42557f(this);
+    DrawSunGlare(this);
     fn_4259a7(this);
     fn_428491(this);
     fn_4286c9(this);
     (*this->device->lpVtbl->EndScene)(this->device);
   }
-  fn_41b070(this);
+  DrawHUD(this);
   Flip(this);
   return;
 }

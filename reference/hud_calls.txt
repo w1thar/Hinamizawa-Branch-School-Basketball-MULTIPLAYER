@@ -1,0 +1,2968 @@
+0041b070  PUSH EBP
+0041b071  MOV EBP,ESP
+0041b073  SUB ESP,0x60
+0041b076  PUSH ESI
+0041b077  MOV dword ptr [EBP + -0x8],ECX
+0041b07d  FLD float ptr [EAX + 0x390]
+0041b083  FCOMP float ptr [0x004510d8] {1}
+0041b089  FNSTSW AX
+0041b08b  TEST AH,0x1
+0041b08e  JNZ 0x0041b099
+0041b090  MOV dword ptr [EBP + -0xc],0x1
+0041b097  JMP 0x0041b0a0
+0041b099  MOV dword ptr [EBP + -0xc],0x0
+0041b0a3  FLD float ptr [ECX + 0x390]
+0041b0a9  FCOMP float ptr [0x004510dc] {2}
+0041b0af  FNSTSW AX
+0041b0b1  TEST AH,0x1
+0041b0b4  JZ 0x0041b0bf
+0041b0b6  MOV dword ptr [EBP + -0x10],0x1
+0041b0bd  JMP 0x0041b0c6
+0041b0bf  MOV dword ptr [EBP + -0x10],0x0
+0041b0c9  XOR EAX,EAX
+0041b0cb  CMP dword ptr [EDX + 0x26c],0x2
+0041b0d2  SETZ AL
+0041b0d5  AND EAX,dword ptr [EBP + -0xc]
+0041b0d8  AND EAX,dword ptr [EBP + -0x10]
+0041b0db  TEST EAX,EAX
+0041b0dd  JZ 0x0041b169
+0041b0e3  PUSH 0x45362c {'昭和５８年\u3000初夏'}
+0041b0eb  ADD ECX,0x270
+0041b0f1  PUSH ECX
+0041b0f2  CALL 0x00434a40  ; sprintf
+------------------------------------------------------------
+0041b0fd  FLD float ptr [EDX + 0x390]
+0041b103  FSUB float ptr [0x004510d8] {1}
+0041b109  FMUL float ptr [0x004510e0] {255}
+0041b10f  CALL 0x0043510c  ; __ftol
+0041b114  PUSH EAX
+0041b118  FLD float ptr [EAX + 0x390]
+0041b11e  FSUB float ptr [0x004510d8] {1}
+0041b124  FMUL float ptr [0x004510e0] {255}
+0041b12a  CALL 0x0043510c  ; __ftol
+0041b12f  PUSH EAX
+0041b133  FLD float ptr [ECX + 0x390]
+0041b139  FSUB float ptr [0x004510d8] {1}
+0041b13f  FMUL float ptr [0x004510e0] {255}
+0041b145  CALL 0x0043510c  ; __ftol
+0041b14a  PUSH EAX
+0041b14b  PUSH 0xe6
+0041b150  PUSH 0xcf
+0041b155  PUSH 0x1c
+0041b15a  ADD EDX,0x270
+0041b160  PUSH EDX
+0041b164  CALL 0x00401118  ; Game::DrawText
+------------------------------------------------------------
+0041b16c  FLD float ptr [EAX + 0x390]
+0041b172  FCOMP float ptr [0x004510dc] {2}
+0041b178  FNSTSW AX
+0041b17a  TEST AH,0x1
+0041b17d  JNZ 0x0041b188
+0041b17f  MOV dword ptr [EBP + -0x14],0x1
+0041b186  JMP 0x0041b18f
+0041b188  MOV dword ptr [EBP + -0x14],0x0
+0041b192  FLD float ptr [ECX + 0x390]
+0041b198  FCOMP float ptr [0x004510e4] {4}
+0041b19e  FNSTSW AX
+0041b1a0  TEST AH,0x1
+0041b1a3  JZ 0x0041b1ae
+0041b1a5  MOV dword ptr [EBP + -0x18],0x1
+0041b1ac  JMP 0x0041b1b5
+0041b1ae  MOV dword ptr [EBP + -0x18],0x0
+0041b1b8  XOR EAX,EAX
+0041b1ba  CMP dword ptr [EDX + 0x26c],0x2
+0041b1c1  SETZ AL
+0041b1c4  AND EAX,dword ptr [EBP + -0x14]
+0041b1c7  AND EAX,dword ptr [EBP + -0x18]
+0041b1ca  TEST EAX,EAX
+0041b1cc  JZ 0x0041b212
+0041b1ce  PUSH 0x453640 {'昭和５８年\u3000初夏'}
+0041b1d6  ADD ECX,0x270
+0041b1dc  PUSH ECX
+0041b1dd  CALL 0x00434a40  ; sprintf
+------------------------------------------------------------
+0041b1e5  PUSH 0xff
+0041b1ea  PUSH 0xff
+0041b1ef  PUSH 0xff
+0041b1f4  PUSH 0xe6
+0041b1f9  PUSH 0xcf
+0041b1fe  PUSH 0x1c
+0041b203  ADD EDX,0x270
+0041b209  PUSH EDX
+0041b20d  CALL 0x00401118  ; Game::DrawText
+------------------------------------------------------------
+0041b215  FLD float ptr [EAX + 0x390]
+0041b21b  FCOMP float ptr [0x004510e4] {4}
+0041b221  FNSTSW AX
+0041b223  TEST AH,0x1
+0041b226  JNZ 0x0041b231
+0041b228  MOV dword ptr [EBP + -0x1c],0x1
+0041b22f  JMP 0x0041b238
+0041b231  MOV dword ptr [EBP + -0x1c],0x0
+0041b23b  FLD float ptr [ECX + 0x390]
+0041b241  FCOMP float ptr [0x004510e8] {5}
+0041b247  FNSTSW AX
+0041b249  TEST AH,0x1
+0041b24c  JZ 0x0041b257
+0041b24e  MOV dword ptr [EBP + -0x20],0x1
+0041b255  JMP 0x0041b25e
+0041b257  MOV dword ptr [EBP + -0x20],0x0
+0041b261  XOR EAX,EAX
+0041b263  CMP dword ptr [EDX + 0x26c],0x2
+0041b26a  SETZ AL
+0041b26d  AND EAX,dword ptr [EBP + -0x1c]
+0041b270  AND EAX,dword ptr [EBP + -0x20]
+0041b273  TEST EAX,EAX
+0041b275  JZ 0x0041b301
+0041b27b  PUSH 0x453654 {'昭和５８年\u3000初夏'}
+0041b283  ADD ECX,0x270
+0041b289  PUSH ECX
+0041b28a  CALL 0x00434a40  ; sprintf
+------------------------------------------------------------
+0041b295  FLD float ptr [0x004510e8] {5}
+0041b29b  FSUB float ptr [EDX + 0x390]
+0041b2a1  FMUL float ptr [0x004510e0] {255}
+0041b2a7  CALL 0x0043510c  ; __ftol
+0041b2ac  PUSH EAX
+0041b2b0  FLD float ptr [0x004510e8] {5}
+0041b2b6  FSUB float ptr [EAX + 0x390]
+0041b2bc  FMUL float ptr [0x004510e0] {255}
+0041b2c2  CALL 0x0043510c  ; __ftol
+0041b2c7  PUSH EAX
+0041b2cb  FLD float ptr [0x004510e8] {5}
+0041b2d1  FSUB float ptr [ECX + 0x390]
+0041b2d7  FMUL float ptr [0x004510e0] {255}
+0041b2dd  CALL 0x0043510c  ; __ftol
+0041b2e2  PUSH EAX
+0041b2e3  PUSH 0xe6
+0041b2e8  PUSH 0xcf
+0041b2ed  PUSH 0x1c
+0041b2f2  ADD EDX,0x270
+0041b2f8  PUSH EDX
+0041b2fc  CALL 0x00401118  ; Game::DrawText
+------------------------------------------------------------
+0041b304  FLD float ptr [EAX + 0x390]
+0041b30a  FCOMP float ptr [0x004510ec] {6}
+0041b310  FNSTSW AX
+0041b312  TEST AH,0x1
+0041b315  JNZ 0x0041b320
+0041b317  MOV dword ptr [EBP + -0x24],0x1
+0041b31e  JMP 0x0041b327
+0041b320  MOV dword ptr [EBP + -0x24],0x0
+0041b32a  FLD float ptr [ECX + 0x390]
+0041b330  FCOMP float ptr [0x004510f0] {7}
+0041b336  FNSTSW AX
+0041b338  TEST AH,0x1
+0041b33b  JZ 0x0041b346
+0041b33d  MOV dword ptr [EBP + -0x28],0x1
+0041b344  JMP 0x0041b34d
+0041b346  MOV dword ptr [EBP + -0x28],0x0
+0041b350  XOR EAX,EAX
+0041b352  CMP dword ptr [EDX + 0x26c],0x2
+0041b359  SETZ AL
+0041b35c  AND EAX,dword ptr [EBP + -0x24]
+0041b35f  AND EAX,dword ptr [EBP + -0x28]
+0041b362  TEST EAX,EAX
+0041b364  JZ 0x0041b3f0
+0041b36a  PUSH 0x453668 {'××県\u3000鹿骨市'}
+0041b372  ADD ECX,0x270
+0041b378  PUSH ECX
+0041b379  CALL 0x00434a40  ; sprintf
+------------------------------------------------------------
+0041b384  FLD float ptr [EDX + 0x390]
+0041b38a  FSUB float ptr [0x004510ec] {6}
+0041b390  FMUL float ptr [0x004510e0] {255}
+0041b396  CALL 0x0043510c  ; __ftol
+0041b39b  PUSH EAX
+0041b39f  FLD float ptr [EAX + 0x390]
+0041b3a5  FSUB float ptr [0x004510ec] {6}
+0041b3ab  FMUL float ptr [0x004510e0] {255}
+0041b3b1  CALL 0x0043510c  ; __ftol
+0041b3b6  PUSH EAX
+0041b3ba  FLD float ptr [ECX + 0x390]
+0041b3c0  FSUB float ptr [0x004510ec] {6}
+0041b3c6  FMUL float ptr [0x004510e0] {255}
+0041b3cc  CALL 0x0043510c  ; __ftol
+0041b3d1  PUSH EAX
+0041b3d2  PUSH 0xe6
+0041b3d7  PUSH 0xdf
+0041b3dc  PUSH 0x1c
+0041b3e1  ADD EDX,0x270
+0041b3e7  PUSH EDX
+0041b3eb  CALL 0x00401118  ; Game::DrawText
+------------------------------------------------------------
+0041b3f3  FLD float ptr [EAX + 0x390]
+0041b3f9  FCOMP float ptr [0x004510f0] {7}
+0041b3ff  FNSTSW AX
+0041b401  TEST AH,0x1
+0041b404  JNZ 0x0041b40f
+0041b406  MOV dword ptr [EBP + -0x2c],0x1
+0041b40d  JMP 0x0041b416
+0041b40f  MOV dword ptr [EBP + -0x2c],0x0
+0041b419  FLD float ptr [ECX + 0x390]
+0041b41f  FCOMP float ptr [0x004510f4] {9}
+0041b425  FNSTSW AX
+0041b427  TEST AH,0x1
+0041b42a  JZ 0x0041b435
+0041b42c  MOV dword ptr [EBP + -0x30],0x1
+0041b433  JMP 0x0041b43c
+0041b435  MOV dword ptr [EBP + -0x30],0x0
+0041b43f  XOR EAX,EAX
+0041b441  CMP dword ptr [EDX + 0x26c],0x2
+0041b448  SETZ AL
+0041b44b  AND EAX,dword ptr [EBP + -0x2c]
+0041b44e  AND EAX,dword ptr [EBP + -0x30]
+0041b451  TEST EAX,EAX
+0041b453  JZ 0x0041b499
+0041b455  PUSH 0x453678 {'××県\u3000鹿骨市'}
+0041b45d  ADD ECX,0x270
+0041b463  PUSH ECX
+0041b464  CALL 0x00434a40  ; sprintf
+------------------------------------------------------------
+0041b46c  PUSH 0xff
+0041b471  PUSH 0xff
+0041b476  PUSH 0xff
+0041b47b  PUSH 0xe6
+0041b480  PUSH 0xdf
+0041b485  PUSH 0x1c
+0041b48a  ADD EDX,0x270
+0041b490  PUSH EDX
+0041b494  CALL 0x00401118  ; Game::DrawText
+------------------------------------------------------------
+0041b49c  FLD float ptr [EAX + 0x390]
+0041b4a2  FCOMP float ptr [0x004510f4] {9}
+0041b4a8  FNSTSW AX
+0041b4aa  TEST AH,0x1
+0041b4ad  JNZ 0x0041b4b8
+0041b4af  MOV dword ptr [EBP + -0x34],0x1
+0041b4b6  JMP 0x0041b4bf
+0041b4b8  MOV dword ptr [EBP + -0x34],0x0
+0041b4c2  FLD float ptr [ECX + 0x390]
+0041b4c8  FCOMP float ptr [0x004510f8] {10}
+0041b4ce  FNSTSW AX
+0041b4d0  TEST AH,0x1
+0041b4d3  JZ 0x0041b4de
+0041b4d5  MOV dword ptr [EBP + -0x38],0x1
+0041b4dc  JMP 0x0041b4e5
+0041b4de  MOV dword ptr [EBP + -0x38],0x0
+0041b4e8  XOR EAX,EAX
+0041b4ea  CMP dword ptr [EDX + 0x26c],0x2
+0041b4f1  SETZ AL
+0041b4f4  AND EAX,dword ptr [EBP + -0x34]
+0041b4f7  AND EAX,dword ptr [EBP + -0x38]
+0041b4fa  TEST EAX,EAX
+0041b4fc  JZ 0x0041b588
+0041b502  PUSH 0x453688 {'××県\u3000鹿骨市'}
+0041b50a  ADD ECX,0x270
+0041b510  PUSH ECX
+0041b511  CALL 0x00434a40  ; sprintf
+------------------------------------------------------------
+0041b51c  FLD float ptr [0x004510f8] {10}
+0041b522  FSUB float ptr [EDX + 0x390]
+0041b528  FMUL float ptr [0x004510e0] {255}
+0041b52e  CALL 0x0043510c  ; __ftol
+0041b533  PUSH EAX
+0041b537  FLD float ptr [0x004510f8] {10}
+0041b53d  FSUB float ptr [EAX + 0x390]
+0041b543  FMUL float ptr [0x004510e0] {255}
+0041b549  CALL 0x0043510c  ; __ftol
+0041b54e  PUSH EAX
+0041b552  FLD float ptr [0x004510f8] {10}
+0041b558  FSUB float ptr [ECX + 0x390]
+0041b55e  FMUL float ptr [0x004510e0] {255}
+0041b564  CALL 0x0043510c  ; __ftol
+0041b569  PUSH EAX
+0041b56a  PUSH 0xe6
+0041b56f  PUSH 0xdf
+0041b574  PUSH 0x1c
+0041b579  ADD EDX,0x270
+0041b57f  PUSH EDX
+0041b583  CALL 0x00401118  ; Game::DrawText
+------------------------------------------------------------
+0041b58b  FLD float ptr [EAX + 0x390]
+0041b591  FCOMP float ptr [0x004510fc] {32}
+0041b597  FNSTSW AX
+0041b599  TEST AH,0x1
+0041b59c  JNZ 0x0041b5a7
+0041b59e  MOV dword ptr [EBP + -0x3c],0x1
+0041b5a5  JMP 0x0041b5ae
+0041b5a7  MOV dword ptr [EBP + -0x3c],0x0
+0041b5b1  FLD float ptr [ECX + 0x390]
+0041b5b7  FCOMP float ptr [0x00451100] {135}
+0041b5bd  FNSTSW AX
+0041b5bf  TEST AH,0x1
+0041b5c2  JZ 0x0041b5cd
+0041b5c4  MOV dword ptr [EBP + -0x40],0x1
+0041b5cb  JMP 0x0041b5d4
+0041b5cd  MOV dword ptr [EBP + -0x40],0x0
+0041b5d7  XOR EAX,EAX
+0041b5d9  CMP dword ptr [EDX + 0x26c],0x2
+0041b5e0  SETZ AL
+0041b5e3  AND EAX,dword ptr [EBP + -0x3c]
+0041b5e6  AND EAX,dword ptr [EBP + -0x40]
+0041b5e9  TEST EAX,EAX
+0041b5eb  JZ 0x0041b6e7
+0041b5f1  PUSH 0x453698 {"ＰＵＳＨ\u3000'Ｘ'ＫＥＹ"}
+0041b5f9  ADD ECX,0x270
+0041b5ff  PUSH ECX
+0041b600  CALL 0x00434a40  ; sprintf
+------------------------------------------------------------
+0041b60b  FLD float ptr [EDX + 0x390]
+0041b611  FMUL float ptr [0x00451104] {3}
+0041b617  PUSH ECX
+0041b618  FSTP float ptr [ESP]
+0041b61b  CALL 0x00401262  ; sinf
+0041b623  FMUL float ptr [0x00451108] {128}
+0041b629  FADD float ptr [0x00451108] {128}
+0041b62f  CALL 0x0043510c  ; __ftol
+0041b634  PUSH EAX
+0041b638  FLD float ptr [EAX + 0x390]
+0041b63e  FMUL float ptr [0x004510f0] {7}
+0041b644  PUSH ECX
+0041b645  FSTP float ptr [ESP]
+0041b648  CALL 0x00401262  ; sinf
+0041b650  FMUL float ptr [0x00451108] {128}
+0041b656  FADD float ptr [0x00451108] {128}
+0041b65c  CALL 0x0043510c  ; __ftol
+0041b661  PUSH EAX
+0041b665  FLD float ptr [ECX + 0x390]
+0041b66b  FMUL float ptr [0x004510f8] {10}
+0041b671  PUSH ECX
+0041b672  FSTP float ptr [ESP]
+0041b675  CALL 0x00401262  ; sinf
+0041b67d  FMUL float ptr [0x00451108] {128}
+0041b683  FADD float ptr [0x00451108] {128}
+0041b689  CALL 0x0043510c  ; __ftol
+0041b68e  PUSH EAX
+0041b68f  PUSH 0xc0
+0041b694  PUSH 0xc0
+0041b699  PUSH 0x18
+0041b69e  ADD EDX,0x270
+0041b6a4  PUSH EDX
+0041b6a8  CALL 0x00401118  ; Game::DrawText
+------------------------------------------------------------
+0041b6ad  PUSH 0x4536b0 {'矢印キー：移動\u3000\u3000Programed by ひぐ中（ぇー'}
+0041b6b5  ADD EAX,0x270
+0041b6ba  PUSH EAX
+0041b6bb  CALL 0x00434a40  ; sprintf
+------------------------------------------------------------
+0041b6c3  PUSH 0x32
+0041b6c5  PUSH 0x32
+0041b6c7  PUSH 0x32
+0041b6c9  PUSH 0x1cc
+0041b6ce  PUSH 0x173
+0041b6d3  PUSH 0xc
+0041b6d8  ADD ECX,0x270
+0041b6de  PUSH ECX
+0041b6e2  CALL 0x00401118  ; Game::DrawText
+------------------------------------------------------------
+0041b6ea  XOR EAX,EAX
+0041b6ec  CMP dword ptr [EDX + 0x26c],0x3
+0041b6f3  SETZ AL
+0041b6f9  XOR EDX,EDX
+0041b6fb  MOV DL,byte ptr [ECX + 0x39a]
+0041b701  AND EAX,EDX
+0041b703  TEST EAX,EAX
+0041b705  JZ 0x0041bb34
+0041b70b  PUSH 0x4536dc {'プレイモードを選択してください'}
+0041b713  ADD EAX,0x270
+0041b718  PUSH EAX
+0041b719  CALL 0x00434a40  ; sprintf
+------------------------------------------------------------
+0041b724  FLD float ptr [ECX + 0x390]
+0041b72a  FMUL float ptr [0x00451104] {3}
+0041b730  PUSH ECX
+0041b731  FSTP float ptr [ESP]
+0041b734  CALL 0x00401262  ; sinf
+0041b73c  FMUL float ptr [0x00451108] {128}
+0041b742  FADD float ptr [0x00451108] {128}
+0041b748  CALL 0x0043510c  ; __ftol
+0041b74d  PUSH EAX
+0041b751  FLD float ptr [EDX + 0x390]
+0041b757  FMUL float ptr [0x004510f0] {7}
+0041b75d  PUSH ECX
+0041b75e  FSTP float ptr [ESP]
+0041b761  CALL 0x00401262  ; sinf
+0041b769  FMUL float ptr [0x00451108] {128}
+0041b76f  FADD float ptr [0x00451108] {128}
+0041b775  CALL 0x0043510c  ; __ftol
+0041b77a  PUSH EAX
+0041b77e  FLD float ptr [EAX + 0x390]
+0041b784  FMUL float ptr [0x004510f8] {10}
+0041b78a  PUSH ECX
+0041b78b  FSTP float ptr [ESP]
+0041b78e  CALL 0x00401262  ; sinf
+0041b796  FMUL float ptr [0x00451108] {128}
+0041b79c  FADD float ptr [0x00451108] {128}
+0041b7a2  CALL 0x0043510c  ; __ftol
+0041b7a7  PUSH EAX
+0041b7a8  PUSH 0xc0
+0041b7ad  PUSH 0x8c
+0041b7b2  PUSH 0x18
+0041b7b7  ADD ECX,0x270
+0041b7bd  PUSH ECX
+0041b7c1  CALL 0x00401118  ; Game::DrawText
+------------------------------------------------------------
+0041b7c6  PUSH 0x4536fc {'ノーマルモード'}
+0041b7ce  ADD EDX,0x270
+0041b7d4  PUSH EDX
+0041b7d5  CALL 0x00434a40  ; sprintf
+------------------------------------------------------------
+0041b7dd  PUSH 0x0
+0041b7df  PUSH 0x0
+0041b7e1  PUSH 0x0
+0041b7e3  PUSH 0x151
+0041b7e8  PUSH 0xf5
+0041b7ed  PUSH 0x1c
+0041b7f2  ADD EAX,0x270
+0041b7f7  PUSH EAX
+0041b7fb  CALL 0x00401118  ; Game::DrawText
+------------------------------------------------------------
+0041b800  PUSH 0x45370c {'\u3000部活モード'}
+0041b808  ADD ECX,0x270
+0041b80e  PUSH ECX
+0041b80f  CALL 0x00434a40  ; sprintf
+------------------------------------------------------------
+0041b817  PUSH 0x0
+0041b819  PUSH 0x0
+0041b81b  PUSH 0x0
+0041b81d  PUSH 0x178
+0041b822  PUSH 0xf5
+0041b827  PUSH 0x1c
+0041b82c  ADD EDX,0x270
+0041b832  PUSH EDX
+0041b836  CALL 0x00401118  ; Game::DrawText
+------------------------------------------------------------
+0041b83b  PUSH 0x45371c {'\u3000練習モード'}
+0041b843  ADD EAX,0x270
+0041b848  PUSH EAX
+0041b849  CALL 0x00434a40  ; sprintf
+------------------------------------------------------------
+0041b851  PUSH 0x0
+0041b853  PUSH 0x0
+0041b855  PUSH 0x0
+0041b857  PUSH 0x1b1
+0041b85c  PUSH 0xf5
+0041b861  PUSH 0x1c
+0041b866  ADD ECX,0x270
+0041b86c  PUSH ECX
+0041b870  CALL 0x00401118  ; Game::DrawText
+------------------------------------------------------------
+0041b878  CMP dword ptr [EDX + 0x3b0],0x0
+0041b87f  JNZ 0x0041b949
+0041b885  PUSH 0x45372c {'ノーマルモード'}
+0041b88d  ADD EAX,0x270
+0041b892  PUSH EAX
+0041b893  CALL 0x00434a40  ; sprintf
+------------------------------------------------------------
+0041b89b  PUSH 0x0
+0041b89d  PUSH 0x0
+0041b89f  PUSH 0xff
+0041b8a4  PUSH 0x14f
+0041b8a9  PUSH 0xf3
+0041b8ae  PUSH 0x1c
+0041b8b3  ADD ECX,0x270
+0041b8b9  PUSH ECX
+0041b8bd  CALL 0x00401118  ; Game::DrawText
+------------------------------------------------------------
+0041b8c2  PUSH 0x45373c {'\u3000部活モード'}
+0041b8ca  ADD EDX,0x270
+0041b8d0  PUSH EDX
+0041b8d1  CALL 0x00434a40  ; sprintf
+------------------------------------------------------------
+0041b8d9  PUSH 0xff
+0041b8de  PUSH 0xff
+0041b8e3  PUSH 0xff
+0041b8e8  PUSH 0x176
+0041b8ed  PUSH 0xf3
+0041b8f2  PUSH 0x1c
+0041b8f7  ADD EAX,0x270
+0041b8fc  PUSH EAX
+0041b900  CALL 0x00401118  ; Game::DrawText
+------------------------------------------------------------
+0041b905  PUSH 0x45374c {'\u3000練習モード'}
+0041b90d  ADD ECX,0x270
+0041b913  PUSH ECX
+0041b914  CALL 0x00434a40  ; sprintf
+------------------------------------------------------------
+0041b91c  PUSH 0xff
+0041b921  PUSH 0xff
+0041b926  PUSH 0xff
+0041b92b  PUSH 0x1af
+0041b930  PUSH 0xf3
+0041b935  PUSH 0x1c
+0041b93a  ADD EDX,0x270
+0041b940  PUSH EDX
+0041b944  CALL 0x00401118  ; Game::DrawText
+------------------------------------------------------------
+0041b94c  CMP dword ptr [EAX + 0x3b0],0x1
+0041b953  JNZ 0x0041ba1d
+0041b959  PUSH 0x45375c {'ノーマルモード'}
+0041b961  ADD ECX,0x270
+0041b967  PUSH ECX
+0041b968  CALL 0x00434a40  ; sprintf
+------------------------------------------------------------
+0041b970  PUSH 0xff
+0041b975  PUSH 0xff
+0041b97a  PUSH 0xff
+0041b97f  PUSH 0x14f
+0041b984  PUSH 0xf3
+0041b989  PUSH 0x1c
+0041b98e  ADD EDX,0x270
+0041b994  PUSH EDX
+0041b998  CALL 0x00401118  ; Game::DrawText
+------------------------------------------------------------
+0041b99d  PUSH 0x45376c {'\u3000部活モード'}
+0041b9a5  ADD EAX,0x270
+0041b9aa  PUSH EAX
+0041b9ab  CALL 0x00434a40  ; sprintf
+------------------------------------------------------------
+0041b9b3  PUSH 0x0
+0041b9b5  PUSH 0x0
+0041b9b7  PUSH 0xff
+0041b9bc  PUSH 0x176
+0041b9c1  PUSH 0xf3
+0041b9c6  PUSH 0x1c
+0041b9cb  ADD ECX,0x270
+0041b9d1  PUSH ECX
+0041b9d5  CALL 0x00401118  ; Game::DrawText
+------------------------------------------------------------
+0041b9da  PUSH 0x45377c {'\u3000練習モード'}
+0041b9e2  ADD EDX,0x270
+0041b9e8  PUSH EDX
+0041b9e9  CALL 0x00434a40  ; sprintf
+------------------------------------------------------------
+0041b9f1  PUSH 0xff
+0041b9f6  PUSH 0xff
+0041b9fb  PUSH 0xff
+0041ba00  PUSH 0x1af
+0041ba05  PUSH 0xf3
+0041ba0a  PUSH 0x1c
+0041ba0f  ADD EAX,0x270
+0041ba14  PUSH EAX
+0041ba18  CALL 0x00401118  ; Game::DrawText
+------------------------------------------------------------
+0041ba20  CMP dword ptr [ECX + 0x3b0],0x2
+0041ba27  JNZ 0x0041baf1
+0041ba2d  PUSH 0x45378c {'ノーマルモード'}
+0041ba35  ADD EDX,0x270
+0041ba3b  PUSH EDX
+0041ba3c  CALL 0x00434a40  ; sprintf
+------------------------------------------------------------
+0041ba44  PUSH 0xff
+0041ba49  PUSH 0xff
+0041ba4e  PUSH 0xff
+0041ba53  PUSH 0x14f
+0041ba58  PUSH 0xf3
+0041ba5d  PUSH 0x1c
+0041ba62  ADD EAX,0x270
+0041ba67  PUSH EAX
+0041ba6b  CALL 0x00401118  ; Game::DrawText
+------------------------------------------------------------
+0041ba70  PUSH 0x45379c {'\u3000部活モード'}
+0041ba78  ADD ECX,0x270
+0041ba7e  PUSH ECX
+0041ba7f  CALL 0x00434a40  ; sprintf
+------------------------------------------------------------
+0041ba87  PUSH 0xff
+0041ba8c  PUSH 0xff
+0041ba91  PUSH 0xff
+0041ba96  PUSH 0x176
+0041ba9b  PUSH 0xf3
+0041baa0  PUSH 0x1c
+0041baa5  ADD EDX,0x270
+0041baab  PUSH EDX
+0041baaf  CALL 0x00401118  ; Game::DrawText
+------------------------------------------------------------
+0041bab4  PUSH 0x4537ac {'\u3000練習モード'}
+0041babc  ADD EAX,0x270
+0041bac1  PUSH EAX
+0041bac2  CALL 0x00434a40  ; sprintf
+------------------------------------------------------------
+0041baca  PUSH 0x0
+0041bacc  PUSH 0x0
+0041bace  PUSH 0xff
+0041bad3  PUSH 0x1af
+0041bad8  PUSH 0xf3
+0041badd  PUSH 0x1c
+0041bae2  ADD ECX,0x270
+0041bae8  PUSH ECX
+0041baec  CALL 0x00401118  ; Game::DrawText
+------------------------------------------------------------
+0041baf1  PUSH 0x4537bc {'ESCキー:強制終了(常時)'}
+0041baf9  ADD EDX,0x270
+0041baff  PUSH EDX
+0041bb00  CALL 0x00434a40  ; sprintf
+------------------------------------------------------------
+0041bb08  PUSH 0x96
+0041bb0d  PUSH 0xfa
+0041bb12  PUSH 0xff
+0041bb17  PUSH 0x1cc
+0041bb1c  PUSH 0x1f3
+0041bb21  PUSH 0xc
+0041bb26  ADD EAX,0x270
+0041bb2b  PUSH EAX
+0041bb2f  CALL 0x00401118  ; Game::DrawText
+------------------------------------------------------------
+0041bb37  XOR EDX,EDX
+0041bb39  CMP dword ptr [ECX + 0x26c],0x4
+0041bb40  SETZ DL
+0041bb46  XOR ECX,ECX
+0041bb48  CMP dword ptr [EAX + 0x3b8],0x3
+0041bb4f  SETL CL
+0041bb52  AND EDX,ECX
+0041bb54  TEST EDX,EDX
+0041bb56  JZ 0x0041c71d
+0041bb5c  PUSH 0x4537d4 {'チーム分け'}
+0041bb64  ADD EDX,0x270
+0041bb6a  PUSH EDX
+0041bb6b  CALL 0x00434a40  ; sprintf
+------------------------------------------------------------
+0041bb76  FLD float ptr [EAX + 0x390]
+0041bb7c  FMUL float ptr [0x00451104] {3}
+0041bb82  PUSH ECX
+0041bb83  FSTP float ptr [ESP]
+0041bb86  CALL 0x00401262  ; sinf
+0041bb8e  FMUL float ptr [0x00451108] {128}
+0041bb94  FADD float ptr [0x00451108] {128}
+0041bb9a  CALL 0x0043510c  ; __ftol
+0041bb9f  PUSH EAX
+0041bba3  FLD float ptr [ECX + 0x390]
+0041bba9  FMUL float ptr [0x004510f0] {7}
+0041bbaf  PUSH ECX
+0041bbb0  FSTP float ptr [ESP]
+0041bbb3  CALL 0x00401262  ; sinf
+0041bbbb  FMUL float ptr [0x00451108] {128}
+0041bbc1  FADD float ptr [0x00451108] {128}
+0041bbc7  CALL 0x0043510c  ; __ftol
+0041bbcc  PUSH EAX
+0041bbd0  FLD float ptr [EDX + 0x390]
+0041bbd6  FMUL float ptr [0x004510f8] {10}
+0041bbdc  PUSH ECX
+0041bbdd  FSTP float ptr [ESP]
+0041bbe0  CALL 0x00401262  ; sinf
+0041bbe8  FMUL float ptr [0x00451108] {128}
+0041bbee  FADD float ptr [0x00451108] {128}
+0041bbf4  CALL 0x0043510c  ; __ftol
+0041bbf9  PUSH EAX
+0041bbfa  PUSH 0x18
+0041bbfc  PUSH 0xf3
+0041bc01  PUSH 0x1c
+0041bc06  ADD EAX,0x270
+0041bc0b  PUSH EAX
+0041bc0f  CALL 0x00401118  ; Game::DrawText
+------------------------------------------------------------
+0041bc14  PUSH 0x4537e0 {'あなたのチームのプレーヤーを３人選択してください'}
+0041bc1c  ADD ECX,0x270
+0041bc22  PUSH ECX
+0041bc23  CALL 0x00434a40  ; sprintf
+------------------------------------------------------------
+0041bc2b  PUSH 0x0
+0041bc2d  PUSH 0x0
+0041bc2f  PUSH 0x0
+0041bc31  PUSH 0x4a
+0041bc33  PUSH 0x22
+0041bc35  PUSH 0x18
+0041bc3a  ADD EDX,0x270
+0041bc40  PUSH EDX
+0041bc44  CALL 0x00401118  ; Game::DrawText
+------------------------------------------------------------
+0041bc49  PUSH 0xff
+0041bc4e  PUSH 0xff
+0041bc53  PUSH 0xff
+0041bc58  PUSH 0x48
+0041bc5a  PUSH 0x20
+0041bc5c  PUSH 0x18
+0041bc61  ADD EAX,0x270
+0041bc66  PUSH EAX
+0041bc6a  CALL 0x00401118  ; Game::DrawText
+------------------------------------------------------------
+0041bc72  CMP dword ptr [ECX + 0x3b4],0x0
+0041bc79  JNZ 0x0041be37
+0041bc7f  PUSH 0x453814 {'前原\u3000圭一'}
+0041bc87  ADD EDX,0x270
+0041bc8d  PUSH EDX
+0041bc8e  CALL 0x00434a40  ; sprintf
+------------------------------------------------------------
+0041bc96  PUSH 0x0
+0041bc98  PUSH 0x0
+0041bc9a  PUSH 0x0
+0041bc9c  PUSH 0xc2
+0041bca1  PUSH 0x18e
+0041bca6  PUSH 0x24
+0041bcab  ADD EAX,0x270
+0041bcb0  PUSH EAX
+0041bcb4  CALL 0x00401118  ; Game::DrawText
+------------------------------------------------------------
+0041bcb9  PUSH 0xb4
+0041bcbe  PUSH 0xff
+0041bcc3  PUSH 0xff
+0041bcc8  PUSH 0xc0
+0041bccd  PUSH 0x18c
+0041bcd2  PUSH 0x24
+0041bcd7  ADD ECX,0x270
+0041bcdd  PUSH ECX
+0041bce1  CALL 0x00401118  ; Game::DrawText
+------------------------------------------------------------
+0041bce6  PUSH 0x453820 {'物語の主人公、”口先の魔術師”'}
+0041bcee  ADD EDX,0x270
+0041bcf4  PUSH EDX
+0041bcf5  CALL 0x00434a40  ; sprintf
+------------------------------------------------------------
+0041bcfd  PUSH 0xff
+0041bd02  PUSH 0xff
+0041bd07  PUSH 0xff
+0041bd0c  PUSH 0x108
+0041bd11  PUSH 0x160
+0041bd16  PUSH 0x10
+0041bd1b  ADD EAX,0x270
+0041bd20  PUSH EAX
+0041bd24  CALL 0x00401118  ; Game::DrawText
+------------------------------------------------------------
+0041bd29  PUSH 0x453840 {'唯一の男キャラ。各能力値は高い'}
+0041bd31  ADD ECX,0x270
+0041bd37  PUSH ECX
+0041bd38  CALL 0x00434a40  ; sprintf
+------------------------------------------------------------
+0041bd40  PUSH 0xff
+0041bd45  PUSH 0xff
+0041bd4a  PUSH 0xff
+0041bd4f  PUSH 0x120
+0041bd54  PUSH 0x160
+0041bd59  PUSH 0x10
+0041bd5e  ADD EDX,0x270
+0041bd64  PUSH EDX
+0041bd68  CALL 0x00401118  ; Game::DrawText
+------------------------------------------------------------
+0041bd6d  PUSH 0x453860 {'が、たまに暴走する。'}
+0041bd75  ADD EAX,0x270
+0041bd7a  PUSH EAX
+0041bd7b  CALL 0x00434a40  ; sprintf
+------------------------------------------------------------
+0041bd83  PUSH 0xff
+0041bd88  PUSH 0xff
+0041bd8d  PUSH 0xff
+0041bd92  PUSH 0x137
+0041bd97  PUSH 0x160
+0041bd9c  PUSH 0x10
+0041bda1  ADD ECX,0x270
+0041bda7  PUSH ECX
+0041bdab  CALL 0x00401118  ; Game::DrawText
+------------------------------------------------------------
+0041bdb0  PUSH 0x453878 {'”俺如キニ祟リ殺サレルナ！？”'}
+0041bdb8  ADD EDX,0x270
+0041bdbe  PUSH EDX
+0041bdbf  CALL 0x00434a40  ; sprintf
+------------------------------------------------------------
+0041bdc7  PUSH 0xff
+0041bdcc  PUSH 0xff
+0041bdd1  PUSH 0xff
+0041bdd6  PUSH 0x14f
+0041bddb  PUSH 0x160
+0041bde0  PUSH 0x10
+0041bde5  ADD EAX,0x270
+0041bdea  PUSH EAX
+0041bdee  CALL 0x00401118  ; Game::DrawText
+------------------------------------------------------------
+0041bdf3  PUSH 0x453898 {'必殺技：ビジョンアクチュエーション'}
+0041bdfb  ADD ECX,0x270
+0041be01  PUSH ECX
+0041be02  CALL 0x00434a40  ; sprintf
+------------------------------------------------------------
+0041be0a  PUSH 0xb4
+0041be0f  PUSH 0xb4
+0041be14  PUSH 0xff
+0041be19  PUSH 0x176
+0041be1e  PUSH 0x160
+0041be23  PUSH 0x10
+0041be28  ADD EDX,0x270
+0041be2e  PUSH EDX
+0041be32  CALL 0x00401118  ; Game::DrawText
+------------------------------------------------------------
+0041be3a  CMP dword ptr [EAX + 0x3b4],0x1
+0041be41  JNZ 0x0041bfff
+0041be47  PUSH 0x4538bc {'園崎\u3000魅音'}
+0041be4f  ADD ECX,0x270
+0041be55  PUSH ECX
+0041be56  CALL 0x00434a40  ; sprintf
+------------------------------------------------------------
+0041be5e  PUSH 0x0
+0041be60  PUSH 0x0
+0041be62  PUSH 0x0
+0041be64  PUSH 0xc2
+0041be69  PUSH 0x18e
+0041be6e  PUSH 0x24
+0041be73  ADD EDX,0x270
+0041be79  PUSH EDX
+0041be7d  CALL 0x00401118  ; Game::DrawText
+------------------------------------------------------------
+0041be82  PUSH 0xb4
+0041be87  PUSH 0xff
+0041be8c  PUSH 0xff
+0041be91  PUSH 0xc0
+0041be96  PUSH 0x18c
+0041be9b  PUSH 0x24
+0041bea0  ADD EAX,0x270
+0041bea5  PUSH EAX
+0041bea9  CALL 0x00401118  ; Game::DrawText
+------------------------------------------------------------
+0041beae  PUSH 0x4538c8 {'部活の部長、最年長”おじさん”'}
+0041beb6  ADD ECX,0x270
+0041bebc  PUSH ECX
+0041bebd  CALL 0x00434a40  ; sprintf
+------------------------------------------------------------
+0041bec5  PUSH 0xff
+0041beca  PUSH 0xff
+0041becf  PUSH 0xff
+0041bed4  PUSH 0x108
+0041bed9  PUSH 0x160
+0041bede  PUSH 0x10
+0041bee3  ADD EDX,0x270
+0041bee9  PUSH EDX
+0041beed  CALL 0x00401118  ; Game::DrawText
+------------------------------------------------------------
+0041bef2  PUSH 0x4538e8 {'全ての能力が平均以上であり、オール'}
+0041befa  ADD EAX,0x270
+0041beff  PUSH EAX
+0041bf00  CALL 0x00434a40  ; sprintf
+------------------------------------------------------------
+0041bf08  PUSH 0xff
+0041bf0d  PUSH 0xff
+0041bf12  PUSH 0xff
+0041bf17  PUSH 0x120
+0041bf1c  PUSH 0x160
+0041bf21  PUSH 0x10
+0041bf26  ADD ECX,0x270
+0041bf2c  PUSH ECX
+0041bf30  CALL 0x00401118  ; Game::DrawText
+------------------------------------------------------------
+0041bf35  PUSH 0x45390c {'マイティな使いやすいキャラ。'}
+0041bf3d  ADD EDX,0x270
+0041bf43  PUSH EDX
+0041bf44  CALL 0x00434a40  ; sprintf
+------------------------------------------------------------
+0041bf4c  PUSH 0xff
+0041bf51  PUSH 0xff
+0041bf56  PUSH 0xff
+0041bf5b  PUSH 0x137
+0041bf60  PUSH 0x160
+0041bf65  PUSH 0x10
+0041bf6a  ADD EAX,0x270
+0041bf6f  PUSH EAX
+0041bf73  CALL 0x00401118  ; Game::DrawText
+------------------------------------------------------------
+0041bf78  PUSH 0x45392c {'”勝つためには、手段を選ぶな！！”'}
+0041bf80  ADD ECX,0x270
+0041bf86  PUSH ECX
+0041bf87  CALL 0x00434a40  ; sprintf
+------------------------------------------------------------
+0041bf8f  PUSH 0xff
+0041bf94  PUSH 0xff
+0041bf99  PUSH 0xff
+0041bf9e  PUSH 0x14f
+0041bfa3  PUSH 0x160
+0041bfa8  PUSH 0x10
+0041bfad  ADD EDX,0x270
+0041bfb3  PUSH EDX
+0041bfb7  CALL 0x00401118  ; Game::DrawText
+------------------------------------------------------------
+0041bfbc  PUSH 0x453950 {'必殺技：ひき肉トルネード'}
+0041bfc4  ADD EAX,0x270
+0041bfc9  PUSH EAX
+0041bfca  CALL 0x00434a40  ; sprintf
+------------------------------------------------------------
+0041bfd2  PUSH 0xb4
+0041bfd7  PUSH 0xb4
+0041bfdc  PUSH 0xff
+0041bfe1  PUSH 0x176
+0041bfe6  PUSH 0x160
+0041bfeb  PUSH 0x10
+0041bff0  ADD ECX,0x270
+0041bff6  PUSH ECX
+0041bffa  CALL 0x00401118  ; Game::DrawText
+------------------------------------------------------------
+0041c002  CMP dword ptr [EDX + 0x3b4],0x2
+0041c009  JNZ 0x0041c1c6
+0041c00f  PUSH 0x45396c {'竜宮\u3000レナ'}
+0041c017  ADD EAX,0x270
+0041c01c  PUSH EAX
+0041c01d  CALL 0x00434a40  ; sprintf
+------------------------------------------------------------
+0041c025  PUSH 0x0
+0041c027  PUSH 0x0
+0041c029  PUSH 0x0
+0041c02b  PUSH 0xc2
+0041c030  PUSH 0x18e
+0041c035  PUSH 0x24
+0041c03a  ADD ECX,0x270
+0041c040  PUSH ECX
+0041c044  CALL 0x00401118  ; Game::DrawText
+------------------------------------------------------------
+0041c049  PUSH 0xb4
+0041c04e  PUSH 0xff
+0041c053  PUSH 0xff
+0041c058  PUSH 0xc0
+0041c05d  PUSH 0x18c
+0041c062  PUSH 0x24
+0041c067  ADD EDX,0x270
+0041c06d  PUSH EDX
+0041c071  CALL 0x00401118  ; Game::DrawText
+------------------------------------------------------------
+0041c076  PUSH 0x453978 {'メインヒロイン、かぁいいものに'}
+0041c07e  ADD EAX,0x270
+0041c083  PUSH EAX
+0041c084  CALL 0x00434a40  ; sprintf
+------------------------------------------------------------
+0041c08c  PUSH 0xff
+0041c091  PUSH 0xff
+0041c096  PUSH 0xff
+0041c09b  PUSH 0x108
+0041c0a0  PUSH 0x160
+0041c0a5  PUSH 0x10
+0041c0aa  ADD ECX,0x270
+0041c0b0  PUSH ECX
+0041c0b4  CALL 0x00401118  ; Game::DrawText
+------------------------------------------------------------
+0041c0b9  PUSH 0x453998 {'目がない。能力は特に弱点は無く、'}
+0041c0c1  ADD EDX,0x270
+0041c0c7  PUSH EDX
+0041c0c8  CALL 0x00434a40  ; sprintf
+------------------------------------------------------------
+0041c0d0  PUSH 0xff
+0041c0d5  PUSH 0xff
+0041c0da  PUSH 0xff
+0041c0df  PUSH 0x120
+0041c0e4  PUSH 0x160
+0041c0e9  PUSH 0x10
+0041c0ee  ADD EAX,0x270
+0041c0f3  PUSH EAX
+0041c0f7  CALL 0x00401118  ; Game::DrawText
+------------------------------------------------------------
+0041c0fc  PUSH 0x4539bc {'ジャンプ力が特に優れている。'}
+0041c104  ADD ECX,0x270
+0041c10a  PUSH ECX
+0041c10b  CALL 0x00434a40  ; sprintf
+------------------------------------------------------------
+0041c113  PUSH 0xff
+0041c118  PUSH 0xff
+0041c11d  PUSH 0xff
+0041c122  PUSH 0x137
+0041c127  PUSH 0x160
+0041c12c  PUSH 0x10
+0041c131  ADD EDX,0x270
+0041c137  PUSH EDX
+0041c13b  CALL 0x00401118  ; Game::DrawText
+------------------------------------------------------------
+0041c140  PUSH 0x4539dc {'”かぁいい～！お持ち帰りっ～！！”'}
+0041c148  ADD EAX,0x270
+0041c14d  PUSH EAX
+0041c14e  CALL 0x00434a40  ; sprintf
+------------------------------------------------------------
+0041c156  PUSH 0xff
+0041c15b  PUSH 0xff
+0041c160  PUSH 0xff
+0041c165  PUSH 0x14f
+0041c16a  PUSH 0x160
+0041c16f  PUSH 0x10
+0041c174  ADD ECX,0x270
+0041c17a  PUSH ECX
+0041c17e  CALL 0x00401118  ; Game::DrawText
+------------------------------------------------------------
+0041c183  PUSH 0x453a00 {'必殺技：レナフラッシュダンクＳ'}
+0041c18b  ADD EDX,0x270
+0041c191  PUSH EDX
+0041c192  CALL 0x00434a40  ; sprintf
+------------------------------------------------------------
+0041c19a  PUSH 0xb4
+0041c19f  PUSH 0xb4
+0041c1a4  PUSH 0xff
+0041c1a9  PUSH 0x176
+0041c1ae  PUSH 0x160
+0041c1b3  PUSH 0x10
+0041c1b8  ADD EAX,0x270
+0041c1bd  PUSH EAX
+0041c1c1  CALL 0x00401118  ; Game::DrawText
+------------------------------------------------------------
+0041c1c9  CMP dword ptr [ECX + 0x3b4],0x3
+0041c1d0  JNZ 0x0041c38e
+0041c1d6  PUSH 0x453a20 {'北条\u3000沙都子'}
+0041c1de  ADD EDX,0x270
+0041c1e4  PUSH EDX
+0041c1e5  CALL 0x00434a40  ; sprintf
+------------------------------------------------------------
+0041c1ed  PUSH 0x0
+0041c1ef  PUSH 0x0
+0041c1f1  PUSH 0x0
+0041c1f3  PUSH 0xc2
+0041c1f8  PUSH 0x17b
+0041c1fd  PUSH 0x24
+0041c202  ADD EAX,0x270
+0041c207  PUSH EAX
+0041c20b  CALL 0x00401118  ; Game::DrawText
+------------------------------------------------------------
+0041c210  PUSH 0xb4
+0041c215  PUSH 0xff
+0041c21a  PUSH 0xff
+0041c21f  PUSH 0xc0
+0041c224  PUSH 0x179
+0041c229  PUSH 0x24
+0041c22e  ADD ECX,0x270
+0041c234  PUSH ECX
+0041c238  CALL 0x00401118  ; Game::DrawText
+------------------------------------------------------------
+0041c23d  PUSH 0x453a30 {'梨花と共に最年少。トラップマスター。'}
+0041c245  ADD EDX,0x270
+0041c24b  PUSH EDX
+0041c24c  CALL 0x00434a40  ; sprintf
+------------------------------------------------------------
+0041c254  PUSH 0xff
+0041c259  PUSH 0xff
+0041c25e  PUSH 0xff
+0041c263  PUSH 0x108
+0041c268  PUSH 0x160
+0041c26d  PUSH 0x10
+0041c272  ADD EAX,0x270
+0041c277  PUSH EAX
+0041c27b  CALL 0x00401118  ; Game::DrawText
+------------------------------------------------------------
+0041c280  PUSH 0x453a58 {'負けず嫌いだが、おっちょこちょい。'}
+0041c288  ADD ECX,0x270
+0041c28e  PUSH ECX
+0041c28f  CALL 0x00434a40  ; sprintf
+------------------------------------------------------------
+0041c297  PUSH 0xff
+0041c29c  PUSH 0xff
+0041c2a1  PUSH 0xff
+0041c2a6  PUSH 0x120
+0041c2ab  PUSH 0x160
+0041c2b0  PUSH 0x10
+0041c2b5  ADD EDX,0x270
+0041c2bb  PUSH EDX
+0041c2bf  CALL 0x00401118  ; Game::DrawText
+------------------------------------------------------------
+0041c2c4  PUSH 0x453a7c {'背は低いが、足が非常に速い。'}
+0041c2cc  ADD EAX,0x270
+0041c2d1  PUSH EAX
+0041c2d2  CALL 0x00434a40  ; sprintf
+------------------------------------------------------------
+0041c2da  PUSH 0xff
+0041c2df  PUSH 0xff
+0041c2e4  PUSH 0xff
+0041c2e9  PUSH 0x137
+0041c2ee  PUSH 0x160
+0041c2f3  PUSH 0x10
+0041c2f8  ADD ECX,0x270
+0041c2fe  PUSH ECX
+0041c302  CALL 0x00401118  ; Game::DrawText
+------------------------------------------------------------
+0041c307  PUSH 0x453a9c {'”圭一さんには負けませんことよ！”'}
+0041c30f  ADD EDX,0x270
+0041c315  PUSH EDX
+0041c316  CALL 0x00434a40  ; sprintf
+------------------------------------------------------------
+0041c31e  PUSH 0xff
+0041c323  PUSH 0xff
+0041c328  PUSH 0xff
+0041c32d  PUSH 0x14f
+0041c332  PUSH 0x160
+0041c337  PUSH 0x10
+0041c33c  ADD EAX,0x270
+0041c341  PUSH EAX
+0041c345  CALL 0x00401118  ; Game::DrawText
+------------------------------------------------------------
+0041c34a  PUSH 0x453ac0 {'必殺技：ワイヤーブービートラップ'}
+0041c352  ADD ECX,0x270
+0041c358  PUSH ECX
+0041c359  CALL 0x00434a40  ; sprintf
+------------------------------------------------------------
+0041c361  PUSH 0xb4
+0041c366  PUSH 0xb4
+0041c36b  PUSH 0xff
+0041c370  PUSH 0x176
+0041c375  PUSH 0x160
+0041c37a  PUSH 0x10
+0041c37f  ADD EDX,0x270
+0041c385  PUSH EDX
+0041c389  CALL 0x00401118  ; Game::DrawText
+------------------------------------------------------------
+0041c391  CMP dword ptr [EAX + 0x3b4],0x4
+0041c398  JNZ 0x0041c556
+0041c39e  PUSH 0x453ae4 {'古手\u3000梨花'}
+0041c3a6  ADD ECX,0x270
+0041c3ac  PUSH ECX
+0041c3ad  CALL 0x00434a40  ; sprintf
+------------------------------------------------------------
+0041c3b5  PUSH 0x0
+0041c3b7  PUSH 0x0
+0041c3b9  PUSH 0x0
+0041c3bb  PUSH 0xc2
+0041c3c0  PUSH 0x18e
+0041c3c5  PUSH 0x24
+0041c3ca  ADD EDX,0x270
+0041c3d0  PUSH EDX
+0041c3d4  CALL 0x00401118  ; Game::DrawText
+------------------------------------------------------------
+0041c3d9  PUSH 0xb4
+0041c3de  PUSH 0xff
+0041c3e3  PUSH 0xff
+0041c3e8  PUSH 0xc0
+0041c3ed  PUSH 0x18c
+0041c3f2  PUSH 0x24
+0041c3f7  ADD EAX,0x270
+0041c3fc  PUSH EAX
+0041c400  CALL 0x00401118  ; Game::DrawText
+------------------------------------------------------------
+0041c405  PUSH 0x453af0 {'沙都子と共に最年少。オヤシロ小狸。'}
+0041c40d  ADD ECX,0x270
+0041c413  PUSH ECX
+0041c414  CALL 0x00434a40  ; sprintf
+------------------------------------------------------------
+0041c41c  PUSH 0xff
+0041c421  PUSH 0xff
+0041c426  PUSH 0xff
+0041c42b  PUSH 0x108
+0041c430  PUSH 0x160
+0041c435  PUSH 0x10
+0041c43a  ADD EDX,0x270
+0041c440  PUSH EDX
+0041c444  CALL 0x00401118  ; Game::DrawText
+------------------------------------------------------------
+0041c449  PUSH 0x453b14 {'運動能力は他のキャラに比べると少々'}
+0041c451  ADD EAX,0x270
+0041c456  PUSH EAX
+0041c457  CALL 0x00434a40  ; sprintf
+------------------------------------------------------------
+0041c45f  PUSH 0xff
+0041c464  PUSH 0xff
+0041c469  PUSH 0xff
+0041c46e  PUSH 0x120
+0041c473  PUSH 0x160
+0041c478  PUSH 0x10
+0041c47d  ADD ECX,0x270
+0041c483  PUSH ECX
+0041c487  CALL 0x00401118  ; Game::DrawText
+------------------------------------------------------------
+0041c48c  PUSH 0x453b38 {'劣るが、ループ力のみ特別高い。'}
+0041c494  ADD EDX,0x270
+0041c49a  PUSH EDX
+0041c49b  CALL 0x00434a40  ; sprintf
+------------------------------------------------------------
+0041c4a3  PUSH 0xff
+0041c4a8  PUSH 0xff
+0041c4ad  PUSH 0xff
+0041c4b2  PUSH 0x137
+0041c4b7  PUSH 0x160
+0041c4bc  PUSH 0x10
+0041c4c1  ADD EAX,0x270
+0041c4c6  PUSH EAX
+0041c4ca  CALL 0x00401118  ; Game::DrawText
+------------------------------------------------------------
+0041c4cf  PUSH 0x453b58 {'”みー！\u3000にぱ～～☆”'}
+0041c4d7  ADD ECX,0x270
+0041c4dd  PUSH ECX
+0041c4de  CALL 0x00434a40  ; sprintf
+------------------------------------------------------------
+0041c4e6  PUSH 0xff
+0041c4eb  PUSH 0xff
+0041c4f0  PUSH 0xff
+0041c4f5  PUSH 0x14f
+0041c4fa  PUSH 0x160
+0041c4ff  PUSH 0x10
+0041c504  ADD EDX,0x270
+0041c50a  PUSH EDX
+0041c50e  CALL 0x00401118  ; Game::DrawText
+------------------------------------------------------------
+0041c513  PUSH 0x453b70 {'必殺技：コダヌキカァイイモード'}
+0041c51b  ADD EAX,0x270
+0041c520  PUSH EAX
+0041c521  CALL 0x00434a40  ; sprintf
+------------------------------------------------------------
+0041c529  PUSH 0xb4
+0041c52e  PUSH 0xb4
+0041c533  PUSH 0xff
+0041c538  PUSH 0x176
+0041c53d  PUSH 0x160
+0041c542  PUSH 0x10
+0041c547  ADD ECX,0x270
+0041c54d  PUSH ECX
+0041c551  CALL 0x00401118  ; Game::DrawText
+------------------------------------------------------------
+0041c559  CMP dword ptr [EDX + 0x3b4],0x5
+0041c560  JNZ 0x0041c71d
+0041c566  PUSH 0x453b90 {'園崎\u3000詩音'}
+0041c56e  ADD EAX,0x270
+0041c573  PUSH EAX
+0041c574  CALL 0x00434a40  ; sprintf
+------------------------------------------------------------
+0041c57c  PUSH 0x0
+0041c57e  PUSH 0x0
+0041c580  PUSH 0x0
+0041c582  PUSH 0xc2
+0041c587  PUSH 0x18e
+0041c58c  PUSH 0x24
+0041c591  ADD ECX,0x270
+0041c597  PUSH ECX
+0041c59b  CALL 0x00401118  ; Game::DrawText
+------------------------------------------------------------
+0041c5a0  PUSH 0xb4
+0041c5a5  PUSH 0xff
+0041c5aa  PUSH 0xff
+0041c5af  PUSH 0xc0
+0041c5b4  PUSH 0x18c
+0041c5b9  PUSH 0x24
+0041c5be  ADD EDX,0x270
+0041c5c4  PUSH EDX
+0041c5c8  CALL 0x00401118  ; Game::DrawText
+------------------------------------------------------------
+0041c5cd  PUSH 0x453b9c {'園崎 魅音の双子の妹。興宮在住。'}
+0041c5d5  ADD EAX,0x270
+0041c5da  PUSH EAX
+0041c5db  CALL 0x00434a40  ; sprintf
+------------------------------------------------------------
+0041c5e3  PUSH 0xff
+0041c5e8  PUSH 0xff
+0041c5ed  PUSH 0xff
+0041c5f2  PUSH 0x108
+0041c5f7  PUSH 0x160
+0041c5fc  PUSH 0x10
+0041c601  ADD ECX,0x270
+0041c607  PUSH ECX
+0041c60b  CALL 0x00401118  ; Game::DrawText
+------------------------------------------------------------
+0041c610  PUSH 0x453bbc {'普段は部活には加わらないが、今回は'}
+0041c618  ADD EDX,0x270
+0041c61e  PUSH EDX
+0041c61f  CALL 0x00434a40  ; sprintf
+------------------------------------------------------------
+0041c627  PUSH 0xff
+0041c62c  PUSH 0xff
+0041c631  PUSH 0xff
+0041c636  PUSH 0x120
+0041c63b  PUSH 0x160
+0041c640  PUSH 0x10
+0041c645  ADD EAX,0x270
+0041c64a  PUSH EAX
+0041c64e  CALL 0x00401118  ; Game::DrawText
+------------------------------------------------------------
+0041c653  PUSH 0x453be0 {'大会なので特別参加。'}
+0041c65b  ADD ECX,0x270
+0041c661  PUSH ECX
+0041c662  CALL 0x00434a40  ; sprintf
+------------------------------------------------------------
+0041c66a  PUSH 0xff
+0041c66f  PUSH 0xff
+0041c674  PUSH 0xff
+0041c679  PUSH 0x137
+0041c67e  PUSH 0x160
+0041c683  PUSH 0x10
+0041c688  ADD EDX,0x270
+0041c68e  PUSH EDX
+0041c692  CALL 0x00401118  ; Game::DrawText
+------------------------------------------------------------
+0041c697  PUSH 0x453bf8 {'”あなたを、犯人です☆”'}
+0041c69f  ADD EAX,0x270
+0041c6a4  PUSH EAX
+0041c6a5  CALL 0x00434a40  ; sprintf
+------------------------------------------------------------
+0041c6ad  PUSH 0xff
+0041c6b2  PUSH 0xff
+0041c6b7  PUSH 0xff
+0041c6bc  PUSH 0x14f
+0041c6c1  PUSH 0x160
+0041c6c6  PUSH 0x10
+0041c6cb  ADD ECX,0x270
+0041c6d1  PUSH ECX
+0041c6d5  CALL 0x00401118  ; Game::DrawText
+------------------------------------------------------------
+0041c6da  PUSH 0x453c14 {'必殺技：おさぼりマネージャー'}
+0041c6e2  ADD EDX,0x270
+0041c6e8  PUSH EDX
+0041c6e9  CALL 0x00434a40  ; sprintf
+------------------------------------------------------------
+0041c6f1  PUSH 0xb4
+0041c6f6  PUSH 0xb4
+0041c6fb  PUSH 0xff
+0041c700  PUSH 0x176
+0041c705  PUSH 0x160
+0041c70a  PUSH 0x10
+0041c70f  ADD EAX,0x270
+0041c714  PUSH EAX
+0041c718  CALL 0x00401118  ; Game::DrawText
+------------------------------------------------------------
+0041c720  FLD float ptr [ECX + 0x224]
+0041c726  FCOMP float ptr [0x0045110c] {-20}
+0041c72c  FNSTSW AX
+0041c72e  TEST AH,0x41
+0041c731  JNZ 0x0041c73c
+0041c733  MOV dword ptr [EBP + -0x44],0x1
+0041c73a  JMP 0x0041c743
+0041c73c  MOV dword ptr [EBP + -0x44],0x0
+0041c746  XOR EAX,EAX
+0041c748  CMP dword ptr [EDX + 0x26c],0x4
+0041c74f  SETZ AL
+0041c752  AND EAX,dword ptr [EBP + -0x44]
+0041c758  XOR EDX,EDX
+0041c75a  CMP dword ptr [ECX + 0x3b8],0x5
+0041c761  SETL DL
+0041c764  AND EAX,EDX
+0041c766  TEST EAX,EAX
+0041c768  JZ 0x0041cb27
+0041c76e  PUSH 0x453c34 {'このチームでよろしいですか？'}
+0041c776  ADD EAX,0x270
+0041c77b  PUSH EAX
+0041c77c  CALL 0x00434a40  ; sprintf
+------------------------------------------------------------
+0041c787  FLD float ptr [ECX + 0x390]
+0041c78d  FMUL float ptr [0x00451104] {3}
+0041c793  PUSH ECX
+0041c794  FSTP float ptr [ESP]
+0041c797  CALL 0x00401262  ; sinf
+0041c79f  FMUL float ptr [0x00451108] {128}
+0041c7a5  FADD float ptr [0x00451108] {128}
+0041c7ab  CALL 0x0043510c  ; __ftol
+0041c7b0  PUSH EAX
+0041c7b4  FLD float ptr [EDX + 0x390]
+0041c7ba  FMUL float ptr [0x004510f0] {7}
+0041c7c0  PUSH ECX
+0041c7c1  FSTP float ptr [ESP]
+0041c7c4  CALL 0x00401262  ; sinf
+0041c7cc  FMUL float ptr [0x00451108] {128}
+0041c7d2  FADD float ptr [0x00451108] {128}
+0041c7d8  CALL 0x0043510c  ; __ftol
+0041c7dd  PUSH EAX
+0041c7e1  FLD float ptr [EAX + 0x390]
+0041c7e7  FMUL float ptr [0x004510f8] {10}
+0041c7ed  PUSH ECX
+0041c7ee  FSTP float ptr [ESP]
+0041c7f1  CALL 0x00401262  ; sinf
+0041c7f9  FMUL float ptr [0x00451108] {128}
+0041c7ff  FADD float ptr [0x00451108] {128}
+0041c805  CALL 0x0043510c  ; __ftol
+0041c80a  PUSH EAX
+0041c80b  PUSH 0xa7
+0041c810  PUSH 0x80
+0041c815  PUSH 0x1c
+0041c81a  ADD ECX,0x270
+0041c820  PUSH ECX
+0041c824  CALL 0x00401118  ; Game::DrawText
+------------------------------------------------------------
+0041c829  PUSH 0x453c54 {'ＹＯＵ'}
+0041c831  ADD EDX,0x270
+0041c837  PUSH EDX
+0041c838  CALL 0x00434a40  ; sprintf
+------------------------------------------------------------
+0041c840  PUSH 0x0
+0041c842  PUSH 0xff
+0041c847  PUSH 0xff
+0041c84c  PUSH 0x4
+0041c84e  PUSH 0x4c
+0041c850  PUSH 0x1c
+0041c855  ADD EAX,0x270
+0041c85a  PUSH EAX
+0041c85e  CALL 0x00401118  ; Game::DrawText
+------------------------------------------------------------
+0041c863  PUSH 0x453c5c {'ＣＯＭ'}
+0041c86b  ADD ECX,0x270
+0041c871  PUSH ECX
+0041c872  CALL 0x00434a40  ; sprintf
+------------------------------------------------------------
+0041c87a  PUSH 0x0
+0041c87c  PUSH 0xff
+0041c881  PUSH 0xff
+0041c886  PUSH 0x4
+0041c888  PUSH 0x1e0
+0041c88d  PUSH 0x1c
+0041c892  ADD EDX,0x270
+0041c898  PUSH EDX
+0041c89c  CALL 0x00401118  ; Game::DrawText
+------------------------------------------------------------
+0041c8a4  CMP dword ptr [EAX + 0x3b0],0x0
+0041c8ab  JNZ 0x0041c8f3
+0041c8ad  PUSH 0x453c64 {'モード：ノーマル'}
+0041c8b5  ADD ECX,0x270
+0041c8bb  PUSH ECX
+0041c8bc  CALL 0x00434a40  ; sprintf
+------------------------------------------------------------
+0041c8c4  PUSH 0xff
+0041c8c9  PUSH 0xff
+0041c8ce  PUSH 0xff
+0041c8d3  PUSH 0x3e
+0041c8d5  PUSH 0xdf
+0041c8da  PUSH 0x18
+0041c8df  ADD EDX,0x270
+0041c8e5  PUSH EDX
+0041c8e9  CALL 0x00401118  ; Game::DrawText
+------------------------------------------------------------
+0041c8ee  JMP 0x0041c982
+0041c8f6  CMP dword ptr [EAX + 0x3b0],0x1
+0041c8fd  JNZ 0x0041c942
+0041c8ff  PUSH 0x453c78 {'\u3000モード：部活'}
+0041c907  ADD ECX,0x270
+0041c90d  PUSH ECX
+0041c90e  CALL 0x00434a40  ; sprintf
+------------------------------------------------------------
+0041c916  PUSH 0xff
+0041c91b  PUSH 0xff
+0041c920  PUSH 0xff
+0041c925  PUSH 0x3e
+0041c927  PUSH 0xdf
+0041c92c  PUSH 0x18
+0041c931  ADD EDX,0x270
+0041c937  PUSH EDX
+0041c93b  CALL 0x00401118  ; Game::DrawText
+------------------------------------------------------------
+0041c940  JMP 0x0041c982
+0041c942  PUSH 0x453c88 {'\u3000モード：練習'}
+0041c94a  ADD EAX,0x270
+0041c94f  PUSH EAX
+0041c950  CALL 0x00434a40  ; sprintf
+------------------------------------------------------------
+0041c958  PUSH 0xff
+0041c95d  PUSH 0xff
+0041c962  PUSH 0xff
+0041c967  PUSH 0x3e
+0041c969  PUSH 0xdf
+0041c96e  PUSH 0x18
+0041c973  ADD ECX,0x270
+0041c979  PUSH ECX
+0041c97d  CALL 0x00401118  ; Game::DrawText
+------------------------------------------------------------
+0041c985  CMP dword ptr [EDX + 0x3b8],0x3
+0041c98c  JNZ 0x0041ca5f
+0041c992  PUSH 0x453c98 {'はい'}
+0041c99a  ADD EAX,0x270
+0041c99f  PUSH EAX
+0041c9a0  CALL 0x00434a40  ; sprintf
+------------------------------------------------------------
+0041c9a8  PUSH 0x0
+0041c9aa  PUSH 0x0
+0041c9ac  PUSH 0x0
+0041c9ae  PUSH 0xf2
+0041c9b3  PUSH 0x121
+0041c9b8  PUSH 0x24
+0041c9bd  ADD ECX,0x270
+0041c9c3  PUSH ECX
+0041c9c7  CALL 0x00401118  ; Game::DrawText
+------------------------------------------------------------
+0041c9cc  PUSH 0x0
+0041c9ce  PUSH 0x0
+0041c9d0  PUSH 0xff
+0041c9d5  PUSH 0xf0
+0041c9da  PUSH 0x11f
+0041c9df  PUSH 0x24
+0041c9e4  ADD EDX,0x270
+0041c9ea  PUSH EDX
+0041c9ee  CALL 0x00401118  ; Game::DrawText
+------------------------------------------------------------
+0041c9f3  PUSH 0x453ca0 {'いいえ'}
+0041c9fb  ADD EAX,0x270
+0041ca00  PUSH EAX
+0041ca01  CALL 0x00434a40  ; sprintf
+------------------------------------------------------------
+0041ca09  PUSH 0x0
+0041ca0b  PUSH 0x0
+0041ca0d  PUSH 0x0
+0041ca0f  PUSH 0x139
+0041ca14  PUSH 0x11b
+0041ca19  PUSH 0x1c
+0041ca1e  ADD ECX,0x270
+0041ca24  PUSH ECX
+0041ca28  CALL 0x00401118  ; Game::DrawText
+------------------------------------------------------------
+0041ca2d  PUSH 0x9b
+0041ca32  PUSH 0x9b
+0041ca37  PUSH 0x9b
+0041ca3c  PUSH 0x137
+0041ca41  PUSH 0x119
+0041ca46  PUSH 0x1c
+0041ca4b  ADD EDX,0x270
+0041ca51  PUSH EDX
+0041ca55  CALL 0x00401118  ; Game::DrawText
+------------------------------------------------------------
+0041ca5a  JMP 0x0041cb27
+0041ca5f  PUSH 0x453ca8 {'はい'}
+0041ca67  ADD EAX,0x270
+0041ca6c  PUSH EAX
+0041ca6d  CALL 0x00434a40  ; sprintf
+------------------------------------------------------------
+0041ca75  PUSH 0x0
+0041ca77  PUSH 0x0
+0041ca79  PUSH 0x0
+0041ca7b  PUSH 0xf2
+0041ca80  PUSH 0x12e
+0041ca85  PUSH 0x1c
+0041ca8a  ADD ECX,0x270
+0041ca90  PUSH ECX
+0041ca94  CALL 0x00401118  ; Game::DrawText
+------------------------------------------------------------
+0041ca99  PUSH 0x9b
+0041ca9e  PUSH 0x9b
+0041caa3  PUSH 0x9b
+0041caa8  PUSH 0xf0
+0041caad  PUSH 0x12c
+0041cab2  PUSH 0x1c
+0041cab7  ADD EDX,0x270
+0041cabd  PUSH EDX
+0041cac1  CALL 0x00401118  ; Game::DrawText
+------------------------------------------------------------
+0041cac6  PUSH 0x453cb0 {'いいえ'}
+0041cace  ADD EAX,0x270
+0041cad3  PUSH EAX
+0041cad4  CALL 0x00434a40  ; sprintf
+------------------------------------------------------------
+0041cadc  PUSH 0x0
+0041cade  PUSH 0x0
+0041cae0  PUSH 0x0
+0041cae2  PUSH 0x139
+0041cae7  PUSH 0x115
+0041caec  PUSH 0x24
+0041caf1  ADD ECX,0x270
+0041caf7  PUSH ECX
+0041cafb  CALL 0x00401118  ; Game::DrawText
+------------------------------------------------------------
+0041cb00  PUSH 0x0
+0041cb02  PUSH 0x0
+0041cb04  PUSH 0xff
+0041cb09  PUSH 0x137
+0041cb0e  PUSH 0x113
+0041cb13  PUSH 0x24
+0041cb18  ADD EDX,0x270
+0041cb1e  PUSH EDX
+0041cb22  CALL 0x00401118  ; Game::DrawText
+------------------------------------------------------------
+0041cb2a  XOR ECX,ECX
+0041cb2c  CMP dword ptr [EAX + 0x26c],0x5
+0041cb33  SETZ CL
+0041cb39  XOR EAX,EAX
+0041cb3b  CMP dword ptr [EDX + 0x3b8],0x5
+0041cb42  SETL AL
+0041cb45  AND ECX,EAX
+0041cb4a  XOR EAX,EAX
+0041cb4c  CMP dword ptr [EDX + 0x26c],0x6
+0041cb53  SETZ AL
+0041cb56  OR ECX,EAX
+0041cb58  TEST ECX,ECX
+0041cb5a  JZ 0x0041daf0
+0041cb63  XOR EDX,EDX
+0041cb65  MOV DL,byte ptr [ECX + 0x3a6]
+0041cb6b  TEST EDX,EDX
+0041cb6d  JZ 0x0041cd35
+0041cb73  PUSH 0x453cb8 {'ＣＯＭ'}
+0041cb7b  ADD EAX,0x270
+0041cb80  PUSH EAX
+0041cb81  CALL 0x00434a40  ; sprintf
+------------------------------------------------------------
+0041cb89  PUSH 0x0
+0041cb8b  PUSH 0xff
+0041cb90  PUSH 0xff
+0041cb95  PUSH 0x4
+0041cb97  PUSH 0x4c
+0041cb99  PUSH 0x1c
+0041cb9e  ADD ECX,0x270
+0041cba4  PUSH ECX
+0041cba8  CALL 0x00401118  ; Game::DrawText
+------------------------------------------------------------
+0041cbad  PUSH 0x453cc0 {'ＹＯＵ'}
+0041cbb5  ADD EDX,0x270
+0041cbbb  PUSH EDX
+0041cbbc  CALL 0x00434a40  ; sprintf
+------------------------------------------------------------
+0041cbc4  PUSH 0x0
+0041cbc6  PUSH 0xff
+0041cbcb  PUSH 0xff
+0041cbd0  PUSH 0x4
+0041cbd2  PUSH 0x1e0
+0041cbd7  PUSH 0x1c
+0041cbdc  ADD EAX,0x270
+0041cbe1  PUSH EAX
+0041cbe5  CALL 0x00401118  ; Game::DrawText
+------------------------------------------------------------
+0041cbed  MOV EDX,dword ptr [ECX + 0x3dc]
+0041cbf3  PUSH EDX
+0041cbf4  PUSH 0x453cc8 {'%3d'}
+0041cbfc  ADD EAX,0x270
+0041cc01  PUSH EAX
+0041cc02  CALL 0x00434a40  ; sprintf
+------------------------------------------------------------
+0041cc0a  PUSH 0xff
+0041cc0f  PUSH 0xff
+0041cc14  PUSH 0xff
+0041cc19  PUSH 0x1f
+0041cc1b  PUSH 0xa3
+0041cc20  PUSH 0x30
+0041cc25  ADD ECX,0x270
+0041cc2b  PUSH ECX
+0041cc2f  CALL 0x00401118  ; Game::DrawText
+------------------------------------------------------------
+0041cc37  MOV EAX,dword ptr [EDX + 0x3d8]
+0041cc3d  PUSH EAX
+0041cc3e  PUSH 0x453ccc {'%3d'}
+0041cc46  ADD ECX,0x270
+0041cc4c  PUSH ECX
+0041cc4d  CALL 0x00434a40  ; sprintf
+------------------------------------------------------------
+0041cc55  PUSH 0xff
+0041cc5a  PUSH 0xff
+0041cc5f  PUSH 0xff
+0041cc64  PUSH 0x1f
+0041cc66  PUSH 0x191
+0041cc6b  PUSH 0x30
+0041cc70  ADD EDX,0x270
+0041cc76  PUSH EDX
+0041cc7a  CALL 0x00401118  ; Game::DrawText
+------------------------------------------------------------
+0041cc7f  PUSH 0x453cd0 {'Goal ->>'}
+0041cc87  ADD EAX,0x270
+0041cc8c  PUSH EAX
+0041cc8d  CALL 0x00434a40  ; sprintf
+------------------------------------------------------------
+0041cc95  PUSH 0x0
+0041cc97  PUSH 0x0
+0041cc99  PUSH 0x0
+0041cc9b  PUSH 0x49
+0041cc9d  PUSH 0x121
+0041cca2  PUSH 0x10
+0041cca7  ADD ECX,0x270
+0041ccad  PUSH ECX
+0041ccb1  CALL 0x00401118  ; Game::DrawText
+------------------------------------------------------------
+0041ccb9  FLD float ptr [EDX + 0x3e0]
+0041ccbf  FMUL float ptr [0x004510e4] {4}
+0041ccc5  PUSH ECX
+0041ccc6  FSTP float ptr [ESP]
+0041ccc9  CALL 0x0040136b  ; cosf
+0041ccd1  FMUL float ptr [0x00451108] {128}
+0041ccd7  FADD float ptr [0x00451108] {128}
+0041ccdd  CALL 0x0043510c  ; __ftol
+0041cce2  PUSH EAX
+0041cce6  FLD float ptr [EAX + 0x3e0]
+0041ccec  FMUL float ptr [0x004510e4] {4}
+0041ccf2  PUSH ECX
+0041ccf3  FSTP float ptr [ESP]
+0041ccf6  CALL 0x0040136b  ; cosf
+0041ccfe  FMUL float ptr [0x00451108] {128}
+0041cd04  FADD float ptr [0x00451108] {128}
+0041cd0a  CALL 0x0043510c  ; __ftol
+0041cd0f  PUSH EAX
+0041cd10  PUSH 0xff
+0041cd15  PUSH 0x48
+0041cd17  PUSH 0x11f
+0041cd1c  PUSH 0x10
+0041cd21  ADD ECX,0x270
+0041cd27  PUSH ECX
+0041cd2b  CALL 0x00401118  ; Game::DrawText
+------------------------------------------------------------
+0041cd30  JMP 0x0041cef1
+0041cd35  PUSH 0x453cdc {'ＹＯＵ'}
+0041cd3d  ADD EDX,0x270
+0041cd43  PUSH EDX
+0041cd44  CALL 0x00434a40  ; sprintf
+------------------------------------------------------------
+0041cd4c  PUSH 0x0
+0041cd4e  PUSH 0xff
+0041cd53  PUSH 0xff
+0041cd58  PUSH 0x4
+0041cd5a  PUSH 0x4c
+0041cd5c  PUSH 0x1c
+0041cd61  ADD EAX,0x270
+0041cd66  PUSH EAX
+0041cd6a  CALL 0x00401118  ; Game::DrawText
+------------------------------------------------------------
+0041cd6f  PUSH 0x453ce4 {'ＣＯＭ'}
+0041cd77  ADD ECX,0x270
+0041cd7d  PUSH ECX
+0041cd7e  CALL 0x00434a40  ; sprintf
+------------------------------------------------------------
+0041cd86  PUSH 0x0
+0041cd88  PUSH 0xff
+0041cd8d  PUSH 0xff
+0041cd92  PUSH 0x4
+0041cd94  PUSH 0x1e0
+0041cd99  PUSH 0x1c
+0041cd9e  ADD EDX,0x270
+0041cda4  PUSH EDX
+0041cda8  CALL 0x00401118  ; Game::DrawText
+------------------------------------------------------------
+0041cdb0  MOV ECX,dword ptr [EAX + 0x3d8]
+0041cdb6  PUSH ECX
+0041cdb7  PUSH 0x453cec {'%3d'}
+0041cdbf  ADD EDX,0x270
+0041cdc5  PUSH EDX
+0041cdc6  CALL 0x00434a40  ; sprintf
+------------------------------------------------------------
+0041cdce  PUSH 0xff
+0041cdd3  PUSH 0xff
+0041cdd8  PUSH 0xff
+0041cddd  PUSH 0x1f
+0041cddf  PUSH 0xa3
+0041cde4  PUSH 0x30
+0041cde9  ADD EAX,0x270
+0041cdee  PUSH EAX
+0041cdf2  CALL 0x00401118  ; Game::DrawText
+------------------------------------------------------------
+0041cdfa  MOV EDX,dword ptr [ECX + 0x3dc]
+0041ce00  PUSH EDX
+0041ce01  PUSH 0x453cf0 {'%3d'}
+0041ce09  ADD EAX,0x270
+0041ce0e  PUSH EAX
+0041ce0f  CALL 0x00434a40  ; sprintf
+------------------------------------------------------------
+0041ce17  PUSH 0xff
+0041ce1c  PUSH 0xff
+0041ce21  PUSH 0xff
+0041ce26  PUSH 0x1f
+0041ce28  PUSH 0x191
+0041ce2d  PUSH 0x30
+0041ce32  ADD ECX,0x270
+0041ce38  PUSH ECX
+0041ce3c  CALL 0x00401118  ; Game::DrawText
+------------------------------------------------------------
+0041ce41  PUSH 0x453cf4 {'<<- Goal'}
+0041ce49  ADD EDX,0x270
+0041ce4f  PUSH EDX
+0041ce50  CALL 0x00434a40  ; sprintf
+------------------------------------------------------------
+0041ce58  PUSH 0x0
+0041ce5a  PUSH 0x0
+0041ce5c  PUSH 0x0
+0041ce5e  PUSH 0x49
+0041ce60  PUSH 0x121
+0041ce65  PUSH 0x10
+0041ce6a  ADD EAX,0x270
+0041ce6f  PUSH EAX
+0041ce73  CALL 0x00401118  ; Game::DrawText
+------------------------------------------------------------
+0041ce7b  FLD float ptr [ECX + 0x3e0]
+0041ce81  FMUL float ptr [0x004510e4] {4}
+0041ce87  PUSH ECX
+0041ce88  FSTP float ptr [ESP]
+0041ce8b  CALL 0x0040136b  ; cosf
+0041ce93  FMUL float ptr [0x00451108] {128}
+0041ce99  FADD float ptr [0x00451108] {128}
+0041ce9f  CALL 0x0043510c  ; __ftol
+0041cea4  PUSH EAX
+0041cea8  FLD float ptr [EDX + 0x3e0]
+0041ceae  FMUL float ptr [0x004510e4] {4}
+0041ceb4  PUSH ECX
+0041ceb5  FSTP float ptr [ESP]
+0041ceb8  CALL 0x0040136b  ; cosf
+0041cec0  FMUL float ptr [0x00451108] {128}
+0041cec6  FADD float ptr [0x00451108] {128}
+0041cecc  CALL 0x0043510c  ; __ftol
+0041ced1  PUSH EAX
+0041ced2  PUSH 0xff
+0041ced7  PUSH 0x48
+0041ced9  PUSH 0x11f
+0041cede  PUSH 0x10
+0041cee3  ADD EAX,0x270
+0041cee8  PUSH EAX
+0041ceec  CALL 0x00401118  ; Game::DrawText
+------------------------------------------------------------
+0041cef1  PUSH 0x453d00 {'TIME'}
+0041cef9  ADD ECX,0x270
+0041ceff  PUSH ECX
+0041cf00  CALL 0x00434a40  ; sprintf
+------------------------------------------------------------
+0041cf08  PUSH 0xff
+0041cf0d  PUSH 0xff
+0041cf12  PUSH 0xff
+0041cf17  PUSH 0x0
+0041cf19  PUSH 0x126
+0041cf1e  PUSH 0x18
+0041cf23  ADD EDX,0x270
+0041cf29  PUSH EDX
+0041cf2d  CALL 0x00401118  ; Game::DrawText
+------------------------------------------------------------
+0041cf35  FLD float ptr [EAX + 0x3e0]
+0041cf3b  FCOMP float ptr [0x00451110] {90}
+0041cf41  FNSTSW AX
+0041cf43  TEST AH,0x41
+0041cf46  JNZ 0x0041cf51
+0041cf48  MOV dword ptr [EBP + -0x4],0xff
+0041cf4f  JMP 0x0041cf68
+0041cf54  FLD float ptr [0x00451114] {2.833}
+0041cf5a  FMUL float ptr [ECX + 0x3e0]
+0041cf60  CALL 0x0043510c  ; __ftol
+0041cf65  MOV dword ptr [EBP + -0x4],EAX
+0041cf6b  FLD float ptr [EDX + 0x3e0]
+0041cf71  CALL 0x0043510c  ; __ftol
+0041cf76  MOV ESI,EAX
+0041cf7b  FLD float ptr [EAX + 0x3e0]
+0041cf81  FDIV float ptr [0x00451118] {60}
+0041cf87  CALL 0x0043510c  ; __ftol
+0041cf8c  IMUL EAX,EAX,0x3c
+0041cf8f  SUB ESI,EAX
+0041cf91  PUSH ESI
+0041cf95  FLD float ptr [ECX + 0x3e0]
+0041cf9b  FDIV float ptr [0x00451118] {60}
+0041cfa1  CALL 0x0043510c  ; __ftol
+0041cfa6  PUSH EAX
+0041cfa7  PUSH 0x453d08 {'%d:%#2d'}
+0041cfaf  ADD EDX,0x270
+0041cfb5  PUSH EDX
+0041cfb6  CALL 0x00434a40  ; sprintf
+------------------------------------------------------------
+0041cfbe  MOV EAX,dword ptr [EBP + -0x4]
+0041cfc1  PUSH EAX
+0041cfc2  MOV ECX,dword ptr [EBP + -0x4]
+0041cfc5  PUSH ECX
+0041cfc6  PUSH 0xff
+0041cfcb  PUSH 0x1f
+0041cfcd  PUSH 0x11c
+0041cfd2  PUSH 0x24
+0041cfd7  ADD EDX,0x270
+0041cfdd  PUSH EDX
+0041cfe1  CALL 0x00401118  ; Game::DrawText
+------------------------------------------------------------
+0041cfe9  FLD float ptr [EAX + 0x3e0]
+0041cfef  CALL 0x0043510c  ; __ftol
+0041cff4  MOV ESI,EAX
+0041cff9  FLD float ptr [ECX + 0x3e0]
+0041cfff  FDIV float ptr [0x00451118] {60}
+0041d005  CALL 0x0043510c  ; __ftol
+0041d00a  IMUL EAX,EAX,0x3c
+0041d00d  SUB ESI,EAX
+0041d00f  CMP ESI,0xa
+0041d012  JGE 0x0041d053
+0041d014  PUSH 0x453d10
+0041d01c  ADD EDX,0x270
+0041d022  PUSH EDX
+0041d023  CALL 0x00434a40  ; sprintf
+------------------------------------------------------------
+0041d02b  MOV EAX,dword ptr [EBP + -0x4]
+0041d02e  PUSH EAX
+0041d02f  MOV ECX,dword ptr [EBP + -0x4]
+0041d032  PUSH ECX
+0041d033  PUSH 0xff
+0041d038  PUSH 0x1f
+0041d03a  PUSH 0x140
+0041d03f  PUSH 0x24
+0041d044  ADD EDX,0x270
+0041d04a  PUSH EDX
+0041d04e  CALL 0x00401118  ; Game::DrawText
+------------------------------------------------------------
+0041d056  FLD float ptr [EAX + 0x41c]
+0041d05c  FCOMP float ptr [0x00451104] {3}
+0041d062  FNSTSW AX
+0041d064  TEST AH,0x1
+0041d067  JZ 0x0041d072
+0041d069  MOV dword ptr [EBP + -0x48],0x1
+0041d070  JMP 0x0041d079
+0041d072  MOV dword ptr [EBP + -0x48],0x0
+0041d07c  FLD float ptr [ECX + 0x41c]
+0041d082  FCOMP float ptr [0x0045111c] {0.01}
+0041d088  FNSTSW AX
+0041d08a  TEST AH,0x41
+0041d08d  JNZ 0x0041d098
+0041d08f  MOV dword ptr [EBP + -0x4c],0x1
+0041d096  JMP 0x0041d09f
+0041d098  MOV dword ptr [EBP + -0x4c],0x0
+0041d09f  MOV EDX,dword ptr [EBP + -0x48]
+0041d0a2  AND EDX,dword ptr [EBP + -0x4c]
+0041d0a5  TEST EDX,EDX
+0041d0a7  JZ 0x0041d122
+0041d0ac  FLD float ptr [EAX + 0x41c]
+0041d0b2  CALL 0x0043510c  ; __ftol
+0041d0b7  ADD EAX,0x1
+0041d0ba  PUSH EAX
+0041d0bb  PUSH 0x453d14 {'%d'}
+0041d0c3  ADD ECX,0x270
+0041d0c9  PUSH ECX
+0041d0ca  CALL 0x00434a40  ; sprintf
+------------------------------------------------------------
+0041d0d5  FLD float ptr [EDX + 0x41c]
+0041d0db  FADD float ptr [0x004510d8] {1}
+0041d0e1  CALL 0x0043510c  ; __ftol
+0041d0e6  IMUL EAX,EAX,0x55
+0041d0e9  PUSH EAX
+0041d0ed  FLD float ptr [EAX + 0x41c]
+0041d0f3  FADD float ptr [0x004510d8] {1}
+0041d0f9  CALL 0x0043510c  ; __ftol
+0041d0fe  IMUL EAX,EAX,0x55
+0041d101  PUSH EAX
+0041d102  PUSH 0xff
+0041d107  PUSH 0x6e
+0041d109  PUSH 0x139
+0041d10e  PUSH 0x1c
+0041d113  ADD ECX,0x270
+0041d119  PUSH ECX
+0041d11d  CALL 0x00401118  ; Game::DrawText
+------------------------------------------------------------
+0041d125  FLD float ptr [EDX + 0x41c]
+0041d12b  FCOMP float ptr [0x00451120] {9.5}
+0041d131  FNSTSW AX
+0041d133  TEST AH,0x1
+0041d136  JZ 0x0041d141
+0041d138  MOV dword ptr [EBP + -0x50],0x1
+0041d13f  JMP 0x0041d148
+0041d141  MOV dword ptr [EBP + -0x50],0x0
+0041d14b  FLD float ptr [EAX + 0x41c]
+0041d151  FCOMP float ptr [0x00451124] {6.5}
+0041d157  FNSTSW AX
+0041d159  TEST AH,0x41
+0041d15c  JNZ 0x0041d167
+0041d15e  MOV dword ptr [EBP + -0x54],0x1
+0041d165  JMP 0x0041d16e
+0041d167  MOV dword ptr [EBP + -0x54],0x0
+0041d16e  MOV ECX,dword ptr [EBP + -0x50]
+0041d171  AND ECX,dword ptr [EBP + -0x54]
+0041d174  TEST ECX,ECX
+0041d176  JZ 0x0041d1fc
+0041d17f  FLD float ptr [EDX + 0x41c]
+0041d185  FSUB float ptr [0x00451128] {0.5}
+0041d18b  CALL 0x0043510c  ; __ftol
+0041d190  SUB EAX,0x5
+0041d193  PUSH EAX
+0041d194  PUSH 0x453d18 {'%d'}
+0041d19c  ADD EAX,0x270
+0041d1a1  PUSH EAX
+0041d1a2  CALL 0x00434a40  ; sprintf
+------------------------------------------------------------
+0041d1ad  FLD float ptr [ECX + 0x41c]
+0041d1b3  FADD double ptr [0x00451130] {0.5}
+0041d1b9  CALL 0x0043510c  ; __ftol
+0041d1be  IMUL EAX,EAX,0x55
+0041d1c1  PUSH EAX
+0041d1c5  FLD float ptr [EDX + 0x41c]
+0041d1cb  FADD float ptr [0x00451128] {0.5}
+0041d1d1  CALL 0x0043510c  ; __ftol
+0041d1d6  IMUL EAX,EAX,0x55
+0041d1d9  PUSH EAX
+0041d1da  PUSH 0xff
+0041d1df  PUSH 0x14f
+0041d1e4  PUSH 0x136
+0041d1e9  PUSH 0x30
+0041d1ee  ADD EAX,0x270
+0041d1f3  PUSH EAX
+0041d1f7  CALL 0x00401118  ; Game::DrawText
+------------------------------------------------------------
+0041d1ff  FLD float ptr [ECX + 0x220]
+0041d205  FCOMP float ptr [0x00451138] {30}
+0041d20b  FNSTSW AX
+0041d20d  TEST AH,0x41
+0041d210  JNZ 0x0041d21b
+0041d212  MOV dword ptr [EBP + -0x58],0x1
+0041d219  JMP 0x0041d222
+0041d21b  MOV dword ptr [EBP + -0x58],0x0
+0041d225  XOR EAX,EAX
+0041d227  CMP dword ptr [EDX + 0x26c],0x5
+0041d22e  SETZ AL
+0041d231  MOV ECX,dword ptr [EBP + -0x58]
+0041d234  AND ECX,EAX
+0041d236  TEST ECX,ECX
+0041d238  JZ 0x0041d3cd
+0041d241  XOR EAX,EAX
+0041d243  MOV AL,byte ptr [EDX + 0x3a6]
+0041d249  TEST EAX,EAX
+0041d24b  JZ 0x0041d312
+0041d251  PUSH 0x453d1c {'後半戦'}
+0041d259  ADD ECX,0x270
+0041d25f  PUSH ECX
+0041d260  CALL 0x00434a40  ; sprintf
+------------------------------------------------------------
+0041d26b  FLD float ptr [EDX + 0x390]
+0041d271  FMUL float ptr [0x00451104] {3}
+0041d277  PUSH ECX
+0041d278  FSTP float ptr [ESP]
+0041d27b  CALL 0x00401262  ; sinf
+0041d283  FMUL float ptr [0x00451108] {128}
+0041d289  FADD float ptr [0x00451108] {128}
+0041d28f  CALL 0x0043510c  ; __ftol
+0041d294  PUSH EAX
+0041d298  FLD float ptr [EAX + 0x390]
+0041d29e  FMUL float ptr [0x004510f0] {7}
+0041d2a4  PUSH ECX
+0041d2a5  FSTP float ptr [ESP]
+0041d2a8  CALL 0x00401262  ; sinf
+0041d2b0  FMUL float ptr [0x00451108] {128}
+0041d2b6  FADD float ptr [0x00451108] {128}
+0041d2bc  CALL 0x0043510c  ; __ftol
+0041d2c1  PUSH EAX
+0041d2c5  FLD float ptr [ECX + 0x390]
+0041d2cb  FMUL float ptr [0x004510f8] {10}
+0041d2d1  PUSH ECX
+0041d2d2  FSTP float ptr [ESP]
+0041d2d5  CALL 0x00401262  ; sinf
+0041d2dd  FMUL float ptr [0x00451108] {128}
+0041d2e3  FADD float ptr [0x00451108] {128}
+0041d2e9  CALL 0x0043510c  ; __ftol
+0041d2ee  PUSH EAX
+0041d2ef  PUSH 0xe1
+0041d2f4  PUSH 0x100
+0041d2f9  PUSH 0x30
+0041d2fe  ADD EDX,0x270
+0041d304  PUSH EDX
+0041d308  CALL 0x00401118  ; Game::DrawText
+------------------------------------------------------------
+0041d30d  JMP 0x0041d3cd
+0041d312  PUSH 0x453d24 {'前半戦'}
+0041d31a  ADD EAX,0x270
+0041d31f  PUSH EAX
+0041d320  CALL 0x00434a40  ; sprintf
+------------------------------------------------------------
+0041d32b  FLD float ptr [ECX + 0x390]
+0041d331  FMUL float ptr [0x00451104] {3}
+0041d337  PUSH ECX
+0041d338  FSTP float ptr [ESP]
+0041d33b  CALL 0x00401262  ; sinf
+0041d343  FMUL float ptr [0x00451108] {128}
+0041d349  FADD float ptr [0x00451108] {128}
+0041d34f  CALL 0x0043510c  ; __ftol
+0041d354  PUSH EAX
+0041d358  FLD float ptr [EDX + 0x390]
+0041d35e  FMUL float ptr [0x004510f0] {7}
+0041d364  PUSH ECX
+0041d365  FSTP float ptr [ESP]
+0041d368  CALL 0x00401262  ; sinf
+0041d370  FMUL float ptr [0x00451108] {128}
+0041d376  FADD float ptr [0x00451108] {128}
+0041d37c  CALL 0x0043510c  ; __ftol
+0041d381  PUSH EAX
+0041d385  FLD float ptr [EAX + 0x390]
+0041d38b  FMUL float ptr [0x004510f8] {10}
+0041d391  PUSH ECX
+0041d392  FSTP float ptr [ESP]
+0041d395  CALL 0x00401262  ; sinf
+0041d39d  FMUL float ptr [0x00451108] {128}
+0041d3a3  FADD float ptr [0x00451108] {128}
+0041d3a9  CALL 0x0043510c  ; __ftol
+0041d3ae  PUSH EAX
+0041d3af  PUSH 0xe1
+0041d3b4  PUSH 0x100
+0041d3b9  PUSH 0x30
+0041d3be  ADD ECX,0x270
+0041d3c4  PUSH ECX
+0041d3c8  CALL 0x00401118  ; Game::DrawText
+------------------------------------------------------------
+0041d3d0  FLD float ptr [EDX + 0x220]
+0041d3d6  FCOMP float ptr [0x004510e8] {5}
+0041d3dc  FNSTSW AX
+0041d3de  TEST AH,0x41
+0041d3e1  JZ 0x0041d3ec
+0041d3e3  MOV dword ptr [EBP + -0x5c],0x1
+0041d3ea  JMP 0x0041d3f3
+0041d3ec  MOV dword ptr [EBP + -0x5c],0x0
+0041d3f6  FLD float ptr [EAX + 0x390]
+0041d3fc  FCOMP float ptr [0x0045113c] {0.8}
+0041d402  FNSTSW AX
+0041d404  TEST AH,0x1
+0041d407  JZ 0x0041d412
+0041d409  MOV dword ptr [EBP + -0x60],0x1
+0041d410  JMP 0x0041d419
+0041d412  MOV dword ptr [EBP + -0x60],0x0
+0041d419  MOV ECX,dword ptr [EBP + -0x5c]
+0041d41c  AND ECX,dword ptr [EBP + -0x60]
+0041d422  XOR EAX,EAX
+0041d424  CMP dword ptr [EDX + 0x26c],0x5
+0041d42b  SETZ AL
+0041d42e  AND ECX,EAX
+0041d430  TEST ECX,ECX
+0041d432  JZ 0x0041d4f4
+0041d438  PUSH 0x453d2c {'スタート！'}
+0041d440  ADD ECX,0x270
+0041d446  PUSH ECX
+0041d447  CALL 0x00434a40  ; sprintf
+------------------------------------------------------------
+0041d452  FLD float ptr [EDX + 0x390]
+0041d458  FMUL float ptr [0x00451104] {3}
+0041d45e  PUSH ECX
+0041d45f  FSTP float ptr [ESP]
+0041d462  CALL 0x00401262  ; sinf
+0041d46a  FMUL float ptr [0x00451108] {128}
+0041d470  FADD float ptr [0x00451108] {128}
+0041d476  CALL 0x0043510c  ; __ftol
+0041d47b  PUSH EAX
+0041d47f  FLD float ptr [EAX + 0x390]
+0041d485  FMUL float ptr [0x004510f0] {7}
+0041d48b  PUSH ECX
+0041d48c  FSTP float ptr [ESP]
+0041d48f  CALL 0x00401262  ; sinf
+0041d497  FMUL float ptr [0x00451108] {128}
+0041d49d  FADD float ptr [0x00451108] {128}
+0041d4a3  CALL 0x0043510c  ; __ftol
+0041d4a8  PUSH EAX
+0041d4ac  FLD float ptr [ECX + 0x390]
+0041d4b2  FMUL float ptr [0x004510f8] {10}
+0041d4b8  PUSH ECX
+0041d4b9  FSTP float ptr [ESP]
+0041d4bc  CALL 0x00401262  ; sinf
+0041d4c4  FMUL float ptr [0x00451108] {128}
+0041d4ca  FADD float ptr [0x00451108] {128}
+0041d4d0  CALL 0x0043510c  ; __ftol
+0041d4d5  PUSH EAX
+0041d4d6  PUSH 0xe1
+0041d4db  PUSH 0xdf
+0041d4e0  PUSH 0x30
+0041d4e5  ADD EDX,0x270
+0041d4eb  PUSH EDX
+0041d4ef  CALL 0x00401118  ; Game::DrawText
+------------------------------------------------------------
+0041d4f7  CMP dword ptr [EAX + 0x3b8],0x5
+0041d4fe  JNZ 0x0041d697
+0041d507  XOR EDX,EDX
+0041d509  MOV DL,byte ptr [ECX + 0x3a6]
+0041d50f  TEST EDX,EDX
+0041d511  JZ 0x0041d5d7
+0041d517  PUSH 0x453d38 {'試合終了'}
+0041d51f  ADD EAX,0x270
+0041d524  PUSH EAX
+0041d525  CALL 0x00434a40  ; sprintf
+------------------------------------------------------------
+0041d530  FLD float ptr [ECX + 0x390]
+0041d536  FMUL float ptr [0x00451104] {3}
+0041d53c  PUSH ECX
+0041d53d  FSTP float ptr [ESP]
+0041d540  CALL 0x00401262  ; sinf
+0041d548  FMUL float ptr [0x00451108] {128}
+0041d54e  FADD float ptr [0x00451108] {128}
+0041d554  CALL 0x0043510c  ; __ftol
+0041d559  PUSH EAX
+0041d55d  FLD float ptr [EDX + 0x390]
+0041d563  FMUL float ptr [0x004510f0] {7}
+0041d569  PUSH ECX
+0041d56a  FSTP float ptr [ESP]
+0041d56d  CALL 0x00401262  ; sinf
+0041d575  FMUL float ptr [0x00451108] {128}
+0041d57b  FADD float ptr [0x00451108] {128}
+0041d581  CALL 0x0043510c  ; __ftol
+0041d586  PUSH EAX
+0041d58a  FLD float ptr [EAX + 0x390]
+0041d590  FMUL float ptr [0x004510f8] {10}
+0041d596  PUSH ECX
+0041d597  FSTP float ptr [ESP]
+0041d59a  CALL 0x00401262  ; sinf
+0041d5a2  FMUL float ptr [0x00451108] {128}
+0041d5a8  FADD float ptr [0x00451108] {128}
+0041d5ae  CALL 0x0043510c  ; __ftol
+0041d5b3  PUSH EAX
+0041d5b4  PUSH 0xe1
+0041d5b9  PUSH 0xec
+0041d5be  PUSH 0x30
+0041d5c3  ADD ECX,0x270
+0041d5c9  PUSH ECX
+0041d5cd  CALL 0x00401118  ; Game::DrawText
+------------------------------------------------------------
+0041d5d2  JMP 0x0041d692
+0041d5d7  PUSH 0x453d44 {'はーふたいむ'}
+0041d5df  ADD EDX,0x270
+0041d5e5  PUSH EDX
+0041d5e6  CALL 0x00434a40  ; sprintf
+------------------------------------------------------------
+0041d5f1  FLD float ptr [EAX + 0x390]
+0041d5f7  FMUL float ptr [0x00451104] {3}
+0041d5fd  PUSH ECX
+0041d5fe  FSTP float ptr [ESP]
+0041d601  CALL 0x00401262  ; sinf
+0041d609  FMUL float ptr [0x00451108] {128}
+0041d60f  FADD float ptr [0x00451108] {128}
+0041d615  CALL 0x0043510c  ; __ftol
+0041d61a  PUSH EAX
+0041d61e  FLD float ptr [ECX + 0x390]
+0041d624  FMUL float ptr [0x004510f0] {7}
+0041d62a  PUSH ECX
+0041d62b  FSTP float ptr [ESP]
+0041d62e  CALL 0x00401262  ; sinf
+0041d636  FMUL float ptr [0x00451108] {128}
+0041d63c  FADD float ptr [0x00451108] {128}
+0041d642  CALL 0x0043510c  ; __ftol
+0041d647  PUSH EAX
+0041d64b  FLD float ptr [EDX + 0x390]
+0041d651  FMUL float ptr [0x004510f8] {10}
+0041d657  PUSH ECX
+0041d658  FSTP float ptr [ESP]
+0041d65b  CALL 0x00401262  ; sinf
+0041d663  FMUL float ptr [0x00451108] {128}
+0041d669  FADD float ptr [0x00451108] {128}
+0041d66f  CALL 0x0043510c  ; __ftol
+0041d674  PUSH EAX
+0041d675  PUSH 0xe1
+0041d67a  PUSH 0xb9
+0041d67f  PUSH 0x30
+0041d684  ADD EAX,0x270
+0041d689  PUSH EAX
+0041d68d  CALL 0x00401118  ; Game::DrawText
+------------------------------------------------------------
+0041d692  JMP 0x0041d836
+0041d69a  XOR EDX,EDX
+0041d69c  MOV DL,byte ptr [ECX + 0x414]
+0041d6a2  TEST EDX,EDX
+0041d6a4  JZ 0x0041d836
+0041d6ad  CMP dword ptr [EAX + 0x418],0x5
+0041d6b4  JNZ 0x0041d77b
+0041d6ba  PUSH 0x453d54 {'ゴール！！'}
+0041d6c2  ADD ECX,0x270
+0041d6c8  PUSH ECX
+0041d6c9  CALL 0x00434a40  ; sprintf
+------------------------------------------------------------
+0041d6d4  FLD float ptr [EDX + 0x390]
+0041d6da  FMUL float ptr [0x00451104] {3}
+0041d6e0  PUSH ECX
+0041d6e1  FSTP float ptr [ESP]
+0041d6e4  CALL 0x00401262  ; sinf
+0041d6ec  FMUL float ptr [0x00451108] {128}
+0041d6f2  FADD float ptr [0x00451108] {128}
+0041d6f8  CALL 0x0043510c  ; __ftol
+0041d6fd  PUSH EAX
+0041d701  FLD float ptr [EAX + 0x390]
+0041d707  FMUL float ptr [0x004510f0] {7}
+0041d70d  PUSH ECX
+0041d70e  FSTP float ptr [ESP]
+0041d711  CALL 0x00401262  ; sinf
+0041d719  FMUL float ptr [0x00451108] {128}
+0041d71f  FADD float ptr [0x00451108] {128}
+0041d725  CALL 0x0043510c  ; __ftol
+0041d72a  PUSH EAX
+0041d72e  FLD float ptr [ECX + 0x390]
+0041d734  FMUL float ptr [0x004510f8] {10}
+0041d73a  PUSH ECX
+0041d73b  FSTP float ptr [ESP]
+0041d73e  CALL 0x00401262  ; sinf
+0041d746  FMUL float ptr [0x00451108] {128}
+0041d74c  FADD float ptr [0x00451108] {128}
+0041d752  CALL 0x0043510c  ; __ftol
+0041d757  PUSH EAX
+0041d758  PUSH 0xe1
+0041d75d  PUSH 0xdf
+0041d762  PUSH 0x30
+0041d767  ADD EDX,0x270
+0041d76d  PUSH EDX
+0041d771  CALL 0x00401118  ; Game::DrawText
+------------------------------------------------------------
+0041d776  JMP 0x0041d836
+0041d77b  PUSH 0x453d60 {'ラインアウト'}
+0041d783  ADD EAX,0x270
+0041d788  PUSH EAX
+0041d789  CALL 0x00434a40  ; sprintf
+------------------------------------------------------------
+0041d794  FLD float ptr [ECX + 0x390]
+0041d79a  FMUL float ptr [0x00451104] {3}
+0041d7a0  PUSH ECX
+0041d7a1  FSTP float ptr [ESP]
+0041d7a4  CALL 0x00401262  ; sinf
+0041d7ac  FMUL float ptr [0x00451108] {128}
+0041d7b2  FADD float ptr [0x00451108] {128}
+0041d7b8  CALL 0x0043510c  ; __ftol
+0041d7bd  PUSH EAX
+0041d7c1  FLD float ptr [EDX + 0x390]
+0041d7c7  FMUL float ptr [0x004510f0] {7}
+0041d7cd  PUSH ECX
+0041d7ce  FSTP float ptr [ESP]
+0041d7d1  CALL 0x00401262  ; sinf
+0041d7d9  FMUL float ptr [0x00451108] {128}
+0041d7df  FADD float ptr [0x00451108] {128}
+0041d7e5  CALL 0x0043510c  ; __ftol
+0041d7ea  PUSH EAX
+0041d7ee  FLD float ptr [EAX + 0x390]
+0041d7f4  FMUL float ptr [0x004510f8] {10}
+0041d7fa  PUSH ECX
+0041d7fb  FSTP float ptr [ESP]
+0041d7fe  CALL 0x00401262  ; sinf
+0041d806  FMUL float ptr [0x00451108] {128}
+0041d80c  FADD float ptr [0x00451108] {128}
+0041d812  CALL 0x0043510c  ; __ftol
+0041d817  PUSH EAX
+0041d818  PUSH 0xe1
+0041d81d  PUSH 0xcc
+0041d822  PUSH 0x30
+0041d827  ADD ECX,0x270
+0041d82d  PUSH ECX
+0041d831  CALL 0x00401118  ; Game::DrawText
+------------------------------------------------------------
+0041d839  CMP dword ptr [EDX + 0x3b0],0x2
+0041d840  JNZ 0x0041daf0
+0041d849  XOR ECX,ECX
+0041d84b  MOV CL,byte ptr [EAX + 0x3a6]
+0041d851  TEST ECX,ECX
+0041d853  JNZ 0x0041daad
+0041d859  PUSH 0x453d70 {'右矢印：時計回り'}
+0041d861  ADD EDX,0x270
+0041d867  PUSH EDX
+0041d868  CALL 0x00434a40  ; sprintf
+------------------------------------------------------------
+0041d870  PUSH 0xff
+0041d875  PUSH 0xff
+0041d87a  PUSH 0xff
+0041d87f  PUSH 0x198
+0041d884  PUSH 0x20
+0041d886  PUSH 0xc
+0041d88b  ADD EAX,0x270
+0041d890  PUSH EAX
+0041d894  CALL 0x00401118  ; Game::DrawText
+------------------------------------------------------------
+0041d899  PUSH 0x453d84 {'左矢印：反時計回り'}
+0041d8a1  ADD ECX,0x270
+0041d8a7  PUSH ECX
+0041d8a8  CALL 0x00434a40  ; sprintf
+------------------------------------------------------------
+0041d8b0  PUSH 0xff
+0041d8b5  PUSH 0xff
+0041d8ba  PUSH 0xff
+0041d8bf  PUSH 0x1a6
+0041d8c4  PUSH 0x20
+0041d8c6  PUSH 0xc
+0041d8cb  ADD EDX,0x270
+0041d8d1  PUSH EDX
+0041d8d5  CALL 0x00401118  ; Game::DrawText
+------------------------------------------------------------
+0041d8da  PUSH 0x453d98 {'上矢印：前進'}
+0041d8e2  ADD EAX,0x270
+0041d8e7  PUSH EAX
+0041d8e8  CALL 0x00434a40  ; sprintf
+------------------------------------------------------------
+0041d8f0  PUSH 0xff
+0041d8f5  PUSH 0xff
+0041d8fa  PUSH 0xff
+0041d8ff  PUSH 0x1b4
+0041d904  PUSH 0x20
+0041d906  PUSH 0xc
+0041d90b  ADD ECX,0x270
+0041d911  PUSH ECX
+0041d915  CALL 0x00401118  ; Game::DrawText
+------------------------------------------------------------
+0041d91a  PUSH 0x453da8 {'下矢印：後退'}
+0041d922  ADD EDX,0x270
+0041d928  PUSH EDX
+0041d929  CALL 0x00434a40  ; sprintf
+------------------------------------------------------------
+0041d931  PUSH 0xff
+0041d936  PUSH 0xff
+0041d93b  PUSH 0xff
+0041d940  PUSH 0x1c3
+0041d945  PUSH 0x20
+0041d947  PUSH 0xc
+0041d94c  ADD EAX,0x270
+0041d951  PUSH EAX
+0041d955  CALL 0x00401118  ; Game::DrawText
+------------------------------------------------------------
+0041d95a  PUSH 0x453db8 {'Ｘキー：パス'}
+0041d962  ADD ECX,0x270
+0041d968  PUSH ECX
+0041d969  CALL 0x00434a40  ; sprintf
+------------------------------------------------------------
+0041d971  PUSH 0xff
+0041d976  PUSH 0xff
+0041d97b  PUSH 0xff
+0041d980  PUSH 0x198
+0041d985  PUSH 0x19f
+0041d98a  PUSH 0xc
+0041d98f  ADD EDX,0x270
+0041d995  PUSH EDX
+0041d999  CALL 0x00401118  ; Game::DrawText
+------------------------------------------------------------
+0041d99e  PUSH 0x453dc8 {'Ｚキー：ループパス\u3000\u3000\u3000(コーン青)'}
+0041d9a6  ADD EAX,0x270
+0041d9ab  PUSH EAX
+0041d9ac  CALL 0x00434a40  ; sprintf
+------------------------------------------------------------
+0041d9b4  PUSH 0xff
+0041d9b9  PUSH 0xff
+0041d9be  PUSH 0xff
+0041d9c3  PUSH 0x1a6
+0041d9c8  PUSH 0x19f
+0041d9cd  PUSH 0xc
+0041d9d2  ADD ECX,0x270
+0041d9d8  PUSH ECX
+0041d9dc  CALL 0x00401118  ; Game::DrawText
+------------------------------------------------------------
+0041d9e1  PUSH 0x453dec {'\u3000〃\u3000：ループシュート\u3000(コーン緑)'}
+0041d9e9  ADD EDX,0x270
+0041d9ef  PUSH EDX
+0041d9f0  CALL 0x00434a40  ; sprintf
+------------------------------------------------------------
+0041d9f8  PUSH 0xff
+0041d9fd  PUSH 0xff
+0041da02  PUSH 0xff
+0041da07  PUSH 0x1b4
+0041da0c  PUSH 0x19f
+0041da11  PUSH 0xc
+0041da16  ADD EAX,0x270
+0041da1b  PUSH EAX
+0041da1f  CALL 0x00401118  ; Game::DrawText
+------------------------------------------------------------
+0041da24  PUSH 0x453e10 {'\u3000〃\u3000：ジャンプシュート(コーン赤)'}
+0041da2c  ADD ECX,0x270
+0041da32  PUSH ECX
+0041da33  CALL 0x00434a40  ; sprintf
+------------------------------------------------------------
+0041da3b  PUSH 0xff
+0041da40  PUSH 0xff
+0041da45  PUSH 0xff
+0041da4a  PUSH 0x1c3
+0041da4f  PUSH 0x19f
+0041da54  PUSH 0xc
+0041da59  ADD EDX,0x270
+0041da5f  PUSH EDX
+0041da63  CALL 0x00401118  ; Game::DrawText
+------------------------------------------------------------
+0041da68  PUSH 0x453e34 {'前半戦は←のゴールに向かって攻める(後半は逆)'}
+0041da70  ADD EAX,0x270
+0041da75  PUSH EAX
+0041da76  CALL 0x00434a40  ; sprintf
+------------------------------------------------------------
+0041da7e  PUSH 0xff
+0041da83  PUSH 0xff
+0041da88  PUSH 0xff
+0041da8d  PUSH 0x1d1
+0041da92  PUSH 0xcc
+0041da97  PUSH 0xc
+0041da9c  ADD ECX,0x270
+0041daa2  PUSH ECX
+0041daa6  CALL 0x00401118  ; Game::DrawText
+------------------------------------------------------------
+0041daab  JMP 0x0041daf0
+0041daad  PUSH 0x453e64 {'ホールド状態：（Ｘキー、Ｚキー押しっぱなし）敵にボールを奪われない'}
+0041dab5  ADD EDX,0x270
+0041dabb  PUSH EDX
+0041dabc  CALL 0x00434a40  ; sprintf
+------------------------------------------------------------
+0041dac4  PUSH 0xff
+0041dac9  PUSH 0xff
+0041dace  PUSH 0xff
+0041dad3  PUSH 0x1d1
+0041dad8  PUSH 0xdf
+0041dadd  PUSH 0xc
+0041dae2  ADD EAX,0x270
+0041dae7  PUSH EAX
+0041daeb  CALL 0x00401118  ; Game::DrawText
+------------------------------------------------------------
+0041daf3  XOR EDX,EDX
+0041daf5  CMP dword ptr [ECX + 0x26c],0x7
+0041dafc  SETZ DL
+0041db02  XOR ECX,ECX
+0041db04  CMP dword ptr [EAX + 0x3b8],0x2
+0041db0b  SETZ CL
+0041db0e  AND EDX,ECX
+0041db10  TEST EDX,EDX
+0041db12  JZ 0x0041dd5a
+0041db18  PUSH 0x453ea8 {'ＣＯＭ'}
+0041db20  ADD EDX,0x270
+0041db26  PUSH EDX
+0041db27  CALL 0x00434a40  ; sprintf
+------------------------------------------------------------
+0041db2f  PUSH 0x0
+0041db31  PUSH 0xff
+0041db36  PUSH 0xff
+0041db3b  PUSH 0x4
+0041db3d  PUSH 0x4c
+0041db3f  PUSH 0x1c
+0041db44  ADD EAX,0x270
+0041db49  PUSH EAX
+0041db4d  CALL 0x00401118  ; Game::DrawText
+------------------------------------------------------------
+0041db52  PUSH 0x453eb0 {'ＹＯＵ'}
+0041db5a  ADD ECX,0x270
+0041db60  PUSH ECX
+0041db61  CALL 0x00434a40  ; sprintf
+------------------------------------------------------------
+0041db69  PUSH 0x0
+0041db6b  PUSH 0xff
+0041db70  PUSH 0xff
+0041db75  PUSH 0x4
+0041db77  PUSH 0x1e0
+0041db7c  PUSH 0x1c
+0041db81  ADD EDX,0x270
+0041db87  PUSH EDX
+0041db8b  CALL 0x00401118  ; Game::DrawText
+------------------------------------------------------------
+0041db93  MOV ECX,dword ptr [EAX + 0x3dc]
+0041db99  PUSH ECX
+0041db9a  PUSH 0x453eb8 {'%3d'}
+0041dba2  ADD EDX,0x270
+0041dba8  PUSH EDX
+0041dba9  CALL 0x00434a40  ; sprintf
+------------------------------------------------------------
+0041dbb1  PUSH 0xff
+0041dbb6  PUSH 0xff
+0041dbbb  PUSH 0xff
+0041dbc0  PUSH 0x1f
+0041dbc2  PUSH 0xa3
+0041dbc7  PUSH 0x30
+0041dbcc  ADD EAX,0x270
+0041dbd1  PUSH EAX
+0041dbd5  CALL 0x00401118  ; Game::DrawText
+------------------------------------------------------------
+0041dbdd  MOV EDX,dword ptr [ECX + 0x3d8]
+0041dbe3  PUSH EDX
+0041dbe4  PUSH 0x453ebc {'%3d'}
+0041dbec  ADD EAX,0x270
+0041dbf1  PUSH EAX
+0041dbf2  CALL 0x00434a40  ; sprintf
+------------------------------------------------------------
+0041dbfa  PUSH 0xff
+0041dbff  PUSH 0xff
+0041dc04  PUSH 0xff
+0041dc09  PUSH 0x1f
+0041dc0b  PUSH 0x191
+0041dc10  PUSH 0x30
+0041dc15  ADD ECX,0x270
+0041dc1b  PUSH ECX
+0041dc1f  CALL 0x00401118  ; Game::DrawText
+------------------------------------------------------------
+0041dc24  PUSH 0x453ec0 {'TIME'}
+0041dc2c  ADD EDX,0x270
+0041dc32  PUSH EDX
+0041dc33  CALL 0x00434a40  ; sprintf
+------------------------------------------------------------
+0041dc3b  PUSH 0xff
+0041dc40  PUSH 0xff
+0041dc45  PUSH 0xff
+0041dc4a  PUSH 0x0
+0041dc4c  PUSH 0x126
+0041dc51  PUSH 0x18
+0041dc56  ADD EAX,0x270
+0041dc5b  PUSH EAX
+0041dc5f  CALL 0x00401118  ; Game::DrawText
+------------------------------------------------------------
+0041dc64  PUSH 0x453ec8 {'休憩中'}
+0041dc6c  ADD ECX,0x270
+0041dc72  PUSH ECX
+0041dc73  CALL 0x00434a40  ; sprintf
+------------------------------------------------------------
+0041dc7e  FLD float ptr [EDX + 0x390]
+0041dc84  FMUL float ptr [0x00451104] {3}
+0041dc8a  PUSH ECX
+0041dc8b  FSTP float ptr [ESP]
+0041dc8e  CALL 0x00401262  ; sinf
+0041dc96  FMUL float ptr [0x00451108] {128}
+0041dc9c  FADD float ptr [0x00451108] {128}
+0041dca2  CALL 0x0043510c  ; __ftol
+0041dca7  PUSH EAX
+0041dcab  FLD float ptr [EAX + 0x390]
+0041dcb1  FMUL float ptr [0x004510f0] {7}
+0041dcb7  PUSH ECX
+0041dcb8  FSTP float ptr [ESP]
+0041dcbb  CALL 0x00401262  ; sinf
+0041dcc3  FMUL float ptr [0x00451108] {128}
+0041dcc9  FADD float ptr [0x00451108] {128}
+0041dccf  CALL 0x0043510c  ; __ftol
+0041dcd4  PUSH EAX
+0041dcd8  FLD float ptr [ECX + 0x390]
+0041dcde  FMUL float ptr [0x004510f8] {10}
+0041dce4  PUSH ECX
+0041dce5  FSTP float ptr [ESP]
+0041dce8  CALL 0x00401262  ; sinf
+0041dcf0  FMUL float ptr [0x00451108] {128}
+0041dcf6  FADD float ptr [0x00451108] {128}
+0041dcfc  CALL 0x0043510c  ; __ftol
+0041dd01  PUSH EAX
+0041dd02  PUSH 0x23
+0041dd04  PUSH 0x11c
+0041dd09  PUSH 0x18
+0041dd0e  ADD EDX,0x270
+0041dd14  PUSH EDX
+0041dd18  CALL 0x00401118  ; Game::DrawText
+------------------------------------------------------------
+0041dd1d  PUSH 0x453ed0 {'Ｘキー：後半戦へ\u3000\u3000矢印キー：移動\u3000\u3000ESCキー：強制終了'}
+0041dd25  ADD EAX,0x270
+0041dd2a  PUSH EAX
+0041dd2b  CALL 0x00434a40  ; sprintf
+------------------------------------------------------------
+0041dd33  PUSH 0xff
+0041dd38  PUSH 0xff
+0041dd3d  PUSH 0xff
+0041dd42  PUSH 0x56
+0041dd44  PUSH 0x4c
+0041dd46  PUSH 0x12
+0041dd4b  ADD ECX,0x270
+0041dd51  PUSH ECX
+0041dd55  CALL 0x00401118  ; Game::DrawText
+------------------------------------------------------------
+0041dd5d  CMP dword ptr [EDX + 0x26c],0x8
+0041dd64  JNZ 0x0041e30c
+0041dd6d  CMP dword ptr [EAX + 0x3b8],0x4
+0041dd74  JGE 0x0041df02
+0041dd7a  PUSH 0x453f08 {'ＣＯＭ'}
+0041dd82  ADD ECX,0x270
+0041dd88  PUSH ECX
+0041dd89  CALL 0x00434a40  ; sprintf
+------------------------------------------------------------
+0041dd91  PUSH 0x0
+0041dd93  PUSH 0xff
+0041dd98  PUSH 0xff
+0041dd9d  PUSH 0x4
+0041dd9f  PUSH 0x4c
+0041dda1  PUSH 0x1c
+0041dda6  ADD EDX,0x270
+0041ddac  PUSH EDX
+0041ddb0  CALL 0x00401118  ; Game::DrawText
+------------------------------------------------------------
+0041ddb5  PUSH 0x453f10 {'ＹＯＵ'}
+0041ddbd  ADD EAX,0x270
+0041ddc2  PUSH EAX
+0041ddc3  CALL 0x00434a40  ; sprintf
+------------------------------------------------------------
+0041ddcb  PUSH 0x0
+0041ddcd  PUSH 0xff
+0041ddd2  PUSH 0xff
+0041ddd7  PUSH 0x4
+0041ddd9  PUSH 0x1e0
+0041ddde  PUSH 0x1c
+0041dde3  ADD ECX,0x270
+0041dde9  PUSH ECX
+0041dded  CALL 0x00401118  ; Game::DrawText
+------------------------------------------------------------
+0041ddf5  MOV EAX,dword ptr [EDX + 0x3dc]
+0041ddfb  PUSH EAX
+0041ddfc  PUSH 0x453f18 {'%3d'}
+0041de04  ADD ECX,0x270
+0041de0a  PUSH ECX
+0041de0b  CALL 0x00434a40  ; sprintf
+------------------------------------------------------------
+0041de13  PUSH 0xff
+0041de18  PUSH 0xff
+0041de1d  PUSH 0xff
+0041de22  PUSH 0x1f
+0041de24  PUSH 0xa3
+0041de29  PUSH 0x30
+0041de2e  ADD EDX,0x270
+0041de34  PUSH EDX
+0041de38  CALL 0x00401118  ; Game::DrawText
+------------------------------------------------------------
+0041de40  MOV ECX,dword ptr [EAX + 0x3d8]
+0041de46  PUSH ECX
+0041de47  PUSH 0x453f1c {'%3d'}
+0041de4f  ADD EDX,0x270
+0041de55  PUSH EDX
+0041de56  CALL 0x00434a40  ; sprintf
+------------------------------------------------------------
+0041de5e  PUSH 0xff
+0041de63  PUSH 0xff
+0041de68  PUSH 0xff
+0041de6d  PUSH 0x1f
+0041de6f  PUSH 0x191
+0041de74  PUSH 0x30
+0041de79  ADD EAX,0x270
+0041de7e  PUSH EAX
+0041de82  CALL 0x00401118  ; Game::DrawText
+------------------------------------------------------------
+0041de87  PUSH 0x453f20 {'TIME'}
+0041de8f  ADD ECX,0x270
+0041de95  PUSH ECX
+0041de96  CALL 0x00434a40  ; sprintf
+------------------------------------------------------------
+0041de9e  PUSH 0xff
+0041dea3  PUSH 0xff
+0041dea8  PUSH 0xff
+0041dead  PUSH 0x0
+0041deaf  PUSH 0x126
+0041deb4  PUSH 0x18
+0041deb9  ADD EDX,0x270
+0041debf  PUSH EDX
+0041dec3  CALL 0x00401118  ; Game::DrawText
+------------------------------------------------------------
+0041dec8  PUSH 0x453f28 {'終了'}
+0041ded0  ADD EAX,0x270
+0041ded5  PUSH EAX
+0041ded6  CALL 0x00434a40  ; sprintf
+------------------------------------------------------------
+0041dede  PUSH 0x0
+0041dee0  PUSH 0x0
+0041dee2  PUSH 0xff
+0041dee7  PUSH 0x21
+0041dee9  PUSH 0x123
+0041deee  PUSH 0x1c
+0041def3  ADD ECX,0x270
+0041def9  PUSH ECX
+0041defd  CALL 0x00401118  ; Game::DrawText
+------------------------------------------------------------
+0041df05  CMP dword ptr [EDX + 0x3b8],0x1
+0041df0c  JNZ 0x0041dfcd
+0041df12  PUSH 0x453f30 {'結果発表'}
+0041df1a  ADD EAX,0x270
+0041df1f  PUSH EAX
+0041df20  CALL 0x00434a40  ; sprintf
+------------------------------------------------------------
+0041df2b  FLD float ptr [ECX + 0x390]
+0041df31  FMUL float ptr [0x00451104] {3}
+0041df37  PUSH ECX
+0041df38  FSTP float ptr [ESP]
+0041df3b  CALL 0x00401262  ; sinf
+0041df43  FMUL float ptr [0x00451108] {128}
+0041df49  FADD float ptr [0x00451108] {128}
+0041df4f  CALL 0x0043510c  ; __ftol
+0041df54  PUSH EAX
+0041df58  FLD float ptr [EDX + 0x390]
+0041df5e  FMUL float ptr [0x004510f0] {7}
+0041df64  PUSH ECX
+0041df65  FSTP float ptr [ESP]
+0041df68  CALL 0x00401262  ; sinf
+0041df70  FMUL float ptr [0x00451108] {128}
+0041df76  FADD float ptr [0x00451108] {128}
+0041df7c  CALL 0x0043510c  ; __ftol
+0041df81  PUSH EAX
+0041df85  FLD float ptr [EAX + 0x390]
+0041df8b  FMUL float ptr [0x004510f8] {10}
+0041df91  PUSH ECX
+0041df92  FSTP float ptr [ESP]
+0041df95  CALL 0x00401262  ; sinf
+0041df9d  FMUL float ptr [0x00451108] {128}
+0041dfa3  FADD float ptr [0x00451108] {128}
+0041dfa9  CALL 0x0043510c  ; __ftol
+0041dfae  PUSH EAX
+0041dfaf  PUSH 0xe1
+0041dfb4  PUSH 0xec
+0041dfb9  PUSH 0x30
+0041dfbe  ADD ECX,0x270
+0041dfc4  PUSH ECX
+0041dfc8  CALL 0x00401118  ; Game::DrawText
+------------------------------------------------------------
+0041dfd0  CMP dword ptr [EDX + 0x3b8],0x3
+0041dfd7  JNZ 0x0041e243
+0041dfe3  MOV EDX,dword ptr [EAX + 0x3d8]
+0041dfe9  CMP EDX,dword ptr [ECX + 0x3dc]
+0041dfef  JLE 0x0041e0b2
+0041dff5  PUSH 0x453f3c {'ＹＯＵ\u3000ＷＩＮ！'}
+0041dffd  ADD EAX,0x270
+0041e002  PUSH EAX
+0041e003  CALL 0x00434a40  ; sprintf
+------------------------------------------------------------
+0041e00e  FLD float ptr [ECX + 0x390]
+0041e014  FMUL float ptr [0x00451104] {3}
+0041e01a  PUSH ECX
+0041e01b  FSTP float ptr [ESP]
+0041e01e  CALL 0x00401262  ; sinf
+0041e026  FMUL float ptr [0x00451108] {128}
+0041e02c  FADD float ptr [0x00451108] {128}
+0041e032  CALL 0x0043510c  ; __ftol
+0041e037  PUSH EAX
+0041e03b  FLD float ptr [EDX + 0x390]
+0041e041  FMUL float ptr [0x004510f0] {7}
+0041e047  PUSH ECX
+0041e048  FSTP float ptr [ESP]
+0041e04b  CALL 0x00401262  ; sinf
+0041e053  FMUL float ptr [0x00451108] {128}
+0041e059  FADD float ptr [0x00451108] {128}
+0041e05f  CALL 0x0043510c  ; __ftol
+0041e064  PUSH EAX
+0041e068  FLD float ptr [EAX + 0x390]
+0041e06e  FMUL float ptr [0x004510f8] {10}
+0041e074  PUSH ECX
+0041e075  FSTP float ptr [ESP]
+0041e078  CALL 0x00401262  ; sinf
+0041e080  FMUL float ptr [0x00451108] {128}
+0041e086  FADD float ptr [0x00451108] {128}
+0041e08c  CALL 0x0043510c  ; __ftol
+0041e091  PUSH EAX
+0041e092  PUSH 0xe1
+0041e097  PUSH 0x20
+0041e099  PUSH 0x48
+0041e09e  ADD ECX,0x270
+0041e0a4  PUSH ECX
+0041e0a8  CALL 0x00401118  ; Game::DrawText
+------------------------------------------------------------
+0041e0ad  JMP 0x0041e243
+0041e0b8  MOV ECX,dword ptr [EDX + 0x3d8]
+0041e0be  CMP ECX,dword ptr [EAX + 0x3dc]
+0041e0c4  JGE 0x0041e187
+0041e0ca  PUSH 0x453f50 {'ＹＯＵ\u3000ＬＯＳＥ'}
+0041e0d2  ADD EDX,0x270
+0041e0d8  PUSH EDX
+0041e0d9  CALL 0x00434a40  ; sprintf
+------------------------------------------------------------
+0041e0e4  FLD float ptr [EAX + 0x390]
+0041e0ea  FMUL float ptr [0x00451104] {3}
+0041e0f0  PUSH ECX
+0041e0f1  FSTP float ptr [ESP]
+0041e0f4  CALL 0x00401262  ; sinf
+0041e0fc  FMUL float ptr [0x00451108] {128}
+0041e102  FADD float ptr [0x00451108] {128}
+0041e108  CALL 0x0043510c  ; __ftol
+0041e10d  PUSH EAX
+0041e111  FLD float ptr [ECX + 0x390]
+0041e117  FMUL float ptr [0x004510f0] {7}
+0041e11d  PUSH ECX
+0041e11e  FSTP float ptr [ESP]
+0041e121  CALL 0x00401262  ; sinf
+0041e129  FMUL float ptr [0x00451108] {128}
+0041e12f  FADD float ptr [0x00451108] {128}
+0041e135  CALL 0x0043510c  ; __ftol
+0041e13a  PUSH EAX
+0041e13e  FLD float ptr [EDX + 0x390]
+0041e144  FMUL float ptr [0x004510f8] {10}
+0041e14a  PUSH ECX
+0041e14b  FSTP float ptr [ESP]
+0041e14e  CALL 0x00401262  ; sinf
+0041e156  FMUL float ptr [0x00451108] {128}
+0041e15c  FADD float ptr [0x00451108] {128}
+0041e162  CALL 0x0043510c  ; __ftol
+0041e167  PUSH EAX
+0041e168  PUSH 0xe1
+0041e16d  PUSH 0x20
+0041e16f  PUSH 0x48
+0041e174  ADD EAX,0x270
+0041e179  PUSH EAX
+0041e17d  CALL 0x00401118  ; Game::DrawText
+------------------------------------------------------------
+0041e182  JMP 0x0041e243
+0041e187  PUSH 0x453f64 {'ＤＲＡＷ'}
+0041e18f  ADD ECX,0x270
+0041e195  PUSH ECX
+0041e196  CALL 0x00434a40  ; sprintf
+------------------------------------------------------------
+0041e1a1  FLD float ptr [EDX + 0x390]
+0041e1a7  FMUL float ptr [0x00451104] {3}
+0041e1ad  PUSH ECX
+0041e1ae  FSTP float ptr [ESP]
+0041e1b1  CALL 0x00401262  ; sinf
+0041e1b9  FMUL float ptr [0x00451108] {128}
+0041e1bf  FADD float ptr [0x00451108] {128}
+0041e1c5  CALL 0x0043510c  ; __ftol
+0041e1ca  PUSH EAX
+0041e1ce  FLD float ptr [EAX + 0x390]
+0041e1d4  FMUL float ptr [0x004510f0] {7}
+0041e1da  PUSH ECX
+0041e1db  FSTP float ptr [ESP]
+0041e1de  CALL 0x00401262  ; sinf
+0041e1e6  FMUL float ptr [0x00451108] {128}
+0041e1ec  FADD float ptr [0x00451108] {128}
+0041e1f2  CALL 0x0043510c  ; __ftol
+0041e1f7  PUSH EAX
+0041e1fb  FLD float ptr [ECX + 0x390]
+0041e201  FMUL float ptr [0x004510f8] {10}
+0041e207  PUSH ECX
+0041e208  FSTP float ptr [ESP]
+0041e20b  CALL 0x00401262  ; sinf
+0041e213  FMUL float ptr [0x00451108] {128}
+0041e219  FADD float ptr [0x00451108] {128}
+0041e21f  CALL 0x0043510c  ; __ftol
+0041e224  PUSH EAX
+0041e225  PUSH 0xe1
+0041e22a  PUSH 0xc0
+0041e22f  PUSH 0x48
+0041e234  ADD EDX,0x270
+0041e23a  PUSH EDX
+0041e23e  CALL 0x00401118  ; Game::DrawText
+------------------------------------------------------------
+0041e246  CMP dword ptr [EAX + 0x3b8],0x6
+0041e24d  JNZ 0x0041e30c
+0041e253  PUSH 0x453f70 {'ＧＡＭＥ\u3000ＯＶＥＲ'}
+0041e25b  ADD ECX,0x270
+0041e261  PUSH ECX
+0041e262  CALL 0x00434a40  ; sprintf
+------------------------------------------------------------
+0041e26d  FLD float ptr [EDX + 0x390]
+0041e273  FMUL float ptr [0x00451104] {3}
+0041e279  PUSH ECX
+0041e27a  FSTP float ptr [ESP]
+0041e27d  CALL 0x00401262  ; sinf
+0041e285  FMUL float ptr [0x00451108] {128}
+0041e28b  FADD float ptr [0x00451108] {128}
+0041e291  CALL 0x0043510c  ; __ftol
+0041e296  PUSH EAX
+0041e29a  FLD float ptr [EAX + 0x390]
+0041e2a0  FMUL float ptr [0x004510f0] {7}
+0041e2a6  PUSH ECX
+0041e2a7  FSTP float ptr [ESP]
+0041e2aa  CALL 0x00401262  ; sinf
+0041e2b2  FMUL float ptr [0x00451108] {128}
+0041e2b8  FADD float ptr [0x00451108] {128}
+0041e2be  CALL 0x0043510c  ; __ftol
+0041e2c3  PUSH EAX
+0041e2c7  FLD float ptr [ECX + 0x390]
+0041e2cd  FMUL float ptr [0x004510f8] {10}
+0041e2d3  PUSH ECX
+0041e2d4  FSTP float ptr [ESP]
+0041e2d7  CALL 0x00401262  ; sinf
+0041e2df  FMUL float ptr [0x00451108] {128}
+0041e2e5  FADD float ptr [0x00451108] {128}
+0041e2eb  CALL 0x0043510c  ; __ftol
+0041e2f0  PUSH EAX
+0041e2f1  PUSH 0xe1
+0041e2f6  PUSH 0x66
+0041e2f8  PUSH 0x30
+0041e2fd  ADD EDX,0x270
+0041e303  PUSH EDX
+0041e307  CALL 0x00401118  ; Game::DrawText
+------------------------------------------------------------
+0041e30f  CMP dword ptr [EAX + 0x26c],0x9
+0041e316  JNZ 0x0041e49e
+0041e31c  PUSH 0x453f84 {'Nice Play!!'}
+0041e324  ADD ECX,0x270
+0041e32a  PUSH ECX
+0041e32b  CALL 0x00434a40  ; sprintf
+------------------------------------------------------------
+0041e333  PUSH 0xff
+0041e338  PUSH 0xff
+0041e33d  PUSH 0xff
+0041e342  PUSH 0x18
+0041e344  PUSH 0x140
+0041e349  PUSH 0xc
+0041e34e  ADD EDX,0x270
+0041e354  PUSH EDX
+0041e358  CALL 0x00401118  ; Game::DrawText
+------------------------------------------------------------
+0041e35d  PUSH 0x453f90 {'Thank you for your playing!!'}
+0041e365  ADD EAX,0x270
+0041e36a  PUSH EAX
+0041e36b  CALL 0x00434a40  ; sprintf
+------------------------------------------------------------
+0041e373  PUSH 0xff
+0041e378  PUSH 0xff
+0041e37d  PUSH 0xff
+0041e382  PUSH 0x30
+0041e384  PUSH 0x140
+0041e389  PUSH 0xc
+0041e38e  ADD ECX,0x270
+0041e394  PUSH ECX
+0041e398  CALL 0x00401118  ; Game::DrawText
+------------------------------------------------------------
+0041e39d  PUSH 0x453fb0 {'And Thanks for "07th Storming Party" for giving us'}
+0041e3a5  ADD EDX,0x270
+0041e3ab  PUSH EDX
+0041e3ac  CALL 0x00434a40  ; sprintf
+------------------------------------------------------------
+0041e3b4  PUSH 0xff
+0041e3b9  PUSH 0xff
+0041e3be  PUSH 0xff
+0041e3c3  PUSH 0x3e
+0041e3c5  PUSH 0x140
+0041e3ca  PUSH 0xc
+0041e3cf  ADD EAX,0x270
+0041e3d4  PUSH EAX
+0041e3d8  CALL 0x00401118  ; Game::DrawText
+------------------------------------------------------------
+0041e3dd  PUSH 0x453fe4 {'wonderful story of "HIGURASHI NO NAKU KORONI"'}
+0041e3e5  ADD ECX,0x270
+0041e3eb  PUSH ECX
+0041e3ec  CALL 0x00434a40  ; sprintf
+------------------------------------------------------------
+0041e3f4  PUSH 0xff
+0041e3f9  PUSH 0xff
+0041e3fe  PUSH 0xff
+0041e403  PUSH 0x4c
+0041e405  PUSH 0x140
+0041e40a  PUSH 0xc
+0041e40f  ADD EDX,0x270
+0041e415  PUSH EDX
+0041e419  CALL 0x00401118  ; Game::DrawText
+------------------------------------------------------------
+0041e41e  PUSH 0x454014 {'We are looking forward to "MEAKASHI" Story !!'}
+0041e426  ADD EAX,0x270
+0041e42b  PUSH EAX
+0041e42c  CALL 0x00434a40  ; sprintf
+------------------------------------------------------------
+0041e434  PUSH 0xff
+0041e439  PUSH 0xff
+0041e43e  PUSH 0xff
+0041e443  PUSH 0x64
+0041e445  PUSH 0x140
+0041e44a  PUSH 0xc
+0041e44f  ADD ECX,0x270
+0041e455  PUSH ECX
+0041e459  CALL 0x00401118  ; Game::DrawText
+------------------------------------------------------------
+0041e45e  PUSH 0x454044 {'from a Mionist...'}
+0041e466  ADD EDX,0x270
+0041e46c  PUSH EDX
+0041e46d  CALL 0x00434a40  ; sprintf
+------------------------------------------------------------
+0041e475  PUSH 0xff
+0041e47a  PUSH 0xff
+0041e47f  PUSH 0xff
+0041e484  PUSH 0x78
+0041e486  PUSH 0x206
+0041e48b  PUSH 0xc
+0041e490  ADD EAX,0x270
+0041e495  PUSH EAX
+0041e499  CALL 0x00401118  ; Game::DrawText
+------------------------------------------------------------

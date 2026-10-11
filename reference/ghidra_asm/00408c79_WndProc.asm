@@ -16,7 +16,7 @@
 00408caf  JZ 0x00408cfe
 00408cb1  JMP 0x00408d19
 00408cb3  PUSH 0x0
-00408cb5  CALL dword ptr [0x0045a67c] {370930}
+00408cb5  CALL dword ptr [0x0045a67c] {370930}  ; USER32.DLL::PostQuitMessage
 00408cbb  JMP 0x00408d31
 00408cbd  MOV ECX,dword ptr [EBP + 0x10]
 00408cc0  MOV dword ptr [EBP + -0x8],ECX
@@ -25,7 +25,7 @@
 00408cc9  JMP 0x00408cd5
 00408ccb  MOV EDX,dword ptr [EBP + 0x8]
 00408cce  PUSH EDX
-00408ccf  CALL dword ptr [0x0045a630] {370914}
+00408ccf  CALL dword ptr [0x0045a630] {370914}  ; USER32.DLL::DestroyWindow
 00408cd5  JMP 0x00408d31
 00408cd7  MOV EAX,dword ptr [EBP + 0x14]
 00408cda  AND EAX,0xffff
@@ -34,7 +34,7 @@
 00408ce7  SHR ECX,0x10
 00408cea  AND ECX,0xffff
 00408cf0  AND ECX,0xffff
-00408cf6  MOV dword ptr [0x004581d8] {None} {None} {None} {None},ECX
+00408cf6  MOV dword ptr [0x004581d8] {None},ECX
 00408cfc  JMP 0x00408d31
 00408cfe  CMP dword ptr [EBP + 0x10],0x1
 00408d02  JNZ 0x00408d17
@@ -43,7 +43,7 @@
 00408d08  PUSH 0x0
 00408d0a  PUSH 0x0
 00408d0c  PUSH 0x45330c {'play MP3 from 0 notify'}
-00408d11  CALL dword ptr [0x0045a6c8] {371262}
+00408d11  CALL dword ptr [0x0045a6c8] {371262}  ; WINMM.DLL::mciSendStringA
 00408d17  JMP 0x00408d31
 00408d19  MOV EAX,dword ptr [EBP + 0x14]
 00408d1c  PUSH EAX
@@ -53,7 +53,7 @@
 00408d24  PUSH EDX
 00408d25  MOV EAX,dword ptr [EBP + 0x8]
 00408d28  PUSH EAX
-00408d29  CALL dword ptr [0x0045a670] {370896}
+00408d29  CALL dword ptr [0x0045a670] {370896}  ; USER32.DLL::DefWindowProcA
 00408d2f  JMP 0x00408d33
 00408d31  XOR EAX,EAX
 00408d33  MOV ESP,EBP

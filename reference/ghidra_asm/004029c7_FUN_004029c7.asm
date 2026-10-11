@@ -18,7 +18,7 @@
 004029f6  PUSH 0x18
 004029f8  MOV EDX,dword ptr [EBP + 0xc]
 004029fb  PUSH EDX
-004029fc  CALL dword ptr [0x0045a488] {371054}
+004029fc  CALL dword ptr [0x0045a488] {371054}  ; GDI32.DLL::GetObjectA
 00402a02  MOV EAX,dword ptr [EBP + 0xfffffe68]
 00402a08  MOV dword ptr [EBP + 0xffffff74],EAX
 00402a0e  MOV ECX,dword ptr [EBP + 0xfffffe6c]
@@ -27,7 +27,7 @@
 00402a19  PUSH 0x0
 00402a1b  LEA EDX,[EBP + 0xffffff78]
 00402a21  PUSH EDX
-00402a22  CALL 0x00433440
+00402a22  CALL 0x00433440  ; _memset
 00402a27  ADD ESP,0xc
 00402a2a  MOV dword ptr [EBP + 0xffffff78],0x7c
 00402a34  MOV dword ptr [EBP + 0xffffff7c],0x121007
@@ -41,7 +41,7 @@
 00402a5a  PUSH 0x44fca8
 00402a5f  LEA EAX,[EBP + 0xffffff4c]
 00402a65  PUSH EAX
-00402a66  CALL 0x00401172
+00402a66  CALL 0x00401172  ; _IsEqualGUID
 00402a6b  ADD ESP,0x8
 00402a6e  TEST EAX,EAX
 00402a70  JZ 0x00402a7b
@@ -50,7 +50,7 @@
 00402a7b  PUSH 0x44fc68
 00402a80  LEA ECX,[EBP + 0xffffff4c]
 00402a86  PUSH ECX
-00402a87  CALL 0x00401172
+00402a87  CALL 0x00401172  ; _IsEqualGUID
 00402a8c  ADD ESP,0x8
 00402a8f  TEST EAX,EAX
 00402a91  JZ 0x00402a9c
@@ -152,7 +152,7 @@
 00402bb8  MOV EDX,dword ptr [EBP + 0xfffffe7c]
 00402bbe  MOV dword ptr [EBP + -0x8],EDX
 00402bc1  PUSH 0x0
-00402bc3  CALL dword ptr [0x0045a48c] {371016}
+00402bc3  CALL dword ptr [0x0045a48c] {371016}  ; GDI32.DLL::CreateCompatibleDC
 00402bc9  MOV dword ptr [EBP + 0xfffffe5c],EAX
 00402bcf  CMP dword ptr [EBP + 0xfffffe5c],0x0
 00402bd6  JNZ 0x00402bf1
@@ -167,7 +167,7 @@
 00402bf4  PUSH EAX
 00402bf5  MOV ECX,dword ptr [EBP + 0xfffffe5c]
 00402bfb  PUSH ECX
-00402bfc  CALL dword ptr [0x0045a47c] {371000}
+00402bfc  CALL dword ptr [0x0045a47c] {371000}  ; GDI32.DLL::SelectObject
 00402c02  MOV dword ptr [EBP + 0xfffffe80],0x0
 00402c0c  JMP 0x00402c1d
 00402c0e  MOV EDX,dword ptr [EBP + 0xfffffe80]
@@ -208,7 +208,7 @@
 00402c83  PUSH 0x0
 00402c85  MOV EAX,dword ptr [EBP + 0xfffffe48]
 00402c8b  PUSH EAX
-00402c8c  CALL dword ptr [0x0045a478] {370990}
+00402c8c  CALL dword ptr [0x0045a478] {370990}  ; GDI32.DLL::BitBlt
 00402c92  MOV ECX,dword ptr [EBP + 0xfffffe48]
 00402c98  PUSH ECX
 00402c99  MOV EDX,dword ptr [EBP + -0x8]
@@ -222,7 +222,7 @@
 00402cb2  PUSH EAX
 00402cb3  MOV ECX,dword ptr [EBP + 0xfffffe5c]
 00402cb9  PUSH ECX
-00402cba  CALL 0x00401109
+00402cba  CALL 0x00401109  ; FUN_00402d2e
 00402cbf  ADD ESP,0xc
 00402cc2  MOV dword ptr [EBP + 0xfffffe4c],0x401000
 00402ccc  MOV dword ptr [EBP + 0xfffffe50],0x0
@@ -247,7 +247,7 @@
 00402d11  JMP 0x00402c0e
 00402d16  MOV ECX,dword ptr [EBP + 0xfffffe5c]
 00402d1c  PUSH ECX
-00402d1d  CALL dword ptr [0x0045a480] {370978}
+00402d1d  CALL dword ptr [0x0045a480] {370978}  ; GDI32.DLL::DeleteDC
 00402d23  MOV EAX,dword ptr [EBP + 0xfffffe7c]
 00402d29  POP ESI
 00402d2a  MOV ESP,EBP

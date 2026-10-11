@@ -72,7 +72,7 @@
 00403dc3  FLD float ptr [EBP + -0x4]
 00403dc6  SUB ESP,0x8
 00403dc9  FSTP double ptr [ESP]
-00403dcc  CALL 0x00433940
+00403dcc  CALL 0x00433940  ; fabs
 00403dd1  ADD ESP,0x8
 00403dd4  FLD float ptr [0x0044e060] {1e-05}
 00403dda  FCOMPP

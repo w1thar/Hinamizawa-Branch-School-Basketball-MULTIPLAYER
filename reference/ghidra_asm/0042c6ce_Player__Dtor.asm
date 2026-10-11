@@ -25,7 +25,7 @@
 0042c71b  MOV dword ptr [EBP + -0x8],EDX
 0042c71e  MOV EAX,dword ptr [EBP + -0x8]
 0042c721  PUSH EAX
-0042c722  CALL 0x00433370
+0042c722  CALL 0x00433370  ; operator_delete
 0042c727  ADD ESP,0x4
 0042c72a  MOV ECX,dword ptr [EBP + -0x4]
 0042c72d  IMUL ECX,ECX,0xc
@@ -41,7 +41,7 @@
 0042c74f  MOV dword ptr [EBP + -0xc],EAX
 0042c752  MOV ECX,dword ptr [EBP + -0xc]
 0042c755  PUSH ECX
-0042c756  CALL 0x00433370
+0042c756  CALL 0x00433370  ; operator_delete
 0042c75b  ADD ESP,0x4
 0042c75e  MOV EDX,dword ptr [EBP + -0x18]
 0042c761  MOV dword ptr [EDX + 0x4c],0x0

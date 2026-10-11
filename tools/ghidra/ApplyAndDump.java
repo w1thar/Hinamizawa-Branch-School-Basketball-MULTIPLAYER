@@ -184,7 +184,15 @@ public class ApplyAndDump extends GhidraScript {
             asmDir.mkdirs();
             try (PrintWriter pw = new PrintWriter(new FileWriter(new File(asmDir, fn.replace(".c", ".asm"))))) {
                 for (Instruction ins : currentProgram.getListing().getInstructions(f.getBody(), true)) {
-                    pw.println(ins.getAddress() + "  " + ins);
+                    String extra = "";
+                    if (ins.getFlowType().isCall()) {
+                        for (Address t : ins.getFlows()) {
+                            Function cf = getFunctionAt(t);
+                            if (cf != null && cf.isThunk()) cf = cf.getThunkedFunction(true);
+                            if (cf != null) extra = "  ; " + cf.getName(true);
+                        }
+                    }
+                    pw.println(ins.getAddress() + "  " + ins + extra);
                 }
             }
             n++;

@@ -4,7 +4,7 @@
 00403e78  FDIV float ptr [0x0044e070] {2}
 00403e7e  PUSH ECX
 00403e7f  FSTP float ptr [ESP]
-00403e82  CALL 0x00401262
+00403e82  CALL 0x00401262  ; sinf
 00403e87  ADD ESP,0x4
 00403e8a  MOV EAX,dword ptr [EBP + 0x18]
 00403e8d  FMUL float ptr [EAX]
@@ -14,7 +14,7 @@
 00403e97  FDIV float ptr [0x0044e070] {2}
 00403e9d  PUSH ECX
 00403e9e  FSTP float ptr [ESP]
-00403ea1  CALL 0x00401262
+00403ea1  CALL 0x00401262  ; sinf
 00403ea6  ADD ESP,0x4
 00403ea9  MOV EDX,dword ptr [EBP + 0x18]
 00403eac  FMUL float ptr [EDX + 0x4]
@@ -24,7 +24,7 @@
 00403eb7  FDIV float ptr [0x0044e070] {2}
 00403ebd  PUSH ECX
 00403ebe  FSTP float ptr [ESP]
-00403ec1  CALL 0x00401262
+00403ec1  CALL 0x00401262  ; sinf
 00403ec6  ADD ESP,0x4
 00403ec9  MOV ECX,dword ptr [EBP + 0x18]
 00403ecc  FMUL float ptr [ECX + 0x8]
@@ -34,7 +34,7 @@
 00403ed7  FDIV float ptr [0x0044e070] {2}
 00403edd  PUSH ECX
 00403ede  FSTP float ptr [ESP]
-00403ee1  CALL 0x0040136b
+00403ee1  CALL 0x0040136b  ; cosf
 00403ee6  ADD ESP,0x4
 00403ee9  MOV EAX,dword ptr [EBP + 0x14]
 00403eec  FSTP float ptr [EAX]

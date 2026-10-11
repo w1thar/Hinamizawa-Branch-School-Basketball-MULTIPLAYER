@@ -17,7 +17,7 @@
 004059e4  MOV EDX,dword ptr [EBP + 0xfffffaac]
 004059ea  MOV EAX,dword ptr [EDX + 0x70]
 004059ed  PUSH EAX
-004059ee  CALL dword ptr [0x0045a488] {371054}
+004059ee  CALL dword ptr [0x0045a488] {371054}  ; GDI32.DLL::GetObjectA
 004059f4  MOV dword ptr [EBP + -0x80],0x7c
 004059fb  LEA ECX,[EBP + -0x80]
 004059fe  PUSH ECX
@@ -56,7 +56,7 @@
 00405a72  MOV EAX,dword ptr [EBP + 0xffffff7c]
 00405a78  JMP 0x00405fd3
 00405a7d  PUSH 0x0
-00405a7f  CALL dword ptr [0x0045a48c] {371016}
+00405a7f  CALL dword ptr [0x0045a48c] {371016}  ; GDI32.DLL::CreateCompatibleDC
 00405a85  MOV dword ptr [EBP + 0xffffff58],EAX
 00405a8b  CMP dword ptr [EBP + 0xffffff58],0x0
 00405a92  JNZ 0x00405abd
@@ -77,7 +77,7 @@
 00405ac6  PUSH ECX
 00405ac7  MOV EDX,dword ptr [EBP + 0xffffff58]
 00405acd  PUSH EDX
-00405ace  CALL dword ptr [0x0045a47c] {371000}
+00405ace  CALL dword ptr [0x0045a47c] {371000}  ; GDI32.DLL::SelectObject
 00405ad4  CMP dword ptr [EBP + -0x2c],0x8
 00405ad8  JNZ 0x00405d0f
 00405ade  MOV dword ptr [EBP + 0xffffff4c],0x44
@@ -87,7 +87,7 @@
 00405af4  PUSH 0x0
 00405af6  MOV ECX,dword ptr [EBP + 0xffffff58]
 00405afc  PUSH ECX
-00405afd  CALL dword ptr [0x0045a490] {371154}
+00405afd  CALL dword ptr [0x0045a490] {371154}  ; GDI32.DLL::GetDIBColorTable
 00405b03  MOV word ptr [EBP + 0xffffff48],AX
 00405b0a  MOV word ptr [EBP + 0xffffff50],0x0
 00405b13  JMP 0x00405b27
@@ -227,7 +227,7 @@
 00405d4c  PUSH 0x0
 00405d4e  MOV ECX,dword ptr [EBP + 0xffffff78]
 00405d54  PUSH ECX
-00405d55  CALL dword ptr [0x0045a478] {370990}
+00405d55  CALL dword ptr [0x0045a478] {370990}  ; GDI32.DLL::BitBlt
 00405d5b  MOV EDX,dword ptr [EBP + 0xffffff78]
 00405d61  PUSH EDX
 00405d62  MOV EAX,dword ptr [EBP + 0xffffff5c]
@@ -237,7 +237,7 @@
 00405d71  CALL dword ptr [ECX + 0x68]
 00405d74  MOV EAX,dword ptr [EBP + 0xffffff58]
 00405d7a  PUSH EAX
-00405d7b  CALL dword ptr [0x0045a480] {370978}
+00405d7b  CALL dword ptr [0x0045a480] {370978}  ; GDI32.DLL::DeleteDC
 00405d81  PUSH 0x0
 00405d83  PUSH 0x1000000
 00405d88  PUSH 0x0

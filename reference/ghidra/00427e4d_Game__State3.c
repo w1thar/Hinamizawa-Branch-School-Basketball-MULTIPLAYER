@@ -22,19 +22,19 @@ void __thiscall Game::State3(Game *this)
     Sound::Play(this->sound,2);
     if (this->i3b0 == 0) {
       for (local_8 = 0; local_8 < 6; local_8 = local_8 + 1) {
-        Player::SetFace(this->players[local_8],0);
-        Player::fn_42ddac(this->players[local_8]);
-        Player::fn_42de30(this->players[local_8]);
-        Player::fn_42deb4(this->players[local_8]);
+        Player::SetTex0(this->players[local_8],0);
+        Player::SetTex1(this->players[local_8],0);
+        Player::SetTex2(this->players[local_8],0);
+        Player::SetTex3(this->players[local_8],0);
         this->f400 = 4.0;
       }
     }
     if (this->i3b0 == 1) {
       for (local_c = 0; local_c < 6; local_c = local_c + 1) {
-        Player::SetFace(this->players[local_c],0);
-        Player::fn_42ddac(this->players[local_c]);
-        Player::fn_42de30(this->players[local_c]);
-        Player::fn_42deb4(this->players[local_c]);
+        Player::SetTex0(this->players[local_c],0);
+        Player::SetTex1(this->players[local_c],1);
+        Player::SetTex2(this->players[local_c],1);
+        Player::SetTex3(this->players[local_c],-1);
         this->f400 = 4.0;
       }
     }
@@ -44,19 +44,19 @@ void __thiscall Game::State3(Game *this)
     Sound::Play(this->sound,2);
     if (this->i3b0 == 1) {
       for (local_10 = 0; local_10 < 6; local_10 = local_10 + 1) {
-        Player::SetFace(this->players[local_10],0);
-        Player::fn_42ddac(this->players[local_10]);
-        Player::fn_42de30(this->players[local_10]);
-        Player::fn_42deb4(this->players[local_10]);
+        Player::SetTex0(this->players[local_10],0);
+        Player::SetTex1(this->players[local_10],1);
+        Player::SetTex2(this->players[local_10],1);
+        Player::SetTex3(this->players[local_10],-1);
         this->f400 = 4.0;
       }
     }
     if (this->i3b0 == 2) {
       for (local_14 = 0; local_14 < 6; local_14 = local_14 + 1) {
-        Player::SetFace(this->players[local_14],1);
-        Player::fn_42ddac(this->players[local_14]);
-        Player::fn_42de30(this->players[local_14]);
-        Player::fn_42deb4(this->players[local_14]);
+        Player::SetTex0(this->players[local_14],1);
+        Player::SetTex1(this->players[local_14],0);
+        Player::SetTex2(this->players[local_14],0);
+        Player::SetTex3(this->players[local_14],0);
         this->f400 = 4.0;
       }
     }
@@ -67,7 +67,7 @@ void __thiscall Game::State3(Game *this)
     this->f390 = 0.0;
     this->f394 = 1.0;
     this->b39a = '\0';
-    Sound::OpenMp3(this->sound);
+    Sound::OpenMp3(this->sound,s_WAV_LP_mion_mp3_00454184);
   }
   if (this->b39a == '\0' && 0.5 < this->f390) {
     (this->camPos).x = 0.0;
@@ -84,11 +84,11 @@ void __thiscall Game::State3(Game *this)
     this->i3b8 = 0;
     Sound::PlayMp3(this->sound);
     for (local_18 = 0; local_18 < 6; local_18 = local_18 + 1) {
-      Player::SetFace(this->players[local_18],0);
-      Player::fn_42ddac(this->players[local_18]);
-      Player::fn_42de30(this->players[local_18]);
-      Player::fn_42deb4(this->players[local_18]);
-      Player::Motion_42df38(this->players[local_18]);
+      Player::SetTex0(this->players[local_18],0);
+      Player::SetTex1(this->players[local_18],0);
+      Player::SetTex2(this->players[local_18],0);
+      Player::SetTex3(this->players[local_18],0);
+      Player::Motion_Stand(this->players[local_18]);
       fVar2 = 0.0;
       pVVar1 = Vec3::Ctor(&local_24,2.0,0.0,-30.0);
       Player::SetPos(this->players[local_18],pVVar1->x,pVVar1->y,pVVar1->z,fVar2);

@@ -51,7 +51,7 @@ void __thiscall Game::State9(Game *this)
     (this->matShadow).m[0xd] = 0.05;
     (this->matShadow).m[0xe] = 0.0;
     (this->matShadow).m[0xf] = 1.0;
-    Sound::OpenMp3(this->sound);
+    Sound::OpenMp3(this->sound,s_WAV_LP_5_mp3_004540f0);
     fVar2 = 0.0;
     pVVar1 = Vec3::Ctor(&local_14,0.0,0.0,17.0);
     Player::SetPos(this->players[0],pVVar1->x,pVVar1->y,pVVar1->z,fVar2);
@@ -73,8 +73,8 @@ void __thiscall Game::State9(Game *this)
     Player::Motion_430c40(this->players[0]);
     Player::Motion_430c40(this->players[1]);
     Player::Motion_430c40(this->players[2]);
-    Player::Motion_42df38(this->players[3]);
-    Player::Motion_42df38(this->players[4]);
+    Player::Motion_Stand(this->players[3]);
+    Player::Motion_Stand(this->players[4]);
     Player::Motion_430c40(this->players[5]);
     (this->camPos).x = 20.0;
     (this->camPos).y = 10.0;
@@ -102,10 +102,10 @@ void __thiscall Game::State9(Game *this)
       else if (this->i3b8 == 4) {
         Sound::StopMp3(this->sound);
         this->f394 = 1.0;
-        Sound::OpenMp3(this->sound);
+        Sound::OpenMp3(this->sound,s_WAV_LP_1_mp3_00454100);
         for (local_8 = 0; local_8 < 6; local_8 = local_8 + 1) {
-          Player::fn_42ddac(this->players[this->teamYou[local_8]]);
-          Player::fn_42de30(this->players[this->teamYou[local_8]]);
+          Player::SetTex1(this->players[this->teamYou[local_8]],0);
+          Player::SetTex2(this->players[this->teamYou[local_8]],0);
         }
         (this->camPos).x = 0.0;
         (this->camPos).y = 0.0;

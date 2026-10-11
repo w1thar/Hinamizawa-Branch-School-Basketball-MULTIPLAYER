@@ -7,7 +7,7 @@
 0040879d  PUSH 0x453140 {'open "%s" type mpegvideo alias MP3'}
 004087a2  LEA ECX,[EBP + 0xffffff00]
 004087a8  PUSH ECX
-004087a9  CALL 0x00434a40
+004087a9  CALL 0x00434a40  ; sprintf
 004087ae  ADD ESP,0xc
 004087b1  MOV EDX,dword ptr [EBP + 0xfffffefc]
 004087b7  XOR EAX,EAX
@@ -15,13 +15,13 @@
 004087bc  TEST EAX,EAX
 004087be  JZ 0x004087cb
 004087c0  MOV ECX,dword ptr [EBP + 0xfffffefc]
-004087c6  CALL 0x00401276
+004087c6  CALL 0x00401276  ; Sound::StopMp3
 004087cb  PUSH 0x0
 004087cd  PUSH 0x0
 004087cf  PUSH 0x0
 004087d1  LEA ECX,[EBP + 0xffffff00]
 004087d7  PUSH ECX
-004087d8  CALL dword ptr [0x0045a6c8] {371262}
+004087d8  CALL dword ptr [0x0045a6c8] {371262}  ; WINMM.DLL::mciSendStringA
 004087de  MOV EDX,dword ptr [EBP + 0xfffffefc]
 004087e4  MOV byte ptr [EDX + 0x4],0x0
 004087e8  MOV ESP,EBP

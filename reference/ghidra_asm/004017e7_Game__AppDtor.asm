@@ -5,7 +5,7 @@
 004017ee  MOV EAX,dword ptr [EBP + -0x4]
 004017f1  MOV dword ptr [EAX],0x44e054
 004017f7  MOV ECX,dword ptr [EBP + -0x4]
-004017fa  CALL 0x004011ea
+004017fa  CALL 0x004011ea  ; Game::Cleanup
 004017ff  MOV ESP,EBP
 00401801  POP EBP
 00401802  RET
