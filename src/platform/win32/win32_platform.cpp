@@ -1,7 +1,9 @@
 // Win32 backend: window + WGL OpenGL context, keyboard, QPC timer, waveOut audio, GDI text,
 // asset archive from an RCDATA resource.
 #define WIN32_LEAN_AND_MEAN
+#ifndef NOMINMAX
 #define NOMINMAX
+#endif
 #include <windows.h>
 #include <mmsystem.h>
 

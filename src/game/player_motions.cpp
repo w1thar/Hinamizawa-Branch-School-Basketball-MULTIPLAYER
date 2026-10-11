@@ -327,8 +327,8 @@ void Player::Motion_42ee86()
     this->keys[0].duration = 0.117084f;
   }
   this->keys[0].speed = 14.888232f;
-  this->keys[0].duration = this->keys[0].duration * 1.1;
-  this->keys[0].speed = this->keys[0].speed * 1.1;
+  this->keys[0].duration = this->keys[0].duration * 1.1f;
+  this->keys[0].speed = this->keys[0].speed * 1.1f;
   this->keys[0].pose[9].rot.x = 2.878723f;
   this->keys[0].pose[9].rot.z = -0.383841f;
   this->keys[0].pose[18].rot.x = -1.635679f;
@@ -344,8 +344,8 @@ void Player::Motion_42ee86()
     this->keys[1].duration = 0.200656f;
     this->keys[1].speed = 13.119122f;
   }
-  this->keys[1].duration = this->keys[1].duration * 1.1;
-  this->keys[1].speed = this->keys[1].speed * 1.1;
+  this->keys[1].duration = this->keys[1].duration * 1.1f;
+  this->keys[1].speed = this->keys[1].speed * 1.1f;
   this->keys[1].pose[18].rot.x = -1.635679f;
   if (this->charId == 3) {
     this->keys[2].duration = 0.083359f;
@@ -357,8 +357,8 @@ void Player::Motion_42ee86()
     this->keys[2].duration = 0.117084f;
   }
   this->keys[2].speed = 14.888232f;
-  this->keys[2].duration = this->keys[2].duration * 1.1;
-  this->keys[2].speed = this->keys[2].speed * 1.1;
+  this->keys[2].duration = this->keys[2].duration * 1.1f;
+  this->keys[2].speed = this->keys[2].speed * 1.1f;
   this->keys[2].pose[9].rot.x = 2.878723f;
   this->keys[2].pose[9].rot.z = -0.383841f;
   this->keys[2].pose[18].rot.x = -1.635679f;
@@ -374,8 +374,8 @@ void Player::Motion_42ee86()
     this->keys[3].duration = 0.200656f;
     this->keys[3].speed = 13.119122f;
   }
-  this->keys[3].duration = this->keys[3].duration * 1.1;
-  this->keys[3].speed = this->keys[3].speed * 1.1;
+  this->keys[3].duration = this->keys[3].duration * 1.1f;
+  this->keys[3].speed = this->keys[3].speed * 1.1f;
   this->keys[3].pose[18].rot.x = -1.635679f;
   this->keys[4].duration = 0.0f;
   return;

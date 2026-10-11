@@ -25,6 +25,14 @@ def fmt_float(text, imm_set, where):
     return lit + "f"
 
 
+consts = {}
+consts_path = os.path.join(os.path.dirname(ref_dir.rstrip("/\\")), "consts.txt")
+for cl in open(consts_path, encoding="utf-8-sig"):
+    fname, _, rest = cl.partition(": ")
+    consts[fname.strip()] = {tok[:-1] if tok.endswith(("f", "d")) and not tok.endswith("f+d") else tok[:-3]:
+                             ("f" if tok.endswith("f") and not tok.endswith("f+d") else "d" if tok.endswith("d") and not tok.endswith("f+d") else "f+d")
+                             for tok in rest.split()}
+
 body_out = []
 for path in sorted(glob.glob(os.path.join(ref_dir, "*_Player__Motion_*.c"))):
     base = os.path.basename(path)[:-2]
@@ -50,6 +58,14 @@ for path in sorted(glob.glob(os.path.join(ref_dir, "*_Player__Motion_*.c"))):
         def repl(mm):
             return " = " + fmt_float(mm.group(1), imm, f"{name}") + ";"
         ln = re.sub(r" = (-?[0-9]+\.[0-9]+(?:e[-+]?[0-9]+)?|-?[0-9]+\.?[0-9]*e[-+]?[0-9]+);", repl, ln)
+        # Literals inside expressions: use the precision the original loaded them with.
+        def repl_expr(mm):
+            val = mm.group(1)
+            kind = consts.get(base, {}).get(val.rstrip("0").rstrip(".") if "." in val else val)
+            if kind is None:
+                raise SystemExit(f"{name}: no precision info for expression literal {val}")
+            return val + ("f" if kind == "f" else "")
+        ln = re.sub(r"(?<![\w.])([0-9]+\.[0-9]+)(?![0-9f])", repl_expr, ln)
         ln = re.sub(r"\b0x([0-9a-f]+)\b", lambda mm: str(int(mm.group(1), 16)), ln)
         lines.append(ln)
     body_out.append(f"// {name} @ 0x{addr}\nvoid Player::{name}()\n{{\n" + "\n".join(lines) + "\n}\n")
