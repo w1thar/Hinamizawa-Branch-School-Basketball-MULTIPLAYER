@@ -7,7 +7,7 @@ void __thiscall Game::InitGame(Game *this)
   StaticMesh *pSVar1;
   Player *this_01;
   undefined4 *unaff_FS_OFFSET;
-  float10 fVar2;
+  double dVar2;
   Player *local_6c;
   StaticMesh *local_68;
   StaticMesh *local_64;
@@ -182,8 +182,8 @@ void __thiscall Game::InitGame(Game *this)
   (this->light).specular.g = 1.0;
   (this->light).specular.b = 1.0;
   (this->light).att0 = 1.0;
-  fVar2 = (float10)FUN_00433c84(this);
-  (this->light).range = (float)fVar2;
+  dVar2 = sqrt(3.4028234663852886e+38);
+  (this->light).range = (float)dVar2;
   (*this->device->lpVtbl->LightEnable)(this->device,0,1);
   _memset(&this->mtl,0,0x44);
   (this->mtl).diffuse.r = 1.0;

@@ -36,16 +36,16 @@ bool __thiscall Game::InitD3D(Game *this)
     this->zbufFormat[6] = '\0';
     this->zbufFormat[7] = '\0';
     (**(code **)(*(int *)this->d3d + 0x18))(this->d3d,&DAT_0044fc68,FUN_0040228b,this->zbufFormat);
-    if (DAT_00457c94 == '\0') {
+    if (g_zbufFound == '\0') {
       (**(code **)(*(int *)this->d3d + 0x18))(this->d3d,&DAT_0044fca8,FUN_0040228b,this->zbufFormat)
       ;
-      if (DAT_00457c94 == '\0') {
+      if (g_zbufFound == '\0') {
         (**(code **)(*(int *)this->d3d + 0x18))
                   (this->d3d,&DAT_0044fc98,FUN_0040228b,this->zbufFormat);
-        if (DAT_00457c94 == '\0') {
+        if (g_zbufFound == '\0') {
           (**(code **)(*(int *)this->d3d + 0x18))
                     (this->d3d,&DAT_0044fcb8,FUN_0040228b,this->zbufFormat);
-          if (DAT_00457c94 != '\0') {
+          if (g_zbufFound != '\0') {
             this->devType = '\x04';
           }
         }

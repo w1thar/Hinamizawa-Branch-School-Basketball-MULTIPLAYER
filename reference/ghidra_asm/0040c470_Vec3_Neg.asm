@@ -1,0 +1,22 @@
+0040c470  PUSH EBP
+0040c471  MOV EBP,ESP
+0040c473  MOV EAX,dword ptr [EBP + 0xc]
+0040c476  FLD float ptr [EAX + 0x8]
+0040c479  FCHS
+0040c47b  PUSH ECX
+0040c47c  FSTP float ptr [ESP]
+0040c47f  MOV ECX,dword ptr [EBP + 0xc]
+0040c482  FLD float ptr [ECX + 0x4]
+0040c485  FCHS
+0040c487  PUSH ECX
+0040c488  FSTP float ptr [ESP]
+0040c48b  MOV EDX,dword ptr [EBP + 0xc]
+0040c48e  FLD float ptr [EDX]
+0040c490  FCHS
+0040c492  PUSH ECX
+0040c493  FSTP float ptr [ESP]
+0040c496  MOV ECX,dword ptr [EBP + 0x8]
+0040c499  CALL 0x00401348
+0040c49e  MOV EAX,dword ptr [EBP + 0x8]
+0040c4a1  POP EBP
+0040c4a2  RET

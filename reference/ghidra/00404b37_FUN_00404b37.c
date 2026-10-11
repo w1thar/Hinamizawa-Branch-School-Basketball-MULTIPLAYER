@@ -24,7 +24,7 @@ undefined4 __fastcall FUN_00404b37(void *param_1)
   pvVar2 = LoadImageA(hInst,pCVar1,type,iVar4,cy,fuLoad);
   *(HANDLE *)((int)param_1 + 0x70) = pvVar2;
   if (*(int *)((int)param_1 + 0x70) == 0) {
-    lstrcpyA(local_104,&DAT_00457cf0);
+    lstrcpyA(local_104,&g_texturePath);
     lstrcatA(local_104,(LPCSTR)((int)param_1 + 4));
     local_10c = (int *)fopen(local_104,&DAT_00452f1c);
     if (local_10c == (int *)0x0) {

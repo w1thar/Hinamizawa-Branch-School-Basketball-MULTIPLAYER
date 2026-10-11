@@ -1,0 +1,60 @@
+004072cf  PUSH EBP
+004072d0  MOV EBP,ESP
+004072d2  PUSH ECX
+004072d3  PUSH 0x68
+004072d5  PUSH 0x0
+004072d7  MOV EAX,dword ptr [EBP + 0x8]
+004072da  PUSH EAX
+004072db  CALL 0x00433440
+004072e0  ADD ESP,0xc
+004072e3  MOV ECX,dword ptr [EBP + 0x8]
+004072e6  MOV EDX,dword ptr [EBP + 0xc]
+004072e9  MOV dword ptr [ECX],EDX
+004072eb  MOV EAX,dword ptr [EBP + 0x8]
+004072ee  MOV dword ptr [EAX + 0x4],0x3f800000
+004072f5  MOV ECX,dword ptr [EBP + 0x8]
+004072f8  MOV dword ptr [ECX + 0x8],0x3f800000
+004072ff  MOV EDX,dword ptr [EBP + 0x8]
+00407302  MOV dword ptr [EDX + 0xc],0x3f800000
+00407309  MOV EAX,dword ptr [EBP + 0x8]
+0040730c  ADD EAX,0x4
+0040730f  MOV ECX,dword ptr [EBP + 0x8]
+00407312  ADD ECX,0x14
+00407315  MOV EDX,dword ptr [EAX]
+00407317  MOV dword ptr [ECX],EDX
+00407319  MOV EDX,dword ptr [EAX + 0x4]
+0040731c  MOV dword ptr [ECX + 0x4],EDX
+0040731f  MOV EDX,dword ptr [EAX + 0x8]
+00407322  MOV dword ptr [ECX + 0x8],EDX
+00407325  MOV EAX,dword ptr [EAX + 0xc]
+00407328  MOV dword ptr [ECX + 0xc],EAX
+0040732b  MOV ECX,dword ptr [EBP + 0x8]
+0040732e  MOV EDX,dword ptr [EBP + 0x10]
+00407331  MOV dword ptr [ECX + 0x40],EDX
+00407334  MOV EAX,dword ptr [EBP + 0x8]
+00407337  MOV ECX,dword ptr [EBP + 0x10]
+0040733a  MOV dword ptr [EAX + 0x34],ECX
+0040733d  MOV EDX,dword ptr [EBP + 0x8]
+00407340  MOV EAX,dword ptr [EBP + 0x14]
+00407343  MOV dword ptr [EDX + 0x44],EAX
+00407346  MOV ECX,dword ptr [EBP + 0x8]
+00407349  MOV EDX,dword ptr [EBP + 0x14]
+0040734c  MOV dword ptr [ECX + 0x38],EDX
+0040734f  MOV EAX,dword ptr [EBP + 0x8]
+00407352  MOV ECX,dword ptr [EBP + 0x18]
+00407355  MOV dword ptr [EAX + 0x48],ECX
+00407358  MOV EDX,dword ptr [EBP + 0x8]
+0040735b  MOV EAX,dword ptr [EBP + 0x18]
+0040735e  MOV dword ptr [EDX + 0x3c],EAX
+00407361  MOV ECX,dword ptr [EBP + 0x8]
+00407364  MOV dword ptr [ECX + 0x54],0x3f800000
+0040736b  PUSH 0x47efffff
+00407370  PUSH 0xe0000000
+00407375  CALL 0x00433c84
+0040737a  ADD ESP,0x8
+0040737d  FST float ptr [EBP + -0x4]
+00407380  MOV EDX,dword ptr [EBP + 0x8]
+00407383  FSTP float ptr [EDX + 0x4c]
+00407386  MOV ESP,EBP
+00407388  POP EBP
+00407389  RET

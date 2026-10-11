@@ -50,6 +50,17 @@ public class ApplyAndDump extends GhidraScript {
             String[] p = line.split("\\s+", 4);
             Address a = toAddr(Long.parseLong(p[0], 16));
             String owner = p[1], name = p[2], sig = p.length > 3 ? p[3].trim() : "-";
+            if (owner.equals("@")) {            // global data label: addr @ name [type]
+                st.createLabel(a, name, SourceType.USER_DEFINED).setPrimary();
+                if (!sig.equals("-")) {
+                    DataType dt = parseType(sig);
+                    if (dt != null) {
+                        clearListing(a, a.add(dt.getLength() - 1));
+                        createData(a, dt);
+                    }
+                }
+                continue;
+            }
             Function f = getFunctionAt(a);
             if (f == null) f = createFunction(a, null);
             if (f == null) { println("no function at " + a); continue; }
@@ -75,6 +86,45 @@ public class ApplyAndDump extends GhidraScript {
         }
 
         dump(outDir);
+        dumpMathCalls(new File(outDir, "_mathcalls.txt"));
+    }
+
+    // MSVC's float math wrappers confuse the decompiler's dataflow; list the asm feeding each call.
+    private void dumpMathCalls(File out) throws Exception {
+        String[] names = {"cosf", "sinf", "sqrtf", "acosf"};
+        Listing listing = currentProgram.getListing();
+        try (PrintWriter pw = new PrintWriter(new FileWriter(out))) {
+            for (String n : names) {
+                for (Function target : getGlobalFunctions(n)) {
+                    List<Address> entries = new ArrayList<>();
+                    entries.add(target.getEntryPoint());
+                    for (Address thunk : target.getFunctionThunkAddresses(true) == null
+                            ? new Address[0] : target.getFunctionThunkAddresses(true)) entries.add(thunk);
+                    for (Address e : entries) {
+                        for (Reference r : getReferencesTo(e)) {
+                            if (!r.getReferenceType().isCall()) continue;
+                            Function caller = getFunctionContaining(r.getFromAddress());
+                            if (caller == null || caller.isThunk()) continue;
+                            StringBuilder sb = new StringBuilder();
+                            Instruction ins = listing.getInstructionAt(r.getFromAddress());
+                            Deque<String> prev = new ArrayDeque<>();
+                            Instruction p = ins;
+                            for (int i = 0; i < 14 && p != null; i++) {
+                                p = p.getPrevious();
+                                if (p != null) prev.addFirst("    " + p.getAddress() + "  " + p);
+                            }
+                            pw.printf("%s  %s -> %s%n", r.getFromAddress(), caller.getName(true), n);
+                            for (String s : prev) pw.println(s);
+                        }
+                    }
+                }
+            }
+        }
+    }
+
+    private DataType parseType(String t) throws Exception {
+        FunctionDefinitionDataType def = parseSig("__probe", t + " (void)");
+        return def == null ? null : def.getReturnType();
     }
 
     private FunctionDefinitionDataType parseSig(String name, String sig) throws Exception {
@@ -130,6 +180,13 @@ public class ApplyAndDump extends GhidraScript {
                 pw.print(code);
             }
             index.printf("%08x %6d %s%n", a, f.getBody().getNumAddresses(), full);
+            File asmDir = new File(outDir.getParentFile(), "ghidra_asm");
+            asmDir.mkdirs();
+            try (PrintWriter pw = new PrintWriter(new FileWriter(new File(asmDir, fn.replace(".c", ".asm"))))) {
+                for (Instruction ins : currentProgram.getListing().getInstructions(f.getBody(), true)) {
+                    pw.println(ins.getAddress() + "  " + ins);
+                }
+            }
             n++;
         }
         index.close();

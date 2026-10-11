@@ -6,11 +6,11 @@ FUN_00404491(void *this,float *param_1,float *param_2,float *param_3,float *para
             float param_12,float param_13)
 
 {
-  undefined4 extraout_ECX;
-  undefined4 extraout_ECX_00;
-  undefined4 extraout_ECX_01;
-  float10 fVar1;
-  float10 fVar2;
+  float x;
+  float x_00;
+  float x_01;
+  float fVar1;
+  float fVar2;
   undefined4 local_c;
   undefined4 local_8;
   
@@ -24,13 +24,13 @@ FUN_00404491(void *this,float *param_1,float *param_2,float *param_3,float *para
   }
   local_8 = 1.0 - param_13;
   if (0.001 < 1.0 - local_c) {
-    fVar1 = (float10)thunk_FUN_00404930(this);
-    fVar2 = (float10)thunk_FUN_00404960(extraout_ECX);
-    fVar1 = (float10)thunk_FUN_00404960((float)fVar1);
-    local_8 = (float)((float10)(float)fVar2 / fVar1);
-    fVar1 = (float10)thunk_FUN_00404960(extraout_ECX_00);
-    fVar2 = (float10)thunk_FUN_00404960(extraout_ECX_01);
-    param_13 = (float)((float10)(float)fVar1 / fVar2);
+    fVar1 = acosf((float)this);
+    local_8 = sinf(x);
+    fVar1 = sinf(fVar1);
+    local_8 = local_8 / fVar1;
+    fVar1 = sinf(x_00);
+    fVar2 = sinf(x_01);
+    param_13 = fVar1 / fVar2;
   }
   *param_1 = param_13 * param_9 + local_8 * param_5;
   *param_2 = param_13 * param_10 + local_8 * param_6;

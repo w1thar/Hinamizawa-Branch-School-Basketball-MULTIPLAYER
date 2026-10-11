@@ -3,7 +3,7 @@
 void __fastcall FUN_00404a8b(undefined4 *param_1)
 
 {
-  int *local_8;
+  TexContainer *local_8;
   
   if (param_1[0x1b] != 0) {
     (**(code **)(*(int *)param_1[0x1b] + 8))(param_1[0x1b]);
@@ -14,13 +14,13 @@ void __fastcall FUN_00404a8b(undefined4 *param_1)
     param_1[0x1d] = 0;
   }
   DeleteObject((HGDIOBJ)param_1[0x1c]);
-  if (DAT_00457ef0 == param_1) {
-    DAT_00457ef0 = (int *)*param_1;
+  if (g_textureList == (TexContainer *)param_1) {
+    g_textureList = (TexContainer *)*param_1;
   }
   else {
-    for (local_8 = DAT_00457ef0; local_8 != (int *)0x0; local_8 = (int *)*local_8) {
-      if ((undefined4 *)*local_8 == param_1) {
-        *local_8 = *param_1;
+    for (local_8 = g_textureList; local_8 != (TexContainer *)0x0; local_8 = local_8->next) {
+      if (local_8->next == (TexContainer *)param_1) {
+        local_8->next = (TexContainer *)*param_1;
       }
     }
   }

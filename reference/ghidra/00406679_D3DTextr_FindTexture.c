@@ -6,7 +6,7 @@ TexContainer * __cdecl D3DTextr_FindTexture(char *name)
   int iVar1;
   TexContainer *local_8;
   
-  local_8 = DAT_00457ef0;
+  local_8 = g_textureList;
   while( true ) {
     if (local_8 == (TexContainer *)0x0) {
       return (TexContainer *)0x0;

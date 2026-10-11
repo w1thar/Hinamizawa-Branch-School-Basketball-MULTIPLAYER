@@ -14,8 +14,8 @@ FUN_004049ff(void *this,LPCSTR param_1,undefined4 param_2,undefined4 param_3)
   *(undefined4 *)((int)this + 0x6c) = 0;
   *(undefined4 *)((int)this + 0x70) = 0;
   *(undefined4 *)((int)this + 0x74) = 0;
-  *(void **)this = DAT_00457ef0;
-  DAT_00457ef0 = this;
+  *(TexContainer **)this = g_textureList;
+  g_textureList = this;
   return this;
 }
 

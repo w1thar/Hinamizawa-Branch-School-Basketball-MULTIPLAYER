@@ -122,7 +122,6 @@
 0040c4b0  -  SetTranslateMatrixV     void (Mat4 *m, Vec3 *v)
 0040c4e0  -  SetTranslateMatrix      void (Mat4 *m, float x, float y, float z)
 004038d0  -  D3DMath_MatrixMultiply  void (Mat4 *out, Mat4 *a, Mat4 *b)
-00407c20  -  Vec3_Set                Vec3 * (Vec3 *out, float x, float y, float z)
 0041b040  -  Atan2                   float (float y, float x)
 00434250  -  operator_new            void * (u32 size)
 00433370  -  operator_delete         void (void *p)
@@ -133,3 +132,63 @@
 00434e50  -  fgets                   -
 00433400  -  srand                   void (u32 seed)
 00433410  -  rand                    int (void)
+
+# ---- D3DVECTOR (inline C++ helpers from d3dtypes.h) -------------------------------
+00407fe0  Vec3  CtorDefault          Vec3 * (void)
+00407c20  Vec3  Ctor                 Vec3 * (float x, float y, float z)
+00407c60  Vec3  DivAssign            Vec3 * (float s)
+0040c2f0  Vec3  AddAssign            Vec3 * (Vec3 *v)
+00408000  Vec3  IndexConst           float * (int i)
+00408020  Vec3  Index                float * (int i)
+00407cb0  -  Vec3_Sub                Vec3 * (Vec3 *out, Vec3 *a, Vec3 *b)
+0040c350  -  Vec3_Add                Vec3 * (Vec3 *out, Vec3 *a, Vec3 *b)
+0040c470  -  Vec3_Neg                Vec3 * (Vec3 *out, Vec3 *v)
+00407d00  -  Vec3_Scale              Vec3 * (Vec3 *out, float s, Vec3 *v)
+00407df0  -  Vec3_Div                Vec3 * (Vec3 *out, Vec3 *v, float s)
+00407d50  -  Vec3_Magnitude          float (Vec3 *v)
+00407d80  -  Vec3_SquareMagnitude    float (Vec3 *v)
+00407dc0  -  Vec3_Normalize          Vec3 * (Vec3 *out, Vec3 *v)
+00407e40  -  Vec3_Dot                float (Vec3 *a, Vec3 *b)
+00407e80  -  Vec3_Cross              Vec3 * (Vec3 *out, Vec3 *a, Vec3 *b)
+
+# ---- float math wrappers (cdecl; CRT versions take doubles) ------------------------
+00404900  -  cosf                    float (float x)
+00404930  -  acosf                   float (float x)
+00404960  -  sinf                    float (float x)
+00404990  -  sqrtf                   float (float x)
+00433a54  -  cos                     double (double x)
+00433b04  -  acos                    double (double x)
+00433bd4  -  sin                     double (double x)
+00433c84  -  sqrt                    double (double x)
+00433940  -  fabs                    double (double x)
+00435140  -  atan2                   double (double y, double x)
+
+# ---- Globals ------------------------------------------------------------------------
+# Each .cpp had its own copy of the key-state constants: FREE=0 (in .bss), PUSH=1, RELEASE=2, HOLD=3.
+00457c90  @  KEY_FREE                int
+00452d40  @  KEY_PUSH                int
+00452d44  @  KEY_RELEASE             int
+00452d48  @  KEY_HOLD                int
+00452ed0  @  KEY_PUSH                int
+00452ed4  @  KEY_RELEASE             int
+00452ed8  @  KEY_HOLD                int
+00453610  @  KEY_PUSH                int
+00453614  @  KEY_RELEASE             int
+00453618  @  KEY_HOLD                int
+004540c0  @  KEY_PUSH                int
+004540c4  @  KEY_RELEASE             int
+004540c8  @  KEY_HOLD                int
+00454158  @  KEY_PUSH                int
+0045415c  @  KEY_RELEASE             int
+00454160  @  KEY_HOLD                int
+00457ef0  @  g_textureList           TexContainer *
+00457cf0  @  g_texturePath           -
+00457c94  @  g_zbufFound             bool8
+00457c88  @  g_logFont               void *
+00457c8c  @  g_hdc                   void *
+00457c84  @  g_hFont                 void *
+00457c80  @  g_hOldFont              void *
+004581dc  @  g_mouseX                int
+004581d8  @  g_mouseY                int
+00454430  @  g_randSeed              u32
+004581e8  @  KEY_FREE                int

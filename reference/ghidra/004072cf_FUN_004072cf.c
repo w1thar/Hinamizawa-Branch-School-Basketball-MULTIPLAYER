@@ -5,7 +5,7 @@ FUN_004072cf(undefined4 *param_1,undefined4 param_2,undefined4 param_3,undefined
             undefined4 param_5)
 
 {
-  float10 fVar1;
+  double dVar1;
   
   _memset(param_1,0,0x68);
   *param_1 = param_2;
@@ -23,8 +23,8 @@ FUN_004072cf(undefined4 *param_1,undefined4 param_2,undefined4 param_3,undefined
   param_1[0x12] = param_5;
   param_1[0xf] = param_5;
   param_1[0x15] = 0x3f800000;
-  fVar1 = (float10)FUN_00433c84(param_1);
-  param_1[0x13] = (float)fVar1;
+  dVar1 = sqrt(3.4028234663852886e+38);
+  param_1[0x13] = (float)dVar1;
   return;
 }
 

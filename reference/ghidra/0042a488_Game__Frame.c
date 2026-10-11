@@ -9,7 +9,6 @@ void __thiscall Game::Frame(Game *this)
   Vec3 *at;
   Vec3 *from;
   Mat4 *pMVar2;
-  float unaff_EDI;
   float *pfVar3;
   float fVar4;
   float yawAngle;
@@ -20,9 +19,9 @@ void __thiscall Game::Frame(Game *this)
   undefined4 uVar8;
   undefined4 uVar9;
   undefined4 uVar10;
-  undefined1 local_30 [12];
-  undefined1 local_24 [12];
-  undefined1 local_18 [12];
+  Vec3 local_30;
+  Vec3 local_24;
+  Vec3 local_18;
   int local_c;
   int local_8;
   
@@ -69,10 +68,10 @@ void __thiscall Game::Frame(Game *this)
   if (iVar1 == -0x7789fe3e) {
     (*this->zbuffer->lpVtbl->Restore)(this->zbuffer);
   }
-  up = Vec3_Set(local_18,(Vec3 *)0x0,1.0,0.0,unaff_EDI);
-  at = Vec3_Set(local_24,(Vec3 *)((this->camPos).x + (this->camDir).x),
-                (this->camPos).y + (this->camDir).y,(this->camPos).z + (this->camDir).z,(float)up);
-  from = Vec3_Set(local_30,(Vec3 *)(this->camPos).x,(this->camPos).y,(this->camPos).z,(float)at);
+  up = Vec3::Ctor(&local_18,0.0,1.0,0.0);
+  at = Vec3::Ctor(&local_24,(this->camPos).x + (this->camDir).x,(this->camPos).y + (this->camDir).y,
+                  (this->camPos).z + (this->camDir).z);
+  from = Vec3::Ctor(&local_30,(this->camPos).x,(this->camPos).y,(this->camPos).z);
   D3DUtil_SetViewMatrix(&this->matView,from,at,up);
   (*this->device->lpVtbl->SetTransform)(this->device,2,&this->matView);
   uVar8 = 0;

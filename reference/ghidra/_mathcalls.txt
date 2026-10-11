@@ -1,0 +1,2745 @@
+00427798  Game::State2 -> cosf
+    00427763  MOV byte ptr [EDX + 0x399],0x0
+    0042776a  MOV EAX,dword ptr [EBP + -0x4]
+    0042776d  PUSH EAX
+    0042776e  CALL 0x00401262
+    00427773  ADD ESP,0x4
+    00427776  FMUL float ptr [0x0044e3e4] {13}
+    0042777c  MOV ECX,dword ptr [EBP + -0x10]
+    0042777f  FMUL float ptr [ECX + 0x54]
+    00427782  MOV EDX,dword ptr [EBP + -0x10]
+    00427785  FSUBR float ptr [EDX + 0x21c]
+    0042778b  MOV EAX,dword ptr [EBP + -0x10]
+    0042778e  FSTP float ptr [EAX + 0x21c]
+    00427794  MOV ECX,dword ptr [EBP + -0x4]
+    00427797  PUSH ECX
+00427842  Game::State2 -> cosf
+    00427812  JZ 0x00427868
+    00427814  MOV EDX,dword ptr [EBP + -0x4]
+    00427817  PUSH EDX
+    00427818  CALL 0x00401262
+    0042781d  ADD ESP,0x4
+    00427820  FMUL float ptr [0x0044e3e4] {13}
+    00427826  MOV EAX,dword ptr [EBP + -0x10]
+    00427829  FMUL float ptr [EAX + 0x54]
+    0042782c  MOV ECX,dword ptr [EBP + -0x10]
+    0042782f  FSUBR float ptr [ECX + 0x21c]
+    00427835  MOV EDX,dword ptr [EBP + -0x10]
+    00427838  FSTP float ptr [EDX + 0x21c]
+    0042783e  MOV EAX,dword ptr [EBP + -0x4]
+    00427841  PUSH EAX
+00427993  Game::State2 -> cosf
+    00427963  JZ 0x004279b9
+    00427965  MOV EAX,dword ptr [EBP + -0x4]
+    00427968  PUSH EAX
+    00427969  CALL 0x00401262
+    0042796e  ADD ESP,0x4
+    00427971  FMUL float ptr [0x0044e3fc] {25}
+    00427977  MOV ECX,dword ptr [EBP + -0x10]
+    0042797a  FMUL float ptr [ECX + 0x54]
+    0042797d  MOV EDX,dword ptr [EBP + -0x10]
+    00427980  FADD float ptr [EDX + 0x21c]
+    00427986  MOV EAX,dword ptr [EBP + -0x10]
+    00427989  FSTP float ptr [EAX + 0x21c]
+    0042798f  MOV ECX,dword ptr [EBP + -0x4]
+    00427992  PUSH ECX
+00427a0f  Game::State2 -> cosf
+    004279df  JZ 0x00427a35
+    004279e1  MOV EAX,dword ptr [EBP + -0x4]
+    004279e4  PUSH EAX
+    004279e5  CALL 0x00401262
+    004279ea  ADD ESP,0x4
+    004279ed  FMUL float ptr [0x0044e3fc] {25}
+    004279f3  MOV ECX,dword ptr [EBP + -0x10]
+    004279f6  FMUL float ptr [ECX + 0x54]
+    004279f9  MOV EDX,dword ptr [EBP + -0x10]
+    004279fc  FSUBR float ptr [EDX + 0x21c]
+    00427a02  MOV EAX,dword ptr [EBP + -0x10]
+    00427a05  FSTP float ptr [EAX + 0x21c]
+    00427a0b  MOV ECX,dword ptr [EBP + -0x4]
+    00427a0e  PUSH ECX
+00427a8b  Game::State2 -> cosf
+    00427a5e  JZ 0x00427a9c
+    00427a60  MOV EAX,dword ptr [EBP + -0x10]
+    00427a63  FLD float ptr [0x0044e400] {2}
+    00427a69  FMUL float ptr [EAX + 0x54]
+    00427a6c  FADD float ptr [EBP + -0x4]
+    00427a6f  FSTP float ptr [EBP + -0x4]
+    00427a72  MOV ECX,dword ptr [EBP + -0x4]
+    00427a75  PUSH ECX
+    00427a76  CALL 0x00401262
+    00427a7b  ADD ESP,0x4
+    00427a7e  MOV EDX,dword ptr [EBP + -0x10]
+    00427a81  FSTP float ptr [EDX + 0x228]
+    00427a87  MOV EAX,dword ptr [EBP + -0x4]
+    00427a8a  PUSH EAX
+00427aef  Game::State2 -> cosf
+    00427ac2  JZ 0x00427b00
+    00427ac4  MOV EAX,dword ptr [EBP + -0x10]
+    00427ac7  FLD float ptr [0x0044e400] {2}
+    00427acd  FMUL float ptr [EAX + 0x54]
+    00427ad0  FSUBR float ptr [EBP + -0x4]
+    00427ad3  FSTP float ptr [EBP + -0x4]
+    00427ad6  MOV ECX,dword ptr [EBP + -0x4]
+    00427ad9  PUSH ECX
+    00427ada  CALL 0x00401262
+    00427adf  ADD ESP,0x4
+    00427ae2  MOV EDX,dword ptr [EBP + -0x10]
+    00427ae5  FSTP float ptr [EDX + 0x228]
+    00427aeb  MOV EAX,dword ptr [EBP + -0x4]
+    00427aee  PUSH EAX
+00411dac  Game::State6 -> cosf
+    00411d66  FMUL float ptr [EAX + 0x54]
+    00411d69  FADD float ptr [ESI + 0x158]
+    00411d6f  MOV ECX,dword ptr [EBP + -0x4]
+    00411d72  MOV EDX,dword ptr [EBP + 0xfffff994]
+    00411d78  MOV EAX,dword ptr [EDX + ECX*0x4 + 0xd8]
+    00411d7f  FSTP float ptr [EAX + 0x158]
+    00411d85  MOV ECX,dword ptr [EBP + -0x4]
+    00411d88  MOV EDX,dword ptr [EBP + 0xfffff994]
+    00411d8e  MOV ESI,dword ptr [EDX + ECX*0x4 + 0xd8]
+    00411d95  MOV EAX,dword ptr [EBP + -0x4]
+    00411d98  MOV ECX,dword ptr [EBP + 0xfffff994]
+    00411d9e  MOV EDX,dword ptr [ECX + EAX*0x4 + 0xd8]
+    00411da5  MOV EAX,dword ptr [EDX + 0x164]
+    00411dab  PUSH EAX
+00411f2e  Game::State6 -> cosf
+    00411ee8  FMUL float ptr [ECX + 0x54]
+    00411eeb  FADD float ptr [ESI + 0x158]
+    00411ef1  MOV EDX,dword ptr [EBP + -0x4]
+    00411ef4  MOV EAX,dword ptr [EBP + 0xfffff994]
+    00411efa  MOV ECX,dword ptr [EAX + EDX*0x4 + 0xd8]
+    00411f01  FSTP float ptr [ECX + 0x158]
+    00411f07  MOV EDX,dword ptr [EBP + -0x4]
+    00411f0a  MOV EAX,dword ptr [EBP + 0xfffff994]
+    00411f10  MOV ESI,dword ptr [EAX + EDX*0x4 + 0xd8]
+    00411f17  MOV ECX,dword ptr [EBP + -0x4]
+    00411f1a  MOV EDX,dword ptr [EBP + 0xfffff994]
+    00411f20  MOV EAX,dword ptr [EDX + ECX*0x4 + 0xd8]
+    00411f27  MOV ECX,dword ptr [EAX + 0x164]
+    00411f2d  PUSH ECX
+00418dc4  Game::State6 -> cosf
+    00418d88  SETZ CL
+    00418d8b  OR EDX,ECX
+    00418d8d  TEST EDX,EDX
+    00418d8f  JZ 0x00418d9f
+    00418d91  MOV dword ptr [EBP + -0x58],0xbfa66666
+    00418d98  MOV dword ptr [EBP + -0x5c],0xbf4ccccd
+    00418d9f  MOV EDX,dword ptr [EBP + 0xfffff994]
+    00418da5  MOV EAX,dword ptr [EDX + 0x268]
+    00418dab  MOV ECX,dword ptr [EBP + 0xfffff994]
+    00418db1  MOV EDX,dword ptr [ECX + EAX*0x4 + 0xd8]
+    00418db8  FLD float ptr [EDX + 0x164]
+    00418dbe  FCHS
+    00418dc0  PUSH ECX
+    00418dc1  FSTP float ptr [ESP]
+0040f334  Game::State6 -> cosf
+    0040f2ea  MOV ECX,dword ptr [EBP + 0xfffff994]
+    0040f2f0  MOV EDX,dword ptr [ECX + EAX*0x4 + 0xd8]
+    0040f2f7  FLD float ptr [EDX + 0x170]
+    0040f2fd  FMUL float ptr [0x0044e0f8] {0.9}
+    0040f303  MOV EAX,dword ptr [EBP + 0xfffff994]
+    0040f309  FSTP float ptr [EAX + 0x250]
+    0040f30f  MOV ECX,dword ptr [EBP + 0xfffff994]
+    0040f315  MOV EDX,dword ptr [ECX + 0x3f8]
+    0040f31b  MOV EAX,dword ptr [EBP + 0xfffff994]
+    0040f321  MOV ECX,dword ptr [EAX + EDX*0x4 + 0xd8]
+    0040f328  FLD float ptr [ECX + 0x164]
+    0040f32e  FCHS
+    0040f330  PUSH ECX
+    0040f331  FSTP float ptr [ESP]
+0040f789  Game::State6 -> cosf
+    0040f745  MOV EDX,dword ptr [EBP + -0x34]
+    0040f748  MOV EAX,dword ptr [EBP + 0xfffff994]
+    0040f74e  MOV ECX,dword ptr [EAX + EDX*0x4 + 0xd8]
+    0040f755  FLD float ptr [ECX + 0x170]
+    0040f75b  FMUL float ptr [0x0044e0f8] {0.9}
+    0040f761  MOV EDX,dword ptr [EBP + 0xfffff994]
+    0040f767  FSTP float ptr [EDX + 0x250]
+    0040f76d  MOV EAX,dword ptr [EBP + -0x34]
+    0040f770  MOV ECX,dword ptr [EBP + 0xfffff994]
+    0040f776  MOV EDX,dword ptr [ECX + EAX*0x4 + 0xd8]
+    0040f77d  FLD float ptr [EDX + 0x164]
+    0040f783  FCHS
+    0040f785  PUSH ECX
+    0040f786  FSTP float ptr [ESP]
+0040fe45  Game::State6 -> cosf
+    0040fdfb  MOV ECX,dword ptr [EBP + 0xfffff994]
+    0040fe01  MOV EDX,dword ptr [ECX + EAX*0x4 + 0xd8]
+    0040fe08  FLD float ptr [EDX + 0x170]
+    0040fe0e  FMUL float ptr [0x0044e0f8] {0.9}
+    0040fe14  MOV EAX,dword ptr [EBP + 0xfffff994]
+    0040fe1a  FSTP float ptr [EAX + 0x250]
+    0040fe20  MOV ECX,dword ptr [EBP + 0xfffff994]
+    0040fe26  MOV EDX,dword ptr [ECX + 0x3f8]
+    0040fe2c  MOV EAX,dword ptr [EBP + 0xfffff994]
+    0040fe32  MOV ECX,dword ptr [EAX + EDX*0x4 + 0xd8]
+    0040fe39  FLD float ptr [ECX + 0x164]
+    0040fe3f  FCHS
+    0040fe41  PUSH ECX
+    0040fe42  FSTP float ptr [ESP]
+00410558  Game::State6 -> cosf
+    00410514  MOV EDX,dword ptr [EBP + -0x34]
+    00410517  MOV EAX,dword ptr [EBP + 0xfffff994]
+    0041051d  MOV ECX,dword ptr [EAX + EDX*0x4 + 0xd8]
+    00410524  FLD float ptr [ECX + 0x170]
+    0041052a  FMUL float ptr [0x0044e0f8] {0.9}
+    00410530  MOV EDX,dword ptr [EBP + 0xfffff994]
+    00410536  FSTP float ptr [EDX + 0x250]
+    0041053c  MOV EAX,dword ptr [EBP + -0x34]
+    0041053f  MOV ECX,dword ptr [EBP + 0xfffff994]
+    00410545  MOV EDX,dword ptr [ECX + EAX*0x4 + 0xd8]
+    0041054c  FLD float ptr [EDX + 0x164]
+    00410552  FCHS
+    00410554  PUSH ECX
+    00410555  FSTP float ptr [ESP]
+0041094b  Game::State6 -> cosf
+    00410901  MOV ECX,dword ptr [EBP + 0xfffff994]
+    00410907  MOV EDX,dword ptr [ECX + EAX*0x4 + 0xd8]
+    0041090e  FLD float ptr [EDX + 0x170]
+    00410914  FMUL float ptr [0x0044e0f8] {0.9}
+    0041091a  MOV EAX,dword ptr [EBP + 0xfffff994]
+    00410920  FSTP float ptr [EAX + 0x250]
+    00410926  MOV ECX,dword ptr [EBP + 0xfffff994]
+    0041092c  MOV EDX,dword ptr [ECX + 0x3f8]
+    00410932  MOV EAX,dword ptr [EBP + 0xfffff994]
+    00410938  MOV ECX,dword ptr [EAX + EDX*0x4 + 0xd8]
+    0041093f  FLD float ptr [ECX + 0x164]
+    00410945  FCHS
+    00410947  PUSH ECX
+    00410948  FSTP float ptr [ESP]
+00410db4  Game::State6 -> cosf
+    00410d70  MOV EDX,dword ptr [EBP + -0x34]
+    00410d73  MOV EAX,dword ptr [EBP + 0xfffff994]
+    00410d79  MOV ECX,dword ptr [EAX + EDX*0x4 + 0xd8]
+    00410d80  FLD float ptr [ECX + 0x170]
+    00410d86  FMUL float ptr [0x0044e0f8] {0.9}
+    00410d8c  MOV EDX,dword ptr [EBP + 0xfffff994]
+    00410d92  FSTP float ptr [EDX + 0x250]
+    00410d98  MOV EAX,dword ptr [EBP + -0x34]
+    00410d9b  MOV ECX,dword ptr [EBP + 0xfffff994]
+    00410da1  MOV EDX,dword ptr [ECX + EAX*0x4 + 0xd8]
+    00410da8  FLD float ptr [EDX + 0x164]
+    00410dae  FCHS
+    00410db0  PUSH ECX
+    00410db1  FSTP float ptr [ESP]
+0041230a  Game::State6 -> cosf
+    004122c6  FMUL float ptr [0x0044e0f4] {-2}
+    004122cc  MOV EAX,dword ptr [EBP + -0x4]
+    004122cf  MOV ECX,dword ptr [EBP + 0xfffff994]
+    004122d5  MOV EDX,dword ptr [ECX + EAX*0x4 + 0xd8]
+    004122dc  FADD float ptr [EDX + 0x158]
+    004122e2  MOV EAX,dword ptr [EBP + 0xfffff994]
+    004122e8  FSTP float ptr [EAX + 0x24c]
+    004122ee  MOV ECX,dword ptr [EBP + -0x4]
+    004122f1  MOV EDX,dword ptr [EBP + 0xfffff994]
+    004122f7  MOV EAX,dword ptr [EDX + ECX*0x4 + 0xd8]
+    004122fe  FLD float ptr [EAX + 0x164]
+    00412304  FCHS
+    00412306  PUSH ECX
+    00412307  FSTP float ptr [ESP]
+00412675  Game::State6 -> cosf
+    00412631  FMUL float ptr [0x0044e0f4] {-2}
+    00412637  MOV EAX,dword ptr [EBP + -0x4]
+    0041263a  MOV ECX,dword ptr [EBP + 0xfffff994]
+    00412640  MOV EDX,dword ptr [ECX + EAX*0x4 + 0xd8]
+    00412647  FADD float ptr [EDX + 0x158]
+    0041264d  MOV EAX,dword ptr [EBP + 0xfffff994]
+    00412653  FSTP float ptr [EAX + 0x24c]
+    00412659  MOV ECX,dword ptr [EBP + -0x4]
+    0041265c  MOV EDX,dword ptr [EBP + 0xfffff994]
+    00412662  MOV EAX,dword ptr [EDX + ECX*0x4 + 0xd8]
+    00412669  FLD float ptr [EAX + 0x164]
+    0041266f  FCHS
+    00412671  PUSH ECX
+    00412672  FSTP float ptr [ESP]
+00418528  Game::State6 -> cosf
+    004184e2  FMUL float ptr [EAX + 0x54]
+    004184e5  FADD float ptr [ECX + 0x15c]
+    004184eb  MOV ECX,dword ptr [EBP + -0x1c]
+    004184ee  MOV EDX,dword ptr [EBP + 0xfffff994]
+    004184f4  MOV EAX,dword ptr [EDX + ECX*0x4 + 0xd8]
+    004184fb  FSTP float ptr [EAX + 0x15c]
+    00418501  MOV ECX,dword ptr [EBP + -0x1c]
+    00418504  MOV EDX,dword ptr [EBP + 0xfffff994]
+    0041850a  MOV ESI,dword ptr [EDX + ECX*0x4 + 0xd8]
+    00418511  MOV EAX,dword ptr [EBP + -0x1c]
+    00418514  MOV ECX,dword ptr [EBP + 0xfffff994]
+    0041851a  MOV EDX,dword ptr [ECX + EAX*0x4 + 0xd8]
+    00418521  MOV EAX,dword ptr [EDX + 0x164]
+    00418527  PUSH EAX
+00419349  Game::State6 -> cosf
+    004192ff  MOV EDX,dword ptr [EBP + 0xfffff994]
+    00419305  FSTP float ptr [EDX + 0x21c]
+    0041930b  MOV EAX,dword ptr [EBP + 0xfffff994]
+    00419311  MOV ECX,dword ptr [EAX + 0x3fc]
+    00419317  MOV EDX,dword ptr [EBP + 0xfffff994]
+    0041931d  MOV ESI,dword ptr [EDX + ECX*0x4 + 0xd8]
+    00419324  MOV EAX,dword ptr [EBP + 0xfffff994]
+    0041932a  MOV ECX,dword ptr [EAX + 0x3fc]
+    00419330  MOV EDX,dword ptr [EBP + 0xfffff994]
+    00419336  MOV EAX,dword ptr [EDX + ECX*0x4 + 0xd8]
+    0041933d  FLD float ptr [EAX + 0x164]
+    00419343  FCHS
+    00419345  PUSH ECX
+    00419346  FSTP float ptr [ESP]
+004113c9  Game::State6 -> cosf
+    0041137f  MOV ECX,dword ptr [EBP + 0xfffff994]
+    00411385  MOV EDX,dword ptr [ECX + EAX*0x4 + 0xd8]
+    0041138c  FLD float ptr [EDX + 0x170]
+    00411392  FMUL float ptr [0x0044e0f8] {0.9}
+    00411398  MOV EAX,dword ptr [EBP + 0xfffff994]
+    0041139e  FSTP float ptr [EAX + 0x250]
+    004113a4  MOV ECX,dword ptr [EBP + 0xfffff994]
+    004113aa  MOV EDX,dword ptr [ECX + 0x3f8]
+    004113b0  MOV EAX,dword ptr [EBP + 0xfffff994]
+    004113b6  MOV ECX,dword ptr [EAX + EDX*0x4 + 0xd8]
+    004113bd  FLD float ptr [ECX + 0x164]
+    004113c3  FCHS
+    004113c5  PUSH ECX
+    004113c6  FSTP float ptr [ESP]
+00411823  Game::State6 -> cosf
+    004117df  MOV EDX,dword ptr [EBP + -0x34]
+    004117e2  MOV EAX,dword ptr [EBP + 0xfffff994]
+    004117e8  MOV ECX,dword ptr [EAX + EDX*0x4 + 0xd8]
+    004117ef  FLD float ptr [ECX + 0x170]
+    004117f5  FMUL float ptr [0x0044e0f8] {0.9}
+    004117fb  MOV EDX,dword ptr [EBP + 0xfffff994]
+    00411801  FSTP float ptr [EDX + 0x250]
+    00411807  MOV EAX,dword ptr [EBP + -0x34]
+    0041180a  MOV ECX,dword ptr [EBP + 0xfffff994]
+    00411810  MOV EDX,dword ptr [ECX + EAX*0x4 + 0xd8]
+    00411817  FLD float ptr [EDX + 0x164]
+    0041181d  FCHS
+    0041181f  PUSH ECX
+    00411820  FSTP float ptr [ESP]
+00416128  Game::State6 -> cosf
+    004160e4  MOV EAX,dword ptr [EBP + -0x34]
+    004160e7  MOV ECX,dword ptr [EBP + 0xfffff994]
+    004160ed  MOV EDX,dword ptr [ECX + EAX*0x4 + 0xd8]
+    004160f4  FLD float ptr [EDX + 0x170]
+    004160fa  FMUL float ptr [0x0044e0f8] {0.9}
+    00416100  MOV EAX,dword ptr [EBP + 0xfffff994]
+    00416106  FSTP float ptr [EAX + 0x250]
+    0041610c  MOV ECX,dword ptr [EBP + -0x34]
+    0041610f  MOV EDX,dword ptr [EBP + 0xfffff994]
+    00416115  MOV EAX,dword ptr [EDX + ECX*0x4 + 0xd8]
+    0041611c  FLD float ptr [EAX + 0x164]
+    00416122  FCHS
+    00416124  PUSH ECX
+    00416125  FSTP float ptr [ESP]
+004164af  Game::State6 -> cosf
+    0041646b  FMUL float ptr [0x0044e0f4] {-2}
+    00416471  MOV EAX,dword ptr [EBP + -0x34]
+    00416474  MOV ECX,dword ptr [EBP + 0xfffff994]
+    0041647a  MOV EDX,dword ptr [ECX + EAX*0x4 + 0xd8]
+    00416481  FADD float ptr [EDX + 0x158]
+    00416487  MOV EAX,dword ptr [EBP + 0xfffff994]
+    0041648d  FSTP float ptr [EAX + 0x24c]
+    00416493  MOV ECX,dword ptr [EBP + -0x34]
+    00416496  MOV EDX,dword ptr [EBP + 0xfffff994]
+    0041649c  MOV EAX,dword ptr [EDX + ECX*0x4 + 0xd8]
+    004164a3  FLD float ptr [EAX + 0x164]
+    004164a9  FCHS
+    004164ab  PUSH ECX
+    004164ac  FSTP float ptr [ESP]
+00416a1e  Game::State6 -> cosf
+    004169da  MOV EDX,dword ptr [EBP + -0x34]
+    004169dd  MOV EAX,dword ptr [EBP + 0xfffff994]
+    004169e3  MOV ECX,dword ptr [EAX + EDX*0x4 + 0xd8]
+    004169ea  FLD float ptr [ECX + 0x170]
+    004169f0  FMUL float ptr [0x0044e0f8] {0.9}
+    004169f6  MOV EDX,dword ptr [EBP + 0xfffff994]
+    004169fc  FSTP float ptr [EDX + 0x250]
+    00416a02  MOV EAX,dword ptr [EBP + -0x34]
+    00416a05  MOV ECX,dword ptr [EBP + 0xfffff994]
+    00416a0b  MOV EDX,dword ptr [ECX + EAX*0x4 + 0xd8]
+    00416a12  FLD float ptr [EDX + 0x164]
+    00416a18  FCHS
+    00416a1a  PUSH ECX
+    00416a1b  FSTP float ptr [ESP]
+00416da5  Game::State6 -> cosf
+    00416d61  FMUL float ptr [0x0044e0f4] {-2}
+    00416d67  MOV EDX,dword ptr [EBP + -0x34]
+    00416d6a  MOV EAX,dword ptr [EBP + 0xfffff994]
+    00416d70  MOV ECX,dword ptr [EAX + EDX*0x4 + 0xd8]
+    00416d77  FADD float ptr [ECX + 0x158]
+    00416d7d  MOV EDX,dword ptr [EBP + 0xfffff994]
+    00416d83  FSTP float ptr [EDX + 0x24c]
+    00416d89  MOV EAX,dword ptr [EBP + -0x34]
+    00416d8c  MOV ECX,dword ptr [EBP + 0xfffff994]
+    00416d92  MOV EDX,dword ptr [ECX + EAX*0x4 + 0xd8]
+    00416d99  FLD float ptr [EDX + 0x164]
+    00416d9f  FCHS
+    00416da1  PUSH ECX
+    00416da2  FSTP float ptr [ESP]
+00418e91  Game::State6 -> cosf
+    00418e57  PUSH ECX
+    00418e58  FSTP float ptr [ESP]
+    00418e5b  CALL 0x00401262
+    00418e60  ADD ESP,0x4
+    00418e63  FMUL float ptr [EBP + -0x58]
+    00418e66  FSTP float ptr [EBP + 0xfffff8f0]
+    00418e6c  MOV ECX,dword ptr [EBP + 0xfffff994]
+    00418e72  MOV EDX,dword ptr [ECX + 0x268]
+    00418e78  MOV EAX,dword ptr [EBP + 0xfffff994]
+    00418e7e  MOV ECX,dword ptr [EAX + EDX*0x4 + 0xd8]
+    00418e85  FLD float ptr [ECX + 0x164]
+    00418e8b  FCHS
+    00418e8d  PUSH ECX
+    00418e8e  FSTP float ptr [ESP]
+00419b91  FUN_00419ae5 -> cosf
+    00419b57  FSTP float ptr [EBP + -0x10]
+    00419b5a  MOV EAX,dword ptr [EBP + 0xc]
+    00419b5d  MOV ECX,dword ptr [EBP + -0x18]
+    00419b60  MOV EDX,dword ptr [ECX + EAX*0x4 + 0xd8]
+    00419b67  MOV EAX,dword ptr [EDX + 0x15c]
+    00419b6d  MOV dword ptr [EBP + -0xc],EAX
+    00419b70  MOV ECX,dword ptr [EBP + 0xc]
+    00419b73  MOV EDX,dword ptr [EBP + -0x18]
+    00419b76  MOV ESI,dword ptr [EDX + ECX*0x4 + 0xd8]
+    00419b7d  MOV EAX,dword ptr [EBP + 0xc]
+    00419b80  MOV ECX,dword ptr [EBP + -0x18]
+    00419b83  MOV EDX,dword ptr [ECX + EAX*0x4 + 0xd8]
+    00419b8a  MOV EAX,dword ptr [EDX + 0x164]
+    00419b90  PUSH EAX
+00419c48  FUN_00419ae5 -> cosf
+    00419c0e  FSTP float ptr [EBP + -0x10]
+    00419c11  MOV EAX,dword ptr [EBP + 0xc]
+    00419c14  MOV ECX,dword ptr [EBP + -0x18]
+    00419c17  MOV EDX,dword ptr [ECX + EAX*0x4 + 0xd8]
+    00419c1e  MOV EAX,dword ptr [EDX + 0x15c]
+    00419c24  MOV dword ptr [EBP + -0xc],EAX
+    00419c27  MOV ECX,dword ptr [EBP + 0xc]
+    00419c2a  MOV EDX,dword ptr [EBP + -0x18]
+    00419c2d  MOV ESI,dword ptr [EDX + ECX*0x4 + 0xd8]
+    00419c34  MOV EAX,dword ptr [EBP + 0xc]
+    00419c37  MOV ECX,dword ptr [EBP + -0x18]
+    00419c3a  MOV EDX,dword ptr [ECX + EAX*0x4 + 0xd8]
+    00419c41  MOV EAX,dword ptr [EDX + 0x164]
+    00419c47  PUSH EAX
+0042d32c  Player::Update -> cosf
+    0042d2fe  MOV ECX,dword ptr [EBP + -0x18]
+    0042d301  MOV EDX,dword ptr [ECX + 0x4]
+    0042d304  MOV EAX,dword ptr [EDX + 0x20]
+    0042d307  FSTP float ptr [EAX + 0xa0]
+    0042d30d  MOV ECX,dword ptr [EBP + -0xc]
+    0042d310  IMUL ECX,ECX,0xc
+    0042d313  MOV EDX,dword ptr [EBP + -0x18]
+    0042d316  MOV EAX,dword ptr [EDX + 0x4c]
+    0042d319  MOV ESI,dword ptr [EAX + ECX*0x1 + 0x8]
+    0042d31d  MOV ECX,dword ptr [EBP + -0x18]
+    0042d320  FLD float ptr [ECX + 0x164]
+    0042d326  FCHS
+    0042d328  PUSH ECX
+    0042d329  FSTP float ptr [ESP]
+0042d3b4  Player::Update -> cosf
+    0042d388  CALL 0x00401262
+    0042d38d  ADD ESP,0x4
+    0042d390  FMUL float ptr [ESI]
+    0042d392  FSTP float ptr [EBP + -0x20]
+    0042d395  MOV ECX,dword ptr [EBP + -0xc]
+    0042d398  IMUL ECX,ECX,0xc
+    0042d39b  MOV EDX,dword ptr [EBP + -0x18]
+    0042d39e  MOV EAX,dword ptr [EDX + 0x4c]
+    0042d3a1  MOV ESI,dword ptr [EAX + ECX*0x1 + 0x8]
+    0042d3a5  MOV ECX,dword ptr [EBP + -0x18]
+    0042d3a8  FLD float ptr [ECX + 0x164]
+    0042d3ae  FCHS
+    0042d3b0  PUSH ECX
+    0042d3b1  FSTP float ptr [ESP]
+0041f3bd  Game::State4 -> cosf
+    0041f377  FMUL float ptr [EDX + 0x54]
+    0041f37a  FSUBR float ptr [ESI + 0x158]
+    0041f380  MOV EAX,dword ptr [EBP + -0x4]
+    0041f383  MOV ECX,dword ptr [EBP + 0xffffff68]
+    0041f389  MOV EDX,dword ptr [ECX + EAX*0x4 + 0xd8]
+    0041f390  FSTP float ptr [EDX + 0x158]
+    0041f396  MOV EAX,dword ptr [EBP + -0x4]
+    0041f399  MOV ECX,dword ptr [EBP + 0xffffff68]
+    0041f39f  MOV ESI,dword ptr [ECX + EAX*0x4 + 0xd8]
+    0041f3a6  MOV EDX,dword ptr [EBP + -0x4]
+    0041f3a9  MOV EAX,dword ptr [EBP + 0xffffff68]
+    0041f3af  MOV ECX,dword ptr [EAX + EDX*0x4 + 0xd8]
+    0041f3b6  MOV EDX,dword ptr [ECX + 0x164]
+    0041f3bc  PUSH EDX
+0041ccc9  Game::fn_41b070 -> cosf
+    0041cc99  PUSH 0x0
+    0041cc9b  PUSH 0x49
+    0041cc9d  PUSH 0x121
+    0041cca2  PUSH 0x10
+    0041cca4  MOV ECX,dword ptr [EBP + -0x8]
+    0041cca7  ADD ECX,0x270
+    0041ccad  PUSH ECX
+    0041ccae  MOV ECX,dword ptr [EBP + -0x8]
+    0041ccb1  CALL 0x00401118
+    0041ccb6  MOV EDX,dword ptr [EBP + -0x8]
+    0041ccb9  FLD float ptr [EDX + 0x3e0]
+    0041ccbf  FMUL float ptr [0x004510e4] {4}
+    0041ccc5  PUSH ECX
+    0041ccc6  FSTP float ptr [ESP]
+0041ccf6  Game::fn_41b070 -> cosf
+    0041ccbf  FMUL float ptr [0x004510e4] {4}
+    0041ccc5  PUSH ECX
+    0041ccc6  FSTP float ptr [ESP]
+    0041ccc9  CALL 0x0040136b
+    0041ccce  ADD ESP,0x4
+    0041ccd1  FMUL float ptr [0x00451108] {128}
+    0041ccd7  FADD float ptr [0x00451108] {128}
+    0041ccdd  CALL 0x0043510c
+    0041cce2  PUSH EAX
+    0041cce3  MOV EAX,dword ptr [EBP + -0x8]
+    0041cce6  FLD float ptr [EAX + 0x3e0]
+    0041ccec  FMUL float ptr [0x004510e4] {4}
+    0041ccf2  PUSH ECX
+    0041ccf3  FSTP float ptr [ESP]
+0041ce8b  Game::fn_41b070 -> cosf
+    0041ce5c  PUSH 0x0
+    0041ce5e  PUSH 0x49
+    0041ce60  PUSH 0x121
+    0041ce65  PUSH 0x10
+    0041ce67  MOV EAX,dword ptr [EBP + -0x8]
+    0041ce6a  ADD EAX,0x270
+    0041ce6f  PUSH EAX
+    0041ce70  MOV ECX,dword ptr [EBP + -0x8]
+    0041ce73  CALL 0x00401118
+    0041ce78  MOV ECX,dword ptr [EBP + -0x8]
+    0041ce7b  FLD float ptr [ECX + 0x3e0]
+    0041ce81  FMUL float ptr [0x004510e4] {4}
+    0041ce87  PUSH ECX
+    0041ce88  FSTP float ptr [ESP]
+0041ceb8  Game::fn_41b070 -> cosf
+    0041ce81  FMUL float ptr [0x004510e4] {4}
+    0041ce87  PUSH ECX
+    0041ce88  FSTP float ptr [ESP]
+    0041ce8b  CALL 0x0040136b
+    0041ce90  ADD ESP,0x4
+    0041ce93  FMUL float ptr [0x00451108] {128}
+    0041ce99  FADD float ptr [0x00451108] {128}
+    0041ce9f  CALL 0x0043510c
+    0041cea4  PUSH EAX
+    0041cea5  MOV EDX,dword ptr [EBP + -0x8]
+    0041cea8  FLD float ptr [EDX + 0x3e0]
+    0041ceae  FMUL float ptr [0x004510e4] {4}
+    0041ceb4  PUSH ECX
+    0041ceb5  FSTP float ptr [ESP]
+00422dcc  Game::State7 -> cosf
+    00422d9c  JZ 0x00422df2
+    00422d9e  MOV EAX,dword ptr [EBP + -0x4]
+    00422da1  PUSH EAX
+    00422da2  CALL 0x00401262
+    00422da7  ADD ESP,0x4
+    00422daa  FMUL float ptr [0x0044e2c8] {15}
+    00422db0  MOV ECX,dword ptr [EBP + -0x50]
+    00422db3  FMUL float ptr [ECX + 0x54]
+    00422db6  MOV EDX,dword ptr [EBP + -0x50]
+    00422db9  FADD float ptr [EDX + 0x21c]
+    00422dbf  MOV EAX,dword ptr [EBP + -0x50]
+    00422dc2  FSTP float ptr [EAX + 0x21c]
+    00422dc8  MOV ECX,dword ptr [EBP + -0x4]
+    00422dcb  PUSH ECX
+00422e48  Game::State7 -> cosf
+    00422e18  JZ 0x00422e6e
+    00422e1a  MOV EAX,dword ptr [EBP + -0x4]
+    00422e1d  PUSH EAX
+    00422e1e  CALL 0x00401262
+    00422e23  ADD ESP,0x4
+    00422e26  FMUL float ptr [0x0044e2c8] {15}
+    00422e2c  MOV ECX,dword ptr [EBP + -0x50]
+    00422e2f  FMUL float ptr [ECX + 0x54]
+    00422e32  MOV EDX,dword ptr [EBP + -0x50]
+    00422e35  FSUBR float ptr [EDX + 0x21c]
+    00422e3b  MOV EAX,dword ptr [EBP + -0x50]
+    00422e3e  FSTP float ptr [EAX + 0x21c]
+    00422e44  MOV ECX,dword ptr [EBP + -0x4]
+    00422e47  PUSH ECX
+00422ec4  Game::State7 -> cosf
+    00422e97  JZ 0x00422ed5
+    00422e99  MOV EAX,dword ptr [EBP + -0x50]
+    00422e9c  FLD float ptr [0x0044e2cc] {2}
+    00422ea2  FMUL float ptr [EAX + 0x54]
+    00422ea5  FADD float ptr [EBP + -0x4]
+    00422ea8  FSTP float ptr [EBP + -0x4]
+    00422eab  MOV ECX,dword ptr [EBP + -0x4]
+    00422eae  PUSH ECX
+    00422eaf  CALL 0x00401262
+    00422eb4  ADD ESP,0x4
+    00422eb7  MOV EDX,dword ptr [EBP + -0x50]
+    00422eba  FSTP float ptr [EDX + 0x228]
+    00422ec0  MOV EAX,dword ptr [EBP + -0x4]
+    00422ec3  PUSH EAX
+00422f28  Game::State7 -> cosf
+    00422efb  JZ 0x00422f39
+    00422efd  MOV EAX,dword ptr [EBP + -0x50]
+    00422f00  FLD float ptr [0x0044e2cc] {2}
+    00422f06  FMUL float ptr [EAX + 0x54]
+    00422f09  FSUBR float ptr [EBP + -0x4]
+    00422f0c  FSTP float ptr [EBP + -0x4]
+    00422f0f  MOV ECX,dword ptr [EBP + -0x4]
+    00422f12  PUSH ECX
+    00422f13  CALL 0x00401262
+    00422f18  ADD ESP,0x4
+    00422f1b  MOV EDX,dword ptr [EBP + -0x50]
+    00422f1e  FSTP float ptr [EDX + 0x228]
+    00422f24  MOV EAX,dword ptr [EBP + -0x4]
+    00422f27  PUSH EAX
+00420564  Game::State5 -> cosf
+    00420524  FMUL float ptr [0x0044e248] {1.57}
+    0042052a  PUSH ECX
+    0042052b  FSTP float ptr [ESP]
+    0042052e  CALL 0x00401262
+    00420533  ADD ESP,0x4
+    00420536  FMUL float ptr [0x0044e24c] {0.001}
+    0042053c  MOV ECX,dword ptr [EBP + 0xffffff50]
+    00420542  FSTP float ptr [ECX + 0x21c]
+    00420548  MOV EDX,dword ptr [EBP + 0xffffff50]
+    0042054e  FLD float ptr [EDX + 0x390]
+    00420554  FSUB float ptr [0x0044e224] {3}
+    0042055a  FMUL float ptr [0x0044e248] {1.57}
+    00420560  PUSH ECX
+    00420561  FSTP float ptr [ESP]
+004206db  Game::State5 -> cosf
+    0042068f  FMUL float ptr [EBP + 0xffffff44]
+    00420695  MOV ECX,dword ptr [EBP + 0xffffff50]
+    0042069b  FSTP float ptr [ECX + 0x21c]
+    004206a1  MOV EDX,dword ptr [EBP + 0xffffff50]
+    004206a7  FLD float ptr [EDX + 0x390]
+    004206ad  FSUB float ptr [0x0044e224] {3}
+    004206b3  FMUL float ptr [0x0044e254] {10}
+    004206b9  FSTP float ptr [EBP + 0xffffff40]
+    004206bf  MOV EAX,dword ptr [EBP + 0xffffff50]
+    004206c5  FLD float ptr [EAX + 0x390]
+    004206cb  FSUB float ptr [0x0044e224] {3}
+    004206d1  FMUL float ptr [0x0044e248] {1.57}
+    004206d7  PUSH ECX
+    004206d8  FSTP float ptr [ESP]
+00407705  D3DUtil_SetRotateXMatrix -> cosf
+    004076e6  MOV EDX,dword ptr [EBP + 0x8]
+    004076e9  FSTP float ptr [EDX + 0x38]
+    004076ec  XOR EAX,EAX
+    004076ee  MOV ESP,EBP
+    004076f0  POP EBP
+    004076f1  RET
+    004076f2  PUSH EBP
+    004076f3  MOV EBP,ESP
+    004076f5  MOV EAX,dword ptr [EBP + 0x8]
+    004076f8  PUSH EAX
+    004076f9  CALL 0x00401064
+    004076fe  ADD ESP,0x4
+    00407701  MOV ECX,dword ptr [EBP + 0xc]
+    00407704  PUSH ECX
+0040773d  D3DUtil_SetRotateXMatrix -> cosf
+    00407716  PUSH EAX
+    00407717  CALL 0x00401262
+    0040771c  ADD ESP,0x4
+    0040771f  MOV ECX,dword ptr [EBP + 0x8]
+    00407722  FSTP float ptr [ECX + 0x18]
+    00407725  MOV EDX,dword ptr [EBP + 0xc]
+    00407728  PUSH EDX
+    00407729  CALL 0x00401262
+    0040772e  ADD ESP,0x4
+    00407731  FCHS
+    00407733  MOV EAX,dword ptr [EBP + 0x8]
+    00407736  FSTP float ptr [EAX + 0x24]
+    00407739  MOV ECX,dword ptr [EBP + 0xc]
+    0040773c  PUSH ECX
+0040763c  D3DUtil_SetProjectionMatrix -> cosf
+    00407608  CALL 0x00433bd4
+    0040760d  FSTP double ptr [ESP]
+    00407610  CALL 0x00433940
+    00407615  ADD ESP,0x8
+    00407618  FCOMP double ptr [0x0044e090] {0.01}
+    0040761e  FNSTSW AX
+    00407620  TEST AH,0x1
+    00407623  JZ 0x0040762f
+    00407625  MOV EAX,0x80070057
+    0040762a  JMP 0x004076ee
+    0040762f  FLD float ptr [EBP + 0xc]
+    00407632  FDIV float ptr [0x0044e098] {2}
+    00407638  PUSH ECX
+    00407639  FSTP float ptr [ESP]
+00407672  D3DUtil_SetProjectionMatrix -> cosf
+    00407644  ADD ESP,0x4
+    00407647  FLD float ptr [EBP + 0xc]
+    0040764a  FDIV float ptr [0x0044e098] {2}
+    00407650  PUSH ECX
+    00407651  FSTP float ptr [ESP]
+    00407654  CALL 0x00401262
+    00407659  ADD ESP,0x4
+    0040765c  FDIVR float ptr [EBP + -0x10]
+    0040765f  FMUL float ptr [EBP + 0x10]
+    00407662  FSTP float ptr [EBP + -0x8]
+    00407665  FLD float ptr [EBP + 0xc]
+    00407668  FDIV float ptr [0x0044e098] {2}
+    0040766e  PUSH ECX
+    0040766f  FSTP float ptr [ESP]
+00423296  Game::State8 -> cosf
+    00423250  MOV EAX,dword ptr [EDX + ECX*0x4 + 0xd8]
+    00423257  MOV dword ptr [EAX + 0x15c],0x0
+    00423261  MOV ECX,dword ptr [EBP + -0x4]
+    00423264  MOV EDX,dword ptr [EBP + -0x10]
+    00423267  MOV EAX,dword ptr [EDX + ECX*0x4 + 0x3c0]
+    0042326e  MOV ECX,dword ptr [EBP + -0x10]
+    00423271  MOV ESI,dword ptr [ECX + EAX*0x4 + 0xd8]
+    00423278  MOV EDX,dword ptr [EBP + -0x4]
+    0042327b  MOV EAX,dword ptr [EBP + -0x10]
+    0042327e  MOV ECX,dword ptr [EAX + EDX*0x4 + 0x3c0]
+    00423285  MOV EDX,dword ptr [EBP + -0x10]
+    00423288  MOV EAX,dword ptr [EDX + ECX*0x4 + 0xd8]
+    0042328f  MOV ECX,dword ptr [EAX + 0x164]
+    00423295  PUSH ECX
+004235cb  Game::State8 -> cosf
+    0042358c  MOV EDX,0x5
+    00423591  SUB EDX,dword ptr [EBP + -0x4]
+    00423594  MOV EAX,dword ptr [EBP + -0x10]
+    00423597  MOV ECX,dword ptr [EAX + EDX*0x4 + 0x3c0]
+    0042359e  MOV EDX,dword ptr [EBP + -0x10]
+    004235a1  MOV ESI,dword ptr [EDX + ECX*0x4 + 0xd8]
+    004235a8  MOV EAX,0x5
+    004235ad  SUB EAX,dword ptr [EBP + -0x4]
+    004235b0  MOV ECX,dword ptr [EBP + -0x10]
+    004235b3  MOV EDX,dword ptr [ECX + EAX*0x4 + 0x3c0]
+    004235ba  MOV EAX,dword ptr [EBP + -0x10]
+    004235bd  MOV ECX,dword ptr [EAX + EDX*0x4 + 0xd8]
+    004235c4  MOV EDX,dword ptr [ECX + 0x164]
+    004235ca  PUSH EDX
+004077ba  D3DUtil_SetRotateZMatrix -> cosf
+    00407797  CALL 0x0040136b
+    0040779c  ADD ESP,0x4
+    0040779f  MOV EDX,dword ptr [EBP + 0x8]
+    004077a2  FSTP float ptr [EDX + 0x28]
+    004077a5  POP EBP
+    004077a6  RET
+    004077a7  PUSH EBP
+    004077a8  MOV EBP,ESP
+    004077aa  MOV EAX,dword ptr [EBP + 0x8]
+    004077ad  PUSH EAX
+    004077ae  CALL 0x00401064
+    004077b3  ADD ESP,0x4
+    004077b6  MOV ECX,dword ptr [EBP + 0xc]
+    004077b9  PUSH ECX
+004077f1  D3DUtil_SetRotateZMatrix -> cosf
+    004077ca  PUSH EAX
+    004077cb  CALL 0x00401262
+    004077d0  ADD ESP,0x4
+    004077d3  MOV ECX,dword ptr [EBP + 0x8]
+    004077d6  FSTP float ptr [ECX + 0x4]
+    004077d9  MOV EDX,dword ptr [EBP + 0xc]
+    004077dc  PUSH EDX
+    004077dd  CALL 0x00401262
+    004077e2  ADD ESP,0x4
+    004077e5  FCHS
+    004077e7  MOV EAX,dword ptr [EBP + 0x8]
+    004077ea  FSTP float ptr [EAX + 0x10]
+    004077ed  MOV ECX,dword ptr [EBP + 0xc]
+    004077f0  PUSH ECX
+0042b36a  Game::fn_42b23c -> cosf
+    0042b336  PUSH EAX
+    0042b337  CALL 0x00401262
+    0042b33c  ADD ESP,0x4
+    0042b33f  MOV ECX,dword ptr [EBP + -0x14]
+    0042b342  FMUL float ptr [ECX + 0x258]
+    0042b348  MOV EDX,dword ptr [EBP + -0x14]
+    0042b34b  FMUL float ptr [EDX + 0x54]
+    0042b34e  MOV EAX,dword ptr [EBP + -0x14]
+    0042b351  FADD float ptr [EAX + 0x24c]
+    0042b357  MOV ECX,dword ptr [EBP + -0x14]
+    0042b35a  FSTP float ptr [ECX + 0x24c]
+    0042b360  MOV EDX,dword ptr [EBP + -0x14]
+    0042b363  MOV EAX,dword ptr [EDX + 0x260]
+    0042b369  PUSH EAX
+00407760  D3DUtil_SetRotateYMatrix -> cosf
+    0040773d  CALL 0x0040136b
+    00407742  ADD ESP,0x4
+    00407745  MOV EDX,dword ptr [EBP + 0x8]
+    00407748  FSTP float ptr [EDX + 0x28]
+    0040774b  POP EBP
+    0040774c  RET
+    0040774d  PUSH EBP
+    0040774e  MOV EBP,ESP
+    00407750  MOV EAX,dword ptr [EBP + 0x8]
+    00407753  PUSH EAX
+    00407754  CALL 0x00401064
+    00407759  ADD ESP,0x4
+    0040775c  MOV ECX,dword ptr [EBP + 0xc]
+    0040775f  PUSH ECX
+00407797  D3DUtil_SetRotateYMatrix -> cosf
+    00407770  PUSH EAX
+    00407771  CALL 0x00401262
+    00407776  ADD ESP,0x4
+    00407779  FCHS
+    0040777b  MOV ECX,dword ptr [EBP + 0x8]
+    0040777e  FSTP float ptr [ECX + 0x8]
+    00407781  MOV EDX,dword ptr [EBP + 0xc]
+    00407784  PUSH EDX
+    00407785  CALL 0x00401262
+    0040778a  ADD ESP,0x4
+    0040778d  MOV EAX,dword ptr [EBP + 0x8]
+    00407790  FSTP float ptr [EAX + 0x20]
+    00407793  MOV ECX,dword ptr [EBP + 0xc]
+    00407796  PUSH ECX
+00403ee1  FUN_00403e72 -> cosf
+    00403eb4  FLD float ptr [EBP + 0x1c]
+    00403eb7  FDIV float ptr [0x0044e070] {2}
+    00403ebd  PUSH ECX
+    00403ebe  FSTP float ptr [ESP]
+    00403ec1  CALL 0x00401262
+    00403ec6  ADD ESP,0x4
+    00403ec9  MOV ECX,dword ptr [EBP + 0x18]
+    00403ecc  FMUL float ptr [ECX + 0x8]
+    00403ecf  MOV EDX,dword ptr [EBP + 0x10]
+    00403ed2  FSTP float ptr [EDX]
+    00403ed4  FLD float ptr [EBP + 0x1c]
+    00403ed7  FDIV float ptr [0x0044e070] {2}
+    00403edd  PUSH ECX
+    00403ede  FSTP float ptr [ESP]
+00403fc6  FUN_00403f6b -> cosf
+    00403f96  CALL 0x00401262
+    00403f9b  ADD ESP,0x4
+    00403f9e  FSTP float ptr [EBP + -0x10]
+    00403fa1  FLD float ptr [EBP + 0x20]
+    00403fa4  FDIV float ptr [0x0044e070] {2}
+    00403faa  PUSH ECX
+    00403fab  FSTP float ptr [ESP]
+    00403fae  CALL 0x00401262
+    00403fb3  ADD ESP,0x4
+    00403fb6  FSTP float ptr [EBP + -0x18]
+    00403fb9  FLD float ptr [EBP + 0x18]
+    00403fbc  FDIV float ptr [0x0044e070] {2}
+    00403fc2  PUSH ECX
+    00403fc3  FSTP float ptr [ESP]
+00403fde  FUN_00403f6b -> cosf
+    00403fae  CALL 0x00401262
+    00403fb3  ADD ESP,0x4
+    00403fb6  FSTP float ptr [EBP + -0x18]
+    00403fb9  FLD float ptr [EBP + 0x18]
+    00403fbc  FDIV float ptr [0x0044e070] {2}
+    00403fc2  PUSH ECX
+    00403fc3  FSTP float ptr [ESP]
+    00403fc6  CALL 0x0040136b
+    00403fcb  ADD ESP,0x4
+    00403fce  FSTP float ptr [EBP + -0x8]
+    00403fd1  FLD float ptr [EBP + 0x1c]
+    00403fd4  FDIV float ptr [0x0044e070] {2}
+    00403fda  PUSH ECX
+    00403fdb  FSTP float ptr [ESP]
+00403ff6  FUN_00403f6b -> cosf
+    00403fc6  CALL 0x0040136b
+    00403fcb  ADD ESP,0x4
+    00403fce  FSTP float ptr [EBP + -0x8]
+    00403fd1  FLD float ptr [EBP + 0x1c]
+    00403fd4  FDIV float ptr [0x0044e070] {2}
+    00403fda  PUSH ECX
+    00403fdb  FSTP float ptr [ESP]
+    00403fde  CALL 0x0040136b
+    00403fe3  ADD ESP,0x4
+    00403fe6  FSTP float ptr [EBP + -0x14]
+    00403fe9  FLD float ptr [EBP + 0x20]
+    00403fec  FDIV float ptr [0x0044e070] {2}
+    00403ff2  PUSH ECX
+    00403ff3  FSTP float ptr [ESP]
+0040780b  FUN_00407801 -> cosf
+    004077ea  FSTP float ptr [EAX + 0x10]
+    004077ed  MOV ECX,dword ptr [EBP + 0xc]
+    004077f0  PUSH ECX
+    004077f1  CALL 0x0040136b
+    004077f6  ADD ESP,0x4
+    004077f9  MOV EDX,dword ptr [EBP + 0x8]
+    004077fc  FSTP float ptr [EDX + 0x14]
+    004077ff  POP EBP
+    00407800  RET
+    00407801  PUSH EBP
+    00407802  MOV EBP,ESP
+    00407804  SUB ESP,0x14
+    00407807  MOV EAX,dword ptr [EBP + 0x10]
+    0040780a  PUSH EAX
+0042776e  Game::State2 -> sinf
+    0042773f  FNSTSW AX
+    00427741  TEST AH,0x1
+    00427744  JZ 0x0042774f
+    00427746  MOV dword ptr [EBP + -0x38],0x1
+    0042774d  JMP 0x00427756
+    0042774f  MOV dword ptr [EBP + -0x38],0x0
+    00427756  MOV ECX,dword ptr [EBP + -0x34]
+    00427759  AND ECX,dword ptr [EBP + -0x38]
+    0042775c  TEST ECX,ECX
+    0042775e  JZ 0x004277be
+    00427760  MOV EDX,dword ptr [EBP + -0x10]
+    00427763  MOV byte ptr [EDX + 0x399],0x0
+    0042776a  MOV EAX,dword ptr [EBP + -0x4]
+    0042776d  PUSH EAX
+00427818  Game::State2 -> sinf
+    004277e7  FLD float ptr [EAX + 0x390]
+    004277ed  FCOMP float ptr [0x0044e3ec] {29.3}
+    004277f3  FNSTSW AX
+    004277f5  TEST AH,0x1
+    004277f8  JZ 0x00427803
+    004277fa  MOV dword ptr [EBP + -0x40],0x1
+    00427801  JMP 0x0042780a
+    00427803  MOV dword ptr [EBP + -0x40],0x0
+    0042780a  MOV ECX,dword ptr [EBP + -0x3c]
+    0042780d  AND ECX,dword ptr [EBP + -0x40]
+    00427810  TEST ECX,ECX
+    00427812  JZ 0x00427868
+    00427814  MOV EDX,dword ptr [EBP + -0x4]
+    00427817  PUSH EDX
+00427969  Game::State2 -> sinf
+    0042793d  MOV EAX,dword ptr [EDX + 0x58]
+    00427940  XOR ECX,ECX
+    00427942  CMP EAX,dword ptr [0x00454160] {3}
+    00427948  SETZ CL
+    0042794b  MOV EDX,dword ptr [EBP + -0x10]
+    0042794e  MOV EAX,dword ptr [EDX + 0x84]
+    00427954  XOR EDX,EDX
+    00427956  CMP EAX,dword ptr [0x00454160] {3}
+    0042795c  SETZ DL
+    0042795f  OR ECX,EDX
+    00427961  TEST ECX,ECX
+    00427963  JZ 0x004279b9
+    00427965  MOV EAX,dword ptr [EBP + -0x4]
+    00427968  PUSH EAX
+004279e5  Game::State2 -> sinf
+    004279bc  MOV EAX,dword ptr [EDX + 0x5c]
+    004279bf  XOR ECX,ECX
+    004279c1  CMP EAX,dword ptr [0x00454160] {3}
+    004279c7  SETZ CL
+    004279ca  MOV EDX,dword ptr [EBP + -0x10]
+    004279cd  MOV EAX,dword ptr [EDX + 0x78]
+    004279d0  XOR EDX,EDX
+    004279d2  CMP EAX,dword ptr [0x00454160] {3}
+    004279d8  SETZ DL
+    004279db  OR ECX,EDX
+    004279dd  TEST ECX,ECX
+    004279df  JZ 0x00427a35
+    004279e1  MOV EAX,dword ptr [EBP + -0x4]
+    004279e4  PUSH EAX
+00427a76  Game::State2 -> sinf
+    00427a49  MOV EAX,dword ptr [EDX + 0x80]
+    00427a4f  XOR EDX,EDX
+    00427a51  CMP EAX,dword ptr [0x00454160] {3}
+    00427a57  SETZ DL
+    00427a5a  OR ECX,EDX
+    00427a5c  TEST ECX,ECX
+    00427a5e  JZ 0x00427a9c
+    00427a60  MOV EAX,dword ptr [EBP + -0x10]
+    00427a63  FLD float ptr [0x0044e400] {2}
+    00427a69  FMUL float ptr [EAX + 0x54]
+    00427a6c  FADD float ptr [EBP + -0x4]
+    00427a6f  FSTP float ptr [EBP + -0x4]
+    00427a72  MOV ECX,dword ptr [EBP + -0x4]
+    00427a75  PUSH ECX
+00427ada  Game::State2 -> sinf
+    00427ab0  MOV EAX,dword ptr [EDX + 0x7c]
+    00427ab3  XOR EDX,EDX
+    00427ab5  CMP EAX,dword ptr [0x00454160] {3}
+    00427abb  SETZ DL
+    00427abe  OR ECX,EDX
+    00427ac0  TEST ECX,ECX
+    00427ac2  JZ 0x00427b00
+    00427ac4  MOV EAX,dword ptr [EBP + -0x10]
+    00427ac7  FLD float ptr [0x0044e400] {2}
+    00427acd  FMUL float ptr [EAX + 0x54]
+    00427ad0  FSUBR float ptr [EBP + -0x4]
+    00427ad3  FSTP float ptr [EBP + -0x4]
+    00427ad6  MOV ECX,dword ptr [EBP + -0x4]
+    00427ad9  PUSH ECX
+00411d3c  Game::State6 -> sinf
+    00411d00  CMP EDX,dword ptr [0x00453618] {3}
+    00411d06  SETZ BL
+    00411d09  OR ECX,EBX
+    00411d0b  AND EAX,ECX
+    00411d0d  TEST EAX,EAX
+    00411d0f  JZ 0x00411e29
+    00411d15  MOV EAX,dword ptr [EBP + -0x4]
+    00411d18  MOV ECX,dword ptr [EBP + 0xfffff994]
+    00411d1e  MOV ESI,dword ptr [ECX + EAX*0x4 + 0xd8]
+    00411d25  MOV EDX,dword ptr [EBP + -0x4]
+    00411d28  MOV EAX,dword ptr [EBP + 0xfffff994]
+    00411d2e  MOV ECX,dword ptr [EAX + EDX*0x4 + 0xd8]
+    00411d35  MOV EDX,dword ptr [ECX + 0x164]
+    00411d3b  PUSH EDX
+00411ebe  Game::State6 -> sinf
+    00411e82  CMP EAX,dword ptr [0x00453618] {3}
+    00411e88  SETZ BL
+    00411e8b  OR EDX,EBX
+    00411e8d  AND ECX,EDX
+    00411e8f  TEST ECX,ECX
+    00411e91  JZ 0x00411fab
+    00411e97  MOV ECX,dword ptr [EBP + -0x4]
+    00411e9a  MOV EDX,dword ptr [EBP + 0xfffff994]
+    00411ea0  MOV ESI,dword ptr [EDX + ECX*0x4 + 0xd8]
+    00411ea7  MOV EAX,dword ptr [EBP + -0x4]
+    00411eaa  MOV ECX,dword ptr [EBP + 0xfffff994]
+    00411eb0  MOV EDX,dword ptr [ECX + EAX*0x4 + 0xd8]
+    00411eb7  MOV EAX,dword ptr [EDX + 0x164]
+    00411ebd  PUSH EAX
+004122bc  Game::State6 -> sinf
+    00412278  MOV dword ptr [EDX + 0x25c],EAX
+    0041227e  MOV ECX,dword ptr [EBP + -0x4]
+    00412281  MOV EDX,dword ptr [EBP + 0xfffff994]
+    00412287  MOV EAX,dword ptr [EDX + ECX*0x4 + 0xd8]
+    0041228e  MOV ECX,dword ptr [EBP + 0xfffff994]
+    00412294  MOV EDX,dword ptr [EAX + 0x178]
+    0041229a  MOV dword ptr [ECX + 0x258],EDX
+    004122a0  MOV EAX,dword ptr [EBP + -0x4]
+    004122a3  MOV ECX,dword ptr [EBP + 0xfffff994]
+    004122a9  MOV EDX,dword ptr [ECX + EAX*0x4 + 0xd8]
+    004122b0  FLD float ptr [EDX + 0x164]
+    004122b6  FCHS
+    004122b8  PUSH ECX
+    004122b9  FSTP float ptr [ESP]
+00412627  Game::State6 -> sinf
+    004125e0  MOV EAX,dword ptr [EDX + ECX*0x4 + 0xd8]
+    004125e7  MOV ECX,dword ptr [EBP + 0xfffff994]
+    004125ed  FLD float ptr [ECX + 0x3a0]
+    004125f3  FMUL float ptr [EAX + 0x17c]
+    004125f9  FADD float ptr [0x0044e0e8] {1}
+    004125ff  MOV EDX,dword ptr [EBP + 0xfffff994]
+    00412605  FSTP float ptr [EDX + 0x258]
+    0041260b  MOV EAX,dword ptr [EBP + -0x4]
+    0041260e  MOV ECX,dword ptr [EBP + 0xfffff994]
+    00412614  MOV EDX,dword ptr [ECX + EAX*0x4 + 0xd8]
+    0041261b  FLD float ptr [EDX + 0x164]
+    00412621  FCHS
+    00412623  PUSH ECX
+    00412624  FSTP float ptr [ESP]
+0041846d  Game::State6 -> sinf
+    00418428  MOV EAX,dword ptr [EDX + ECX*0x4 + 0xd8]
+    0041842f  FLD float ptr [EAX + 0x198]
+    00418435  FCOMP float ptr [0x0044e170] {0.8}
+    0041843b  FNSTSW AX
+    0041843d  TEST AH,0x1
+    00418440  JZ 0x00418576
+    00418446  MOV ECX,dword ptr [EBP + -0x1c]
+    00418449  MOV EDX,dword ptr [EBP + 0xfffff994]
+    0041844f  MOV ESI,dword ptr [EDX + ECX*0x4 + 0xd8]
+    00418456  MOV EAX,dword ptr [EBP + -0x1c]
+    00418459  MOV ECX,dword ptr [EBP + 0xfffff994]
+    0041845f  MOV EDX,dword ptr [ECX + EAX*0x4 + 0xd8]
+    00418466  MOV EAX,dword ptr [EDX + 0x164]
+    0041846c  PUSH EAX
+004192eb  Game::State6 -> sinf
+    004192a0  CMP dword ptr [EAX + 0x3b8],0x2
+    004192a7  JNZ 0x0041941d
+    004192ad  MOV ECX,dword ptr [EBP + 0xfffff994]
+    004192b3  MOV EDX,dword ptr [ECX + 0x3fc]
+    004192b9  MOV EAX,dword ptr [EBP + 0xfffff994]
+    004192bf  MOV ESI,dword ptr [EAX + EDX*0x4 + 0xd8]
+    004192c6  MOV ECX,dword ptr [EBP + 0xfffff994]
+    004192cc  MOV EDX,dword ptr [ECX + 0x3fc]
+    004192d2  MOV EAX,dword ptr [EBP + 0xfffff994]
+    004192d8  MOV ECX,dword ptr [EAX + EDX*0x4 + 0xd8]
+    004192df  FLD float ptr [ECX + 0x164]
+    004192e5  FCHS
+    004192e7  PUSH ECX
+    004192e8  FSTP float ptr [ESP]
+0040f2a3  Game::State6 -> sinf
+    0040f259  MOV EAX,dword ptr [EDX + 0x3f8]
+    0040f25f  MOV ECX,dword ptr [EBP + 0xfffff994]
+    0040f265  MOV EDX,dword ptr [ECX + EAX*0x4 + 0xd8]
+    0040f26c  MOV EAX,dword ptr [EBP + 0xfffff994]
+    0040f272  MOV ECX,dword ptr [EDX + 0x178]
+    0040f278  MOV dword ptr [EAX + 0x258],ECX
+    0040f27e  MOV EDX,dword ptr [EBP + 0xfffff994]
+    0040f284  MOV EAX,dword ptr [EDX + 0x3f8]
+    0040f28a  MOV ECX,dword ptr [EBP + 0xfffff994]
+    0040f290  MOV EDX,dword ptr [ECX + EAX*0x4 + 0xd8]
+    0040f297  FLD float ptr [EDX + 0x164]
+    0040f29d  FCHS
+    0040f29f  PUSH ECX
+    0040f2a0  FSTP float ptr [ESP]
+0040f713  Game::State6 -> sinf
+    0040f6cf  MOV dword ptr [EAX + 0x25c],ECX
+    0040f6d5  MOV EDX,dword ptr [EBP + -0x34]
+    0040f6d8  MOV EAX,dword ptr [EBP + 0xfffff994]
+    0040f6de  MOV ECX,dword ptr [EAX + EDX*0x4 + 0xd8]
+    0040f6e5  MOV EDX,dword ptr [EBP + 0xfffff994]
+    0040f6eb  MOV EAX,dword ptr [ECX + 0x178]
+    0040f6f1  MOV dword ptr [EDX + 0x258],EAX
+    0040f6f7  MOV ECX,dword ptr [EBP + -0x34]
+    0040f6fa  MOV EDX,dword ptr [EBP + 0xfffff994]
+    0040f700  MOV EAX,dword ptr [EDX + ECX*0x4 + 0xd8]
+    0040f707  FLD float ptr [EAX + 0x164]
+    0040f70d  FCHS
+    0040f70f  PUSH ECX
+    0040f710  FSTP float ptr [ESP]
+0040fdb4  Game::State6 -> sinf
+    0040fd6a  MOV EAX,dword ptr [EDX + 0x3f8]
+    0040fd70  MOV ECX,dword ptr [EBP + 0xfffff994]
+    0040fd76  MOV EDX,dword ptr [ECX + EAX*0x4 + 0xd8]
+    0040fd7d  MOV EAX,dword ptr [EBP + 0xfffff994]
+    0040fd83  MOV ECX,dword ptr [EDX + 0x178]
+    0040fd89  MOV dword ptr [EAX + 0x258],ECX
+    0040fd8f  MOV EDX,dword ptr [EBP + 0xfffff994]
+    0040fd95  MOV EAX,dword ptr [EDX + 0x3f8]
+    0040fd9b  MOV ECX,dword ptr [EBP + 0xfffff994]
+    0040fda1  MOV EDX,dword ptr [ECX + EAX*0x4 + 0xd8]
+    0040fda8  FLD float ptr [EDX + 0x164]
+    0040fdae  FCHS
+    0040fdb0  PUSH ECX
+    0040fdb1  FSTP float ptr [ESP]
+004104e2  Game::State6 -> sinf
+    0041049e  MOV dword ptr [EAX + 0x25c],ECX
+    004104a4  MOV EDX,dword ptr [EBP + -0x34]
+    004104a7  MOV EAX,dword ptr [EBP + 0xfffff994]
+    004104ad  MOV ECX,dword ptr [EAX + EDX*0x4 + 0xd8]
+    004104b4  MOV EDX,dword ptr [EBP + 0xfffff994]
+    004104ba  MOV EAX,dword ptr [ECX + 0x178]
+    004104c0  MOV dword ptr [EDX + 0x258],EAX
+    004104c6  MOV ECX,dword ptr [EBP + -0x34]
+    004104c9  MOV EDX,dword ptr [EBP + 0xfffff994]
+    004104cf  MOV EAX,dword ptr [EDX + ECX*0x4 + 0xd8]
+    004104d6  FLD float ptr [EAX + 0x164]
+    004104dc  FCHS
+    004104de  PUSH ECX
+    004104df  FSTP float ptr [ESP]
+004108ba  Game::State6 -> sinf
+    00410870  MOV EAX,dword ptr [EDX + 0x3f8]
+    00410876  MOV ECX,dword ptr [EBP + 0xfffff994]
+    0041087c  MOV EDX,dword ptr [ECX + EAX*0x4 + 0xd8]
+    00410883  MOV EAX,dword ptr [EBP + 0xfffff994]
+    00410889  MOV ECX,dword ptr [EDX + 0x178]
+    0041088f  MOV dword ptr [EAX + 0x258],ECX
+    00410895  MOV EDX,dword ptr [EBP + 0xfffff994]
+    0041089b  MOV EAX,dword ptr [EDX + 0x3f8]
+    004108a1  MOV ECX,dword ptr [EBP + 0xfffff994]
+    004108a7  MOV EDX,dword ptr [ECX + EAX*0x4 + 0xd8]
+    004108ae  FLD float ptr [EDX + 0x164]
+    004108b4  FCHS
+    004108b6  PUSH ECX
+    004108b7  FSTP float ptr [ESP]
+00410d3e  Game::State6 -> sinf
+    00410cfa  MOV dword ptr [EAX + 0x25c],ECX
+    00410d00  MOV EDX,dword ptr [EBP + -0x34]
+    00410d03  MOV EAX,dword ptr [EBP + 0xfffff994]
+    00410d09  MOV ECX,dword ptr [EAX + EDX*0x4 + 0xd8]
+    00410d10  MOV EDX,dword ptr [EBP + 0xfffff994]
+    00410d16  MOV EAX,dword ptr [ECX + 0x178]
+    00410d1c  MOV dword ptr [EDX + 0x258],EAX
+    00410d22  MOV ECX,dword ptr [EBP + -0x34]
+    00410d25  MOV EDX,dword ptr [EBP + 0xfffff994]
+    00410d2b  MOV EAX,dword ptr [EDX + ECX*0x4 + 0xd8]
+    00410d32  FLD float ptr [EAX + 0x164]
+    00410d38  FCHS
+    00410d3a  PUSH ECX
+    00410d3b  FSTP float ptr [ESP]
+00418dfa  Game::State6 -> sinf
+    00418dc0  PUSH ECX
+    00418dc1  FSTP float ptr [ESP]
+    00418dc4  CALL 0x0040136b
+    00418dc9  ADD ESP,0x4
+    00418dcc  FMUL float ptr [EBP + -0x58]
+    00418dcf  FSTP float ptr [EBP + 0xfffff8f4]
+    00418dd5  MOV EAX,dword ptr [EBP + 0xfffff994]
+    00418ddb  MOV ECX,dword ptr [EAX + 0x268]
+    00418de1  MOV EDX,dword ptr [EBP + 0xfffff994]
+    00418de7  MOV EAX,dword ptr [EDX + ECX*0x4 + 0xd8]
+    00418dee  FLD float ptr [EAX + 0x164]
+    00418df4  FCHS
+    00418df6  PUSH ECX
+    00418df7  FSTP float ptr [ESP]
+00411338  Game::State6 -> sinf
+    004112ee  MOV EAX,dword ptr [EDX + 0x3f8]
+    004112f4  MOV ECX,dword ptr [EBP + 0xfffff994]
+    004112fa  MOV EDX,dword ptr [ECX + EAX*0x4 + 0xd8]
+    00411301  MOV EAX,dword ptr [EBP + 0xfffff994]
+    00411307  MOV ECX,dword ptr [EDX + 0x178]
+    0041130d  MOV dword ptr [EAX + 0x258],ECX
+    00411313  MOV EDX,dword ptr [EBP + 0xfffff994]
+    00411319  MOV EAX,dword ptr [EDX + 0x3f8]
+    0041131f  MOV ECX,dword ptr [EBP + 0xfffff994]
+    00411325  MOV EDX,dword ptr [ECX + EAX*0x4 + 0xd8]
+    0041132c  FLD float ptr [EDX + 0x164]
+    00411332  FCHS
+    00411334  PUSH ECX
+    00411335  FSTP float ptr [ESP]
+004117ad  Game::State6 -> sinf
+    00411769  MOV dword ptr [EAX + 0x25c],ECX
+    0041176f  MOV EDX,dword ptr [EBP + -0x34]
+    00411772  MOV EAX,dword ptr [EBP + 0xfffff994]
+    00411778  MOV ECX,dword ptr [EAX + EDX*0x4 + 0xd8]
+    0041177f  MOV EDX,dword ptr [EBP + 0xfffff994]
+    00411785  MOV EAX,dword ptr [ECX + 0x178]
+    0041178b  MOV dword ptr [EDX + 0x258],EAX
+    00411791  MOV ECX,dword ptr [EBP + -0x34]
+    00411794  MOV EDX,dword ptr [EBP + 0xfffff994]
+    0041179a  MOV EAX,dword ptr [EDX + ECX*0x4 + 0xd8]
+    004117a1  FLD float ptr [EAX + 0x164]
+    004117a7  FCHS
+    004117a9  PUSH ECX
+    004117aa  FSTP float ptr [ESP]
+004160b2  Game::State6 -> sinf
+    0041606e  MOV dword ptr [ECX + 0x25c],EDX
+    00416074  MOV EAX,dword ptr [EBP + -0x34]
+    00416077  MOV ECX,dword ptr [EBP + 0xfffff994]
+    0041607d  MOV EDX,dword ptr [ECX + EAX*0x4 + 0xd8]
+    00416084  MOV EAX,dword ptr [EBP + 0xfffff994]
+    0041608a  MOV ECX,dword ptr [EDX + 0x178]
+    00416090  MOV dword ptr [EAX + 0x258],ECX
+    00416096  MOV EDX,dword ptr [EBP + -0x34]
+    00416099  MOV EAX,dword ptr [EBP + 0xfffff994]
+    0041609f  MOV ECX,dword ptr [EAX + EDX*0x4 + 0xd8]
+    004160a6  FLD float ptr [ECX + 0x164]
+    004160ac  FCHS
+    004160ae  PUSH ECX
+    004160af  FSTP float ptr [ESP]
+00416461  Game::State6 -> sinf
+    0041641d  MOV EAX,dword ptr [EBP + 0xfffff994]
+    00416423  MOV ECX,dword ptr [EAX + EDX*0x4 + 0xd8]
+    0041642a  FLD float ptr [EBP + -0x44]
+    0041642d  FMUL float ptr [ECX + 0x17c]
+    00416433  FADD float ptr [0x0044e0e8] {1}
+    00416439  MOV EDX,dword ptr [EBP + 0xfffff994]
+    0041643f  FSTP float ptr [EDX + 0x258]
+    00416445  MOV EAX,dword ptr [EBP + -0x34]
+    00416448  MOV ECX,dword ptr [EBP + 0xfffff994]
+    0041644e  MOV EDX,dword ptr [ECX + EAX*0x4 + 0xd8]
+    00416455  FLD float ptr [EDX + 0x164]
+    0041645b  FCHS
+    0041645d  PUSH ECX
+    0041645e  FSTP float ptr [ESP]
+004169a8  Game::State6 -> sinf
+    00416964  MOV dword ptr [EAX + 0x25c],ECX
+    0041696a  MOV EDX,dword ptr [EBP + -0x34]
+    0041696d  MOV EAX,dword ptr [EBP + 0xfffff994]
+    00416973  MOV ECX,dword ptr [EAX + EDX*0x4 + 0xd8]
+    0041697a  MOV EDX,dword ptr [EBP + 0xfffff994]
+    00416980  MOV EAX,dword ptr [ECX + 0x178]
+    00416986  MOV dword ptr [EDX + 0x258],EAX
+    0041698c  MOV ECX,dword ptr [EBP + -0x34]
+    0041698f  MOV EDX,dword ptr [EBP + 0xfffff994]
+    00416995  MOV EAX,dword ptr [EDX + ECX*0x4 + 0xd8]
+    0041699c  FLD float ptr [EAX + 0x164]
+    004169a2  FCHS
+    004169a4  PUSH ECX
+    004169a5  FSTP float ptr [ESP]
+00416d57  Game::State6 -> sinf
+    00416d13  MOV EDX,dword ptr [EBP + 0xfffff994]
+    00416d19  MOV EAX,dword ptr [EDX + ECX*0x4 + 0xd8]
+    00416d20  FLD float ptr [EBP + -0x4c]
+    00416d23  FMUL float ptr [EAX + 0x17c]
+    00416d29  FADD float ptr [0x0044e0e8] {1}
+    00416d2f  MOV ECX,dword ptr [EBP + 0xfffff994]
+    00416d35  FSTP float ptr [ECX + 0x258]
+    00416d3b  MOV EDX,dword ptr [EBP + -0x34]
+    00416d3e  MOV EAX,dword ptr [EBP + 0xfffff994]
+    00416d44  MOV ECX,dword ptr [EAX + EDX*0x4 + 0xd8]
+    00416d4b  FLD float ptr [ECX + 0x164]
+    00416d51  FCHS
+    00416d53  PUSH ECX
+    00416d54  FSTP float ptr [ESP]
+00418e5b  Game::State6 -> sinf
+    00418e11  MOV EDX,dword ptr [ECX + 0x268]
+    00418e17  MOV EAX,dword ptr [EBP + 0xfffff994]
+    00418e1d  MOV ECX,dword ptr [EAX + EDX*0x4 + 0xd8]
+    00418e24  FADD float ptr [ECX + 0x158]
+    00418e2a  MOV EDX,dword ptr [EBP + 0xfffff994]
+    00418e30  FSTP float ptr [EDX + 0x24c]
+    00418e36  MOV EAX,dword ptr [EBP + 0xfffff994]
+    00418e3c  MOV ECX,dword ptr [EAX + 0x268]
+    00418e42  MOV EDX,dword ptr [EBP + 0xfffff994]
+    00418e48  MOV EAX,dword ptr [EDX + ECX*0x4 + 0xd8]
+    00418e4f  FLD float ptr [EAX + 0x164]
+    00418e55  FCHS
+    00418e57  PUSH ECX
+    00418e58  FSTP float ptr [ESP]
+00419b2a  FUN_00419ae5 -> sinf
+    00419aef  LEA ECX,[EBP + -0x10]
+    00419af2  CALL 0x0040130c
+    00419af7  MOV EAX,dword ptr [EBP + -0x18]
+    00419afa  MOV ECX,dword ptr [EBP + 0xc]
+    00419afd  CMP ECX,dword ptr [EAX + 0x268]
+    00419b03  JNZ 0x00419bc6
+    00419b09  MOV EDX,dword ptr [EBP + 0xc]
+    00419b0c  MOV EAX,dword ptr [EBP + -0x18]
+    00419b0f  MOV ESI,dword ptr [EAX + EDX*0x4 + 0xd8]
+    00419b16  MOV ECX,dword ptr [EBP + 0xc]
+    00419b19  MOV EDX,dword ptr [EBP + -0x18]
+    00419b1c  MOV EAX,dword ptr [EDX + ECX*0x4 + 0xd8]
+    00419b23  MOV ECX,dword ptr [EAX + 0x164]
+    00419b29  PUSH ECX
+00419be7  FUN_00419ae5 -> sinf
+    00419bac  FMUL float ptr [0x0044e170] {0.8}
+    00419bb2  MOV ECX,dword ptr [EBP + -0x18]
+    00419bb5  FMUL float ptr [ECX + 0x54]
+    00419bb8  FSUBR float ptr [ESI + 0x160]
+    00419bbe  FSTP float ptr [EBP + -0x8]
+    00419bc1  JMP 0x00419c72
+    00419bc6  MOV EDX,dword ptr [EBP + 0xc]
+    00419bc9  MOV EAX,dword ptr [EBP + -0x18]
+    00419bcc  MOV ESI,dword ptr [EAX + EDX*0x4 + 0xd8]
+    00419bd3  MOV ECX,dword ptr [EBP + 0xc]
+    00419bd6  MOV EDX,dword ptr [EBP + -0x18]
+    00419bd9  MOV EAX,dword ptr [EDX + ECX*0x4 + 0xd8]
+    00419be0  MOV ECX,dword ptr [EAX + 0x164]
+    00419be6  PUSH ECX
+0042d358  Player::Update -> sinf
+    0042d32c  CALL 0x0040136b
+    0042d331  ADD ESP,0x4
+    0042d334  FMUL float ptr [ESI]
+    0042d336  FSTP float ptr [EBP + -0x1c]
+    0042d339  MOV EDX,dword ptr [EBP + -0xc]
+    0042d33c  IMUL EDX,EDX,0xc
+    0042d33f  MOV EAX,dword ptr [EBP + -0x18]
+    0042d342  MOV ECX,dword ptr [EAX + 0x4c]
+    0042d345  MOV ESI,dword ptr [ECX + EDX*0x1 + 0x8]
+    0042d349  MOV EDX,dword ptr [EBP + -0x18]
+    0042d34c  FLD float ptr [EDX + 0x164]
+    0042d352  FCHS
+    0042d354  PUSH ECX
+    0042d355  FSTP float ptr [ESP]
+0042d388  Player::Update -> sinf
+    0042d35d  ADD ESP,0x4
+    0042d360  FMUL float ptr [ESI + 0x8]
+    0042d363  FSUBR float ptr [EBP + -0x1c]
+    0042d366  FSTP float ptr [EBP + -0x4]
+    0042d369  MOV EAX,dword ptr [EBP + -0xc]
+    0042d36c  IMUL EAX,EAX,0xc
+    0042d36f  MOV ECX,dword ptr [EBP + -0x18]
+    0042d372  MOV EDX,dword ptr [ECX + 0x4c]
+    0042d375  MOV ESI,dword ptr [EDX + EAX*0x1 + 0x8]
+    0042d379  MOV EAX,dword ptr [EBP + -0x18]
+    0042d37c  FLD float ptr [EAX + 0x164]
+    0042d382  FCHS
+    0042d384  PUSH ECX
+    0042d385  FSTP float ptr [ESP]
+0041f353  Game::State4 -> sinf
+    0041f308  MOV dword ptr [EDX + 0x164],0x0
+    0041f312  MOV EAX,dword ptr [EBP + -0x4]
+    0041f315  MOV ECX,dword ptr [EBP + 0xffffff68]
+    0041f31b  MOV ECX,dword ptr [ECX + EAX*0x4 + 0xd8]
+    0041f322  CALL 0x00401384
+    0041f327  JMP 0x0041f400
+    0041f32c  MOV EDX,dword ptr [EBP + -0x4]
+    0041f32f  MOV EAX,dword ptr [EBP + 0xffffff68]
+    0041f335  MOV ESI,dword ptr [EAX + EDX*0x4 + 0xd8]
+    0041f33c  MOV ECX,dword ptr [EBP + -0x4]
+    0041f33f  MOV EDX,dword ptr [EBP + 0xffffff68]
+    0041f345  MOV EAX,dword ptr [EDX + ECX*0x4 + 0xd8]
+    0041f34c  MOV ECX,dword ptr [EAX + 0x164]
+    0041f352  PUSH ECX
+0041b61b  Game::fn_41b070 -> sinf
+    0041b5e6  AND EAX,dword ptr [EBP + -0x40]
+    0041b5e9  TEST EAX,EAX
+    0041b5eb  JZ 0x0041b6e7
+    0041b5f1  PUSH 0x453698
+    0041b5f6  MOV ECX,dword ptr [EBP + -0x8]
+    0041b5f9  ADD ECX,0x270
+    0041b5ff  PUSH ECX
+    0041b600  CALL 0x00434a40
+    0041b605  ADD ESP,0x8
+    0041b608  MOV EDX,dword ptr [EBP + -0x8]
+    0041b60b  FLD float ptr [EDX + 0x390]
+    0041b611  FMUL float ptr [0x00451104] {3}
+    0041b617  PUSH ECX
+    0041b618  FSTP float ptr [ESP]
+0041b648  Game::fn_41b070 -> sinf
+    0041b611  FMUL float ptr [0x00451104] {3}
+    0041b617  PUSH ECX
+    0041b618  FSTP float ptr [ESP]
+    0041b61b  CALL 0x00401262
+    0041b620  ADD ESP,0x4
+    0041b623  FMUL float ptr [0x00451108] {128}
+    0041b629  FADD float ptr [0x00451108] {128}
+    0041b62f  CALL 0x0043510c
+    0041b634  PUSH EAX
+    0041b635  MOV EAX,dword ptr [EBP + -0x8]
+    0041b638  FLD float ptr [EAX + 0x390]
+    0041b63e  FMUL float ptr [0x004510f0] {7}
+    0041b644  PUSH ECX
+    0041b645  FSTP float ptr [ESP]
+0041b675  Game::fn_41b070 -> sinf
+    0041b63e  FMUL float ptr [0x004510f0] {7}
+    0041b644  PUSH ECX
+    0041b645  FSTP float ptr [ESP]
+    0041b648  CALL 0x00401262
+    0041b64d  ADD ESP,0x4
+    0041b650  FMUL float ptr [0x00451108] {128}
+    0041b656  FADD float ptr [0x00451108] {128}
+    0041b65c  CALL 0x0043510c
+    0041b661  PUSH EAX
+    0041b662  MOV ECX,dword ptr [EBP + -0x8]
+    0041b665  FLD float ptr [ECX + 0x390]
+    0041b66b  FMUL float ptr [0x004510f8] {10}
+    0041b671  PUSH ECX
+    0041b672  FSTP float ptr [ESP]
+0041b734  Game::fn_41b070 -> sinf
+    0041b701  AND EAX,EDX
+    0041b703  TEST EAX,EAX
+    0041b705  JZ 0x0041bb34
+    0041b70b  PUSH 0x4536dc {'プレイモードを選択してください'}
+    0041b710  MOV EAX,dword ptr [EBP + -0x8]
+    0041b713  ADD EAX,0x270
+    0041b718  PUSH EAX
+    0041b719  CALL 0x00434a40
+    0041b71e  ADD ESP,0x8
+    0041b721  MOV ECX,dword ptr [EBP + -0x8]
+    0041b724  FLD float ptr [ECX + 0x390]
+    0041b72a  FMUL float ptr [0x00451104] {3}
+    0041b730  PUSH ECX
+    0041b731  FSTP float ptr [ESP]
+0041b761  Game::fn_41b070 -> sinf
+    0041b72a  FMUL float ptr [0x00451104] {3}
+    0041b730  PUSH ECX
+    0041b731  FSTP float ptr [ESP]
+    0041b734  CALL 0x00401262
+    0041b739  ADD ESP,0x4
+    0041b73c  FMUL float ptr [0x00451108] {128}
+    0041b742  FADD float ptr [0x00451108] {128}
+    0041b748  CALL 0x0043510c
+    0041b74d  PUSH EAX
+    0041b74e  MOV EDX,dword ptr [EBP + -0x8]
+    0041b751  FLD float ptr [EDX + 0x390]
+    0041b757  FMUL float ptr [0x004510f0] {7}
+    0041b75d  PUSH ECX
+    0041b75e  FSTP float ptr [ESP]
+0041b78e  Game::fn_41b070 -> sinf
+    0041b757  FMUL float ptr [0x004510f0] {7}
+    0041b75d  PUSH ECX
+    0041b75e  FSTP float ptr [ESP]
+    0041b761  CALL 0x00401262
+    0041b766  ADD ESP,0x4
+    0041b769  FMUL float ptr [0x00451108] {128}
+    0041b76f  FADD float ptr [0x00451108] {128}
+    0041b775  CALL 0x0043510c
+    0041b77a  PUSH EAX
+    0041b77b  MOV EAX,dword ptr [EBP + -0x8]
+    0041b77e  FLD float ptr [EAX + 0x390]
+    0041b784  FMUL float ptr [0x004510f8] {10}
+    0041b78a  PUSH ECX
+    0041b78b  FSTP float ptr [ESP]
+0041bb86  Game::fn_41b070 -> sinf
+    0041bb52  AND EDX,ECX
+    0041bb54  TEST EDX,EDX
+    0041bb56  JZ 0x0041c71d
+    0041bb5c  PUSH 0x4537d4 {'チーム分け'}
+    0041bb61  MOV EDX,dword ptr [EBP + -0x8]
+    0041bb64  ADD EDX,0x270
+    0041bb6a  PUSH EDX
+    0041bb6b  CALL 0x00434a40
+    0041bb70  ADD ESP,0x8
+    0041bb73  MOV EAX,dword ptr [EBP + -0x8]
+    0041bb76  FLD float ptr [EAX + 0x390]
+    0041bb7c  FMUL float ptr [0x00451104] {3}
+    0041bb82  PUSH ECX
+    0041bb83  FSTP float ptr [ESP]
+0041bbb3  Game::fn_41b070 -> sinf
+    0041bb7c  FMUL float ptr [0x00451104] {3}
+    0041bb82  PUSH ECX
+    0041bb83  FSTP float ptr [ESP]
+    0041bb86  CALL 0x00401262
+    0041bb8b  ADD ESP,0x4
+    0041bb8e  FMUL float ptr [0x00451108] {128}
+    0041bb94  FADD float ptr [0x00451108] {128}
+    0041bb9a  CALL 0x0043510c
+    0041bb9f  PUSH EAX
+    0041bba0  MOV ECX,dword ptr [EBP + -0x8]
+    0041bba3  FLD float ptr [ECX + 0x390]
+    0041bba9  FMUL float ptr [0x004510f0] {7}
+    0041bbaf  PUSH ECX
+    0041bbb0  FSTP float ptr [ESP]
+0041bbe0  Game::fn_41b070 -> sinf
+    0041bba9  FMUL float ptr [0x004510f0] {7}
+    0041bbaf  PUSH ECX
+    0041bbb0  FSTP float ptr [ESP]
+    0041bbb3  CALL 0x00401262
+    0041bbb8  ADD ESP,0x4
+    0041bbbb  FMUL float ptr [0x00451108] {128}
+    0041bbc1  FADD float ptr [0x00451108] {128}
+    0041bbc7  CALL 0x0043510c
+    0041bbcc  PUSH EAX
+    0041bbcd  MOV EDX,dword ptr [EBP + -0x8]
+    0041bbd0  FLD float ptr [EDX + 0x390]
+    0041bbd6  FMUL float ptr [0x004510f8] {10}
+    0041bbdc  PUSH ECX
+    0041bbdd  FSTP float ptr [ESP]
+0041c797  Game::fn_41b070 -> sinf
+    0041c764  AND EAX,EDX
+    0041c766  TEST EAX,EAX
+    0041c768  JZ 0x0041cb27
+    0041c76e  PUSH 0x453c34 {'このチームでよろしいですか？'}
+    0041c773  MOV EAX,dword ptr [EBP + -0x8]
+    0041c776  ADD EAX,0x270
+    0041c77b  PUSH EAX
+    0041c77c  CALL 0x00434a40
+    0041c781  ADD ESP,0x8
+    0041c784  MOV ECX,dword ptr [EBP + -0x8]
+    0041c787  FLD float ptr [ECX + 0x390]
+    0041c78d  FMUL float ptr [0x00451104] {3}
+    0041c793  PUSH ECX
+    0041c794  FSTP float ptr [ESP]
+0041c7c4  Game::fn_41b070 -> sinf
+    0041c78d  FMUL float ptr [0x00451104] {3}
+    0041c793  PUSH ECX
+    0041c794  FSTP float ptr [ESP]
+    0041c797  CALL 0x00401262
+    0041c79c  ADD ESP,0x4
+    0041c79f  FMUL float ptr [0x00451108] {128}
+    0041c7a5  FADD float ptr [0x00451108] {128}
+    0041c7ab  CALL 0x0043510c
+    0041c7b0  PUSH EAX
+    0041c7b1  MOV EDX,dword ptr [EBP + -0x8]
+    0041c7b4  FLD float ptr [EDX + 0x390]
+    0041c7ba  FMUL float ptr [0x004510f0] {7}
+    0041c7c0  PUSH ECX
+    0041c7c1  FSTP float ptr [ESP]
+0041c7f1  Game::fn_41b070 -> sinf
+    0041c7ba  FMUL float ptr [0x004510f0] {7}
+    0041c7c0  PUSH ECX
+    0041c7c1  FSTP float ptr [ESP]
+    0041c7c4  CALL 0x00401262
+    0041c7c9  ADD ESP,0x4
+    0041c7cc  FMUL float ptr [0x00451108] {128}
+    0041c7d2  FADD float ptr [0x00451108] {128}
+    0041c7d8  CALL 0x0043510c
+    0041c7dd  PUSH EAX
+    0041c7de  MOV EAX,dword ptr [EBP + -0x8]
+    0041c7e1  FLD float ptr [EAX + 0x390]
+    0041c7e7  FMUL float ptr [0x004510f8] {10}
+    0041c7ed  PUSH ECX
+    0041c7ee  FSTP float ptr [ESP]
+0041d27b  Game::fn_41b070 -> sinf
+    0041d243  MOV AL,byte ptr [EDX + 0x3a6]
+    0041d249  TEST EAX,EAX
+    0041d24b  JZ 0x0041d312
+    0041d251  PUSH 0x453d1c {'後半戦'}
+    0041d256  MOV ECX,dword ptr [EBP + -0x8]
+    0041d259  ADD ECX,0x270
+    0041d25f  PUSH ECX
+    0041d260  CALL 0x00434a40
+    0041d265  ADD ESP,0x8
+    0041d268  MOV EDX,dword ptr [EBP + -0x8]
+    0041d26b  FLD float ptr [EDX + 0x390]
+    0041d271  FMUL float ptr [0x00451104] {3}
+    0041d277  PUSH ECX
+    0041d278  FSTP float ptr [ESP]
+0041d2a8  Game::fn_41b070 -> sinf
+    0041d271  FMUL float ptr [0x00451104] {3}
+    0041d277  PUSH ECX
+    0041d278  FSTP float ptr [ESP]
+    0041d27b  CALL 0x00401262
+    0041d280  ADD ESP,0x4
+    0041d283  FMUL float ptr [0x00451108] {128}
+    0041d289  FADD float ptr [0x00451108] {128}
+    0041d28f  CALL 0x0043510c
+    0041d294  PUSH EAX
+    0041d295  MOV EAX,dword ptr [EBP + -0x8]
+    0041d298  FLD float ptr [EAX + 0x390]
+    0041d29e  FMUL float ptr [0x004510f0] {7}
+    0041d2a4  PUSH ECX
+    0041d2a5  FSTP float ptr [ESP]
+0041d2d5  Game::fn_41b070 -> sinf
+    0041d29e  FMUL float ptr [0x004510f0] {7}
+    0041d2a4  PUSH ECX
+    0041d2a5  FSTP float ptr [ESP]
+    0041d2a8  CALL 0x00401262
+    0041d2ad  ADD ESP,0x4
+    0041d2b0  FMUL float ptr [0x00451108] {128}
+    0041d2b6  FADD float ptr [0x00451108] {128}
+    0041d2bc  CALL 0x0043510c
+    0041d2c1  PUSH EAX
+    0041d2c2  MOV ECX,dword ptr [EBP + -0x8]
+    0041d2c5  FLD float ptr [ECX + 0x390]
+    0041d2cb  FMUL float ptr [0x004510f8] {10}
+    0041d2d1  PUSH ECX
+    0041d2d2  FSTP float ptr [ESP]
+0041d33b  Game::fn_41b070 -> sinf
+    0041d305  MOV ECX,dword ptr [EBP + -0x8]
+    0041d308  CALL 0x00401118
+    0041d30d  JMP 0x0041d3cd
+    0041d312  PUSH 0x453d24 {'前半戦'}
+    0041d317  MOV EAX,dword ptr [EBP + -0x8]
+    0041d31a  ADD EAX,0x270
+    0041d31f  PUSH EAX
+    0041d320  CALL 0x00434a40
+    0041d325  ADD ESP,0x8
+    0041d328  MOV ECX,dword ptr [EBP + -0x8]
+    0041d32b  FLD float ptr [ECX + 0x390]
+    0041d331  FMUL float ptr [0x00451104] {3}
+    0041d337  PUSH ECX
+    0041d338  FSTP float ptr [ESP]
+0041d368  Game::fn_41b070 -> sinf
+    0041d331  FMUL float ptr [0x00451104] {3}
+    0041d337  PUSH ECX
+    0041d338  FSTP float ptr [ESP]
+    0041d33b  CALL 0x00401262
+    0041d340  ADD ESP,0x4
+    0041d343  FMUL float ptr [0x00451108] {128}
+    0041d349  FADD float ptr [0x00451108] {128}
+    0041d34f  CALL 0x0043510c
+    0041d354  PUSH EAX
+    0041d355  MOV EDX,dword ptr [EBP + -0x8]
+    0041d358  FLD float ptr [EDX + 0x390]
+    0041d35e  FMUL float ptr [0x004510f0] {7}
+    0041d364  PUSH ECX
+    0041d365  FSTP float ptr [ESP]
+0041d395  Game::fn_41b070 -> sinf
+    0041d35e  FMUL float ptr [0x004510f0] {7}
+    0041d364  PUSH ECX
+    0041d365  FSTP float ptr [ESP]
+    0041d368  CALL 0x00401262
+    0041d36d  ADD ESP,0x4
+    0041d370  FMUL float ptr [0x00451108] {128}
+    0041d376  FADD float ptr [0x00451108] {128}
+    0041d37c  CALL 0x0043510c
+    0041d381  PUSH EAX
+    0041d382  MOV EAX,dword ptr [EBP + -0x8]
+    0041d385  FLD float ptr [EAX + 0x390]
+    0041d38b  FMUL float ptr [0x004510f8] {10}
+    0041d391  PUSH ECX
+    0041d392  FSTP float ptr [ESP]
+0041d462  Game::fn_41b070 -> sinf
+    0041d42e  AND ECX,EAX
+    0041d430  TEST ECX,ECX
+    0041d432  JZ 0x0041d4f4
+    0041d438  PUSH 0x453d2c {'スタート！'}
+    0041d43d  MOV ECX,dword ptr [EBP + -0x8]
+    0041d440  ADD ECX,0x270
+    0041d446  PUSH ECX
+    0041d447  CALL 0x00434a40
+    0041d44c  ADD ESP,0x8
+    0041d44f  MOV EDX,dword ptr [EBP + -0x8]
+    0041d452  FLD float ptr [EDX + 0x390]
+    0041d458  FMUL float ptr [0x00451104] {3}
+    0041d45e  PUSH ECX
+    0041d45f  FSTP float ptr [ESP]
+0041d48f  Game::fn_41b070 -> sinf
+    0041d458  FMUL float ptr [0x00451104] {3}
+    0041d45e  PUSH ECX
+    0041d45f  FSTP float ptr [ESP]
+    0041d462  CALL 0x00401262
+    0041d467  ADD ESP,0x4
+    0041d46a  FMUL float ptr [0x00451108] {128}
+    0041d470  FADD float ptr [0x00451108] {128}
+    0041d476  CALL 0x0043510c
+    0041d47b  PUSH EAX
+    0041d47c  MOV EAX,dword ptr [EBP + -0x8]
+    0041d47f  FLD float ptr [EAX + 0x390]
+    0041d485  FMUL float ptr [0x004510f0] {7}
+    0041d48b  PUSH ECX
+    0041d48c  FSTP float ptr [ESP]
+0041d4bc  Game::fn_41b070 -> sinf
+    0041d485  FMUL float ptr [0x004510f0] {7}
+    0041d48b  PUSH ECX
+    0041d48c  FSTP float ptr [ESP]
+    0041d48f  CALL 0x00401262
+    0041d494  ADD ESP,0x4
+    0041d497  FMUL float ptr [0x00451108] {128}
+    0041d49d  FADD float ptr [0x00451108] {128}
+    0041d4a3  CALL 0x0043510c
+    0041d4a8  PUSH EAX
+    0041d4a9  MOV ECX,dword ptr [EBP + -0x8]
+    0041d4ac  FLD float ptr [ECX + 0x390]
+    0041d4b2  FMUL float ptr [0x004510f8] {10}
+    0041d4b8  PUSH ECX
+    0041d4b9  FSTP float ptr [ESP]
+0041d540  Game::fn_41b070 -> sinf
+    0041d509  MOV DL,byte ptr [ECX + 0x3a6]
+    0041d50f  TEST EDX,EDX
+    0041d511  JZ 0x0041d5d7
+    0041d517  PUSH 0x453d38 {'試合終了'}
+    0041d51c  MOV EAX,dword ptr [EBP + -0x8]
+    0041d51f  ADD EAX,0x270
+    0041d524  PUSH EAX
+    0041d525  CALL 0x00434a40
+    0041d52a  ADD ESP,0x8
+    0041d52d  MOV ECX,dword ptr [EBP + -0x8]
+    0041d530  FLD float ptr [ECX + 0x390]
+    0041d536  FMUL float ptr [0x00451104] {3}
+    0041d53c  PUSH ECX
+    0041d53d  FSTP float ptr [ESP]
+0041d56d  Game::fn_41b070 -> sinf
+    0041d536  FMUL float ptr [0x00451104] {3}
+    0041d53c  PUSH ECX
+    0041d53d  FSTP float ptr [ESP]
+    0041d540  CALL 0x00401262
+    0041d545  ADD ESP,0x4
+    0041d548  FMUL float ptr [0x00451108] {128}
+    0041d54e  FADD float ptr [0x00451108] {128}
+    0041d554  CALL 0x0043510c
+    0041d559  PUSH EAX
+    0041d55a  MOV EDX,dword ptr [EBP + -0x8]
+    0041d55d  FLD float ptr [EDX + 0x390]
+    0041d563  FMUL float ptr [0x004510f0] {7}
+    0041d569  PUSH ECX
+    0041d56a  FSTP float ptr [ESP]
+0041d59a  Game::fn_41b070 -> sinf
+    0041d563  FMUL float ptr [0x004510f0] {7}
+    0041d569  PUSH ECX
+    0041d56a  FSTP float ptr [ESP]
+    0041d56d  CALL 0x00401262
+    0041d572  ADD ESP,0x4
+    0041d575  FMUL float ptr [0x00451108] {128}
+    0041d57b  FADD float ptr [0x00451108] {128}
+    0041d581  CALL 0x0043510c
+    0041d586  PUSH EAX
+    0041d587  MOV EAX,dword ptr [EBP + -0x8]
+    0041d58a  FLD float ptr [EAX + 0x390]
+    0041d590  FMUL float ptr [0x004510f8] {10}
+    0041d596  PUSH ECX
+    0041d597  FSTP float ptr [ESP]
+0041d601  Game::fn_41b070 -> sinf
+    0041d5ca  MOV ECX,dword ptr [EBP + -0x8]
+    0041d5cd  CALL 0x00401118
+    0041d5d2  JMP 0x0041d692
+    0041d5d7  PUSH 0x453d44 {'はーふたいむ'}
+    0041d5dc  MOV EDX,dword ptr [EBP + -0x8]
+    0041d5df  ADD EDX,0x270
+    0041d5e5  PUSH EDX
+    0041d5e6  CALL 0x00434a40
+    0041d5eb  ADD ESP,0x8
+    0041d5ee  MOV EAX,dword ptr [EBP + -0x8]
+    0041d5f1  FLD float ptr [EAX + 0x390]
+    0041d5f7  FMUL float ptr [0x00451104] {3}
+    0041d5fd  PUSH ECX
+    0041d5fe  FSTP float ptr [ESP]
+0041d62e  Game::fn_41b070 -> sinf
+    0041d5f7  FMUL float ptr [0x00451104] {3}
+    0041d5fd  PUSH ECX
+    0041d5fe  FSTP float ptr [ESP]
+    0041d601  CALL 0x00401262
+    0041d606  ADD ESP,0x4
+    0041d609  FMUL float ptr [0x00451108] {128}
+    0041d60f  FADD float ptr [0x00451108] {128}
+    0041d615  CALL 0x0043510c
+    0041d61a  PUSH EAX
+    0041d61b  MOV ECX,dword ptr [EBP + -0x8]
+    0041d61e  FLD float ptr [ECX + 0x390]
+    0041d624  FMUL float ptr [0x004510f0] {7}
+    0041d62a  PUSH ECX
+    0041d62b  FSTP float ptr [ESP]
+0041d65b  Game::fn_41b070 -> sinf
+    0041d624  FMUL float ptr [0x004510f0] {7}
+    0041d62a  PUSH ECX
+    0041d62b  FSTP float ptr [ESP]
+    0041d62e  CALL 0x00401262
+    0041d633  ADD ESP,0x4
+    0041d636  FMUL float ptr [0x00451108] {128}
+    0041d63c  FADD float ptr [0x00451108] {128}
+    0041d642  CALL 0x0043510c
+    0041d647  PUSH EAX
+    0041d648  MOV EDX,dword ptr [EBP + -0x8]
+    0041d64b  FLD float ptr [EDX + 0x390]
+    0041d651  FMUL float ptr [0x004510f8] {10}
+    0041d657  PUSH ECX
+    0041d658  FSTP float ptr [ESP]
+0041d6e4  Game::fn_41b070 -> sinf
+    0041d6aa  MOV EAX,dword ptr [EBP + -0x8]
+    0041d6ad  CMP dword ptr [EAX + 0x418],0x5
+    0041d6b4  JNZ 0x0041d77b
+    0041d6ba  PUSH 0x453d54 {'ゴール！！'}
+    0041d6bf  MOV ECX,dword ptr [EBP + -0x8]
+    0041d6c2  ADD ECX,0x270
+    0041d6c8  PUSH ECX
+    0041d6c9  CALL 0x00434a40
+    0041d6ce  ADD ESP,0x8
+    0041d6d1  MOV EDX,dword ptr [EBP + -0x8]
+    0041d6d4  FLD float ptr [EDX + 0x390]
+    0041d6da  FMUL float ptr [0x00451104] {3}
+    0041d6e0  PUSH ECX
+    0041d6e1  FSTP float ptr [ESP]
+0041d711  Game::fn_41b070 -> sinf
+    0041d6da  FMUL float ptr [0x00451104] {3}
+    0041d6e0  PUSH ECX
+    0041d6e1  FSTP float ptr [ESP]
+    0041d6e4  CALL 0x00401262
+    0041d6e9  ADD ESP,0x4
+    0041d6ec  FMUL float ptr [0x00451108] {128}
+    0041d6f2  FADD float ptr [0x00451108] {128}
+    0041d6f8  CALL 0x0043510c
+    0041d6fd  PUSH EAX
+    0041d6fe  MOV EAX,dword ptr [EBP + -0x8]
+    0041d701  FLD float ptr [EAX + 0x390]
+    0041d707  FMUL float ptr [0x004510f0] {7}
+    0041d70d  PUSH ECX
+    0041d70e  FSTP float ptr [ESP]
+0041d73e  Game::fn_41b070 -> sinf
+    0041d707  FMUL float ptr [0x004510f0] {7}
+    0041d70d  PUSH ECX
+    0041d70e  FSTP float ptr [ESP]
+    0041d711  CALL 0x00401262
+    0041d716  ADD ESP,0x4
+    0041d719  FMUL float ptr [0x00451108] {128}
+    0041d71f  FADD float ptr [0x00451108] {128}
+    0041d725  CALL 0x0043510c
+    0041d72a  PUSH EAX
+    0041d72b  MOV ECX,dword ptr [EBP + -0x8]
+    0041d72e  FLD float ptr [ECX + 0x390]
+    0041d734  FMUL float ptr [0x004510f8] {10}
+    0041d73a  PUSH ECX
+    0041d73b  FSTP float ptr [ESP]
+0041d7a4  Game::fn_41b070 -> sinf
+    0041d76e  MOV ECX,dword ptr [EBP + -0x8]
+    0041d771  CALL 0x00401118
+    0041d776  JMP 0x0041d836
+    0041d77b  PUSH 0x453d60 {'ラインアウト'}
+    0041d780  MOV EAX,dword ptr [EBP + -0x8]
+    0041d783  ADD EAX,0x270
+    0041d788  PUSH EAX
+    0041d789  CALL 0x00434a40
+    0041d78e  ADD ESP,0x8
+    0041d791  MOV ECX,dword ptr [EBP + -0x8]
+    0041d794  FLD float ptr [ECX + 0x390]
+    0041d79a  FMUL float ptr [0x00451104] {3}
+    0041d7a0  PUSH ECX
+    0041d7a1  FSTP float ptr [ESP]
+0041d7d1  Game::fn_41b070 -> sinf
+    0041d79a  FMUL float ptr [0x00451104] {3}
+    0041d7a0  PUSH ECX
+    0041d7a1  FSTP float ptr [ESP]
+    0041d7a4  CALL 0x00401262
+    0041d7a9  ADD ESP,0x4
+    0041d7ac  FMUL float ptr [0x00451108] {128}
+    0041d7b2  FADD float ptr [0x00451108] {128}
+    0041d7b8  CALL 0x0043510c
+    0041d7bd  PUSH EAX
+    0041d7be  MOV EDX,dword ptr [EBP + -0x8]
+    0041d7c1  FLD float ptr [EDX + 0x390]
+    0041d7c7  FMUL float ptr [0x004510f0] {7}
+    0041d7cd  PUSH ECX
+    0041d7ce  FSTP float ptr [ESP]
+0041d7fe  Game::fn_41b070 -> sinf
+    0041d7c7  FMUL float ptr [0x004510f0] {7}
+    0041d7cd  PUSH ECX
+    0041d7ce  FSTP float ptr [ESP]
+    0041d7d1  CALL 0x00401262
+    0041d7d6  ADD ESP,0x4
+    0041d7d9  FMUL float ptr [0x00451108] {128}
+    0041d7df  FADD float ptr [0x00451108] {128}
+    0041d7e5  CALL 0x0043510c
+    0041d7ea  PUSH EAX
+    0041d7eb  MOV EAX,dword ptr [EBP + -0x8]
+    0041d7ee  FLD float ptr [EAX + 0x390]
+    0041d7f4  FMUL float ptr [0x004510f8] {10}
+    0041d7fa  PUSH ECX
+    0041d7fb  FSTP float ptr [ESP]
+0041dc8e  Game::fn_41b070 -> sinf
+    0041dc5b  PUSH EAX
+    0041dc5c  MOV ECX,dword ptr [EBP + -0x8]
+    0041dc5f  CALL 0x00401118
+    0041dc64  PUSH 0x453ec8 {'休憩中'}
+    0041dc69  MOV ECX,dword ptr [EBP + -0x8]
+    0041dc6c  ADD ECX,0x270
+    0041dc72  PUSH ECX
+    0041dc73  CALL 0x00434a40
+    0041dc78  ADD ESP,0x8
+    0041dc7b  MOV EDX,dword ptr [EBP + -0x8]
+    0041dc7e  FLD float ptr [EDX + 0x390]
+    0041dc84  FMUL float ptr [0x00451104] {3}
+    0041dc8a  PUSH ECX
+    0041dc8b  FSTP float ptr [ESP]
+0041dcbb  Game::fn_41b070 -> sinf
+    0041dc84  FMUL float ptr [0x00451104] {3}
+    0041dc8a  PUSH ECX
+    0041dc8b  FSTP float ptr [ESP]
+    0041dc8e  CALL 0x00401262
+    0041dc93  ADD ESP,0x4
+    0041dc96  FMUL float ptr [0x00451108] {128}
+    0041dc9c  FADD float ptr [0x00451108] {128}
+    0041dca2  CALL 0x0043510c
+    0041dca7  PUSH EAX
+    0041dca8  MOV EAX,dword ptr [EBP + -0x8]
+    0041dcab  FLD float ptr [EAX + 0x390]
+    0041dcb1  FMUL float ptr [0x004510f0] {7}
+    0041dcb7  PUSH ECX
+    0041dcb8  FSTP float ptr [ESP]
+0041dce8  Game::fn_41b070 -> sinf
+    0041dcb1  FMUL float ptr [0x004510f0] {7}
+    0041dcb7  PUSH ECX
+    0041dcb8  FSTP float ptr [ESP]
+    0041dcbb  CALL 0x00401262
+    0041dcc0  ADD ESP,0x4
+    0041dcc3  FMUL float ptr [0x00451108] {128}
+    0041dcc9  FADD float ptr [0x00451108] {128}
+    0041dccf  CALL 0x0043510c
+    0041dcd4  PUSH EAX
+    0041dcd5  MOV ECX,dword ptr [EBP + -0x8]
+    0041dcd8  FLD float ptr [ECX + 0x390]
+    0041dcde  FMUL float ptr [0x004510f8] {10}
+    0041dce4  PUSH ECX
+    0041dce5  FSTP float ptr [ESP]
+0041df3b  Game::fn_41b070 -> sinf
+    0041df02  MOV EDX,dword ptr [EBP + -0x8]
+    0041df05  CMP dword ptr [EDX + 0x3b8],0x1
+    0041df0c  JNZ 0x0041dfcd
+    0041df12  PUSH 0x453f30 {'結果発表'}
+    0041df17  MOV EAX,dword ptr [EBP + -0x8]
+    0041df1a  ADD EAX,0x270
+    0041df1f  PUSH EAX
+    0041df20  CALL 0x00434a40
+    0041df25  ADD ESP,0x8
+    0041df28  MOV ECX,dword ptr [EBP + -0x8]
+    0041df2b  FLD float ptr [ECX + 0x390]
+    0041df31  FMUL float ptr [0x00451104] {3}
+    0041df37  PUSH ECX
+    0041df38  FSTP float ptr [ESP]
+0041df68  Game::fn_41b070 -> sinf
+    0041df31  FMUL float ptr [0x00451104] {3}
+    0041df37  PUSH ECX
+    0041df38  FSTP float ptr [ESP]
+    0041df3b  CALL 0x00401262
+    0041df40  ADD ESP,0x4
+    0041df43  FMUL float ptr [0x00451108] {128}
+    0041df49  FADD float ptr [0x00451108] {128}
+    0041df4f  CALL 0x0043510c
+    0041df54  PUSH EAX
+    0041df55  MOV EDX,dword ptr [EBP + -0x8]
+    0041df58  FLD float ptr [EDX + 0x390]
+    0041df5e  FMUL float ptr [0x004510f0] {7}
+    0041df64  PUSH ECX
+    0041df65  FSTP float ptr [ESP]
+0041df95  Game::fn_41b070 -> sinf
+    0041df5e  FMUL float ptr [0x004510f0] {7}
+    0041df64  PUSH ECX
+    0041df65  FSTP float ptr [ESP]
+    0041df68  CALL 0x00401262
+    0041df6d  ADD ESP,0x4
+    0041df70  FMUL float ptr [0x00451108] {128}
+    0041df76  FADD float ptr [0x00451108] {128}
+    0041df7c  CALL 0x0043510c
+    0041df81  PUSH EAX
+    0041df82  MOV EAX,dword ptr [EBP + -0x8]
+    0041df85  FLD float ptr [EAX + 0x390]
+    0041df8b  FMUL float ptr [0x004510f8] {10}
+    0041df91  PUSH ECX
+    0041df92  FSTP float ptr [ESP]
+0041e01e  Game::fn_41b070 -> sinf
+    0041dfe3  MOV EDX,dword ptr [EAX + 0x3d8]
+    0041dfe9  CMP EDX,dword ptr [ECX + 0x3dc]
+    0041dfef  JLE 0x0041e0b2
+    0041dff5  PUSH 0x453f3c
+    0041dffa  MOV EAX,dword ptr [EBP + -0x8]
+    0041dffd  ADD EAX,0x270
+    0041e002  PUSH EAX
+    0041e003  CALL 0x00434a40
+    0041e008  ADD ESP,0x8
+    0041e00b  MOV ECX,dword ptr [EBP + -0x8]
+    0041e00e  FLD float ptr [ECX + 0x390]
+    0041e014  FMUL float ptr [0x00451104] {3}
+    0041e01a  PUSH ECX
+    0041e01b  FSTP float ptr [ESP]
+0041e04b  Game::fn_41b070 -> sinf
+    0041e014  FMUL float ptr [0x00451104] {3}
+    0041e01a  PUSH ECX
+    0041e01b  FSTP float ptr [ESP]
+    0041e01e  CALL 0x00401262
+    0041e023  ADD ESP,0x4
+    0041e026  FMUL float ptr [0x00451108] {128}
+    0041e02c  FADD float ptr [0x00451108] {128}
+    0041e032  CALL 0x0043510c
+    0041e037  PUSH EAX
+    0041e038  MOV EDX,dword ptr [EBP + -0x8]
+    0041e03b  FLD float ptr [EDX + 0x390]
+    0041e041  FMUL float ptr [0x004510f0] {7}
+    0041e047  PUSH ECX
+    0041e048  FSTP float ptr [ESP]
+0041e078  Game::fn_41b070 -> sinf
+    0041e041  FMUL float ptr [0x004510f0] {7}
+    0041e047  PUSH ECX
+    0041e048  FSTP float ptr [ESP]
+    0041e04b  CALL 0x00401262
+    0041e050  ADD ESP,0x4
+    0041e053  FMUL float ptr [0x00451108] {128}
+    0041e059  FADD float ptr [0x00451108] {128}
+    0041e05f  CALL 0x0043510c
+    0041e064  PUSH EAX
+    0041e065  MOV EAX,dword ptr [EBP + -0x8]
+    0041e068  FLD float ptr [EAX + 0x390]
+    0041e06e  FMUL float ptr [0x004510f8] {10}
+    0041e074  PUSH ECX
+    0041e075  FSTP float ptr [ESP]
+0041e0f4  Game::fn_41b070 -> sinf
+    0041e0b8  MOV ECX,dword ptr [EDX + 0x3d8]
+    0041e0be  CMP ECX,dword ptr [EAX + 0x3dc]
+    0041e0c4  JGE 0x0041e187
+    0041e0ca  PUSH 0x453f50
+    0041e0cf  MOV EDX,dword ptr [EBP + -0x8]
+    0041e0d2  ADD EDX,0x270
+    0041e0d8  PUSH EDX
+    0041e0d9  CALL 0x00434a40
+    0041e0de  ADD ESP,0x8
+    0041e0e1  MOV EAX,dword ptr [EBP + -0x8]
+    0041e0e4  FLD float ptr [EAX + 0x390]
+    0041e0ea  FMUL float ptr [0x00451104] {3}
+    0041e0f0  PUSH ECX
+    0041e0f1  FSTP float ptr [ESP]
+0041e121  Game::fn_41b070 -> sinf
+    0041e0ea  FMUL float ptr [0x00451104] {3}
+    0041e0f0  PUSH ECX
+    0041e0f1  FSTP float ptr [ESP]
+    0041e0f4  CALL 0x00401262
+    0041e0f9  ADD ESP,0x4
+    0041e0fc  FMUL float ptr [0x00451108] {128}
+    0041e102  FADD float ptr [0x00451108] {128}
+    0041e108  CALL 0x0043510c
+    0041e10d  PUSH EAX
+    0041e10e  MOV ECX,dword ptr [EBP + -0x8]
+    0041e111  FLD float ptr [ECX + 0x390]
+    0041e117  FMUL float ptr [0x004510f0] {7}
+    0041e11d  PUSH ECX
+    0041e11e  FSTP float ptr [ESP]
+0041e14e  Game::fn_41b070 -> sinf
+    0041e117  FMUL float ptr [0x004510f0] {7}
+    0041e11d  PUSH ECX
+    0041e11e  FSTP float ptr [ESP]
+    0041e121  CALL 0x00401262
+    0041e126  ADD ESP,0x4
+    0041e129  FMUL float ptr [0x00451108] {128}
+    0041e12f  FADD float ptr [0x00451108] {128}
+    0041e135  CALL 0x0043510c
+    0041e13a  PUSH EAX
+    0041e13b  MOV EDX,dword ptr [EBP + -0x8]
+    0041e13e  FLD float ptr [EDX + 0x390]
+    0041e144  FMUL float ptr [0x004510f8] {10}
+    0041e14a  PUSH ECX
+    0041e14b  FSTP float ptr [ESP]
+0041e1b1  Game::fn_41b070 -> sinf
+    0041e17a  MOV ECX,dword ptr [EBP + -0x8]
+    0041e17d  CALL 0x00401118
+    0041e182  JMP 0x0041e243
+    0041e187  PUSH 0x453f64 {'ＤＲＡＷ'}
+    0041e18c  MOV ECX,dword ptr [EBP + -0x8]
+    0041e18f  ADD ECX,0x270
+    0041e195  PUSH ECX
+    0041e196  CALL 0x00434a40
+    0041e19b  ADD ESP,0x8
+    0041e19e  MOV EDX,dword ptr [EBP + -0x8]
+    0041e1a1  FLD float ptr [EDX + 0x390]
+    0041e1a7  FMUL float ptr [0x00451104] {3}
+    0041e1ad  PUSH ECX
+    0041e1ae  FSTP float ptr [ESP]
+0041e1de  Game::fn_41b070 -> sinf
+    0041e1a7  FMUL float ptr [0x00451104] {3}
+    0041e1ad  PUSH ECX
+    0041e1ae  FSTP float ptr [ESP]
+    0041e1b1  CALL 0x00401262
+    0041e1b6  ADD ESP,0x4
+    0041e1b9  FMUL float ptr [0x00451108] {128}
+    0041e1bf  FADD float ptr [0x00451108] {128}
+    0041e1c5  CALL 0x0043510c
+    0041e1ca  PUSH EAX
+    0041e1cb  MOV EAX,dword ptr [EBP + -0x8]
+    0041e1ce  FLD float ptr [EAX + 0x390]
+    0041e1d4  FMUL float ptr [0x004510f0] {7}
+    0041e1da  PUSH ECX
+    0041e1db  FSTP float ptr [ESP]
+0041e20b  Game::fn_41b070 -> sinf
+    0041e1d4  FMUL float ptr [0x004510f0] {7}
+    0041e1da  PUSH ECX
+    0041e1db  FSTP float ptr [ESP]
+    0041e1de  CALL 0x00401262
+    0041e1e3  ADD ESP,0x4
+    0041e1e6  FMUL float ptr [0x00451108] {128}
+    0041e1ec  FADD float ptr [0x00451108] {128}
+    0041e1f2  CALL 0x0043510c
+    0041e1f7  PUSH EAX
+    0041e1f8  MOV ECX,dword ptr [EBP + -0x8]
+    0041e1fb  FLD float ptr [ECX + 0x390]
+    0041e201  FMUL float ptr [0x004510f8] {10}
+    0041e207  PUSH ECX
+    0041e208  FSTP float ptr [ESP]
+0041e27d  Game::fn_41b070 -> sinf
+    0041e243  MOV EAX,dword ptr [EBP + -0x8]
+    0041e246  CMP dword ptr [EAX + 0x3b8],0x6
+    0041e24d  JNZ 0x0041e30c
+    0041e253  PUSH 0x453f70
+    0041e258  MOV ECX,dword ptr [EBP + -0x8]
+    0041e25b  ADD ECX,0x270
+    0041e261  PUSH ECX
+    0041e262  CALL 0x00434a40
+    0041e267  ADD ESP,0x8
+    0041e26a  MOV EDX,dword ptr [EBP + -0x8]
+    0041e26d  FLD float ptr [EDX + 0x390]
+    0041e273  FMUL float ptr [0x00451104] {3}
+    0041e279  PUSH ECX
+    0041e27a  FSTP float ptr [ESP]
+0041e2aa  Game::fn_41b070 -> sinf
+    0041e273  FMUL float ptr [0x00451104] {3}
+    0041e279  PUSH ECX
+    0041e27a  FSTP float ptr [ESP]
+    0041e27d  CALL 0x00401262
+    0041e282  ADD ESP,0x4
+    0041e285  FMUL float ptr [0x00451108] {128}
+    0041e28b  FADD float ptr [0x00451108] {128}
+    0041e291  CALL 0x0043510c
+    0041e296  PUSH EAX
+    0041e297  MOV EAX,dword ptr [EBP + -0x8]
+    0041e29a  FLD float ptr [EAX + 0x390]
+    0041e2a0  FMUL float ptr [0x004510f0] {7}
+    0041e2a6  PUSH ECX
+    0041e2a7  FSTP float ptr [ESP]
+0041e2d7  Game::fn_41b070 -> sinf
+    0041e2a0  FMUL float ptr [0x004510f0] {7}
+    0041e2a6  PUSH ECX
+    0041e2a7  FSTP float ptr [ESP]
+    0041e2aa  CALL 0x00401262
+    0041e2af  ADD ESP,0x4
+    0041e2b2  FMUL float ptr [0x00451108] {128}
+    0041e2b8  FADD float ptr [0x00451108] {128}
+    0041e2be  CALL 0x0043510c
+    0041e2c3  PUSH EAX
+    0041e2c4  MOV ECX,dword ptr [EBP + -0x8]
+    0041e2c7  FLD float ptr [ECX + 0x390]
+    0041e2cd  FMUL float ptr [0x004510f8] {10}
+    0041e2d3  PUSH ECX
+    0041e2d4  FSTP float ptr [ESP]
+00422da2  Game::State7 -> sinf
+    00422d76  MOV EAX,dword ptr [EDX + 0x58]
+    00422d79  XOR ECX,ECX
+    00422d7b  CMP EAX,dword ptr [0x004540c8] {3}
+    00422d81  SETZ CL
+    00422d84  MOV EDX,dword ptr [EBP + -0x50]
+    00422d87  MOV EAX,dword ptr [EDX + 0x84]
+    00422d8d  XOR EDX,EDX
+    00422d8f  CMP EAX,dword ptr [0x004540c8] {3}
+    00422d95  SETZ DL
+    00422d98  OR ECX,EDX
+    00422d9a  TEST ECX,ECX
+    00422d9c  JZ 0x00422df2
+    00422d9e  MOV EAX,dword ptr [EBP + -0x4]
+    00422da1  PUSH EAX
+00422e1e  Game::State7 -> sinf
+    00422df5  MOV EAX,dword ptr [EDX + 0x5c]
+    00422df8  XOR ECX,ECX
+    00422dfa  CMP EAX,dword ptr [0x004540c8] {3}
+    00422e00  SETZ CL
+    00422e03  MOV EDX,dword ptr [EBP + -0x50]
+    00422e06  MOV EAX,dword ptr [EDX + 0x78]
+    00422e09  XOR EDX,EDX
+    00422e0b  CMP EAX,dword ptr [0x004540c8] {3}
+    00422e11  SETZ DL
+    00422e14  OR ECX,EDX
+    00422e16  TEST ECX,ECX
+    00422e18  JZ 0x00422e6e
+    00422e1a  MOV EAX,dword ptr [EBP + -0x4]
+    00422e1d  PUSH EAX
+00422eaf  Game::State7 -> sinf
+    00422e82  MOV EAX,dword ptr [EDX + 0x80]
+    00422e88  XOR EDX,EDX
+    00422e8a  CMP EAX,dword ptr [0x004540c8] {3}
+    00422e90  SETZ DL
+    00422e93  OR ECX,EDX
+    00422e95  TEST ECX,ECX
+    00422e97  JZ 0x00422ed5
+    00422e99  MOV EAX,dword ptr [EBP + -0x50]
+    00422e9c  FLD float ptr [0x0044e2cc] {2}
+    00422ea2  FMUL float ptr [EAX + 0x54]
+    00422ea5  FADD float ptr [EBP + -0x4]
+    00422ea8  FSTP float ptr [EBP + -0x4]
+    00422eab  MOV ECX,dword ptr [EBP + -0x4]
+    00422eae  PUSH ECX
+00422f13  Game::State7 -> sinf
+    00422ee9  MOV EAX,dword ptr [EDX + 0x7c]
+    00422eec  XOR EDX,EDX
+    00422eee  CMP EAX,dword ptr [0x004540c8] {3}
+    00422ef4  SETZ DL
+    00422ef7  OR ECX,EDX
+    00422ef9  TEST ECX,ECX
+    00422efb  JZ 0x00422f39
+    00422efd  MOV EAX,dword ptr [EBP + -0x50]
+    00422f00  FLD float ptr [0x0044e2cc] {2}
+    00422f06  FMUL float ptr [EAX + 0x54]
+    00422f09  FSUBR float ptr [EBP + -0x4]
+    00422f0c  FSTP float ptr [EBP + -0x4]
+    00422f0f  MOV ECX,dword ptr [EBP + -0x4]
+    00422f12  PUSH ECX
+0042052e  Game::State5 -> sinf
+    004204e5  JZ 0x004205d5
+    004204eb  MOV EAX,dword ptr [EBP + 0xffffff50]
+    004204f1  FLD float ptr [0x0044e244] {30}
+    004204f7  FMUL float ptr [EAX + 0x54]
+    004204fa  MOV ECX,dword ptr [EBP + 0xffffff50]
+    00420500  FSUBR float ptr [ECX + 0x220]
+    00420506  MOV EDX,dword ptr [EBP + 0xffffff50]
+    0042050c  FSTP float ptr [EDX + 0x220]
+    00420512  MOV EAX,dword ptr [EBP + 0xffffff50]
+    00420518  FLD float ptr [EAX + 0x390]
+    0042051e  FSUB float ptr [0x0044e224] {3}
+    00420524  FMUL float ptr [0x0044e248] {1.57}
+    0042052a  PUSH ECX
+    0042052b  FSTP float ptr [ESP]
+00420687  Game::State5 -> sinf
+    0042063b  FSUBR float ptr [EAX + 0x220]
+    00420641  MOV ECX,dword ptr [EBP + 0xffffff50]
+    00420647  FSTP float ptr [ECX + 0x220]
+    0042064d  MOV EDX,dword ptr [EBP + 0xffffff50]
+    00420653  FLD float ptr [EDX + 0x390]
+    00420659  FSUB float ptr [0x0044e224] {3}
+    0042065f  FMUL float ptr [0x0044e254] {10}
+    00420665  FSTP float ptr [EBP + 0xffffff44]
+    0042066b  MOV EAX,dword ptr [EBP + 0xffffff50]
+    00420671  FLD float ptr [EAX + 0x390]
+    00420677  FSUB float ptr [0x0044e224] {3}
+    0042067d  FMUL float ptr [0x0044e248] {1.57}
+    00420683  PUSH ECX
+    00420684  FSTP float ptr [ESP]
+00407717  D3DUtil_SetRotateXMatrix -> sinf
+    004076f2  PUSH EBP
+    004076f3  MOV EBP,ESP
+    004076f5  MOV EAX,dword ptr [EBP + 0x8]
+    004076f8  PUSH EAX
+    004076f9  CALL 0x00401064
+    004076fe  ADD ESP,0x4
+    00407701  MOV ECX,dword ptr [EBP + 0xc]
+    00407704  PUSH ECX
+    00407705  CALL 0x0040136b
+    0040770a  ADD ESP,0x4
+    0040770d  MOV EDX,dword ptr [EBP + 0x8]
+    00407710  FSTP float ptr [EDX + 0x14]
+    00407713  MOV EAX,dword ptr [EBP + 0xc]
+    00407716  PUSH EAX
+00407729  D3DUtil_SetRotateXMatrix -> sinf
+    00407701  MOV ECX,dword ptr [EBP + 0xc]
+    00407704  PUSH ECX
+    00407705  CALL 0x0040136b
+    0040770a  ADD ESP,0x4
+    0040770d  MOV EDX,dword ptr [EBP + 0x8]
+    00407710  FSTP float ptr [EDX + 0x14]
+    00407713  MOV EAX,dword ptr [EBP + 0xc]
+    00407716  PUSH EAX
+    00407717  CALL 0x00401262
+    0040771c  ADD ESP,0x4
+    0040771f  MOV ECX,dword ptr [EBP + 0x8]
+    00407722  FSTP float ptr [ECX + 0x18]
+    00407725  MOV EDX,dword ptr [EBP + 0xc]
+    00407728  PUSH EDX
+00407654  D3DUtil_SetProjectionMatrix -> sinf
+    00407623  JZ 0x0040762f
+    00407625  MOV EAX,0x80070057
+    0040762a  JMP 0x004076ee
+    0040762f  FLD float ptr [EBP + 0xc]
+    00407632  FDIV float ptr [0x0044e098] {2}
+    00407638  PUSH ECX
+    00407639  FSTP float ptr [ESP]
+    0040763c  CALL 0x0040136b
+    00407641  FSTP float ptr [EBP + -0x10]
+    00407644  ADD ESP,0x4
+    00407647  FLD float ptr [EBP + 0xc]
+    0040764a  FDIV float ptr [0x0044e098] {2}
+    00407650  PUSH ECX
+    00407651  FSTP float ptr [ESP]
+0040768a  D3DUtil_SetProjectionMatrix -> sinf
+    0040765c  FDIVR float ptr [EBP + -0x10]
+    0040765f  FMUL float ptr [EBP + 0x10]
+    00407662  FSTP float ptr [EBP + -0x8]
+    00407665  FLD float ptr [EBP + 0xc]
+    00407668  FDIV float ptr [0x0044e098] {2}
+    0040766e  PUSH ECX
+    0040766f  FSTP float ptr [ESP]
+    00407672  CALL 0x0040136b
+    00407677  FSTP float ptr [EBP + -0x14]
+    0040767a  ADD ESP,0x4
+    0040767d  FLD float ptr [EBP + 0xc]
+    00407680  FDIV float ptr [0x0044e098] {2}
+    00407686  PUSH ECX
+    00407687  FSTP float ptr [ESP]
+004231f2  Game::State8 -> sinf
+    004231b0  MOV ECX,dword ptr [EAX + EDX*0x4 + 0xd8]
+    004231b7  FSTP float ptr [ECX + 0x164]
+    004231bd  MOV EDX,dword ptr [EBP + -0x4]
+    004231c0  MOV EAX,dword ptr [EBP + -0x10]
+    004231c3  MOV ECX,dword ptr [EAX + EDX*0x4 + 0x3c0]
+    004231ca  MOV EDX,dword ptr [EBP + -0x10]
+    004231cd  MOV ESI,dword ptr [EDX + ECX*0x4 + 0xd8]
+    004231d4  MOV EAX,dword ptr [EBP + -0x4]
+    004231d7  MOV ECX,dword ptr [EBP + -0x10]
+    004231da  MOV EDX,dword ptr [ECX + EAX*0x4 + 0x3c0]
+    004231e1  MOV EAX,dword ptr [EBP + -0x10]
+    004231e4  MOV ECX,dword ptr [EAX + EDX*0x4 + 0xd8]
+    004231eb  MOV EDX,dword ptr [ECX + 0x164]
+    004231f1  PUSH EDX
+0042350e  Game::State8 -> sinf
+    004234cf  MOV EAX,0x5
+    004234d4  SUB EAX,dword ptr [EBP + -0x4]
+    004234d7  MOV ECX,dword ptr [EBP + -0x10]
+    004234da  MOV EDX,dword ptr [ECX + EAX*0x4 + 0x3c0]
+    004234e1  MOV EAX,dword ptr [EBP + -0x10]
+    004234e4  MOV ESI,dword ptr [EAX + EDX*0x4 + 0xd8]
+    004234eb  MOV ECX,0x5
+    004234f0  SUB ECX,dword ptr [EBP + -0x4]
+    004234f3  MOV EDX,dword ptr [EBP + -0x10]
+    004234f6  MOV EAX,dword ptr [EDX + ECX*0x4 + 0x3c0]
+    004234fd  MOV ECX,dword ptr [EBP + -0x10]
+    00423500  MOV EDX,dword ptr [ECX + EAX*0x4 + 0xd8]
+    00423507  MOV EAX,dword ptr [EDX + 0x164]
+    0042350d  PUSH EAX
+004077cb  D3DUtil_SetRotateZMatrix -> sinf
+    004077a7  PUSH EBP
+    004077a8  MOV EBP,ESP
+    004077aa  MOV EAX,dword ptr [EBP + 0x8]
+    004077ad  PUSH EAX
+    004077ae  CALL 0x00401064
+    004077b3  ADD ESP,0x4
+    004077b6  MOV ECX,dword ptr [EBP + 0xc]
+    004077b9  PUSH ECX
+    004077ba  CALL 0x0040136b
+    004077bf  ADD ESP,0x4
+    004077c2  MOV EDX,dword ptr [EBP + 0x8]
+    004077c5  FSTP float ptr [EDX]
+    004077c7  MOV EAX,dword ptr [EBP + 0xc]
+    004077ca  PUSH EAX
+004077dd  D3DUtil_SetRotateZMatrix -> sinf
+    004077b6  MOV ECX,dword ptr [EBP + 0xc]
+    004077b9  PUSH ECX
+    004077ba  CALL 0x0040136b
+    004077bf  ADD ESP,0x4
+    004077c2  MOV EDX,dword ptr [EBP + 0x8]
+    004077c5  FSTP float ptr [EDX]
+    004077c7  MOV EAX,dword ptr [EBP + 0xc]
+    004077ca  PUSH EAX
+    004077cb  CALL 0x00401262
+    004077d0  ADD ESP,0x4
+    004077d3  MOV ECX,dword ptr [EBP + 0x8]
+    004077d6  FSTP float ptr [ECX + 0x4]
+    004077d9  MOV EDX,dword ptr [EBP + 0xc]
+    004077dc  PUSH EDX
+0042b337  Game::fn_42b23c -> sinf
+    0042b2ff  MOV EDX,dword ptr [EBP + -0x14]
+    0042b302  FLD float ptr [EDX + 0x260]
+    0042b308  FCOMP float ptr [0x0044e47c] {3.14}
+    0042b30e  FNSTSW AX
+    0042b310  TEST AH,0x41
+    0042b313  JNZ 0x0042b32d
+    0042b315  MOV EAX,dword ptr [EBP + -0x14]
+    0042b318  FLD float ptr [EAX + 0x260]
+    0042b31e  FSUB float ptr [0x0044e478] {6.28}
+    0042b324  MOV ECX,dword ptr [EBP + -0x14]
+    0042b327  FSTP float ptr [ECX + 0x260]
+    0042b32d  MOV EDX,dword ptr [EBP + -0x14]
+    0042b330  MOV EAX,dword ptr [EDX + 0x260]
+    0042b336  PUSH EAX
+00407771  D3DUtil_SetRotateYMatrix -> sinf
+    0040774d  PUSH EBP
+    0040774e  MOV EBP,ESP
+    00407750  MOV EAX,dword ptr [EBP + 0x8]
+    00407753  PUSH EAX
+    00407754  CALL 0x00401064
+    00407759  ADD ESP,0x4
+    0040775c  MOV ECX,dword ptr [EBP + 0xc]
+    0040775f  PUSH ECX
+    00407760  CALL 0x0040136b
+    00407765  ADD ESP,0x4
+    00407768  MOV EDX,dword ptr [EBP + 0x8]
+    0040776b  FSTP float ptr [EDX]
+    0040776d  MOV EAX,dword ptr [EBP + 0xc]
+    00407770  PUSH EAX
+00407785  D3DUtil_SetRotateYMatrix -> sinf
+    0040775f  PUSH ECX
+    00407760  CALL 0x0040136b
+    00407765  ADD ESP,0x4
+    00407768  MOV EDX,dword ptr [EBP + 0x8]
+    0040776b  FSTP float ptr [EDX]
+    0040776d  MOV EAX,dword ptr [EBP + 0xc]
+    00407770  PUSH EAX
+    00407771  CALL 0x00401262
+    00407776  ADD ESP,0x4
+    00407779  FCHS
+    0040777b  MOV ECX,dword ptr [EBP + 0x8]
+    0040777e  FSTP float ptr [ECX + 0x8]
+    00407781  MOV EDX,dword ptr [EBP + 0xc]
+    00407784  PUSH EDX
+00403e82  FUN_00403e72 -> sinf
+    00403e5f  PUSH EAX
+    00403e60  CALL 0x004012f3
+    00403e65  ADD ESP,0xc
+    00403e68  MOV dword ptr [EBP + -0xc],EAX
+    00403e6b  MOV EAX,dword ptr [EBP + -0xc]
+    00403e6e  MOV ESP,EBP
+    00403e70  POP EBP
+    00403e71  RET
+    00403e72  PUSH EBP
+    00403e73  MOV EBP,ESP
+    00403e75  FLD float ptr [EBP + 0x1c]
+    00403e78  FDIV float ptr [0x0044e070] {2}
+    00403e7e  PUSH ECX
+    00403e7f  FSTP float ptr [ESP]
+00403ea1  FUN_00403e72 -> sinf
+    00403e75  FLD float ptr [EBP + 0x1c]
+    00403e78  FDIV float ptr [0x0044e070] {2}
+    00403e7e  PUSH ECX
+    00403e7f  FSTP float ptr [ESP]
+    00403e82  CALL 0x00401262
+    00403e87  ADD ESP,0x4
+    00403e8a  MOV EAX,dword ptr [EBP + 0x18]
+    00403e8d  FMUL float ptr [EAX]
+    00403e8f  MOV ECX,dword ptr [EBP + 0x8]
+    00403e92  FSTP float ptr [ECX]
+    00403e94  FLD float ptr [EBP + 0x1c]
+    00403e97  FDIV float ptr [0x0044e070] {2}
+    00403e9d  PUSH ECX
+    00403e9e  FSTP float ptr [ESP]
+00403ec1  FUN_00403e72 -> sinf
+    00403e94  FLD float ptr [EBP + 0x1c]
+    00403e97  FDIV float ptr [0x0044e070] {2}
+    00403e9d  PUSH ECX
+    00403e9e  FSTP float ptr [ESP]
+    00403ea1  CALL 0x00401262
+    00403ea6  ADD ESP,0x4
+    00403ea9  MOV EDX,dword ptr [EBP + 0x18]
+    00403eac  FMUL float ptr [EDX + 0x4]
+    00403eaf  MOV EAX,dword ptr [EBP + 0xc]
+    00403eb2  FSTP float ptr [EAX]
+    00403eb4  FLD float ptr [EBP + 0x1c]
+    00403eb7  FDIV float ptr [0x0044e070] {2}
+    00403ebd  PUSH ECX
+    00403ebe  FSTP float ptr [ESP]
+00403f19  FUN_00403ef0 -> sinf
+    00403ef0  PUSH EBP
+    00403ef1  MOV EBP,ESP
+    00403ef3  MOV EAX,dword ptr [EBP + 0x1c]
+    00403ef6  PUSH EAX
+    00403ef7  CALL 0x0040105a
+    00403efc  ADD ESP,0x4
+    00403eff  FMUL float ptr [0x0044e070] {2}
+    00403f05  MOV ECX,dword ptr [EBP + 0xc]
+    00403f08  FSTP float ptr [ECX]
+    00403f0a  MOV EDX,dword ptr [EBP + 0xc]
+    00403f0d  FLD float ptr [EDX]
+    00403f0f  FDIV float ptr [0x0044e070] {2}
+    00403f15  PUSH ECX
+    00403f16  FSTP float ptr [ESP]
+00403f38  FUN_00403ef0 -> sinf
+    00403f0d  FLD float ptr [EDX]
+    00403f0f  FDIV float ptr [0x0044e070] {2}
+    00403f15  PUSH ECX
+    00403f16  FSTP float ptr [ESP]
+    00403f19  CALL 0x00401262
+    00403f1e  ADD ESP,0x4
+    00403f21  FDIVR float ptr [EBP + 0x10]
+    00403f24  MOV EAX,dword ptr [EBP + 0x8]
+    00403f27  FSTP float ptr [EAX]
+    00403f29  MOV ECX,dword ptr [EBP + 0xc]
+    00403f2c  FLD float ptr [ECX]
+    00403f2e  FDIV float ptr [0x0044e070] {2}
+    00403f34  PUSH ECX
+    00403f35  FSTP float ptr [ESP]
+00403f58  FUN_00403ef0 -> sinf
+    00403f2c  FLD float ptr [ECX]
+    00403f2e  FDIV float ptr [0x0044e070] {2}
+    00403f34  PUSH ECX
+    00403f35  FSTP float ptr [ESP]
+    00403f38  CALL 0x00401262
+    00403f3d  ADD ESP,0x4
+    00403f40  FDIVR float ptr [EBP + 0x14]
+    00403f43  MOV EDX,dword ptr [EBP + 0x8]
+    00403f46  FSTP float ptr [EDX + 0x4]
+    00403f49  MOV EAX,dword ptr [EBP + 0xc]
+    00403f4c  FLD float ptr [EAX]
+    00403f4e  FDIV float ptr [0x0044e070] {2}
+    00403f54  PUSH ECX
+    00403f55  FSTP float ptr [ESP]
+00403f7e  FUN_00403f6b -> sinf
+    00403f58  CALL 0x00401262
+    00403f5d  ADD ESP,0x4
+    00403f60  FDIVR float ptr [EBP + 0x18]
+    00403f63  MOV ECX,dword ptr [EBP + 0x8]
+    00403f66  FSTP float ptr [ECX + 0x8]
+    00403f69  POP EBP
+    00403f6a  RET
+    00403f6b  PUSH EBP
+    00403f6c  MOV EBP,ESP
+    00403f6e  SUB ESP,0x18
+    00403f71  FLD float ptr [EBP + 0x18]
+    00403f74  FDIV float ptr [0x0044e070] {2}
+    00403f7a  PUSH ECX
+    00403f7b  FSTP float ptr [ESP]
+00403f96  FUN_00403f6b -> sinf
+    00403f6b  PUSH EBP
+    00403f6c  MOV EBP,ESP
+    00403f6e  SUB ESP,0x18
+    00403f71  FLD float ptr [EBP + 0x18]
+    00403f74  FDIV float ptr [0x0044e070] {2}
+    00403f7a  PUSH ECX
+    00403f7b  FSTP float ptr [ESP]
+    00403f7e  CALL 0x00401262
+    00403f83  ADD ESP,0x4
+    00403f86  FSTP float ptr [EBP + -0xc]
+    00403f89  FLD float ptr [EBP + 0x1c]
+    00403f8c  FDIV float ptr [0x0044e070] {2}
+    00403f92  PUSH ECX
+    00403f93  FSTP float ptr [ESP]
+00403fae  FUN_00403f6b -> sinf
+    00403f7e  CALL 0x00401262
+    00403f83  ADD ESP,0x4
+    00403f86  FSTP float ptr [EBP + -0xc]
+    00403f89  FLD float ptr [EBP + 0x1c]
+    00403f8c  FDIV float ptr [0x0044e070] {2}
+    00403f92  PUSH ECX
+    00403f93  FSTP float ptr [ESP]
+    00403f96  CALL 0x00401262
+    00403f9b  ADD ESP,0x4
+    00403f9e  FSTP float ptr [EBP + -0x10]
+    00403fa1  FLD float ptr [EBP + 0x20]
+    00403fa4  FDIV float ptr [0x0044e070] {2}
+    00403faa  PUSH ECX
+    00403fab  FSTP float ptr [ESP]
+00404528  FUN_00404491 -> sinf
+    004044fc  FLD float ptr [0x0044e064] {1}
+    00404502  FSUB float ptr [EBP + -0x8]
+    00404505  FCOMP float ptr [0x0044e07c] {0.001}
+    0040450b  FNSTSW AX
+    0040450d  TEST AH,0x41
+    00404510  JNZ 0x0040456c
+    00404512  MOV EAX,dword ptr [EBP + -0x8]
+    00404515  PUSH EAX
+    00404516  CALL 0x0040105a
+    0040451b  ADD ESP,0x4
+    0040451e  FST float ptr [EBP + -0xc]
+    00404521  FMUL float ptr [EBP + -0x4]
+    00404524  PUSH ECX
+    00404525  FSTP float ptr [ESP]
+00404537  FUN_00404491 -> sinf
+    00404510  JNZ 0x0040456c
+    00404512  MOV EAX,dword ptr [EBP + -0x8]
+    00404515  PUSH EAX
+    00404516  CALL 0x0040105a
+    0040451b  ADD ESP,0x4
+    0040451e  FST float ptr [EBP + -0xc]
+    00404521  FMUL float ptr [EBP + -0x4]
+    00404524  PUSH ECX
+    00404525  FSTP float ptr [ESP]
+    00404528  CALL 0x00401262
+    0040452d  FSTP float ptr [EBP + -0x10]
+    00404530  ADD ESP,0x4
+    00404533  MOV ECX,dword ptr [EBP + -0xc]
+    00404536  PUSH ECX
+0040454f  FUN_00404491 -> sinf
+    00404525  FSTP float ptr [ESP]
+    00404528  CALL 0x00401262
+    0040452d  FSTP float ptr [EBP + -0x10]
+    00404530  ADD ESP,0x4
+    00404533  MOV ECX,dword ptr [EBP + -0xc]
+    00404536  PUSH ECX
+    00404537  CALL 0x00401262
+    0040453c  ADD ESP,0x4
+    0040453f  FDIVR float ptr [EBP + -0x10]
+    00404542  FSTP float ptr [EBP + -0x4]
+    00404545  FLD float ptr [EBP + -0xc]
+    00404548  FMUL float ptr [EBP + 0x38]
+    0040454b  PUSH ECX
+    0040454c  FSTP float ptr [ESP]
+0040455e  FUN_00404491 -> sinf
+    00404536  PUSH ECX
+    00404537  CALL 0x00401262
+    0040453c  ADD ESP,0x4
+    0040453f  FDIVR float ptr [EBP + -0x10]
+    00404542  FSTP float ptr [EBP + -0x4]
+    00404545  FLD float ptr [EBP + -0xc]
+    00404548  FMUL float ptr [EBP + 0x38]
+    0040454b  PUSH ECX
+    0040454c  FSTP float ptr [ESP]
+    0040454f  CALL 0x00401262
+    00404554  FSTP float ptr [EBP + -0x14]
+    00404557  ADD ESP,0x4
+    0040455a  MOV EDX,dword ptr [EBP + -0xc]
+    0040455d  PUSH EDX
+0040781a  FUN_00407801 -> sinf
+    004077f9  MOV EDX,dword ptr [EBP + 0x8]
+    004077fc  FSTP float ptr [EDX + 0x14]
+    004077ff  POP EBP
+    00407800  RET
+    00407801  PUSH EBP
+    00407802  MOV EBP,ESP
+    00407804  SUB ESP,0x14
+    00407807  MOV EAX,dword ptr [EBP + 0x10]
+    0040780a  PUSH EAX
+    0040780b  CALL 0x0040136b
+    00407810  ADD ESP,0x4
+    00407813  FSTP float ptr [EBP + -0x14]
+    00407816  MOV ECX,dword ptr [EBP + 0x10]
+    00407819  PUSH ECX
+00425a9b  Game::fn_4259a7 -> sqrtf
+    00425a65  FLD float ptr [0x0044e338] {320}
+    00425a6b  FSUB float ptr [ECX + 0x388]
+    00425a71  FSTP float ptr [EBP + -0x14]
+    00425a74  MOV EDX,dword ptr [EBP + 0xfffffbe8]
+    00425a7a  FLD float ptr [0x0044e340] {240}
+    00425a80  FSUB float ptr [EDX + 0x38c]
+    00425a86  FSTP float ptr [EBP + -0x18]
+    00425a89  FLD float ptr [EBP + -0x14]
+    00425a8c  FMUL float ptr [EBP + -0x14]
+    00425a8f  FLD float ptr [EBP + -0x18]
+    00425a92  FMUL float ptr [EBP + -0x18]
+    00425a95  FADDP
+    00425a97  PUSH ECX
+    00425a98  FSTP float ptr [ESP]
+004161e8  Game::State6 -> sqrtf
+    004161a8  FLD float ptr [ECX + 0x158]
+    004161ae  FADD float ptr [0x0044e10c] {35}
+    004161b4  FMULP
+    004161b6  MOV EDX,dword ptr [EBP + -0x34]
+    004161b9  MOV EAX,dword ptr [EBP + 0xfffff994]
+    004161bf  MOV ECX,dword ptr [EAX + EDX*0x4 + 0xd8]
+    004161c6  MOV EDX,dword ptr [EBP + -0x34]
+    004161c9  MOV EAX,dword ptr [EBP + 0xfffff994]
+    004161cf  MOV EDX,dword ptr [EAX + EDX*0x4 + 0xd8]
+    004161d6  FLD float ptr [ECX + 0x160]
+    004161dc  FMUL float ptr [EDX + 0x160]
+    004161e2  FADDP
+    004161e4  PUSH ECX
+    004161e5  FSTP float ptr [ESP]
+00416ade  Game::State6 -> sqrtf
+    00416a9e  FLD float ptr [EAX + 0x158]
+    00416aa4  FSUB float ptr [0x0044e10c] {35}
+    00416aaa  FMULP
+    00416aac  MOV ECX,dword ptr [EBP + -0x34]
+    00416aaf  MOV EDX,dword ptr [EBP + 0xfffff994]
+    00416ab5  MOV EAX,dword ptr [EDX + ECX*0x4 + 0xd8]
+    00416abc  MOV ECX,dword ptr [EBP + -0x34]
+    00416abf  MOV EDX,dword ptr [EBP + 0xfffff994]
+    00416ac5  MOV ECX,dword ptr [EDX + ECX*0x4 + 0xd8]
+    00416acc  FLD float ptr [EAX + 0x160]
+    00416ad2  FMUL float ptr [ECX + 0x160]
+    00416ad8  FADDP
+    00416ada  PUSH ECX
+    00416adb  FSTP float ptr [ESP]
+00419651  Game::State6 -> sqrtf
+    00419611  FLD float ptr [ECX + 0x158]
+    00419617  FSUB float ptr [0x0044e10c] {35}
+    0041961d  FMULP
+    0041961f  MOV EDX,dword ptr [EBP + -0x4]
+    00419622  MOV EAX,dword ptr [EBP + 0xfffff994]
+    00419628  MOV ECX,dword ptr [EAX + EDX*0x4 + 0xd8]
+    0041962f  MOV EDX,dword ptr [EBP + -0x4]
+    00419632  MOV EAX,dword ptr [EBP + 0xfffff994]
+    00419638  MOV EDX,dword ptr [EAX + EDX*0x4 + 0xd8]
+    0041963f  FLD float ptr [ECX + 0x160]
+    00419645  FMUL float ptr [EDX + 0x160]
+    0041964b  FADDP
+    0041964d  PUSH ECX
+    0041964e  FSTP float ptr [ESP]
+00419725  Game::State6 -> sqrtf
+    004196e5  FLD float ptr [EDX + 0x158]
+    004196eb  FADD float ptr [0x0044e10c] {35}
+    004196f1  FMULP
+    004196f3  MOV EAX,dword ptr [EBP + -0x4]
+    004196f6  MOV ECX,dword ptr [EBP + 0xfffff994]
+    004196fc  MOV EDX,dword ptr [ECX + EAX*0x4 + 0xd8]
+    00419703  MOV EAX,dword ptr [EBP + -0x4]
+    00419706  MOV ECX,dword ptr [EBP + 0xfffff994]
+    0041970c  MOV EAX,dword ptr [ECX + EAX*0x4 + 0xd8]
+    00419713  FLD float ptr [EDX + 0x160]
+    00419719  FMUL float ptr [EAX + 0x160]
+    0041971f  FADDP
+    00419721  PUSH ECX
+    00419722  FSTP float ptr [ESP]
+00419d61  FUN_00419ae5 -> sqrtf
+    00419d28  TEST AH,0x1
+    00419d2b  JZ 0x00419db9
+    00419d31  MOV ECX,dword ptr [EBP + -0x4]
+    00419d34  MOV EDX,dword ptr [EBP + -0x18]
+    00419d37  MOV ESI,dword ptr [EDX + ECX*0x4 + 0xd8]
+    00419d3e  MOV EAX,dword ptr [EBP + -0x4]
+    00419d41  MOV ECX,dword ptr [EBP + -0x18]
+    00419d44  MOV EDX,dword ptr [ECX + EAX*0x4 + 0xd8]
+    00419d4b  FLD float ptr [EDX + 0x158]
+    00419d51  FSUB float ptr [EBP + -0x10]
+    00419d54  FMUL float ptr [0x0044e0ec] {3}
+    00419d5a  FSTP float ptr [EBP + -0x1c]
+    00419d5d  MOV EAX,dword ptr [EBP + -0x14]
+    00419d60  PUSH EAX
+00419da5  FUN_00419ae5 -> sqrtf
+    00419d6c  FSUBR float ptr [ESI + 0x158]
+    00419d72  FSTP float ptr [EBP + -0x10]
+    00419d75  MOV ECX,dword ptr [EBP + -0x4]
+    00419d78  MOV EDX,dword ptr [EBP + -0x18]
+    00419d7b  MOV ESI,dword ptr [EDX + ECX*0x4 + 0xd8]
+    00419d82  MOV EAX,dword ptr [EBP + -0x4]
+    00419d85  MOV ECX,dword ptr [EBP + -0x18]
+    00419d88  MOV EDX,dword ptr [ECX + EAX*0x4 + 0xd8]
+    00419d8f  FLD float ptr [EDX + 0x160]
+    00419d95  FSUB float ptr [EBP + -0x8]
+    00419d98  FMUL float ptr [0x0044e0ec] {3}
+    00419d9e  FSTP float ptr [EBP + -0x20]
+    00419da1  MOV EAX,dword ptr [EBP + -0x14]
+    00419da4  PUSH EAX
+00423128  Game::State8 -> sqrtf
+    004230ea  MOV EDX,dword ptr [ECX + EAX*0x4 + 0xd8]
+    004230f1  FLD float ptr [EDX + 0x160]
+    004230f7  FADD float ptr [0x0044e2d0] {3}
+    004230fd  MOV EAX,dword ptr [EBP + -0x4]
+    00423100  MOV ECX,dword ptr [EBP + -0x10]
+    00423103  MOV EDX,dword ptr [ECX + EAX*0x4 + 0x3c0]
+    0042310a  MOV EAX,dword ptr [EBP + -0x10]
+    0042310d  MOV ECX,dword ptr [EAX + EDX*0x4 + 0xd8]
+    00423114  FLD float ptr [ECX + 0x160]
+    0042311a  FADD float ptr [0x0044e2d0] {3}
+    00423120  FMULP
+    00423122  FADDP
+    00423124  PUSH ECX
+    00423125  FSTP float ptr [ESP]
+00423425  Game::State8 -> sqrtf
+    004233e9  FLD float ptr [EAX + 0x160]
+    004233ef  FSUB float ptr [0x0044e2c4] {1}
+    004233f5  MOV ECX,0x5
+    004233fa  SUB ECX,dword ptr [EBP + -0x4]
+    004233fd  MOV EDX,dword ptr [EBP + -0x10]
+    00423400  MOV EAX,dword ptr [EDX + ECX*0x4 + 0x3c0]
+    00423407  MOV ECX,dword ptr [EBP + -0x10]
+    0042340a  MOV EDX,dword ptr [ECX + EAX*0x4 + 0xd8]
+    00423411  FLD float ptr [EDX + 0x160]
+    00423417  FSUB float ptr [0x0044e2c4] {1}
+    0042341d  FMULP
+    0042341f  FADDP
+    00423421  PUSH ECX
+    00423422  FSTP float ptr [ESP]
+0042b434  Game::fn_42b23c -> sqrtf
+    0042b3f0  FLD float ptr [EDX + 0x25c]
+    0042b3f6  FMUL float ptr [0x0044e484] {-0.8}
+    0042b3fc  MOV EAX,dword ptr [EBP + -0x14]
+    0042b3ff  FSTP float ptr [EAX + 0x25c]
+    0042b405  MOV ECX,dword ptr [EBP + -0x14]
+    0042b408  FLD float ptr [ECX + 0x258]
+    0042b40e  FMUL float ptr [0x0044e488] {0.8}
+    0042b414  MOV EDX,dword ptr [EBP + -0x14]
+    0042b417  FSTP float ptr [EDX + 0x258]
+    0042b41d  MOV EAX,dword ptr [EBP + -0x14]
+    0042b420  MOV dword ptr [EAX + 0x250],0x3f35c28f
+    0042b42a  MOV ECX,dword ptr [EBP + -0x14]
+    0042b42d  MOV EDX,dword ptr [ECX + 0x258]
+    0042b433  PUSH EDX
+00404200  FUN_004041bd -> sqrtf
+    004041d4  FCOMP float ptr [0x0044e074] {0}
+    004041da  FNSTSW AX
+    004041dc  TEST AH,0x41
+    004041df  JNZ 0x0040426d
+    004041e5  MOV EAX,dword ptr [EBP + 0x18]
+    004041e8  MOV ECX,dword ptr [EBP + 0x18]
+    004041eb  FLD float ptr [EAX]
+    004041ed  FADD float ptr [ECX + 0x14]
+    004041f0  MOV EDX,dword ptr [EBP + 0x18]
+    004041f3  FADD float ptr [EDX + 0x28]
+    004041f6  MOV EAX,dword ptr [EBP + 0x18]
+    004041f9  FADD float ptr [EAX + 0x3c]
+    004041fc  PUSH ECX
+    004041fd  FSTP float ptr [ESP]
+00403ef7  FUN_00403ef0 -> acosf
+    00403ed4  FLD float ptr [EBP + 0x1c]
+    00403ed7  FDIV float ptr [0x0044e070] {2}
+    00403edd  PUSH ECX
+    00403ede  FSTP float ptr [ESP]
+    00403ee1  CALL 0x0040136b
+    00403ee6  ADD ESP,0x4
+    00403ee9  MOV EAX,dword ptr [EBP + 0x14]
+    00403eec  FSTP float ptr [EAX]
+    00403eee  POP EBP
+    00403eef  RET
+    00403ef0  PUSH EBP
+    00403ef1  MOV EBP,ESP
+    00403ef3  MOV EAX,dword ptr [EBP + 0x1c]
+    00403ef6  PUSH EAX
+00404516  FUN_00404491 -> acosf
+    004044e8  FLD float ptr [EBP + 0x34]
+    004044eb  FCHS
+    004044ed  FSTP float ptr [EBP + 0x34]
+    004044f0  FLD float ptr [0x0044e064] {1}
+    004044f6  FSUB float ptr [EBP + 0x38]
+    004044f9  FSTP float ptr [EBP + -0x4]
+    004044fc  FLD float ptr [0x0044e064] {1}
+    00404502  FSUB float ptr [EBP + -0x8]
+    00404505  FCOMP float ptr [0x0044e07c] {0.001}
+    0040450b  FNSTSW AX
+    0040450d  TEST AH,0x41
+    00404510  JNZ 0x0040456c
+    00404512  MOV EAX,dword ptr [EBP + -0x8]
+    00404515  PUSH EAX

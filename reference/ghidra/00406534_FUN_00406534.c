@@ -6,7 +6,7 @@ void __cdecl FUN_00406534(LPCSTR param_1)
   if (param_1 == (LPCSTR)0x0) {
     param_1 = &DAT_00457ef4;
   }
-  lstrcpyA(&DAT_00457cf0,param_1);
+  lstrcpyA(&g_texturePath,param_1);
   return;
 }
 

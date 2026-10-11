@@ -4,29 +4,26 @@ void __thiscall Game::fn_42b23c(Game *this)
 
 {
   Game *pGVar1;
-  Game *pGVar2;
-  bool bVar3;
-  float10 fVar4;
-  float fVar5;
+  Game *x;
+  bool bVar2;
+  float fVar3;
   
   if (this->i268 < 0) {
-    bVar3 = 11.0 < (this->v24c).y;
+    bVar2 = 11.0 < (this->v24c).y;
     pGVar1 = (Game *)(uint)(-36.0 < (this->v24c).x && (this->v24c).x < 36.0);
-    pGVar2 = pGVar1;
+    x = pGVar1;
     if (this->f260 < -3.14) {
       this->f260 = this->f260 + 6.28;
-      pGVar2 = this;
+      x = this;
     }
     if (3.14 < this->f260) {
       this->f260 = this->f260 - 6.28;
-      pGVar2 = this;
+      x = this;
     }
-    fVar4 = (float10)thunk_FUN_00404960(pGVar2);
-    (this->v24c).x =
-         (float)(fVar4 * (float10)this->f258 * (float10)this->dt + (float10)(this->v24c).x);
-    fVar4 = (float10)thunk_FUN_00404900(this);
-    (this->v24c).z =
-         (float)(fVar4 * (float10)this->f258 * (float10)this->dt + (float10)(this->v24c).z);
+    fVar3 = sinf((float)x);
+    (this->v24c).x = fVar3 * this->f258 * this->dt + (this->v24c).x;
+    fVar3 = cosf((float)this);
+    (this->v24c).z = fVar3 * this->f258 * this->dt + (this->v24c).z;
     if (0.7 <= (this->v24c).y || 0.0 <= this->f25c) {
       this->f25c = this->f25c - this->dt * 20.0;
       (this->v24c).y = this->f25c * this->dt + (this->v24c).y;
@@ -35,21 +32,21 @@ void __thiscall Game::fn_42b23c(Game *this)
       this->f25c = this->f25c * -0.8;
       this->f258 = this->f258 * 0.8;
       (this->v24c).y = 0.71;
-      fVar4 = (float10)thunk_FUN_00404990(this);
-      this->f264 = (float)(fVar4 * (float10)0.5 + (float10)this->f264);
+      fVar3 = sqrtf((float)this);
+      this->f264 = fVar3 * 0.5 + this->f264;
       if ((this->dt * 150.0 < this->f25c) && (this->b3a7 != '\0')) {
         Sound::Play(this->sound,3);
       }
     }
-    if ((((this->v24c).x < -30.0 && bVar3) && (this->v24c).y < 11.0) && this->f25c < 0.0) {
-      fVar5 = (this->v24c).z * (this->v24c).z + ((this->v24c).x + 35.0) * ((this->v24c).x + 35.0);
-      if (0.25 <= fVar5) {
-        if (1.5 <= fVar5) {
-          if (fVar5 < 4.0) {
+    if ((((this->v24c).x < -30.0 && bVar2) && (this->v24c).y < 11.0) && this->f25c < 0.0) {
+      fVar3 = (this->v24c).z * (this->v24c).z + ((this->v24c).x + 35.0) * ((this->v24c).x + 35.0);
+      if (0.25 <= fVar3) {
+        if (1.5 <= fVar3) {
+          if (fVar3 < 4.0) {
             this->f258 = this->f258 * 1.0;
             this->f25c = this->f25c * -0.2;
-            fVar5 = Atan2((this->v24c).x + 35.0,(this->v24c).z);
-            this->f260 = fVar5;
+            fVar3 = Atan2((this->v24c).x + 35.0,(this->v24c).z);
+            this->f260 = fVar3;
             Sound::Play(this->sound,4);
           }
         }
@@ -62,8 +59,8 @@ void __thiscall Game::fn_42b23c(Game *this)
           if (this->f258 < 1.0) {
             this->f258 = 1.0;
           }
-          fVar5 = Atan2(-35.0 - (this->v24c).x,-(this->v24c).z);
-          this->f260 = fVar5;
+          fVar3 = Atan2(-35.0 - (this->v24c).x,-(this->v24c).z);
+          this->f260 = fVar3;
           (this->v24c).y = 11.001;
           Sound::Play(this->sound,4);
         }
@@ -91,15 +88,15 @@ void __thiscall Game::fn_42b23c(Game *this)
         }
       }
     }
-    if (((30.0 < (this->v24c).x && bVar3) && (this->v24c).y < 11.0) && this->f25c < 0.0) {
-      fVar5 = (this->v24c).z * (this->v24c).z + ((this->v24c).x - 35.0) * ((this->v24c).x - 35.0);
-      if (0.25 <= fVar5) {
-        if (1.5 <= fVar5) {
-          if (fVar5 < 4.0) {
+    if (((30.0 < (this->v24c).x && bVar2) && (this->v24c).y < 11.0) && this->f25c < 0.0) {
+      fVar3 = (this->v24c).z * (this->v24c).z + ((this->v24c).x - 35.0) * ((this->v24c).x - 35.0);
+      if (0.25 <= fVar3) {
+        if (1.5 <= fVar3) {
+          if (fVar3 < 4.0) {
             this->f258 = this->f258 * 1.0;
             this->f25c = this->f25c * -0.2;
-            fVar5 = Atan2((this->v24c).x - 35.0,(this->v24c).z);
-            this->f260 = fVar5;
+            fVar3 = Atan2((this->v24c).x - 35.0,(this->v24c).z);
+            this->f260 = fVar3;
             Sound::Play(this->sound,4);
           }
         }
@@ -112,8 +109,8 @@ void __thiscall Game::fn_42b23c(Game *this)
           if (this->f258 < 1.0) {
             this->f258 = 1.0;
           }
-          fVar5 = Atan2(35.0 - (this->v24c).x,-(this->v24c).z);
-          this->f260 = fVar5;
+          fVar3 = Atan2(35.0 - (this->v24c).x,-(this->v24c).z);
+          this->f260 = fVar3;
           (this->v24c).y = 11.001;
           Sound::Play(this->sound,4);
         }

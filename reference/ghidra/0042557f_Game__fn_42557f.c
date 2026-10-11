@@ -13,13 +13,13 @@ void __thiscall Game::fn_42557f(Game *this)
   undefined4 uVar8;
   undefined4 uVar9;
   undefined4 uVar10;
-  undefined1 local_1d4 [12];
+  Vec3 local_1d4;
   undefined1 local_1c8 [32];
-  undefined1 local_1a8 [12];
+  Vec3 local_1a8;
   undefined1 local_19c [32];
-  undefined1 local_17c [12];
+  Vec3 local_17c;
   undefined1 local_170 [32];
-  undefined1 local_150 [12];
+  Vec3 local_150;
   undefined1 local_144 [32];
   undefined4 local_124 [8];
   undefined4 local_104 [8];
@@ -66,7 +66,7 @@ void __thiscall Game::fn_42557f(Game *this)
     uVar8 = 0;
     uVar7 = 0xffffffff;
     uVar6 = 0x3f000000;
-    pVVar1 = Vec3_Set(local_150,(Vec3 *)(this->f388 - local_a4),this->f38c + local_a4,0.9999,0.5);
+    pVVar1 = Vec3::Ctor(&local_150,this->f388 - local_a4,this->f38c + local_a4,0.9999);
     puVar2 = thunk_FUN_00422870(local_144,&pVVar1->x,uVar6,uVar7,uVar8,uVar9,uVar10);
     puVar4 = local_124;
     for (iVar3 = 8; iVar3 != 0; iVar3 = iVar3 + -1) {
@@ -79,7 +79,7 @@ void __thiscall Game::fn_42557f(Game *this)
     uVar8 = 0;
     uVar7 = 0xffffffff;
     uVar6 = 0x3f000000;
-    pVVar1 = Vec3_Set(local_17c,(Vec3 *)(this->f388 - local_a4),this->f38c - local_a4,0.9999,0.5);
+    pVVar1 = Vec3::Ctor(&local_17c,this->f388 - local_a4,this->f38c - local_a4,0.9999);
     puVar2 = thunk_FUN_00422870(local_170,&pVVar1->x,uVar6,uVar7,uVar8,uVar9,uVar10);
     puVar4 = local_104;
     for (iVar3 = 8; iVar3 != 0; iVar3 = iVar3 + -1) {
@@ -92,7 +92,7 @@ void __thiscall Game::fn_42557f(Game *this)
     uVar8 = 0;
     uVar7 = 0xffffffff;
     uVar6 = 0x3f000000;
-    pVVar1 = Vec3_Set(local_1a8,(Vec3 *)(this->f388 + local_a4),this->f38c + local_a4,0.9999,0.5);
+    pVVar1 = Vec3::Ctor(&local_1a8,this->f388 + local_a4,this->f38c + local_a4,0.9999);
     puVar2 = thunk_FUN_00422870(local_19c,&pVVar1->x,uVar6,uVar7,uVar8,uVar9,uVar10);
     puVar4 = local_e4;
     for (iVar3 = 8; iVar3 != 0; iVar3 = iVar3 + -1) {
@@ -105,7 +105,7 @@ void __thiscall Game::fn_42557f(Game *this)
     uVar8 = 0;
     uVar7 = 0xffffffff;
     uVar6 = 0x3f000000;
-    pVVar1 = Vec3_Set(local_1d4,(Vec3 *)(this->f388 + local_a4),this->f38c - local_a4,0.9999,0.5);
+    pVVar1 = Vec3::Ctor(&local_1d4,this->f388 + local_a4,this->f38c - local_a4,0.9999);
     puVar2 = thunk_FUN_00422870(local_1c8,&pVVar1->x,uVar6,uVar7,uVar8,uVar9,uVar10);
     puVar4 = local_c4;
     for (iVar3 = 8; iVar3 != 0; iVar3 = iVar3 + -1) {

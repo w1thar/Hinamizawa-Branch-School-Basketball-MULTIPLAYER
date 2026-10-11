@@ -3,10 +3,10 @@
 int __cdecl D3DTextr_RestoreAllTextures(IDirect3DDevice7 *dev)
 
 {
-  undefined4 *local_8;
+  TexContainer *local_8;
   
-  for (local_8 = DAT_00457ef0; local_8 != (undefined4 *)0x0; local_8 = (undefined4 *)*local_8) {
-    D3DTextr_Restore((char *)(local_8 + 1),dev);
+  for (local_8 = g_textureList; local_8 != (TexContainer *)0x0; local_8 = local_8->next) {
+    D3DTextr_Restore(local_8->name,dev);
   }
   return 0;
 }

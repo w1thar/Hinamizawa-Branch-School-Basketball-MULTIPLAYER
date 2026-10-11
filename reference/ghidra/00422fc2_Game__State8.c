@@ -4,8 +4,7 @@ void __thiscall Game::State8(Game *this)
 
 {
   Player *pPVar1;
-  float10 fVar2;
-  float fVar3;
+  float fVar2;
   int local_10;
   int local_8;
   
@@ -14,61 +13,54 @@ void __thiscall Game::State8(Game *this)
     if (this->i3b8 == 1) {
       local_10 = 0;
       for (local_8 = 0; local_8 < 3; local_8 = local_8 + 1) {
-        fVar2 = (float10)thunk_FUN_00404990(this->players[this->teamYou[local_8]]);
-        if ((float)fVar2 <= 0.5) {
+        fVar2 = sqrtf((float)this->players[this->teamYou[local_8]]);
+        if (fVar2 <= 0.5) {
           this->players[this->teamYou[local_8]]->yaw = 0.0;
           Player::Motion_42df38(this->players[this->teamYou[local_8]]);
           local_10 = local_10 + 1;
         }
         else {
-          fVar3 = Atan2((this->players[this->teamYou[local_8]]->pos).x - (float)local_8 * 3.0,
+          fVar2 = Atan2((this->players[this->teamYou[local_8]]->pos).x - (float)local_8 * 3.0,
                         (this->players[this->teamYou[local_8]]->pos).z + 3.0);
-          this->players[this->teamYou[local_8]]->yaw = fVar3;
+          this->players[this->teamYou[local_8]]->yaw = fVar2;
           pPVar1 = this->players[this->teamYou[local_8]];
-          fVar2 = (float10)thunk_FUN_00404960(this->players[this->teamYou[local_8]]);
+          fVar2 = sinf((float)this->players[this->teamYou[local_8]]);
           (this->players[this->teamYou[local_8]]->pos).x =
-               (float)((float10)(pPVar1->pos).x -
-                      fVar2 * (float10)this->players[this->teamYou[local_8]]->stat168 *
-                      (float10)this->dt);
+               (pPVar1->pos).x - fVar2 * this->players[this->teamYou[local_8]]->stat168 * this->dt;
           (this->players[this->teamYou[local_8]]->pos).y = 0.0;
           pPVar1 = this->players[this->teamYou[local_8]];
-          fVar2 = (float10)thunk_FUN_00404900(this->players[this->teamYou[local_8]]->yaw);
+          fVar2 = cosf(this->players[this->teamYou[local_8]]->yaw);
           (this->players[this->teamYou[local_8]]->pos).z =
-               (float)((float10)(pPVar1->pos).z -
-                      fVar2 * (float10)this->players[this->teamYou[local_8]]->stat168 *
-                      (float10)this->dt);
+               (pPVar1->pos).z - fVar2 * this->players[this->teamYou[local_8]]->stat168 * this->dt;
           Player::Motion_42dfc0(this->players[this->teamYou[local_8]]);
         }
       }
       for (local_8 = 0; local_8 < 3; local_8 = local_8 + 1) {
-        fVar2 = (float10)thunk_FUN_00404990(this);
-        if ((float)fVar2 <= 0.5) {
+        fVar2 = sqrtf((float)this);
+        if (fVar2 <= 0.5) {
           this->players[*(int *)((int)this + (5 - local_8) * 4 + 0x3c0)]->yaw = 0.0;
           Player::Motion_42df38(this->players[*(int *)((int)this + (5 - local_8) * 4 + 0x3c0)]);
           local_10 = local_10 + 1;
         }
         else {
-          fVar3 = Atan2((float)local_8 * 3.0 + 1.5 +
+          fVar2 = Atan2((float)local_8 * 3.0 + 1.5 +
                         (this->players[*(int *)((int)this + (5 - local_8) * 4 + 0x3c0)]->pos).x,
                         (this->players[*(int *)((int)this + (5 - local_8) * 4 + 0x3c0)]->pos).z -
                         1.0);
-          this->players[*(int *)((int)this + (5 - local_8) * 4 + 0x3c0)]->yaw = fVar3;
+          this->players[*(int *)((int)this + (5 - local_8) * 4 + 0x3c0)]->yaw = fVar2;
           pPVar1 = this->players[*(int *)((int)this + (5 - local_8) * 4 + 0x3c0)];
-          fVar2 = (float10)thunk_FUN_00404960(this);
+          fVar2 = sinf((float)this);
           (this->players[*(int *)((int)this + (5 - local_8) * 4 + 0x3c0)]->pos).x =
-               (float)((float10)(pPVar1->pos).x -
-                      fVar2 * (float10)this->players
-                                       [*(int *)((int)this + (5 - local_8) * 4 + 0x3c0)]->stat168 *
-                      (float10)this->dt);
+               (pPVar1->pos).x -
+               fVar2 * this->players[*(int *)((int)this + (5 - local_8) * 4 + 0x3c0)]->stat168 *
+               this->dt;
           (this->players[*(int *)((int)this + (5 - local_8) * 4 + 0x3c0)]->pos).y = 0.0;
           pPVar1 = this->players[*(int *)((int)this + (5 - local_8) * 4 + 0x3c0)];
-          fVar2 = (float10)thunk_FUN_00404900(this->players
-                                              [*(int *)((int)this + (5 - local_8) * 4 + 0x3c0)]);
+          fVar2 = cosf((float)this->players[*(int *)((int)this + (5 - local_8) * 4 + 0x3c0)]);
           (this->players[*(int *)((int)this + (5 - local_8) * 4 + 0x3c0)]->pos).z =
-               (float)((float10)(pPVar1->pos).z -
-                      fVar2 * (float10)this->players
-                                       [*(int *)((int)this + (5 - local_8) * 4 + 0x3c0)]->stat168 *
-                      (float10)this->dt);
+               (pPVar1->pos).z -
+               fVar2 * this->players[*(int *)((int)this + (5 - local_8) * 4 + 0x3c0)]->stat168 *
+               this->dt;
           Player::Motion_42dfc0(this->players[*(int *)((int)this + (5 - local_8) * 4 + 0x3c0)]);
         }
       }
@@ -79,8 +71,7 @@ void __thiscall Game::State8(Game *this)
     }
     else if (this->i3b8 != 2 || this->f390 <= 2.0) {
       if (this->i3b8 == 3) {
-        if ((this->keyX == DAT_004540c0 || this->keyZ == DAT_004540c0) || this->keyC == DAT_004540c0
-           ) {
+        if ((this->keyX == KEY_PUSH || this->keyZ == KEY_PUSH) || this->keyC == KEY_PUSH) {
           this->i3b8 = 4;
         }
       }

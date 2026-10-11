@@ -21,8 +21,8 @@ LAB_00408d19:
     }
   }
   else if (param_2 == 0x200) {
-    DAT_004581dc = param_4 & 0xffff;
-    DAT_004581d8 = param_4 >> 0x10;
+    g_mouseX = param_4 & 0xffff;
+    g_mouseY = param_4 >> 0x10;
   }
   else {
     if (param_2 != 0x3b9) goto LAB_00408d19;

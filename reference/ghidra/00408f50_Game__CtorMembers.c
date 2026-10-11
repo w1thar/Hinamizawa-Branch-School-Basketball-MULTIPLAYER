@@ -3,8 +3,8 @@
 Game * __thiscall Game::CtorMembers(Game *this)
 
 {
-  thunk_FUN_00407fe0(&this->ddraw);
-  thunk_FUN_00407fe0(&this->primary);
+  Vec3::CtorDefault((Vec3 *)&this->ddraw);
+  Vec3::CtorDefault((Vec3 *)&this->primary);
   return this;
 }
 

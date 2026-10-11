@@ -209,7 +209,7 @@ typedef struct Player {                                     /* 0x19c */
     u8 pad185[3];
     int curKey;             /* 0x188 */
     float f18c;
-    float f190;
+    int i190;
     float animTime;         /* 0x194 */
     float f198;
 } Player;

@@ -3,18 +3,18 @@
 void __cdecl D3DUtil_SetRotateXMatrix(Mat4 *m,float a)
 
 {
-  undefined4 extraout_ECX;
-  float10 fVar1;
+  float x;
+  float fVar1;
   
   D3DUtil_SetIdentityMatrix(m);
-  fVar1 = (float10)thunk_FUN_00404900(a);
-  m->m[5] = (float)fVar1;
-  fVar1 = (float10)thunk_FUN_00404960(extraout_ECX);
-  m->m[6] = (float)fVar1;
-  fVar1 = (float10)thunk_FUN_00404960(m);
-  m->m[9] = (float)-fVar1;
-  fVar1 = (float10)thunk_FUN_00404900(a);
-  m->m[10] = (float)fVar1;
+  fVar1 = cosf(a);
+  m->m[5] = fVar1;
+  fVar1 = sinf(x);
+  m->m[6] = fVar1;
+  fVar1 = sinf((float)m);
+  m->m[9] = -fVar1;
+  fVar1 = cosf(a);
+  m->m[10] = fVar1;
   return;
 }
 

@@ -26,7 +26,7 @@ undefined4 __cdecl FUN_00403cfe(float *param_1,float *param_2,float *param_3)
   float fVar21;
   float fVar22;
   undefined4 uVar23;
-  float10 fVar24;
+  double dVar24;
   
   fVar1 = *param_2;
   fVar2 = *param_3;
@@ -51,8 +51,8 @@ undefined4 __cdecl FUN_00403cfe(float *param_1,float *param_2,float *param_3)
   fVar21 = param_3[0xe];
   fVar22 = param_2[2] * param_3[0xb] + param_2[1] * param_3[7] + *param_2 * param_3[3] +
            param_3[0xf];
-  fVar24 = FUN_00433940(SUB84((double)fVar22,0),(uint)((ulonglong)(double)fVar22 >> 0x20));
-  if ((float10)1e-05 <= fVar24) {
+  dVar24 = fabs((double)fVar22);
+  if (9.999999747378752e-06 <= dVar24) {
     *param_1 = (fVar5 * fVar6 + fVar3 * fVar4 + fVar1 * fVar2 + fVar7) / fVar22;
     param_1[1] = (fVar12 * fVar13 + fVar10 * fVar11 + fVar8 * fVar9 + fVar14) / fVar22;
     param_1[2] = (fVar19 * fVar20 + fVar17 * fVar18 + fVar15 * fVar16 + fVar21) / fVar22;

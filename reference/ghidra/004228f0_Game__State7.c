@@ -4,17 +4,15 @@ void __thiscall Game::State7(Game *this)
 
 {
   Vec3 *pVVar1;
-  uint uVar2;
-  undefined4 extraout_ECX;
-  undefined4 extraout_ECX_00;
-  float10 fVar3;
-  float fVar4;
-  undefined1 local_50 [12];
-  undefined1 local_44 [12];
-  undefined1 local_38 [12];
-  undefined1 local_2c [12];
-  undefined1 local_20 [12];
-  undefined1 local_14 [12];
+  float x;
+  float x_00;
+  float fVar2;
+  Vec3 local_50;
+  Vec3 local_44;
+  Vec3 local_38;
+  Vec3 local_2c;
+  Vec3 local_20;
+  Vec3 local_14;
   float local_8;
   
   this->f390 = this->f390 + this->dt;
@@ -28,24 +26,24 @@ void __thiscall Game::State7(Game *this)
     this->i3ac = 0;
     this->f394 = 1.0;
     Sound::OpenMp3(this->sound);
-    fVar4 = 0.0;
-    pVVar1 = Vec3_Set(local_14,(Vec3 *)0x0,0.0,17.0,0.0);
-    Player::SetPos(this->players[0],pVVar1->x,pVVar1->y,pVVar1->z,fVar4);
-    fVar4 = -0.2;
-    pVVar1 = Vec3_Set(local_20,(Vec3 *)0xc0400000,0.0,17.0,-0.2);
-    Player::SetPos(this->players[1],pVVar1->x,pVVar1->y,pVVar1->z,fVar4);
-    fVar4 = 3.14;
-    pVVar1 = Vec3_Set(local_2c,(Vec3 *)0xbf800000,0.0,8.0,3.14);
-    Player::SetPos(this->players[2],pVVar1->x,pVVar1->y,pVVar1->z,fVar4);
-    fVar4 = -1.0;
-    pVVar1 = Vec3_Set(local_38,(Vec3 *)0xc0a00000,0.0,15.0,-1.0);
-    Player::SetPos(this->players[3],pVVar1->x,pVVar1->y,pVVar1->z,fVar4);
-    fVar4 = 2.0;
-    pVVar1 = Vec3_Set(local_44,(Vec3 *)0x40800000,0.0,12.0,2.0);
-    Player::SetPos(this->players[4],pVVar1->x,pVVar1->y,pVVar1->z,fVar4);
-    fVar4 = 0.5;
-    pVVar1 = Vec3_Set(local_50,(Vec3 *)0x40400000,0.0,16.0,0.5);
-    Player::SetPos(this->players[5],pVVar1->x,pVVar1->y,pVVar1->z,fVar4);
+    fVar2 = 0.0;
+    pVVar1 = Vec3::Ctor(&local_14,0.0,0.0,17.0);
+    Player::SetPos(this->players[0],pVVar1->x,pVVar1->y,pVVar1->z,fVar2);
+    fVar2 = -0.2;
+    pVVar1 = Vec3::Ctor(&local_20,-3.0,0.0,17.0);
+    Player::SetPos(this->players[1],pVVar1->x,pVVar1->y,pVVar1->z,fVar2);
+    fVar2 = 3.14;
+    pVVar1 = Vec3::Ctor(&local_2c,-1.0,0.0,8.0);
+    Player::SetPos(this->players[2],pVVar1->x,pVVar1->y,pVVar1->z,fVar2);
+    fVar2 = -1.0;
+    pVVar1 = Vec3::Ctor(&local_38,-5.0,0.0,15.0);
+    Player::SetPos(this->players[3],pVVar1->x,pVVar1->y,pVVar1->z,fVar2);
+    fVar2 = 2.0;
+    pVVar1 = Vec3::Ctor(&local_44,4.0,0.0,12.0);
+    Player::SetPos(this->players[4],pVVar1->x,pVVar1->y,pVVar1->z,fVar2);
+    fVar2 = 0.5;
+    pVVar1 = Vec3::Ctor(&local_50,3.0,0.0,16.0);
+    Player::SetPos(this->players[5],pVVar1->x,pVVar1->y,pVVar1->z,fVar2);
     Player::Motion_430c40(this->players[0]);
     Player::Motion_430c40(this->players[1]);
     Player::Motion_430c40(this->players[2]);
@@ -89,39 +87,35 @@ void __thiscall Game::State7(Game *this)
   }
   (this->v24c).y = 5.5;
   local_8 = Atan2((this->camDir).x,(this->camDir).z);
-  uVar2 = (uint)(this->keyUp == DAT_004540c8 || this->keyNum8 == DAT_004540c8);
-  if (uVar2 != 0) {
-    fVar3 = (float10)thunk_FUN_00404960(uVar2);
-    (this->camPos).x =
-         (float)(fVar3 * (float10)15.0 * (float10)this->dt + (float10)(this->camPos).x);
-    fVar3 = (float10)thunk_FUN_00404900(local_8);
-    (this->camPos).z =
-         (float)(fVar3 * (float10)15.0 * (float10)this->dt + (float10)(this->camPos).z);
+  fVar2 = (float)(uint)(this->keyUp == KEY_HOLD || this->keyNum8 == KEY_HOLD);
+  if (fVar2 != 0.0) {
+    fVar2 = sinf(fVar2);
+    (this->camPos).x = fVar2 * 15.0 * this->dt + (this->camPos).x;
+    fVar2 = cosf(local_8);
+    (this->camPos).z = fVar2 * 15.0 * this->dt + (this->camPos).z;
   }
-  uVar2 = (uint)(this->keyDown == DAT_004540c8 || this->keyNum2 == DAT_004540c8);
-  if (uVar2 != 0) {
-    fVar3 = (float10)thunk_FUN_00404960(uVar2);
-    (this->camPos).x =
-         (float)((float10)(this->camPos).x - fVar3 * (float10)15.0 * (float10)this->dt);
-    fVar3 = (float10)thunk_FUN_00404900(local_8);
-    (this->camPos).z =
-         (float)((float10)(this->camPos).z - fVar3 * (float10)15.0 * (float10)this->dt);
+  fVar2 = (float)(uint)(this->keyDown == KEY_HOLD || this->keyNum2 == KEY_HOLD);
+  if (fVar2 != 0.0) {
+    fVar2 = sinf(fVar2);
+    (this->camPos).x = (this->camPos).x - fVar2 * 15.0 * this->dt;
+    fVar2 = cosf(local_8);
+    (this->camPos).z = (this->camPos).z - fVar2 * 15.0 * this->dt;
   }
-  if (this->keyRight == DAT_004540c8 || this->keyNum6 == DAT_004540c8) {
+  if (this->keyRight == KEY_HOLD || this->keyNum6 == KEY_HOLD) {
     local_8 = this->dt * 2.0 + local_8;
-    fVar3 = (float10)thunk_FUN_00404960(local_8);
-    (this->camDir).x = (float)fVar3;
-    fVar3 = (float10)thunk_FUN_00404900(extraout_ECX);
-    (this->camDir).z = (float)fVar3;
+    fVar2 = sinf(local_8);
+    (this->camDir).x = fVar2;
+    fVar2 = cosf(x);
+    (this->camDir).z = fVar2;
   }
-  if (this->keyLeft == DAT_004540c8 || this->keyNum4 == DAT_004540c8) {
+  if (this->keyLeft == KEY_HOLD || this->keyNum4 == KEY_HOLD) {
     local_8 = local_8 - this->dt * 2.0;
-    fVar3 = (float10)thunk_FUN_00404960(local_8);
-    (this->camDir).x = (float)fVar3;
-    fVar3 = (float10)thunk_FUN_00404900(extraout_ECX_00);
-    (this->camDir).z = (float)fVar3;
+    fVar2 = sinf(local_8);
+    (this->camDir).x = fVar2;
+    fVar2 = cosf(x_00);
+    (this->camDir).z = fVar2;
   }
-  if ((this->keyX == DAT_004540c0 || this->keyZ == DAT_004540c0) || this->keyC == DAT_004540c0) {
+  if ((this->keyX == KEY_PUSH || this->keyZ == KEY_PUSH) || this->keyC == KEY_PUSH) {
     Sound::Play(this->sound,7);
     this->i3b8 = 5;
     this->f390 = 0.0;

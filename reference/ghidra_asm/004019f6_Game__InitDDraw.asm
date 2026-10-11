@@ -1,0 +1,275 @@
+004019f6  PUSH EBP
+004019f7  MOV EBP,ESP
+004019f9  SUB ESP,0x94
+004019ff  MOV dword ptr [EBP + 0xffffff6c],ECX
+00401a05  PUSH 0x0
+00401a07  PUSH 0x44fee8
+00401a0c  MOV EAX,dword ptr [EBP + 0xffffff6c]
+00401a12  ADD EAX,0x34
+00401a15  PUSH EAX
+00401a16  PUSH 0x0
+00401a18  CALL 0x004332ae
+00401a1d  MOV dword ptr [EBP + -0x80],EAX
+00401a20  CMP dword ptr [EBP + -0x80],0x0
+00401a24  JZ 0x00401a41
+00401a26  PUSH 0x0
+00401a28  PUSH 0x457ca0
+00401a2d  PUSH 0x452d94 {'DirectDrawCreateの失敗'}
+00401a32  PUSH 0x0
+00401a34  CALL dword ptr [0x0045a644] {370682}
+00401a3a  XOR AL,AL
+00401a3c  JMP 0x00401da4
+00401a41  MOV ECX,dword ptr [EBP + 0xffffff6c]
+00401a47  XOR EDX,EDX
+00401a49  MOV DL,byte ptr [ECX + 0x2c]
+00401a4c  TEST EDX,EDX
+00401a4e  JZ 0x00401a73
+00401a50  PUSH 0x8
+00401a52  MOV EAX,dword ptr [EBP + 0x8]
+00401a55  PUSH EAX
+00401a56  MOV ECX,dword ptr [EBP + 0xffffff6c]
+00401a5c  MOV EDX,dword ptr [ECX + 0x34]
+00401a5f  MOV EAX,dword ptr [EBP + 0xffffff6c]
+00401a65  MOV ECX,dword ptr [EAX + 0x34]
+00401a68  MOV EAX,dword ptr [ECX]
+00401a6a  PUSH EDX
+00401a6b  CALL dword ptr [EAX + 0x50]
+00401a6e  MOV dword ptr [EBP + -0x80],EAX
+00401a71  JMP 0x00401a94
+00401a73  PUSH 0x11
+00401a75  MOV ECX,dword ptr [EBP + 0x8]
+00401a78  PUSH ECX
+00401a79  MOV EDX,dword ptr [EBP + 0xffffff6c]
+00401a7f  MOV EAX,dword ptr [EDX + 0x34]
+00401a82  MOV ECX,dword ptr [EBP + 0xffffff6c]
+00401a88  MOV EDX,dword ptr [ECX + 0x34]
+00401a8b  MOV ECX,dword ptr [EDX]
+00401a8d  PUSH EAX
+00401a8e  CALL dword ptr [ECX + 0x50]
+00401a91  MOV dword ptr [EBP + -0x80],EAX
+00401a94  CMP dword ptr [EBP + -0x80],0x0
+00401a98  JZ 0x00401ab5
+00401a9a  PUSH 0x0
+00401a9c  PUSH 0x457ca4
+00401aa1  PUSH 0x452dac {'SetCooperativeLevelの失敗'}
+00401aa6  PUSH 0x0
+00401aa8  CALL dword ptr [0x0045a644] {370682}
+00401aae  XOR AL,AL
+00401ab0  JMP 0x00401da4
+00401ab5  MOV EDX,dword ptr [EBP + 0xffffff6c]
+00401abb  XOR EAX,EAX
+00401abd  MOV AL,byte ptr [EDX + 0x2c]
+00401ac0  TEST EAX,EAX
+00401ac2  JNZ 0x00401b10
+00401ac4  PUSH 0x0
+00401ac6  PUSH 0x0
+00401ac8  PUSH 0x10
+00401aca  PUSH 0x1e0
+00401acf  PUSH 0x280
+00401ad4  MOV ECX,dword ptr [EBP + 0xffffff6c]
+00401ada  MOV EDX,dword ptr [ECX + 0x34]
+00401add  MOV EAX,dword ptr [EBP + 0xffffff6c]
+00401ae3  MOV ECX,dword ptr [EAX + 0x34]
+00401ae6  MOV EAX,dword ptr [ECX]
+00401ae8  PUSH EDX
+00401ae9  CALL dword ptr [EAX + 0x54]
+00401aec  MOV dword ptr [EBP + -0x80],EAX
+00401aef  CMP dword ptr [EBP + -0x80],0x0
+00401af3  JZ 0x00401b10
+00401af5  PUSH 0x0
+00401af7  PUSH 0x457ca8
+00401afc  PUSH 0x452dc8 {'ディスプレイモードの設定エラー'}
+00401b01  PUSH 0x0
+00401b03  CALL dword ptr [0x0045a644] {370682}
+00401b09  XOR AL,AL
+00401b0b  JMP 0x00401da4
+00401b10  MOV ECX,dword ptr [EBP + 0xffffff6c]
+00401b16  XOR EDX,EDX
+00401b18  MOV DL,byte ptr [ECX + 0x2c]
+00401b1b  TEST EDX,EDX
+00401b1d  JZ 0x00401cc6
+00401b23  PUSH 0x7c
+00401b25  PUSH 0x0
+00401b27  LEA EAX,[EBP + -0x7c]
+00401b2a  PUSH EAX
+00401b2b  CALL 0x00433440
+00401b30  ADD ESP,0xc
+00401b33  MOV dword ptr [EBP + -0x7c],0x7c
+00401b3a  MOV dword ptr [EBP + -0x78],0x1
+00401b41  MOV dword ptr [EBP + -0x14],0x200
+00401b48  PUSH 0x0
+00401b4a  MOV ECX,dword ptr [EBP + 0xffffff6c]
+00401b50  ADD ECX,0x40
+00401b53  PUSH ECX
+00401b54  LEA EDX,[EBP + -0x7c]
+00401b57  PUSH EDX
+00401b58  MOV EAX,dword ptr [EBP + 0xffffff6c]
+00401b5e  MOV ECX,dword ptr [EAX + 0x34]
+00401b61  MOV EDX,dword ptr [EBP + 0xffffff6c]
+00401b67  MOV EAX,dword ptr [EDX + 0x34]
+00401b6a  MOV EDX,dword ptr [EAX]
+00401b6c  PUSH ECX
+00401b6d  CALL dword ptr [EDX + 0x18]
+00401b70  MOV dword ptr [EBP + -0x80],EAX
+00401b73  CMP dword ptr [EBP + -0x80],0x0
+00401b77  JZ 0x00401b94
+00401b79  PUSH 0x0
+00401b7b  PUSH 0x457cac
+00401b80  PUSH 0x452de8 {'CreateSurfaceの失敗'}
+00401b85  PUSH 0x0
+00401b87  CALL dword ptr [0x0045a644] {370682}
+00401b8d  XOR AL,AL
+00401b8f  JMP 0x00401da4
+00401b94  PUSH 0x0
+00401b96  MOV EAX,dword ptr [EBP + 0xffffff6c]
+00401b9c  ADD EAX,0x48
+00401b9f  PUSH EAX
+00401ba0  PUSH 0x0
+00401ba2  MOV ECX,dword ptr [EBP + 0xffffff6c]
+00401ba8  MOV EDX,dword ptr [ECX + 0x34]
+00401bab  MOV EAX,dword ptr [EBP + 0xffffff6c]
+00401bb1  MOV ECX,dword ptr [EAX + 0x34]
+00401bb4  MOV EAX,dword ptr [ECX]
+00401bb6  PUSH EDX
+00401bb7  CALL dword ptr [EAX + 0x10]
+00401bba  MOV dword ptr [EBP + -0x80],EAX
+00401bbd  CMP dword ptr [EBP + -0x80],0x0
+00401bc1  JZ 0x00401bde
+00401bc3  PUSH 0x0
+00401bc5  PUSH 0x457cb0
+00401bca  PUSH 0x452dfc {'Clipper作成の失敗'}
+00401bcf  PUSH 0x0
+00401bd1  CALL dword ptr [0x0045a644] {370682}
+00401bd7  XOR AL,AL
+00401bd9  JMP 0x00401da4
+00401bde  MOV ECX,dword ptr [EBP + 0x8]
+00401be1  PUSH ECX
+00401be2  PUSH 0x0
+00401be4  MOV EDX,dword ptr [EBP + 0xffffff6c]
+00401bea  MOV EAX,dword ptr [EDX + 0x48]
+00401bed  MOV ECX,dword ptr [EBP + 0xffffff6c]
+00401bf3  MOV EDX,dword ptr [ECX + 0x48]
+00401bf6  MOV ECX,dword ptr [EDX]
+00401bf8  PUSH EAX
+00401bf9  CALL dword ptr [ECX + 0x20]
+00401bfc  MOV EDX,dword ptr [EBP + 0xffffff6c]
+00401c02  MOV EAX,dword ptr [EDX + 0x48]
+00401c05  PUSH EAX
+00401c06  MOV ECX,dword ptr [EBP + 0xffffff6c]
+00401c0c  MOV EDX,dword ptr [ECX + 0x40]
+00401c0f  MOV EAX,dword ptr [EBP + 0xffffff6c]
+00401c15  MOV ECX,dword ptr [EAX + 0x40]
+00401c18  MOV EAX,dword ptr [ECX]
+00401c1a  PUSH EDX
+00401c1b  CALL dword ptr [EAX + 0x70]
+00401c1e  MOV dword ptr [EBP + -0x80],EAX
+00401c21  CMP dword ptr [EBP + -0x80],0x0
+00401c25  JZ 0x00401c42
+00401c27  PUSH 0x0
+00401c29  PUSH 0x457cb4
+00401c2e  PUSH 0x452e10 {'Clipperアタッチの失敗'}
+00401c33  PUSH 0x0
+00401c35  CALL dword ptr [0x0045a644] {370682}
+00401c3b  XOR AL,AL
+00401c3d  JMP 0x00401da4
+00401c42  PUSH 0x7c
+00401c44  PUSH 0x0
+00401c46  LEA ECX,[EBP + -0x7c]
+00401c49  PUSH ECX
+00401c4a  CALL 0x00433440
+00401c4f  ADD ESP,0xc
+00401c52  MOV dword ptr [EBP + -0x7c],0x7c
+00401c59  MOV dword ptr [EBP + -0x78],0x7
+00401c60  MOV dword ptr [EBP + -0x14],0x2040
+00401c67  MOV dword ptr [EBP + -0x70],0x280
+00401c6e  MOV dword ptr [EBP + -0x74],0x1e0
+00401c75  PUSH 0x0
+00401c77  MOV EDX,dword ptr [EBP + 0xffffff6c]
+00401c7d  ADD EDX,0x44
+00401c80  PUSH EDX
+00401c81  LEA EAX,[EBP + -0x7c]
+00401c84  PUSH EAX
+00401c85  MOV ECX,dword ptr [EBP + 0xffffff6c]
+00401c8b  MOV EDX,dword ptr [ECX + 0x34]
+00401c8e  MOV EAX,dword ptr [EBP + 0xffffff6c]
+00401c94  MOV ECX,dword ptr [EAX + 0x34]
+00401c97  MOV EAX,dword ptr [ECX]
+00401c99  PUSH EDX
+00401c9a  CALL dword ptr [EAX + 0x18]
+00401c9d  MOV dword ptr [EBP + -0x80],EAX
+00401ca0  CMP dword ptr [EBP + -0x80],0x0
+00401ca4  JZ 0x00401cc1
+00401ca6  PUSH 0x0
+00401ca8  PUSH 0x457cb8
+00401cad  PUSH 0x452e28 {'BackSurfaceの失敗'}
+00401cb2  PUSH 0x0
+00401cb4  CALL dword ptr [0x0045a644] {370682}
+00401cba  XOR AL,AL
+00401cbc  JMP 0x00401da4
+00401cc1  JMP 0x00401da2
+00401cc6  PUSH 0x7c
+00401cc8  PUSH 0x0
+00401cca  LEA ECX,[EBP + -0x7c]
+00401ccd  PUSH ECX
+00401cce  CALL 0x00433440
+00401cd3  ADD ESP,0xc
+00401cd6  MOV dword ptr [EBP + -0x7c],0x7c
+00401cdd  MOV dword ptr [EBP + -0x78],0x21
+00401ce4  MOV dword ptr [EBP + -0x14],0x2218
+00401ceb  MOV dword ptr [EBP + -0x68],0x1
+00401cf2  PUSH 0x0
+00401cf4  MOV EDX,dword ptr [EBP + 0xffffff6c]
+00401cfa  ADD EDX,0x40
+00401cfd  PUSH EDX
+00401cfe  LEA EAX,[EBP + -0x7c]
+00401d01  PUSH EAX
+00401d02  MOV ECX,dword ptr [EBP + 0xffffff6c]
+00401d08  MOV EDX,dword ptr [ECX + 0x34]
+00401d0b  MOV EAX,dword ptr [EBP + 0xffffff6c]
+00401d11  MOV ECX,dword ptr [EAX + 0x34]
+00401d14  MOV EAX,dword ptr [ECX]
+00401d16  PUSH EDX
+00401d17  CALL dword ptr [EAX + 0x18]
+00401d1a  MOV dword ptr [EBP + -0x80],EAX
+00401d1d  CMP dword ptr [EBP + -0x80],0x0
+00401d21  JZ 0x00401d3b
+00401d23  PUSH 0x0
+00401d25  PUSH 0x457cbc
+00401d2a  PUSH 0x452e3c {'CreateSurfaceの失敗'}
+00401d2f  PUSH 0x0
+00401d31  CALL dword ptr [0x0045a644] {370682}
+00401d37  XOR AL,AL
+00401d39  JMP 0x00401da4
+00401d3b  PUSH 0x10
+00401d3d  PUSH 0x0
+00401d3f  LEA ECX,[EBP + 0xffffff70]
+00401d45  PUSH ECX
+00401d46  CALL 0x00433440
+00401d4b  ADD ESP,0xc
+00401d4e  MOV dword ptr [EBP + 0xffffff70],0x4
+00401d58  MOV EDX,dword ptr [EBP + 0xffffff6c]
+00401d5e  ADD EDX,0x44
+00401d61  PUSH EDX
+00401d62  LEA EAX,[EBP + 0xffffff70]
+00401d68  PUSH EAX
+00401d69  MOV ECX,dword ptr [EBP + 0xffffff6c]
+00401d6f  MOV EDX,dword ptr [ECX + 0x40]
+00401d72  MOV EAX,dword ptr [EBP + 0xffffff6c]
+00401d78  MOV ECX,dword ptr [EAX + 0x40]
+00401d7b  MOV EAX,dword ptr [ECX]
+00401d7d  PUSH EDX
+00401d7e  CALL dword ptr [EAX + 0x30]
+00401d81  MOV dword ptr [EBP + -0x80],EAX
+00401d84  CMP dword ptr [EBP + -0x80],0x0
+00401d88  JZ 0x00401da2
+00401d8a  PUSH 0x0
+00401d8c  PUSH 0x457cc0
+00401d91  PUSH 0x452e50 {'BackSurfaceの失敗'}
+00401d96  PUSH 0x0
+00401d98  CALL dword ptr [0x0045a644] {370682}
+00401d9e  XOR AL,AL
+00401da0  JMP 0x00401da4
+00401da2  MOV AL,0x1
+00401da4  MOV ESP,EBP
+00401da6  POP EBP
+00401da7  RET 0x4

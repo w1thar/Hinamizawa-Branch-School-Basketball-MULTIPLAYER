@@ -4,13 +4,13 @@ void __thiscall SkinModel::Skin(SkinModel *this)
 
 {
   Vec3 *v;
-  undefined1 local_54 [12];
+  Vec3 local_54;
   Mat4 local_48;
   uint local_8;
   
   thunk_FUN_00403880(&local_48);
   for (local_8 = 0; local_8 < (uint)this->numBones; local_8 = local_8 + 1) {
-    v = thunk_FUN_0040c470(local_54,&this->bones[local_8].pivot.x);
+    v = Vec3_Neg(&local_54,&this->bones[local_8].pivot);
     SetTranslateMatrixV(&local_48,v);
     D3DUtil_SetRotateZMatrix(&this->bones[local_8].mat,this->bones[local_8].rot.z);
     D3DMath_MatrixMultiply(&this->bones[local_8].mat,&local_48,&this->bones[local_8].mat);

@@ -5,8 +5,8 @@ void __thiscall Game::State3(Game *this)
 {
   Vec3 *pVVar1;
   float fVar2;
-  undefined1 local_30 [12];
-  undefined1 local_24 [12];
+  Vec3 local_30;
+  Vec3 local_24;
   int local_18;
   int local_14;
   int local_10;
@@ -17,7 +17,7 @@ void __thiscall Game::State3(Game *this)
   if (((this->v24c).y < 1.0 && -1.0 < this->f25c) && this->f25c < 7.0) {
     this->f25c = 25.0;
   }
-  if ((this->keyUp == DAT_00454158 || this->keyNum8 == DAT_00454158) && (0 < this->i3b0)) {
+  if ((this->keyUp == KEY_PUSH || this->keyNum8 == KEY_PUSH) && (0 < this->i3b0)) {
     this->i3b0 = this->i3b0 + -1;
     Sound::Play(this->sound,2);
     if (this->i3b0 == 0) {
@@ -39,7 +39,7 @@ void __thiscall Game::State3(Game *this)
       }
     }
   }
-  if ((this->keyDown == DAT_00454158 || this->keyNum2 == DAT_00454158) && (this->i3b0 < 2)) {
+  if ((this->keyDown == KEY_PUSH || this->keyNum2 == KEY_PUSH) && (this->i3b0 < 2)) {
     this->i3b0 = this->i3b0 + 1;
     Sound::Play(this->sound,2);
     if (this->i3b0 == 1) {
@@ -61,8 +61,8 @@ void __thiscall Game::State3(Game *this)
       }
     }
   }
-  if ((((this->keyX == DAT_00454158 || this->keyZ == DAT_00454158) || this->keyC == DAT_00454158) ||
-      this->keySpace == DAT_00454158) || this->keyEnter == DAT_00454158) {
+  if ((((this->keyX == KEY_PUSH || this->keyZ == KEY_PUSH) || this->keyC == KEY_PUSH) ||
+      this->keySpace == KEY_PUSH) || this->keyEnter == KEY_PUSH) {
     Sound::Play(this->sound,1);
     this->f390 = 0.0;
     this->f394 = 1.0;
@@ -90,13 +90,13 @@ void __thiscall Game::State3(Game *this)
       Player::fn_42deb4(this->players[local_18]);
       Player::Motion_42df38(this->players[local_18]);
       fVar2 = 0.0;
-      pVVar1 = Vec3_Set(local_24,(Vec3 *)0x40000000,0.0,-30.0,0.0);
+      pVVar1 = Vec3::Ctor(&local_24,2.0,0.0,-30.0);
       Player::SetPos(this->players[local_18],pVVar1->x,pVVar1->y,pVVar1->z,fVar2);
       this->players[local_18]->b154 = '\0';
       this->i3b4 = 0;
     }
     fVar2 = this->f390;
-    pVVar1 = Vec3_Set(local_30,(Vec3 *)0xc0000000,0.0,-20.0,fVar2);
+    pVVar1 = Vec3::Ctor(&local_30,-2.0,0.0,-20.0);
     Player::SetPos(this->players[this->i3b4],pVVar1->x,pVVar1->y,pVVar1->z,fVar2);
   }
   return;

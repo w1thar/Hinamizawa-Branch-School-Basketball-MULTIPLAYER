@@ -110,7 +110,7 @@ int * __cdecl FUN_004029c7(int *param_1,HANDLE param_2,uint param_3)
               (**(code **)(*local_c + 0x68))(local_c,local_1bc);
             }
             thunk_FUN_00402d2e(local_1a8,local_19c,local_198);
-            local_1b8 = thunk_FUN_00407d50;
+            local_1b8 = Vec3_Magnitude;
             local_1b4 = 0;
             local_1b0 = 0;
             local_1ac = 0;

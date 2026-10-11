@@ -4,10 +4,10 @@ void __thiscall Player::Update(Player *this,float dt)
 
 {
   float fVar1;
-  float fVar2;
-  BonePose *pBVar3;
-  float10 fVar4;
-  float10 fVar5;
+  BonePose *pBVar2;
+  float fVar3;
+  float fVar4;
+  float fVar5;
   int local_18;
   int local_10;
   float local_c;
@@ -43,22 +43,22 @@ void __thiscall Player::Update(Player *this,float dt)
     if (((this->model->bones->rot).y - ((this->keys[local_10].pose)->rot).y) - this->yaw < -3.14) {
       (this->model->bones->rot).y = (this->model->bones->rot).y + 6.28;
     }
-    pBVar3 = this->keys[local_10].pose;
-    fVar4 = (float10)thunk_FUN_00404900(this);
-    fVar1 = (pBVar3->trans).x;
-    pBVar3 = this->keys[local_10].pose;
-    fVar5 = (float10)thunk_FUN_00404960(this->keys);
-    fVar1 = (float)((float10)(float)(fVar4 * (float10)fVar1) - fVar5 * (float10)(pBVar3->trans).z);
-    pBVar3 = this->keys[local_10].pose;
-    fVar4 = (float10)thunk_FUN_00404960(this);
-    fVar2 = (pBVar3->trans).x;
-    pBVar3 = this->keys[local_10].pose;
-    fVar5 = (float10)thunk_FUN_00404900(this);
-    fVar2 = (float)(fVar5 * (float10)(pBVar3->trans).z + (float10)(float)(fVar4 * (float10)fVar2));
-    if (0.01 < (fVar1 + (this->pos).x) - (this->model->bones->trans).x ||
-        (fVar1 + (this->pos).x) - (this->model->bones->trans).x < -0.01) {
+    pBVar2 = this->keys[local_10].pose;
+    fVar3 = cosf((float)this);
+    fVar1 = (pBVar2->trans).x;
+    pBVar2 = this->keys[local_10].pose;
+    fVar4 = sinf((float)this->keys);
+    fVar3 = fVar3 * fVar1 - fVar4 * (pBVar2->trans).z;
+    pBVar2 = this->keys[local_10].pose;
+    fVar4 = sinf((float)this);
+    fVar1 = (pBVar2->trans).x;
+    pBVar2 = this->keys[local_10].pose;
+    fVar5 = cosf((float)this);
+    fVar1 = fVar5 * (pBVar2->trans).z + fVar4 * fVar1;
+    if (0.01 < (fVar3 + (this->pos).x) - (this->model->bones->trans).x ||
+        (fVar3 + (this->pos).x) - (this->model->bones->trans).x < -0.01) {
       (this->model->bones->trans).x =
-           ((fVar1 + (this->pos).x) - (this->model->bones->trans).x) * this->keys[local_10].speed *
+           ((fVar3 + (this->pos).x) - (this->model->bones->trans).x) * this->keys[local_10].speed *
            dt + (this->model->bones->trans).x;
     }
     if (0.01 < (((this->keys[local_10].pose)->trans).y + (this->pos).y) -
@@ -69,10 +69,10 @@ void __thiscall Player::Update(Player *this,float dt)
            ((((this->keys[local_10].pose)->trans).y + (this->pos).y) - (this->model->bones->trans).y
            ) * this->keys[local_10].speed * dt + (this->model->bones->trans).y;
     }
-    if (0.01 < (fVar2 + (this->pos).z) - (this->model->bones->trans).z ||
-        (fVar2 + (this->pos).z) - (this->model->bones->trans).z < -0.01) {
+    if (0.01 < (fVar1 + (this->pos).z) - (this->model->bones->trans).z ||
+        (fVar1 + (this->pos).z) - (this->model->bones->trans).z < -0.01) {
       (this->model->bones->trans).z =
-           ((fVar2 + (this->pos).z) - (this->model->bones->trans).z) * this->keys[local_10].speed *
+           ((fVar1 + (this->pos).z) - (this->model->bones->trans).z) * this->keys[local_10].speed *
            dt + (this->model->bones->trans).z;
     }
     if (0.01 < ((this->keys[local_10].pose)->rot).x - (this->model->bones->rot).x ||

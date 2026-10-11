@@ -5,43 +5,43 @@ void __thiscall Game::fn_41b070(Game *this)
 {
   int iVar1;
   int iVar2;
-  undefined4 extraout_ECX;
-  undefined4 extraout_ECX_00;
-  undefined4 extraout_ECX_01;
-  undefined4 extraout_ECX_02;
-  undefined4 extraout_ECX_03;
-  undefined4 extraout_ECX_04;
-  undefined4 extraout_ECX_05;
-  undefined4 extraout_ECX_06;
-  undefined4 extraout_ECX_07;
-  undefined4 extraout_ECX_08;
-  undefined4 extraout_ECX_09;
-  undefined4 extraout_ECX_10;
-  undefined4 extraout_ECX_11;
-  undefined4 extraout_ECX_12;
-  undefined4 extraout_ECX_13;
-  undefined4 extraout_ECX_14;
-  undefined4 extraout_ECX_15;
-  undefined4 extraout_ECX_16;
-  undefined4 extraout_ECX_17;
-  undefined4 extraout_ECX_18;
-  undefined4 extraout_ECX_19;
-  undefined4 extraout_ECX_20;
-  undefined4 extraout_ECX_21;
-  undefined4 extraout_ECX_22;
-  undefined4 extraout_ECX_23;
-  undefined4 extraout_ECX_24;
-  undefined4 extraout_ECX_25;
-  undefined4 extraout_ECX_26;
-  undefined4 extraout_ECX_27;
-  undefined4 extraout_ECX_28;
-  undefined4 extraout_ECX_29;
-  undefined4 extraout_ECX_30;
-  undefined4 extraout_ECX_31;
-  undefined4 extraout_ECX_32;
-  undefined4 extraout_ECX_33;
-  undefined4 extraout_ECX_34;
-  undefined4 extraout_ECX_35;
+  float x;
+  float x_00;
+  float x_01;
+  float x_02;
+  float x_03;
+  float x_04;
+  float x_05;
+  float x_06;
+  float x_07;
+  float x_08;
+  float x_09;
+  float x_10;
+  float x_11;
+  float x_12;
+  float x_13;
+  float x_14;
+  float x_15;
+  float x_16;
+  float x_17;
+  float x_18;
+  float x_19;
+  float x_20;
+  float x_21;
+  float x_22;
+  float x_23;
+  float x_24;
+  float x_25;
+  float x_26;
+  float x_27;
+  float x_28;
+  float x_29;
+  float x_30;
+  float x_31;
+  float x_32;
+  float x_33;
+  float x_34;
+  float x_35;
   longlong lVar3;
   longlong lVar4;
   int local_8;
@@ -92,13 +92,13 @@ void __thiscall Game::fn_41b070(Game *this)
   }
   if ((this->state == 2 && 32.0 <= this->f390) && this->f390 < 135.0) {
     sprintf(this->text,&DAT_00453698);
-    thunk_FUN_00404960(extraout_ECX);
+    sinf(x);
     lVar3 = __ftol();
     iVar2 = (int)lVar3;
-    thunk_FUN_00404960(extraout_ECX_00);
+    sinf(x_00);
     lVar3 = __ftol();
     iVar1 = (int)lVar3;
-    thunk_FUN_00404960(this);
+    sinf((float)this);
     lVar3 = __ftol();
     DrawText(this,this->text,0x18,0xc0,0xc0,(int)lVar3,iVar1,iVar2);
     sprintf(this->text,&DAT_004536b0);
@@ -106,13 +106,13 @@ void __thiscall Game::fn_41b070(Game *this)
   }
   if ((this->state == 3 & this->b39a) != 0) {
     sprintf(this->text,&DAT_004536dc);
-    thunk_FUN_00404960(this);
+    sinf((float)this);
     lVar3 = __ftol();
     iVar2 = (int)lVar3;
-    thunk_FUN_00404960(extraout_ECX_01);
+    sinf(x_01);
     lVar3 = __ftol();
     iVar1 = (int)lVar3;
-    thunk_FUN_00404960(extraout_ECX_02);
+    sinf(x_02);
     lVar3 = __ftol();
     DrawText(this,this->text,0x18,0x8c,0xc0,(int)lVar3,iVar1,iVar2);
     sprintf(this->text,&DAT_004536fc);
@@ -150,13 +150,13 @@ void __thiscall Game::fn_41b070(Game *this)
   }
   if (this->state == 4 && this->i3b8 < 3) {
     sprintf(this->text,&DAT_004537d4);
-    thunk_FUN_00404960(extraout_ECX_03);
+    sinf(x_03);
     lVar3 = __ftol();
     iVar2 = (int)lVar3;
-    thunk_FUN_00404960(this);
+    sinf((float)this);
     lVar3 = __ftol();
     iVar1 = (int)lVar3;
-    thunk_FUN_00404960(extraout_ECX_04);
+    sinf(x_04);
     lVar3 = __ftol();
     DrawText(this,this->text,0x1c,0xf3,0x18,(int)lVar3,iVar1,iVar2);
     sprintf(this->text,&DAT_004537e0);
@@ -255,13 +255,13 @@ void __thiscall Game::fn_41b070(Game *this)
   }
   if ((this->state == 4 && -20.0 < (this->camPos).z) && this->i3b8 < 5) {
     sprintf(this->text,&DAT_00453c34);
-    thunk_FUN_00404960(this);
+    sinf((float)this);
     lVar3 = __ftol();
     iVar2 = (int)lVar3;
-    thunk_FUN_00404960(extraout_ECX_05);
+    sinf(x_05);
     lVar3 = __ftol();
     iVar1 = (int)lVar3;
-    thunk_FUN_00404960(extraout_ECX_06);
+    sinf(x_06);
     lVar3 = __ftol();
     DrawText(this,this->text,0x1c,0x80,0xa7,(int)lVar3,iVar1,iVar2);
     sprintf(this->text,&DAT_00453c54);
@@ -309,10 +309,10 @@ void __thiscall Game::fn_41b070(Game *this)
       DrawText(this,this->text,0x30,0x191,0x1f,0xff,0xff,0xff);
       sprintf(this->text,(byte *)s_<<__Goal_00453cf4);
       DrawText(this,this->text,0x10,0x121,0x49,0,0,0);
-      thunk_FUN_00404900(this);
+      cosf((float)this);
       lVar3 = __ftol();
       iVar2 = (int)lVar3;
-      thunk_FUN_00404900(extraout_ECX_09);
+      cosf(x_09);
       lVar3 = __ftol();
       DrawText(this,this->text,0x10,0x11f,0x48,0xff,(int)lVar3,iVar2);
     }
@@ -327,10 +327,10 @@ void __thiscall Game::fn_41b070(Game *this)
       DrawText(this,this->text,0x30,0x191,0x1f,0xff,0xff,0xff);
       sprintf(this->text,(byte *)s_Goal__>>_00453cd0);
       DrawText(this,this->text,0x10,0x121,0x49,0,0,0);
-      thunk_FUN_00404900(extraout_ECX_07);
+      cosf(x_07);
       lVar3 = __ftol();
       iVar2 = (int)lVar3;
-      thunk_FUN_00404900(extraout_ECX_08);
+      cosf(x_08);
       lVar3 = __ftol();
       DrawText(this,this->text,0x10,0x11f,0x48,0xff,(int)lVar3,iVar2);
     }
@@ -373,63 +373,63 @@ void __thiscall Game::fn_41b070(Game *this)
     if (30.0 < (this->camPos).y && this->state == 5) {
       if (this->b3a6 == '\0') {
         sprintf(this->text,&DAT_00453d24);
-        thunk_FUN_00404960(this);
+        sinf((float)this);
         lVar3 = __ftol();
         iVar2 = (int)lVar3;
-        thunk_FUN_00404960(extraout_ECX_12);
+        sinf(x_12);
         lVar3 = __ftol();
         iVar1 = (int)lVar3;
-        thunk_FUN_00404960(extraout_ECX_13);
+        sinf(x_13);
         lVar3 = __ftol();
         DrawText(this,this->text,0x30,0x100,0xe1,(int)lVar3,iVar1,iVar2);
       }
       else {
         sprintf(this->text,&DAT_00453d1c);
-        thunk_FUN_00404960(extraout_ECX_10);
+        sinf(x_10);
         lVar3 = __ftol();
         iVar2 = (int)lVar3;
-        thunk_FUN_00404960(extraout_ECX_11);
+        sinf(x_11);
         lVar3 = __ftol();
         iVar1 = (int)lVar3;
-        thunk_FUN_00404960(this);
+        sinf((float)this);
         lVar3 = __ftol();
         DrawText(this,this->text,0x30,0x100,0xe1,(int)lVar3,iVar1,iVar2);
       }
     }
     if (((this->camPos).y <= 5.0 && this->f390 < 0.8) && this->state == 5) {
       sprintf(this->text,&DAT_00453d2c);
-      thunk_FUN_00404960(extraout_ECX_14);
+      sinf(x_14);
       lVar3 = __ftol();
       iVar2 = (int)lVar3;
-      thunk_FUN_00404960(extraout_ECX_15);
+      sinf(x_15);
       lVar3 = __ftol();
       iVar1 = (int)lVar3;
-      thunk_FUN_00404960(this);
+      sinf((float)this);
       lVar3 = __ftol();
       DrawText(this,this->text,0x30,0xdf,0xe1,(int)lVar3,iVar1,iVar2);
     }
     if (this->i3b8 == 5) {
       if (this->b3a6 == '\0') {
         sprintf(this->text,&DAT_00453d44);
-        thunk_FUN_00404960(extraout_ECX_18);
+        sinf(x_18);
         lVar3 = __ftol();
         iVar2 = (int)lVar3;
-        thunk_FUN_00404960(this);
+        sinf((float)this);
         lVar3 = __ftol();
         iVar1 = (int)lVar3;
-        thunk_FUN_00404960(extraout_ECX_19);
+        sinf(x_19);
         lVar3 = __ftol();
         DrawText(this,this->text,0x30,0xb9,0xe1,(int)lVar3,iVar1,iVar2);
       }
       else {
         sprintf(this->text,&DAT_00453d38);
-        thunk_FUN_00404960(this);
+        sinf((float)this);
         lVar3 = __ftol();
         iVar2 = (int)lVar3;
-        thunk_FUN_00404960(extraout_ECX_16);
+        sinf(x_16);
         lVar3 = __ftol();
         iVar1 = (int)lVar3;
-        thunk_FUN_00404960(extraout_ECX_17);
+        sinf(x_17);
         lVar3 = __ftol();
         DrawText(this,this->text,0x30,0xec,0xe1,(int)lVar3,iVar1,iVar2);
       }
@@ -437,25 +437,25 @@ void __thiscall Game::fn_41b070(Game *this)
     else if (this->b414 != '\0') {
       if (this->i418 == 5) {
         sprintf(this->text,&DAT_00453d54);
-        thunk_FUN_00404960(extraout_ECX_20);
+        sinf(x_20);
         lVar3 = __ftol();
         iVar2 = (int)lVar3;
-        thunk_FUN_00404960(extraout_ECX_21);
+        sinf(x_21);
         lVar3 = __ftol();
         iVar1 = (int)lVar3;
-        thunk_FUN_00404960(this);
+        sinf((float)this);
         lVar3 = __ftol();
         DrawText(this,this->text,0x30,0xdf,0xe1,(int)lVar3,iVar1,iVar2);
       }
       else {
         sprintf(this->text,&DAT_00453d60);
-        thunk_FUN_00404960(this);
+        sinf((float)this);
         lVar3 = __ftol();
         iVar2 = (int)lVar3;
-        thunk_FUN_00404960(extraout_ECX_22);
+        sinf(x_22);
         lVar3 = __ftol();
         iVar1 = (int)lVar3;
-        thunk_FUN_00404960(extraout_ECX_23);
+        sinf(x_23);
         lVar3 = __ftol();
         DrawText(this,this->text,0x30,0xcc,0xe1,(int)lVar3,iVar1,iVar2);
       }
@@ -499,13 +499,13 @@ void __thiscall Game::fn_41b070(Game *this)
     sprintf(this->text,&DAT_00453ec0);
     DrawText(this,this->text,0x18,0x126,0,0xff,0xff,0xff);
     sprintf(this->text,&DAT_00453ec8);
-    thunk_FUN_00404960(extraout_ECX_24);
+    sinf(x_24);
     lVar3 = __ftol();
     iVar2 = (int)lVar3;
-    thunk_FUN_00404960(extraout_ECX_25);
+    sinf(x_25);
     lVar3 = __ftol();
     iVar1 = (int)lVar3;
-    thunk_FUN_00404960(this);
+    sinf((float)this);
     lVar3 = __ftol();
     DrawText(this,this->text,0x18,0x11c,0x23,(int)lVar3,iVar1,iVar2);
     sprintf(this->text,&DAT_00453ed0);
@@ -528,63 +528,63 @@ void __thiscall Game::fn_41b070(Game *this)
     }
     if (this->i3b8 == 1) {
       sprintf(this->text,&DAT_00453f30);
-      thunk_FUN_00404960(this);
+      sinf((float)this);
       lVar3 = __ftol();
       iVar2 = (int)lVar3;
-      thunk_FUN_00404960(extraout_ECX_26);
+      sinf(x_26);
       lVar3 = __ftol();
       iVar1 = (int)lVar3;
-      thunk_FUN_00404960(extraout_ECX_27);
+      sinf(x_27);
       lVar3 = __ftol();
       DrawText(this,this->text,0x30,0xec,0xe1,(int)lVar3,iVar1,iVar2);
     }
     if (this->i3b8 == 3) {
       if (this->i3dc < this->i3d8) {
         sprintf(this->text,&DAT_00453f3c);
-        thunk_FUN_00404960(this);
+        sinf((float)this);
         lVar3 = __ftol();
         iVar2 = (int)lVar3;
-        thunk_FUN_00404960(extraout_ECX_28);
+        sinf(x_28);
         lVar3 = __ftol();
         iVar1 = (int)lVar3;
-        thunk_FUN_00404960(extraout_ECX_29);
+        sinf(x_29);
         lVar3 = __ftol();
         DrawText(this,this->text,0x48,0x20,0xe1,(int)lVar3,iVar1,iVar2);
       }
       else if (this->i3d8 < this->i3dc) {
         sprintf(this->text,&DAT_00453f50);
-        thunk_FUN_00404960(extraout_ECX_30);
+        sinf(x_30);
         lVar3 = __ftol();
         iVar2 = (int)lVar3;
-        thunk_FUN_00404960(this);
+        sinf((float)this);
         lVar3 = __ftol();
         iVar1 = (int)lVar3;
-        thunk_FUN_00404960(extraout_ECX_31);
+        sinf(x_31);
         lVar3 = __ftol();
         DrawText(this,this->text,0x48,0x20,0xe1,(int)lVar3,iVar1,iVar2);
       }
       else {
         sprintf(this->text,&DAT_00453f64);
-        thunk_FUN_00404960(extraout_ECX_32);
+        sinf(x_32);
         lVar3 = __ftol();
         iVar2 = (int)lVar3;
-        thunk_FUN_00404960(extraout_ECX_33);
+        sinf(x_33);
         lVar3 = __ftol();
         iVar1 = (int)lVar3;
-        thunk_FUN_00404960(this);
+        sinf((float)this);
         lVar3 = __ftol();
         DrawText(this,this->text,0x48,0xc0,0xe1,(int)lVar3,iVar1,iVar2);
       }
     }
     if (this->i3b8 == 6) {
       sprintf(this->text,&DAT_00453f70);
-      thunk_FUN_00404960(extraout_ECX_34);
+      sinf(x_34);
       lVar3 = __ftol();
       iVar2 = (int)lVar3;
-      thunk_FUN_00404960(extraout_ECX_35);
+      sinf(x_35);
       lVar3 = __ftol();
       iVar1 = (int)lVar3;
-      thunk_FUN_00404960(this);
+      sinf((float)this);
       lVar3 = __ftol();
       DrawText(this,this->text,0x30,0x66,0xe1,(int)lVar3,iVar1,iVar2);
     }

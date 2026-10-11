@@ -10,7 +10,7 @@ undefined4 FUN_0040228b(undefined4 *param_1,undefined4 *param_2)
   }
   else if (param_1[1] == param_2[1]) {
     FUN_004334a0(param_2,param_1,0x20);
-    DAT_00457c94 = 1;
+    g_zbufFound = '\x01';
     uVar1 = 0;
   }
   else {

@@ -3,8 +3,8 @@
 int __fastcall FUN_00433140(int param_1)
 
 {
-  thunk_FUN_00407fe0(param_1);
-  thunk_FUN_00407fe0(param_1 + 0xc);
+  Vec3::CtorDefault((Vec3 *)param_1);
+  Vec3::CtorDefault((Vec3 *)(param_1 + 0xc));
   return param_1;
 }
 

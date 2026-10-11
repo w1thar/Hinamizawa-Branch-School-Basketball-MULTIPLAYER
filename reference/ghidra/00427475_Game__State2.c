@@ -3,10 +3,9 @@
 void __thiscall Game::State2(Game *this)
 
 {
-  uint uVar1;
-  undefined4 extraout_ECX;
-  undefined4 extraout_ECX_00;
-  float10 fVar2;
+  float fVar1;
+  float x;
+  float x_00;
   int local_10;
   int local_c;
   float local_8;
@@ -35,60 +34,52 @@ void __thiscall Game::State2(Game *this)
   if (17.0 < this->f390 && this->f390 < 22.3) {
     (this->camPos).y = (this->camPos).y - this->dt * 3.0;
   }
-  uVar1 = (uint)(24.8 < this->f390 && this->f390 < 25.3);
-  if (uVar1 != 0) {
+  fVar1 = (float)(uint)(24.8 < this->f390 && this->f390 < 25.3);
+  if (fVar1 != 0.0) {
     this->b399 = '\0';
-    fVar2 = (float10)thunk_FUN_00404960(uVar1);
-    (this->camPos).x =
-         (float)((float10)(this->camPos).x - fVar2 * (float10)13.0 * (float10)this->dt);
-    fVar2 = (float10)thunk_FUN_00404900(local_8);
-    (this->camPos).z =
-         (float)((float10)(this->camPos).z - fVar2 * (float10)13.0 * (float10)this->dt);
+    fVar1 = sinf(fVar1);
+    (this->camPos).x = (this->camPos).x - fVar1 * 13.0 * this->dt;
+    fVar1 = cosf(local_8);
+    (this->camPos).z = (this->camPos).z - fVar1 * 13.0 * this->dt;
   }
-  uVar1 = (uint)(28.8 < this->f390 && this->f390 < 29.3);
-  if (uVar1 != 0) {
-    fVar2 = (float10)thunk_FUN_00404960(uVar1);
-    (this->camPos).x =
-         (float)((float10)(this->camPos).x - fVar2 * (float10)13.0 * (float10)this->dt);
-    fVar2 = (float10)thunk_FUN_00404900(this);
-    (this->camPos).z =
-         (float)((float10)(this->camPos).z - fVar2 * (float10)13.0 * (float10)this->dt);
+  fVar1 = (float)(uint)(28.8 < this->f390 && this->f390 < 29.3);
+  if (fVar1 != 0.0) {
+    fVar1 = sinf(fVar1);
+    (this->camPos).x = (this->camPos).x - fVar1 * 13.0 * this->dt;
+    fVar1 = cosf((float)this);
+    (this->camPos).z = (this->camPos).z - fVar1 * 13.0 * this->dt;
   }
   if (29.3 < this->f390 && this->f390 < 31.5) {
     (this->camPos).y = (this->camPos).y + this->dt;
   }
   if (32.0 < this->f390 && this->f390 < 140.0) {
     this->b39a = '\x01';
-    uVar1 = (uint)(this->keyUp == DAT_00454160 || this->keyNum8 == DAT_00454160);
-    if (uVar1 != 0) {
-      fVar2 = (float10)thunk_FUN_00404960(uVar1);
-      (this->camPos).x =
-           (float)(fVar2 * (float10)25.0 * (float10)this->dt + (float10)(this->camPos).x);
-      fVar2 = (float10)thunk_FUN_00404900(local_8);
-      (this->camPos).z =
-           (float)(fVar2 * (float10)25.0 * (float10)this->dt + (float10)(this->camPos).z);
+    fVar1 = (float)(uint)(this->keyUp == KEY_HOLD || this->keyNum8 == KEY_HOLD);
+    if (fVar1 != 0.0) {
+      fVar1 = sinf(fVar1);
+      (this->camPos).x = fVar1 * 25.0 * this->dt + (this->camPos).x;
+      fVar1 = cosf(local_8);
+      (this->camPos).z = fVar1 * 25.0 * this->dt + (this->camPos).z;
     }
-    uVar1 = (uint)(this->keyDown == DAT_00454160 || this->keyNum2 == DAT_00454160);
-    if (uVar1 != 0) {
-      fVar2 = (float10)thunk_FUN_00404960(uVar1);
-      (this->camPos).x =
-           (float)((float10)(this->camPos).x - fVar2 * (float10)25.0 * (float10)this->dt);
-      fVar2 = (float10)thunk_FUN_00404900(local_8);
-      (this->camPos).z =
-           (float)((float10)(this->camPos).z - fVar2 * (float10)25.0 * (float10)this->dt);
+    fVar1 = (float)(uint)(this->keyDown == KEY_HOLD || this->keyNum2 == KEY_HOLD);
+    if (fVar1 != 0.0) {
+      fVar1 = sinf(fVar1);
+      (this->camPos).x = (this->camPos).x - fVar1 * 25.0 * this->dt;
+      fVar1 = cosf(local_8);
+      (this->camPos).z = (this->camPos).z - fVar1 * 25.0 * this->dt;
     }
-    if (this->keyRight == DAT_00454160 || this->keyNum6 == DAT_00454160) {
+    if (this->keyRight == KEY_HOLD || this->keyNum6 == KEY_HOLD) {
       local_8 = this->dt * 2.0 + local_8;
-      fVar2 = (float10)thunk_FUN_00404960(local_8);
-      (this->camDir).x = (float)fVar2;
-      fVar2 = (float10)thunk_FUN_00404900(extraout_ECX);
-      (this->camDir).z = (float)fVar2;
+      fVar1 = sinf(local_8);
+      (this->camDir).x = fVar1;
+      fVar1 = cosf(x);
+      (this->camDir).z = fVar1;
     }
-    if (this->keyLeft == DAT_00454160 || this->keyNum4 == DAT_00454160) {
-      fVar2 = (float10)thunk_FUN_00404960(local_8 - this->dt * 2.0);
-      (this->camDir).x = (float)fVar2;
-      fVar2 = (float10)thunk_FUN_00404900(extraout_ECX_00);
-      (this->camDir).z = (float)fVar2;
+    if (this->keyLeft == KEY_HOLD || this->keyNum4 == KEY_HOLD) {
+      fVar1 = sinf(local_8 - this->dt * 2.0);
+      (this->camDir).x = fVar1;
+      fVar1 = cosf(x_00);
+      (this->camDir).z = fVar1;
     }
   }
   if ((135.0 < this->f390 && this->f390 < 140.0) && (this->f394 < 0.98)) {
@@ -99,8 +90,8 @@ void __thiscall Game::State2(Game *this)
     Sound::StopMp3(this->sound);
     this->b39a = '\0';
   }
-  if ((((this->keyX == DAT_00454158 || this->keyZ == DAT_00454158) || this->keyC == DAT_00454158) ||
-      this->keySpace == DAT_00454158) || this->keyEnter == DAT_00454158) {
+  if ((((this->keyX == KEY_PUSH || this->keyZ == KEY_PUSH) || this->keyC == KEY_PUSH) ||
+      this->keySpace == KEY_PUSH) || this->keyEnter == KEY_PUSH) {
     Sound::Play(this->sound,1);
     for (local_10 = 0; local_10 < 6; local_10 = local_10 + 1) {
       Player::Motion_42df38(this->players[local_10]);

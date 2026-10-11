@@ -1,0 +1,12 @@
+00408f80  PUSH EBP
+00408f81  MOV EBP,ESP
+00408f83  PUSH ECX
+00408f84  MOV dword ptr [EBP + -0x4],ECX
+00408f87  MOV EAX,dword ptr [EBP + -0x4]
+00408f8a  MOV dword ptr [EAX],0x44e0ac
+00408f90  MOV ECX,dword ptr [EBP + -0x4]
+00408f93  MOV dword ptr [ECX + 0x2c],0x0
+00408f9a  MOV EAX,dword ptr [EBP + -0x4]
+00408f9d  MOV ESP,EBP
+00408f9f  POP EBP
+00408fa0  RET

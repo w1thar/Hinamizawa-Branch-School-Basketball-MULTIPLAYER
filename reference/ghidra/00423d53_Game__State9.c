@@ -5,12 +5,12 @@ void __thiscall Game::State9(Game *this)
 {
   Vec3 *pVVar1;
   float fVar2;
-  undefined1 local_50 [12];
-  undefined1 local_44 [12];
-  undefined1 local_38 [12];
-  undefined1 local_2c [12];
-  undefined1 local_20 [12];
-  undefined1 local_14 [12];
+  Vec3 local_50;
+  Vec3 local_44;
+  Vec3 local_38;
+  Vec3 local_2c;
+  Vec3 local_20;
+  Vec3 local_14;
   int local_8;
   
   this->f390 = this->f390 + this->dt;
@@ -53,22 +53,22 @@ void __thiscall Game::State9(Game *this)
     (this->matShadow).m[0xf] = 1.0;
     Sound::OpenMp3(this->sound);
     fVar2 = 0.0;
-    pVVar1 = Vec3_Set(local_14,(Vec3 *)0x0,0.0,17.0,0.0);
+    pVVar1 = Vec3::Ctor(&local_14,0.0,0.0,17.0);
     Player::SetPos(this->players[0],pVVar1->x,pVVar1->y,pVVar1->z,fVar2);
     fVar2 = -0.2;
-    pVVar1 = Vec3_Set(local_20,(Vec3 *)0xc0400000,0.0,17.0,-0.2);
+    pVVar1 = Vec3::Ctor(&local_20,-3.0,0.0,17.0);
     Player::SetPos(this->players[1],pVVar1->x,pVVar1->y,pVVar1->z,fVar2);
     fVar2 = 3.14;
-    pVVar1 = Vec3_Set(local_2c,(Vec3 *)0xbf800000,0.0,8.0,3.14);
+    pVVar1 = Vec3::Ctor(&local_2c,-1.0,0.0,8.0);
     Player::SetPos(this->players[2],pVVar1->x,pVVar1->y,pVVar1->z,fVar2);
     fVar2 = -1.0;
-    pVVar1 = Vec3_Set(local_38,(Vec3 *)0xc0a00000,0.0,15.0,-1.0);
+    pVVar1 = Vec3::Ctor(&local_38,-5.0,0.0,15.0);
     Player::SetPos(this->players[3],pVVar1->x,pVVar1->y,pVVar1->z,fVar2);
     fVar2 = 2.0;
-    pVVar1 = Vec3_Set(local_44,(Vec3 *)0x40800000,0.0,12.0,2.0);
+    pVVar1 = Vec3::Ctor(&local_44,4.0,0.0,12.0);
     Player::SetPos(this->players[4],pVVar1->x,pVVar1->y,pVVar1->z,fVar2);
     fVar2 = 0.5;
-    pVVar1 = Vec3_Set(local_50,(Vec3 *)0x40400000,0.0,16.0,0.5);
+    pVVar1 = Vec3::Ctor(&local_50,3.0,0.0,16.0);
     Player::SetPos(this->players[5],pVVar1->x,pVVar1->y,pVVar1->z,fVar2);
     Player::Motion_430c40(this->players[0]);
     Player::Motion_430c40(this->players[1]);
@@ -222,7 +222,7 @@ void __thiscall Game::State9(Game *this)
     (this->matShadow).m[0xe] = 0.0;
     (this->matShadow).m[0xf] = 1.0;
   }
-  if ((this->keyX == DAT_004540c0 || this->keyZ == DAT_004540c0) || this->keyC == DAT_004540c0) {
+  if ((this->keyX == KEY_PUSH || this->keyZ == KEY_PUSH) || this->keyC == KEY_PUSH) {
     this->i3b8 = 3;
   }
   return;

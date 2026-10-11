@@ -52,8 +52,8 @@ int WinMain(void *hinst,void *hprev,char *cmdline,int nCmdShow)
         Game::UpdateTimer(local_18);
         Game::UpdateInput(local_18);
         Game::Frame(local_18);
-        local_18->mouseX = DAT_004581dc;
-        local_18->mouseY = DAT_004581d8;
+        local_18->mouseX = g_mouseX;
+        local_18->mouseY = g_mouseY;
       }
       else {
         TranslateMessage(&local_34);

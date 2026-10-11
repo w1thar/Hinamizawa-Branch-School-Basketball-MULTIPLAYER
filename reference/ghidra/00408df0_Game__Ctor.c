@@ -17,11 +17,11 @@ Game * __thiscall Game::Ctor(Game *this)
   CtorMembers((Game *)&this->light);
   thunk_FUN_00403880(&this->matView);
   thunk_FUN_00403880(&this->matShadow);
-  thunk_FUN_00407fe0(&this->camPos);
-  thunk_FUN_00407fe0(&this->camDir);
-  thunk_FUN_00407fe0(&this->lightDir);
-  thunk_FUN_00407fe0(&this->v240);
-  thunk_FUN_00407fe0(&this->v24c);
+  Vec3::CtorDefault(&this->camPos);
+  Vec3::CtorDefault(&this->camDir);
+  Vec3::CtorDefault(&this->lightDir);
+  Vec3::CtorDefault(&this->v240);
+  Vec3::CtorDefault(&this->v24c);
   this->vtbl = &PTR_LAB_0044e0a8;
   *unaff_FS_OFFSET = local_10;
   return this;
