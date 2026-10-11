@@ -1,8 +1,12 @@
-*.x    -text
-*.osm  -text
+# Source and text files: stored with LF, checked out with the platform's native line endings.
+* text=auto
+
+# Game data is read byte-for-byte by the loaders; never touch it.
+assets/** -text binary
 *.tga  binary
 *.bmp  binary
 *.wav  binary
 *.mp3  binary
+*.ico  binary
 *.jpg  binary
 *.gif  binary
