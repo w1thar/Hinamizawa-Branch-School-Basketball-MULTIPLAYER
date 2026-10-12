@@ -7,6 +7,7 @@
 
 #include "core/d3dmath.h"
 #include "game/game.h"
+#include "game/input.h"
 #include "game/lang.h"
 #include "game/settings.h"
 #include "platform/platform.h"
@@ -100,31 +101,48 @@ void Game::UpdateTimer()
     if (dt > 0.1f) dt = 0.1f;
 }
 
-static void UpdateKey(int vk, int *state)
+static void UpdateKey(int *state, bool down)
 {
-    if (plat::KeyDown(vk))
+    if (down)
         *state = (*state == KEY_FREE) ? KEY_PUSH : KEY_HOLD;
     else
         *state = (*state == KEY_PUSH || *state == KEY_HOLD) ? KEY_RELEASE : KEY_FREE;
 }
 
+// Original: GetKeyState() for 15 keys. Mod: every connected gamepad also drives the same keys
+// (see game/input.h for the mapping), so single-player works with a controller too.
 void Game::UpdateInput()
 {
-    UpdateKey(plat::KEY_UP, &keyUp);
-    UpdateKey(plat::KEY_DOWN, &keyDown);
-    UpdateKey(plat::KEY_LEFT, &keyLeft);
-    UpdateKey(plat::KEY_RIGHT, &keyRight);
-    UpdateKey(plat::KEY_SPACE, &keySpace);
-    UpdateKey(plat::KEY_RETURN, &keyEnter);
-    UpdateKey(plat::KEY_NUMPAD2, &keyNum2);
-    UpdateKey(plat::KEY_NUMPAD4, &keyNum4);
-    UpdateKey(plat::KEY_NUMPAD6, &keyNum6);
-    UpdateKey(plat::KEY_NUMPAD8, &keyNum8);
-    UpdateKey(plat::KEY_X, &keyX);
-    UpdateKey(plat::KEY_Z, &keyZ);
-    UpdateKey(plat::KEY_C, &keyC);
-    UpdateKey(plat::KEY_LBUTTON, &mouseL);
-    UpdateKey(plat::KEY_RBUTTON, &mouseR);
+    RawControls pad = {};
+    plat::GamepadInfo list[16];
+    int n = plat::ListGamepads(list, 16);
+    for (int i = 0; i < n; i++) {
+        RawControls r;
+        if (!Input_ReadRaw(list[i].id, r)) continue;
+        pad.up |= r.up;
+        pad.down |= r.down;
+        pad.left |= r.left;
+        pad.right |= r.right;
+        pad.pass |= r.pass;
+        pad.shoot |= r.shoot;
+        pad.alt |= r.alt;
+        pad.confirm |= r.confirm;
+    }
+    UpdateKey(&keyUp, plat::KeyDown(plat::KEY_UP) || pad.up);
+    UpdateKey(&keyDown, plat::KeyDown(plat::KEY_DOWN) || pad.down);
+    UpdateKey(&keyLeft, plat::KeyDown(plat::KEY_LEFT) || pad.left);
+    UpdateKey(&keyRight, plat::KeyDown(plat::KEY_RIGHT) || pad.right);
+    UpdateKey(&keySpace, plat::KeyDown(plat::KEY_SPACE));
+    UpdateKey(&keyEnter, plat::KeyDown(plat::KEY_RETURN) || pad.confirm);
+    UpdateKey(&keyNum2, plat::KeyDown(plat::KEY_NUMPAD2));
+    UpdateKey(&keyNum4, plat::KeyDown(plat::KEY_NUMPAD4));
+    UpdateKey(&keyNum6, plat::KeyDown(plat::KEY_NUMPAD6));
+    UpdateKey(&keyNum8, plat::KeyDown(plat::KEY_NUMPAD8));
+    UpdateKey(&keyX, plat::KeyDown(plat::KEY_X) || pad.pass);
+    UpdateKey(&keyZ, plat::KeyDown(plat::KEY_Z) || pad.shoot);
+    UpdateKey(&keyC, plat::KeyDown(plat::KEY_C) || pad.alt);
+    UpdateKey(&mouseL, plat::KeyDown(plat::KEY_LBUTTON));
+    UpdateKey(&mouseR, plat::KeyDown(plat::KEY_RBUTTON));
 }
 
 // ---- text -------------------------------------------------------------------------------------

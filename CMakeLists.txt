@@ -31,6 +31,7 @@ set(HB_SOURCES
     src/game/game.cpp
     src/game/game_app.cpp
     src/game/hud.cpp
+    src/game/input.cpp
     src/game/lang.cpp
     src/game/match.cpp
     src/game/models.cpp
@@ -44,11 +45,11 @@ set(HB_SOURCES
 if(WIN32)
     set(HB_ICON "${CMAKE_SOURCE_DIR}/src/platform/win32/app.ico")
     configure_file(src/platform/win32/hbasket.rc.in "${CMAKE_BINARY_DIR}/hbasket.rc" @ONLY)
-    list(APPEND HB_SOURCES src/platform/win32/win32_platform.cpp "${CMAKE_BINARY_DIR}/hbasket.rc")
+    list(APPEND HB_SOURCES src/platform/win32/win32_platform.cpp src/platform/win32/win32_gamepad.cpp "${CMAKE_BINARY_DIR}/hbasket.rc")
     set_source_files_properties("${CMAKE_BINARY_DIR}/hbasket.rc" PROPERTIES OBJECT_DEPENDS "${HB_PAK}")
     add_executable(hbasket WIN32 ${HB_SOURCES})
     target_include_directories(hbasket PRIVATE src/platform/win32)
-    target_link_libraries(hbasket PRIVATE opengl32 winmm gdi32 user32 shell32)
+    target_link_libraries(hbasket PRIVATE opengl32 winmm gdi32 user32 shell32 setupapi)
 else()
     message(FATAL_ERROR "Only the Win32 platform backend exists so far.")
 endif()

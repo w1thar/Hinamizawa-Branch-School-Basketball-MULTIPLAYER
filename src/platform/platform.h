@@ -67,6 +67,29 @@ void AudioUnlock();
 enum Font { FONT_JAPANESE = 0, FONT_LATIN = 1 };
 bool RasterText(const char *utf8, int height, Font font, std::vector<uint8_t> &alpha, int &w, int &h);
 
+// Gamepads (added by the mod). Buttons use positional names: SOUTH = Cross / A, EAST = Circle / B,
+// WEST = Square / X, NORTH = Triangle / Y.
+enum PadButton {
+    PAD_SOUTH, PAD_EAST, PAD_WEST, PAD_NORTH, PAD_L1, PAD_R1, PAD_L2, PAD_R2,
+    PAD_SELECT, PAD_START, PAD_L3, PAD_R3, PAD_HOME,
+    PAD_DPAD_UP, PAD_DPAD_DOWN, PAD_DPAD_LEFT, PAD_DPAD_RIGHT,
+    PAD_BUTTON_COUNT
+};
+enum PadType { PADTYPE_XINPUT, PADTYPE_DUALSHOCK4, PADTYPE_DUALSENSE };
+struct GamepadState {
+    float lx = 0, ly = 0;   // left stick, -1..1, +y = down
+    bool buttons[PAD_BUTTON_COUNT] = {};
+};
+struct GamepadInfo {
+    int id;                 // stable while the pad stays connected
+    PadType type;
+    char name[48];
+};
+// Lists connected pads (re-scans for new ones at most every couple of seconds).
+int ListGamepads(GamepadInfo *out, int max);
+// False if the pad with this id is gone.
+bool ReadGamepad(int id, GamepadState &state);
+
 // Per-user folder for settings, with a trailing path separator; created if missing.
 std::string ConfigDir();
 
