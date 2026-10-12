@@ -180,21 +180,33 @@ void Game::State6()
         }
     } else {
         // Mod (1v1 / 2v2): the same roles from the players in the match: the ball carrier, else the
-        // nearest one still in play, controls; the other (2v2) is role 2. Missing roles are -1.
+        // nearest one still in play (i190 below 15 / 10, as in the original), else anyone; the
+        // other (2v2) is role 2. Missing roles are -1.
+        // A player who just threw / tipped the ball (15) only gets out of that state when somebody
+        // catches it. With 3 a side a teammate takes over meanwhile; a lone player would be stuck,
+        // so here it ends once the ball is 5 units away.
+        for (int i = 0; i < 6; i++) {
+            if (P[i]->benched || P[i]->i190 != 15) continue;
+            float d = (P[i]->pos.x - v24c.x) * (P[i]->pos.x - v24c.x) + (P[i]->pos.z - v24c.z) * (P[i]->pos.z - v24c.z);
+            if (d > 25.0f) {
+                P[i]->i190 = 7;
+                P[i]->Motion_Stand();
+            }
+        }
         you2 = you3 = com2 = com3 = -1;
         for (int side = 0; side < 2; side++) {
             bool you = side == 0;
             int limit = you ? 15 : 10;
-            int lead = -1, other = -1;
+            int lead = -1, other = -1, leadRank = 3;
             float leadDist = 10000.0f;
             for (int i = 0; i < 6; i++) {
                 if (P[i]->benched || P[i]->b154 != you) continue;
                 float d = (P[i]->pos.x - v24c.x) * (P[i]->pos.x - v24c.x) + (P[i]->pos.z - v24c.z) * (P[i]->pos.z - v24c.z);
-                bool takes = lead < 0 || P[i]->i190 < 3 ||
-                             (P[lead]->i190 >= 3 && d < leadDist && P[i]->i190 < limit);
-                if (takes) {
+                int rank = P[i]->i190 < 3 ? 0 : P[i]->i190 < limit ? 1 : 2;
+                if (rank < leadRank || (rank == leadRank && d < leadDist)) {
                     other = lead;
                     lead = i;
+                    leadRank = rank;
                     leadDist = d;
                 } else {
                     other = i;
