@@ -156,20 +156,23 @@ void Game::LoadSoundSet(int set)
 
 void Game::Frame()
 {
-    switch (state) {
-    case 1: State1_Title(); break;
-    case 2: State2(); break;
-    case 3: State3(); break;
-    case 4: State4(); break;
-    case 5: State5(); break;
-    case 6: State6(); break;
-    case 7: State7(); break;
-    case 8: State8(); break;
-    case 9: State9(); break;
-    case 11: State11_Settings(); break;
+    bool frozen = UpdatePause();   // mod: the pause menu freezes everything below
+    if (!frozen) {
+        switch (state) {
+        case 1: State1_Title(); break;
+        case 2: State2(); break;
+        case 3: State3(); break;
+        case 4: State4(); break;
+        case 5: State5(); break;
+        case 6: State6(); break;
+        case 7: State7(); break;
+        case 8: State8(); break;
+        case 9: State9(); break;
+        case 11: State11_Settings(); break;
+        }
+        for (int i = 0; i < 6; i++) players[i]->Update(dt);
+        fn_42b23c();
     }
-    for (int i = 0; i < 6; i++) players[i]->Update(dt);
-    fn_42b23c();
 
     Vec3 up(0.0f, 1.0f, 0.0f);
     Vec3 at(camPos.x + camDir.x, camPos.y + camDir.y, camPos.z + camDir.z);
@@ -193,6 +196,7 @@ void Game::Frame()
         fn_4259a7();
         fn_428491();
         fn_4286c9();
+        if (paused) DrawPauseDim();
         device->EndScene();
     }
     DrawHUD();

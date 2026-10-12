@@ -22,6 +22,12 @@ Game::Game()
     dt = 0;
     keyUp = keyDown = keyLeft = keyRight = keySpace = keyX = keyZ = keyC = KEY_FREE;
     keyNum2 = keyNum4 = keyNum6 = keyNum8 = keyEnter = mouseL = mouseR = KEY_FREE;
+    keyPause = KEY_FREE;
+    padMove = false;
+    padMoveX = padMoveY = 0;
+    inputLock = false;
+    paused = false;
+    pausePage = pauseSel = 0;
     mouseX = mouseY = 0;
     quit = false;
 
@@ -127,7 +133,16 @@ void Game::UpdateInput()
         pad.shoot |= r.shoot;
         pad.alt |= r.alt;
         pad.confirm |= r.confirm;
+        pad.pause |= r.pause;
+        // Analog movement follows whichever pad is pushed furthest.
+        if (r.moveX * r.moveX + r.moveY * r.moveY > pad.moveX * pad.moveX + pad.moveY * pad.moveY) {
+            pad.moveX = r.moveX;
+            pad.moveY = r.moveY;
+        }
     }
+    padMove = pad.moveX != 0.0f || pad.moveY != 0.0f;
+    padMoveX = pad.moveX;
+    padMoveY = pad.moveY;
     UpdateKey(&keyUp, plat::KeyDown(plat::KEY_UP) || pad.up);
     UpdateKey(&keyDown, plat::KeyDown(plat::KEY_DOWN) || pad.down);
     UpdateKey(&keyLeft, plat::KeyDown(plat::KEY_LEFT) || pad.left);
@@ -143,6 +158,16 @@ void Game::UpdateInput()
     UpdateKey(&keyC, plat::KeyDown(plat::KEY_C) || pad.alt);
     UpdateKey(&mouseL, plat::KeyDown(plat::KEY_LBUTTON));
     UpdateKey(&mouseR, plat::KeyDown(plat::KEY_RBUTTON));
+    UpdateKey(&keyPause, plat::KeyDown(plat::KEY_ESCAPE) || pad.pause);
+
+    // After leaving the pause menu the button that closed it is still down; ignore the action
+    // keys until they are let go, so e.g. Cross on "Resume" does not also start a pass.
+    if (inputLock) {
+        bool anyDown = keyX != KEY_FREE || keyZ != KEY_FREE || keyC != KEY_FREE || keySpace != KEY_FREE ||
+                       keyEnter != KEY_FREE || keyPause != KEY_FREE;
+        if (!anyDown) inputLock = false;
+        else keyX = keyZ = keyC = keySpace = keyEnter = keyPause = KEY_FREE;
+    }
 }
 
 // ---- text -------------------------------------------------------------------------------------

@@ -68,8 +68,7 @@ LRESULT CALLBACK WndProc(HWND hwnd, UINT msg, WPARAM wp, LPARAM lp)
 {
     switch (msg) {
     case WM_KEYDOWN:
-        if (wp == VK_ESCAPE) DestroyWindow(hwnd);   // original: ESC quits at any time
-        return 0;
+        return 0;   // the original quit on ESC; the mod uses it for the pause menu
     case WM_SYSKEYDOWN:
         if (wp == VK_RETURN && (lp & (1 << 29))) {  // Alt+Enter
             SetFullscreen(!g_fullscreen);

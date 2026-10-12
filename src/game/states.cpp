@@ -203,7 +203,12 @@ void Game::State11_Settings()
 {
     f390 = f390 + dt;
     if (v24c.y < 1.0f && -1.0f < f25c && f25c < 7.0f) f25c = 25.0f;   // same backdrop as state 3
+    if (SettingsMenu()) state = 3;
+}
 
+// The settings page, shared by the title menu (state 11) and the pause menu.
+bool Game::SettingsMenu()
+{
     const int ITEMS = 5;   // master, music, sfx, language, back
     if ((keyUp == KEY_PUSH || keyNum8 == KEY_PUSH) && menuSel > 0) {
         menuSel--;
@@ -234,11 +239,129 @@ void Game::State11_Settings()
         g_settings.language = g_settings.language == LANG_ENGLISH ? LANG_JAPANESE : LANG_ENGLISH;
         sound->Play(2);
     }
-    if (menuSel == ITEMS - 1 && AnyActionPushed(this)) {
+    // "Back", or ESC / Options anywhere on the page.
+    if ((menuSel == ITEMS - 1 && AnyActionPushed(this)) || keyPause == KEY_PUSH) {
         Settings_Save();
         sound->Play(1);
-        state = 3;
+        return true;
     }
+    return false;
+}
+
+// ---- pause menu (mod): ESC / Options freezes the game ------------------------------------------
+enum { PAUSE_RESUME, PAUSE_SETTINGS, PAUSE_TITLE, PAUSE_QUIT };
+
+int Game::PauseItems(int *ids)
+{
+    int n = 0;
+    ids[n++] = PAUSE_RESUME;
+    ids[n++] = PAUSE_SETTINGS;
+    if (state >= 4 && state <= 9) ids[n++] = PAUSE_TITLE;   // not on the title screens themselves
+    ids[n++] = PAUSE_QUIT;
+    return n;
+}
+
+bool Game::UpdatePause()
+{
+    if (!paused) {
+        // In the title's settings page ESC just goes back (handled by SettingsMenu).
+        if (keyPause != KEY_PUSH || state < 2 || state == 11) return false;
+        paused = true;
+        pausePage = 0;
+        pauseSel = 0;
+        sound->Play(2);
+        return true;
+    }
+    if (pausePage == 1) {
+        if (SettingsMenu()) pausePage = 0;
+        return true;
+    }
+    int ids[4];
+    int n = PauseItems(ids);
+    if (pauseSel >= n) pauseSel = n - 1;
+    if ((keyUp == KEY_PUSH || keyNum8 == KEY_PUSH) && pauseSel > 0) {
+        pauseSel--;
+        sound->Play(2);
+    }
+    if ((keyDown == KEY_PUSH || keyNum2 == KEY_PUSH) && pauseSel < n - 1) {
+        pauseSel++;
+        sound->Play(2);
+    }
+    int pick = -1;
+    if (keyPause == KEY_PUSH || keyC == KEY_PUSH) pick = PAUSE_RESUME;   // ESC / Options / Circle: back to the game
+    else if (keyX == KEY_PUSH || keyZ == KEY_PUSH || keySpace == KEY_PUSH || keyEnter == KEY_PUSH) pick = ids[pauseSel];
+    switch (pick) {
+    case PAUSE_RESUME:
+        sound->Play(1);
+        paused = false;
+        inputLock = true;
+        break;
+    case PAUSE_SETTINGS:
+        sound->Play(1);
+        pausePage = 1;
+        menuSel = 0;
+        break;
+    case PAUSE_TITLE:
+        sound->Play(1);
+        paused = false;
+        inputLock = true;
+        ReturnToTitle();
+        break;
+    case PAUSE_QUIT:
+        quit = true;
+        break;
+    }
+    return paused;
+}
+
+// Abandons the current match: the same reset the original does after a lost match (state 8).
+void Game::ReturnToTitle()
+{
+    sound->StopMp3();
+    LoadSoundSet(0);
+    for (int i = 0; i < 6; i++) {
+        players[i]->SetTex1(0);
+        players[i]->SetTex2(0);
+        players[i]->b154 = false;
+        players[i]->i190 = 7;
+        players[i]->Motion_Stand();
+    }
+    camPos = Vec3(0.0f, 0.0f, 0.0f);
+    camDir = Vec3(1.0f, 0.0f, 1.0f);
+    v240 = Vec3(0.0f, 6.0f, 0.0f);
+    v24c = Vec3(0.0f, 6.0f, 0.0f);
+    f260 = 0.0f;
+    f264 = 0.0f;
+    f258 = 0.0f;
+    f25c = 0.0f;
+    i268 = -1;
+    v370 = Vec3(0.0f, 0.0f, 0.0f);
+    lightDir = Vec3(1.0f, -1.0f, 1.0f);
+    v37c = Vec3(0.0f, 0.0f, 0.0f);
+    f390 = 0.0f;
+    f394 = 1.0f;
+    b398 = false;
+    b399 = false;
+    b39a = 0;
+    b3a4 = false;
+    b3a5 = false;
+    b3a6 = 0;
+    b3a7 = false;
+    i3ac = 0;
+    i3b8 = 0;
+    f3bc = 0.0f;
+    i39c = 0;
+    f3a0 = -1.0f;
+    i3b0 = 0;
+    i3b4 = 0;
+    f3e0 = 300.0f;
+    i3d8 = 0;
+    i3dc = 0;
+    f400 = 4.0f;
+    i40c = 0;
+    b414 = false;
+    i418 = -1;
+    state = 1;
 }
 
 // ---- 4: team select. i3b8 = number picked (0..2), 3 = "OK?" yes, 4 = no, 5 = confirmed --------

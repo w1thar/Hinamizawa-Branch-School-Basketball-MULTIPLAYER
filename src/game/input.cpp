@@ -1,10 +1,12 @@
 #include "game/input.h"
 
+#include <cmath>
 #include <cstdio>
 
 #include "game/game.h"
 
-static const float STICK_THRESHOLD = 0.5f;
+static const float STICK_THRESHOLD = 0.5f;   // stick -> digital directions (menus, keyboard-style keys)
+static const float STICK_DEADZONE = 0.3f;    // stick -> analog movement
 
 bool Input_ReadRaw(int device, RawControls &out)
 {
@@ -18,6 +20,7 @@ bool Input_ReadRaw(int device, RawControls &out)
         out.shoot = plat::KeyDown(plat::KEY_Z);
         out.alt = plat::KeyDown(plat::KEY_C);
         out.confirm = plat::KeyDown(plat::KEY_RETURN) || plat::KeyDown(plat::KEY_SPACE);
+        out.pause = plat::KeyDown(plat::KEY_ESCAPE);
         return true;
     }
     if (device < 0) return false;
@@ -30,7 +33,22 @@ bool Input_ReadRaw(int device, RawControls &out)
     out.pass = s.buttons[plat::PAD_SOUTH];
     out.shoot = s.buttons[plat::PAD_WEST];
     out.alt = s.buttons[plat::PAD_EAST];
-    out.confirm = s.buttons[plat::PAD_START];
+    out.confirm = s.buttons[plat::PAD_SOUTH];
+    out.pause = s.buttons[plat::PAD_START];
+    float mag = sqrtf(s.lx * s.lx + s.ly * s.ly);
+    if (mag > STICK_DEADZONE) {
+        float len = mag > 1.0f ? 1.0f : mag;
+        out.moveX = s.lx / mag * len;
+        out.moveY = s.ly / mag * len;
+    } else {
+        float x = (s.buttons[plat::PAD_DPAD_RIGHT] ? 1.0f : 0.0f) - (s.buttons[plat::PAD_DPAD_LEFT] ? 1.0f : 0.0f);
+        float y = (s.buttons[plat::PAD_DPAD_DOWN] ? 1.0f : 0.0f) - (s.buttons[plat::PAD_DPAD_UP] ? 1.0f : 0.0f);
+        float d = sqrtf(x * x + y * y);
+        if (d > 0.0f) {
+            out.moveX = x / d;
+            out.moveY = y / d;
+        }
+    }
     return true;
 }
 
@@ -52,6 +70,7 @@ void Input_Step(VirtualPad &pad, const RawControls &raw)
     StepKey(pad.shoot, raw.shoot);
     StepKey(pad.alt, raw.alt);
     StepKey(pad.confirm, raw.confirm);
+    StepKey(pad.pause, raw.pause);
 }
 
 const char *Input_DeviceName(int device)

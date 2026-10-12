@@ -48,6 +48,13 @@ public:
     void State8();
     void State9();
     void State11_Settings();   // added by the mod
+    bool SettingsMenu();       // settings page input; true when "Back" was chosen
+    bool UpdatePause();        // pause menu; true while the game is paused
+    int PauseItems(int *ids);  // the pause menu's entries for the current state
+    void ReturnToTitle();
+    void DrawSettingsMenu();
+    void DrawPauseMenu();
+    void DrawPauseDim();
 
     void RenderSky(float yawAngle, float pitchAngle);
     void RenderCourt();
@@ -74,6 +81,10 @@ public:
     float dt;
     int keyUp, keyDown, keyLeft, keyRight, keySpace, keyX, keyZ, keyC;
     int keyNum2, keyNum4, keyNum6, keyNum8, keyEnter, mouseL, mouseR;
+    int keyPause;              // mod: ESC / Options / Start
+    bool padMove;              // mod: a gamepad stick / d-pad is pushed (analog movement)
+    float padMoveX, padMoveY;  // mod: its direction on screen, +y = down
+    bool inputLock;            // mod: swallow held action keys after closing the pause menu
     int mouseX, mouseY;
     bool quit;
 
@@ -120,4 +131,7 @@ public:
 
     // ---- added by the mod ----
     int menuSel;               // cursor in the mod's menus
+    bool paused;               // pause menu open: the game is frozen
+    int pausePage;             // 0 = pause menu, 1 = settings
+    int pauseSel;
 };

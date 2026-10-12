@@ -19,7 +19,7 @@ const char *const kTable[][2] = {
     {"ノーマルモード", "Normal Mode"},
     {"　部活モード", "Club Mode"},
     {"　練習モード", "Practice Mode"},
-    {"ESCキー:強制終了(常時)", "ESC: quit (any time)"},
+    {"ESCキー:ポーズ", "ESC: pause"},
 
     // ---- team select ----
     {"チーム分け", "Team Selection"},
@@ -98,7 +98,7 @@ const char *const kTable[][2] = {
 
     // ---- half time / results ----
     {"休憩中", "Break"},
-    {"Ｘキー：後半戦へ　　矢印キー：移動　　ESCキー：強制終了", "X: start the 2nd half     Arrows: move     ESC: quit"},
+    {"Ｘキー：後半戦へ　　矢印キー：移動　　ESCキー：ポーズ", "X: start the 2nd half     Arrows: move     ESC: pause"},
     {"終了", "End"},
     {"結果発表", "Results"},
     {"ＹＯＵ　ＷＩＮ！", "YOU WIN!"},
@@ -117,6 +117,11 @@ const char *const kTable[][2] = {
     {"日本語", "日本語 (Japanese)"},
     {"英語", "English"},
     {"戻る", "Back"},
+    {"ポーズ", "Paused"},
+    {"再開", "Resume"},
+    {"タイトルに戻る", "Return to Title"},
+    {"ゲーム終了", "Quit Game"},
+    {"↑↓：選択　　Ｘ：決定　　ESC：再開", "Up/Down: select     X: confirm     ESC: resume"},
     {"←→：変更　　Ｘ：決定", "Left/Right: change     X: select"},
 };
 

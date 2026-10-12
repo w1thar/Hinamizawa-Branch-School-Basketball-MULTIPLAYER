@@ -350,6 +350,27 @@ void Game::State6()
     // ---- the player YOU control (you1) ----
     bool upHeld = keyUp == KEY_HOLD || keyNum8 == KEY_HOLD;
     bool downHeld = keyDown == KEY_HOLD || keyNum2 == KEY_HOLD;
+    // Mod: with a gamepad stick / d-pad the player turns to face the pushed direction and runs that
+    // way. The camera looks along +z with +x to the right, so screen up = +z and right = +x; a
+    // player with yaw a moves along (-sin a, -cos a). While charging a loop shot (i190 3) the
+    // camera sits behind the player, so there the stick keeps the original left/right turning.
+    bool analog = padMove && P[you1]->i190 != 3 && P[you1]->i190 < 10;
+    if (analog) {
+        float target = Atan2(-padMoveX, padMoveY);
+        float diff = target - P[you1]->yaw;
+        while (diff > 3.14159265f) diff -= 6.2831853f;
+        while (diff < -3.14159265f) diff += 6.2831853f;
+        float stepAngle = 12.0f * dt;   // rad/s; clamped so it settles instead of jittering
+        if (diff > stepAngle) diff = stepAngle;
+        if (diff < -stepAngle) diff = -stepAngle;
+        P[you1]->yaw += diff;
+        // Run once roughly facing the stick direction (pivot first on sharp turns).
+        float rest = target - P[you1]->yaw;
+        while (rest > 3.14159265f) rest -= 6.2831853f;
+        while (rest < -3.14159265f) rest += 6.2831853f;
+        upHeld = rest > -1.2f && rest < 1.2f;
+        downHeld = false;
+    }
     if (P[you1]->i190 < 3 && upHeld) {
         Step(you1);
         P[you1]->i190 = 1;
@@ -434,7 +455,9 @@ void Game::State6()
     }
 
     // Turning; after a goal / when the ball is loose the controlled player is steered for you.
-    if ((keyRight == KEY_HOLD || keyNum6 == KEY_HOLD) && P[you1]->i190 < 10) {
+    if (analog) {
+        // steered above
+    } else if ((keyRight == KEY_HOLD || keyNum6 == KEY_HOLD) && P[you1]->i190 < 10) {
         if (P[you1]->i190 == 0 || (3 < P[you1]->i190 && P[you1]->i190 < 8))
             P[you1]->yaw = dt * 5.0f + P[you1]->yaw;
         else
@@ -465,7 +488,7 @@ void Game::State6()
         TurnTo(i, v24c.x, v24c.z, 5.0f);
         P[i]->Motion_Stand();
     };
-    bool upFree = keyUp == KEY_FREE && keyNum8 == KEY_FREE;
+    bool upFree = keyUp == KEY_FREE && keyNum8 == KEY_FREE && !analog;
     if (b3a6 == 0) {   // YOU attack the hoop at x = -35
         if (6 < P[you2]->i190 && P[you2]->i190 < 10) {
             if (P[you2]->pos.z > 18.0f) RunTo(you2, 0.0f);
