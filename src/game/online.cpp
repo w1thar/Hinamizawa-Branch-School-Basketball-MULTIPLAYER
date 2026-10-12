@@ -40,6 +40,7 @@ enum Packet {
     P_BYE,             // either way
     P_DISCOVER,        // c->broadcast
     P_DISCOVER_REPLY,  // h->c: name, players, in match
+    P_PUNCH,           // h->c: opens the host's NAT towards a joiner (ignored)
 };
 enum Reject { REJ_FULL = 1, REJ_IN_MATCH, REJ_VERSION };
 
@@ -69,6 +70,11 @@ struct Found {
     int players;
     bool inMatch;
     double seen;
+};
+
+struct Punch {
+    plat::NetAddr addr;
+    double until, last;
 };
 
 struct SoundEvent {
@@ -113,6 +119,17 @@ struct State {
     int nFound = 0;
     double discoverSent = 0;
     int lanSock = -1;
+    // NAT traversal
+    plat::NetAddr pub;          // this socket's public address (STUN)
+    double stunSent = 0;
+    int stunTries = 0;
+    Punch punch[8] = {};        // host: joiners to punch towards
+    int nPunch = 0;
+    std::string sigTopics;      // host: ntfy topics being polled
+    std::string joinTopic;      // joiner: the host's topic
+    bool announced = false;
+    int lobbyPage = 0;          // host lobby: 0 normal, 1 typing a player's code
+    std::string lobbyMsg;
 } O;
 
 // ---- byte buffers ----
@@ -193,6 +210,40 @@ bool DecodeAddress(const std::string &in, plat::NetAddr &out)
     return out.ip != 0 && out.port != 0;
 }
 
+std::string Topic(const std::string &code)
+{
+    std::string t = "hbk-";
+    for (char c : code)
+        if (c != '-') t += c;
+    return t;
+}
+
+void AddPunch(const plat::NetAddr &a, double seconds)
+{
+    double now = plat::TimeSeconds();
+    for (int k = 0; k < O.nPunch; k++) {
+        if (O.punch[k].addr == a) {
+            O.punch[k].until = now + seconds;
+            return;
+        }
+    }
+    if (O.nPunch < 8) O.punch[O.nPunch++] = {a, now + seconds, 0.0};
+}
+
+// Asks a STUN server, from the game socket, which public address the NAT gave it.
+void StunTick()
+{
+    double now = plat::TimeSeconds();
+    if (O.pub.ip || O.stunTries >= 8 || now - O.stunSent < 1.0) return;
+    plat::NetAddr srv;
+    if (!plat::NetStunServer(srv, O.stunTries)) return;
+    uint8_t req[20];
+    int n = plat::StunBuildRequest(req);
+    plat::UdpSend(O.sock, srv, req, n);
+    O.stunSent = now;
+    O.stunTries++;
+}
+
 bool PrivateIp(uint32_t ip)
 {
     return (ip >> 24) == 10 || (ip >> 20) == ((172u << 4) | 1) || (ip >> 16) == ((192u << 8) | 168) ||
@@ -252,6 +303,18 @@ void HostSoundHook(int slot)
     O.ev[O.evCount++] = {O.evNext++, (uint8_t)slot};
 }
 
+// The code to hand out: the UPnP-forwarded port if that worked, else the NAT mapping STUN saw.
+std::string HostCode(uint32_t *upnpIp = nullptr)
+{
+    uint32_t ext = 0;
+    int st = plat::NetPortMappingStatus(ext);
+    if (upnpIp) *upnpIp = ext;
+    if (st == 1 && ext && !PrivateIp(ext)) return EncodeCode(ext, O.port);
+    if (O.pub.ip) return EncodeCode(O.pub.ip, O.pub.port);
+    if (ext) return EncodeCode(ext, O.port);
+    return std::string();
+}
+
 void CloseSockets()
 {
     if (O.sock >= 0) plat::UdpClose(O.sock);
@@ -265,7 +328,10 @@ void CloseSockets()
 bool Game::OnlineActive() const { return O.role != ROLE_NONE; }
 bool Game::OnlineIsHost() const { return O.role == ROLE_HOST; }
 bool Game::OnlineClientView() const { return O.role == ROLE_CLIENT && O.view; }
-bool Game::OnlineTextEntry() const { return state == 14 && (O.page == PAGE_CODE || O.page == PAGE_NAME); }
+bool Game::OnlineTextEntry() const
+{
+    return (state == 14 && (O.page == PAGE_CODE || O.page == PAGE_NAME)) || (state == 15 && O.lobbyPage == 1);
+}
 
 void Game::OnlineNoteSoundSet(int set)
 {
@@ -313,6 +379,9 @@ void Game::OnlineLeave()
         Send(O.host, w);
     }
     Sound::playHook = nullptr;
+    plat::NetSignalStop();
+    O.nPunch = 0;
+    O.sigTopics.clear();
     CloseSockets();
     O.role = ROLE_NONE;
     O.view = false;
@@ -357,6 +426,11 @@ void Game::OnlineHostReceive()
     int n;
     double now = plat::TimeSeconds();
     while ((n = plat::UdpRecv(O.sock, from, buf, sizeof(buf))) >= 0) {
+        plat::NetAddr mapped;
+        if (plat::StunParseResponse(buf, n, mapped)) {
+            O.pub = mapped;
+            continue;
+        }
         Reader r(buf, n);
         if (r.u32() != MAGIC) continue;
         int type = r.u8();
@@ -449,6 +523,38 @@ void Game::OnlineHostReceive()
     }
     for (int s = 1; s < 6; s++)
         if (O.peers[s].used && now - O.peers[s].lastHeard > TIMEOUT) HostRemovePeer(this, s);
+
+    // NAT traversal: learn our public address, listen for joiners announcing theirs (ntfy.sh)
+    // and send them packets so our router lets their HELLO in.
+    StunTick();
+    uint32_t ext = 0;
+    plat::NetPortMappingStatus(ext);
+    std::string topics;
+    if (ext && !PrivateIp(ext)) topics = Topic(EncodeCode(ext, O.port));
+    if (O.pub.ip) {
+        std::string t = Topic(EncodeCode(O.pub.ip, O.pub.port));
+        if (t != topics) topics += (topics.empty() ? "" : ",") + t;
+    }
+    if (!topics.empty() && topics != O.sigTopics) {
+        O.sigTopics = topics;
+        plat::NetSignalHost(topics);
+    }
+    plat::NetAddr joiner;
+    while (plat::NetSignalPoll(joiner)) AddPunch(joiner, 20.0);
+    for (int k = 0; k < O.nPunch;) {
+        Punch &p = O.punch[k];
+        if (now > p.until) {
+            p = O.punch[--O.nPunch];
+            continue;
+        }
+        if (now - p.last > 0.2) {
+            p.last = now;
+            Writer w;
+            Begin(w, P_PUNCH);
+            Send(p.addr, w);
+        }
+        k++;
+    }
     // Remote humans' buttons for this frame.
     for (int h = 0; h < mpHumans; h++)
         netRaw[h] = hum[h].device == DEVICE_REMOTE && O.peers[O.humSlot[h]].used ? O.peers[O.humSlot[h]].raw : RawControls();
@@ -638,6 +744,11 @@ void Game::OnlineClientReceive()
     int n;
     double now = plat::TimeSeconds();
     while ((n = plat::UdpRecv(O.sock, from, buf, sizeof(buf))) >= 0) {
+        plat::NetAddr mapped;
+        if (plat::StunParseResponse(buf, n, mapped)) {
+            O.pub = mapped;
+            continue;
+        }
         if (!(from == O.host)) continue;
         Reader r(buf, n);
         if (r.u32() != MAGIC) continue;
@@ -692,11 +803,17 @@ void Game::OnlineClientReceive()
         }
     }
     if (!O.welcomed) {
-        if (now - O.joinStart > 8.0) {
+        // Internet joins: tell the host our public address (ntfy.sh) so it can punch through.
+        StunTick();
+        if (O.pub.ip && !O.announced && !PrivateIp(O.host.ip)) {
+            O.announced = true;
+            plat::NetSignalAnnounce(O.joinTopic, O.pub);
+        }
+        if (now - O.joinStart > 45.0) {
             OnlineFail("接続できませんでした");
             return;
         }
-        if (now - O.helloSent > 0.5) {
+        if (now - O.helloSent > 0.25) {
             O.helloSent = now;
             Writer w;
             Begin(w, P_HELLO);
@@ -947,6 +1064,13 @@ void Game::OnlineHost()
     O.evCount = 0;
     Sound::playHook = HostSoundHook;
     plat::NetStartPortMapping(O.port);
+    plat::NetStunPrepare();
+    O.pub = plat::NetAddr();
+    O.stunTries = 0;
+    O.nPunch = 0;
+    O.sigTopics.clear();
+    O.lobbyPage = 0;
+    O.lobbyMsg.clear();
     OnlineLobbyScene();
 }
 
@@ -961,6 +1085,11 @@ void Game::OnlineJoin(const plat::NetAddr &addr)
     }
     O.role = ROLE_CLIENT;
     O.host = addr;
+    plat::NetStunPrepare();
+    O.pub = plat::NetAddr();
+    O.stunTries = 0;
+    O.announced = false;
+    O.joinTopic = Topic(EncodeCode(addr.ip, addr.port));
     O.welcomed = false;
     O.view = false;
     O.joinStart = plat::TimeSeconds();
@@ -1108,10 +1237,42 @@ void Game::State15_Lobby()
 {
     f390 = f390 + dt;
     if (v24c.y < 1.0f && -1.0f < f25c && f25c < 7.0f) f25c = 25.0f;
-    while (plat::PollChar() != 0) {}
     bool host = O.role == ROLE_HOST;
+    if (host && O.lobbyPage == 1) {
+        // Typing a joiner's reply code: punch towards that address.
+        unsigned c;
+        while ((c = plat::PollChar()) != 0) {
+            if (c == 27) {
+                O.lobbyPage = 0;
+                return;
+            } else if (c == 13) {
+                plat::NetAddr a;
+                if (DecodeAddress(O.text, a)) {
+                    AddPunch(a, 30.0);
+                    sound->Play(1);
+                    O.lobbyMsg = "送信しました。相手がまもなく参加します";
+                    O.lobbyPage = 0;
+                } else {
+                    sound->Play(3);
+                    O.lobbyMsg = "コードが正しくありません";
+                }
+                return;
+            } else if (c == 8) {
+                PopUtf8(O.text);
+            } else if (c == 0x16) {
+                std::string clip = plat::ClipboardText();
+                for (char ch : clip)
+                    if ((unsigned char)ch >= 32 && O.text.size() < 40) O.text += ch;
+            } else if (c >= 32 && O.text.size() < 40) {
+                AppendUtf8(O.text, c);
+            }
+        }
+        if (keyPause == KEY_PUSH) O.lobbyPage = 0;
+        return;
+    }
+    while (plat::PollChar() != 0) {}
     if (O.role == ROLE_CLIENT && !O.welcomed) return;
-    const int ITEMS = host ? 7 : 4;
+    const int ITEMS = host ? 8 : 4;
     if ((keyUp == KEY_PUSH || keyNum8 == KEY_PUSH) && menuSel > 0) {
         menuSel--;
         sound->Play(2);
@@ -1178,6 +1339,13 @@ void Game::State15_Lobby()
         sound->ForceTrack("WAV\\LP\\1.mp3");
         return;
     }
+    if (host && menuSel == 6 && action) {
+        sound->Play(1);
+        O.lobbyPage = 1;
+        O.text.clear();
+        O.lobbyMsg.clear();
+        return;
+    }
     if (host && menuSel == 5 && action) {
         bool allReady = true;
         for (int s = 1; s < 6; s++)
@@ -1241,7 +1409,15 @@ void Game::DrawOnlineHUD()
         case PAGE_CONNECTING:
             DrawTextCentered("接続しています…", 26, 320, 260, 255, 255, 255);
             snprintf(line, sizeof(line), "%s:%u", plat::NetAddrString(O.host.ip).c_str(), O.host.port);
-            DrawTextCentered(line, 18, 320, 300, 200, 200, 200);
+            DrawTextCentered(line, 18, 320, 296, 200, 200, 200);
+            if (O.pub.ip && !PrivateIp(O.host.ip) && plat::TimeSeconds() - O.joinStart > 5.0) {
+                // Fallback for when the automatic exchange does not get through.
+                DrawTextCentered("時間がかかる場合は、このコードをホストに送ってください：", 16, 320, 330, 255, 255, 255);
+                snprintf(line, sizeof(line), "%s", EncodeCode(O.pub.ip, O.pub.port).c_str());
+                DrawTextCentered(line, 28, 322, 354, 0, 0, 0);
+                DrawTextCentered(line, 28, 320, 352, 255, 255, 120);
+                DrawTextCentered("（ホストはロビーの「参加者のコードを入力」で入力します）", 14, 320, 390, 200, 200, 200);
+            }
             DrawTextCentered("Esc：キャンセル", 16, 320, 420, 255, 250, 150);
             break;
         case PAGE_MESSAGE:
@@ -1263,8 +1439,9 @@ void Game::DrawOnlineHUD()
     if (host) {
         uint32_t ext = 0;
         int st = plat::NetPortMappingStatus(ext);
-        if (ext) {
-            snprintf(line, sizeof(line), "%s%s", Tr("招待コード："), EncodeCode(ext, O.port).c_str());
+        std::string code = HostCode();
+        if (!code.empty()) {
+            snprintf(line, sizeof(line), "%s%s", Tr("招待コード："), code.c_str());
             Shadowed(line, 22, 30, 46, 580, 255, 255, 120);
         }
         snprintf(line, sizeof(line), "LAN: %s:%u", plat::NetAddrString(plat::NetLocalIP()).c_str(), O.port);
@@ -1274,6 +1451,7 @@ void Game::DrawOnlineHUD()
         if (st == 0) status = "ルーターのポートを開いています…";
         else if (st == 1 && PrivateIp(ext)) status = "注意：回線がCGNATのため、インターネットから参加できない可能性があります";
         else if (st == 1) status = "ポート開放：成功（UPnP）";
+        else if (O.pub.ip) status = "ポート開放なし：参加者とは自動で直接つなぎます（つながらない場合はポート開放）";
         else if (ext) {
             snprintf(port, sizeof(port), Tr("自動ポート開放に失敗：ルーターで UDP %u を開放してください"), O.port);
             status = port;
@@ -1303,14 +1481,24 @@ void Game::DrawOnlineHUD()
                  s == 0 || p.ready ? 255 : 150);
     }
 
+    if (host && O.lobbyPage == 1) {
+        DrawTextCentered("参加者から届いたコードを入力してください", 20, 320, 300, 255, 255, 255);
+        std::string shown = O.text + ((int)(f390 * 2.0f) % 2 ? "_" : " ");
+        DrawTextCentered(shown.c_str(), 30, 322, 336, 0, 0, 0);
+        DrawTextCentered(shown.c_str(), 30, 320, 334, 255, 255, 180);
+        if (!O.lobbyMsg.empty()) DrawTextCentered(O.lobbyMsg.c_str(), 16, 320, 380, 255, 120, 120);
+        DrawTextCentered("Enter：決定　　Ctrl+V：貼り付け　　Esc：戻る", 16, 320, 420, 255, 250, 150);
+        return;
+    }
+
     // My settings.
     static const char *const sizes[3] = {"１対１", "２対２", "３対３"};
     static const char *const times[4] = {"５分×２（ハーフタイムあり）", "３分", "５分", "１０分"};
     const LobbyPlayer &me = O.lp[O.mySlot];
     int myTeam = host ? me.team : O.wantTeam, myChr = host ? me.chr : O.wantChr;
     if (myTeam < 0) myTeam = me.team;
-    const char *labels[7];
-    const char *values[7] = {};
+    const char *labels[8];
+    const char *values[8] = {};
     int n = 0;
     labels[n] = "チーム";
     values[n++] = myTeam == 0 ? "チームＡ" : "チームＢ";
@@ -1324,13 +1512,14 @@ void Game::DrawOnlineHUD()
         labels[n] = "操作";
         values[n++] = O.autoSwitch ? "一人のチームはボールに近いキャラに自動切替" : "選んだキャラで固定";
         labels[n++] = "試合開始";
+        labels[n++] = "参加者のコードを入力";
     } else {
         labels[n] = "準備";
         values[n++] = O.wantReady ? "準備ＯＫ" : "準備中";
     }
     labels[n++] = "部屋を出る";
     for (int i = 0; i < n; i++) {
-        int y = 284 + i * 24;
+        int y = 282 + i * 22;
         bool sel = i == menuSel;
         int g = sel ? 0 : 255;
         if (!values[i]) {
@@ -1345,7 +1534,8 @@ void Game::DrawOnlineHUD()
         int waiting = 0;
         for (int s = 1; s < 6; s++)
             if (O.lp[s].used && !O.lp[s].ready) waiting++;
-        if (waiting) DrawTextCentered("全員の準備ＯＫを待っています", 14, 320, 462, 255, 200, 120);
+        if (!O.lobbyMsg.empty()) DrawTextCentered(O.lobbyMsg.c_str(), 14, 320, 462, 160, 255, 160);
+        else if (waiting) DrawTextCentered("全員の準備ＯＫを待っています", 14, 320, 462, 255, 200, 120);
         else DrawTextCentered("人が片方のチームだけなら協力プレイ（ＣＯＭと対戦）、両チームなら対戦です", 14, 320, 462, 200, 200, 200);
     }
 }

@@ -128,6 +128,18 @@ void NetStartPortMapping(uint16_t port);
 int NetPortMappingStatus(uint32_t &externalIp);
 void NetStopPortMapping();   // removes the mapping again (blocking, short timeouts)
 
+// NAT hole punching. STUN is sent from the game's own socket so the reported public address is
+// the mapping the other player has to send to.
+void NetStunPrepare();                        // resolves the STUN servers in the background
+bool NetStunServer(NetAddr &out, int index);  // false until resolved (index 0..1)
+int StunBuildRequest(uint8_t *buf);           // a 20-byte binding request
+bool StunParseResponse(const uint8_t *buf, int len, NetAddr &mapped);
+// Address exchange through a public message relay (ntfy.sh), on background threads.
+void NetSignalHost(const std::string &topics);   // host: poll these comma-separated topics
+bool NetSignalPoll(NetAddr &joiner);             // host: next announced joiner address
+void NetSignalAnnounce(const std::string &topic, const NetAddr &me);   // joiner: post my address
+void NetSignalStop();
+
 // The asset archive linked into the executable.
 const uint8_t *PakData(size_t *size);
 
