@@ -48,6 +48,9 @@ public:
     void State8();
     void State9();
     void State11_Settings();   // added by the mod
+    void State12_TeamSize();   // added by the mod
+    void StartTeamSelect();
+    void PickSmallTeams();
     bool SettingsMenu();       // settings page input; true when "Back" was chosen
     bool UpdatePause();        // pause menu; true while the game is paused
     int PauseItems(int *ids);  // the pause menu's entries for the current state
@@ -134,4 +137,5 @@ public:
     bool paused;               // pause menu open: the game is frozen
     int pausePage;             // 0 = pause menu, 1 = settings
     int pauseSel;
+    int teamSize;              // players per team in the match (1..3; the original is always 3)
 };

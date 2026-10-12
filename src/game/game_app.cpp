@@ -28,6 +28,7 @@ Game::Game()
     inputLock = false;
     paused = false;
     pausePage = pauseSel = 0;
+    teamSize = 3;
     mouseX = mouseY = 0;
     quit = false;
 

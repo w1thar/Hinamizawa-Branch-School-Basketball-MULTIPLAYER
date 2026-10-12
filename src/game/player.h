@@ -76,4 +76,6 @@ public:
     int i190;
     float animTime;
     float f198;
+
+    bool benched = false;   // mod: sitting out a 1v1 / 2v2 match (hidden, ignored)
 };

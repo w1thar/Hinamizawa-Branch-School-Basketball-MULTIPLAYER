@@ -79,7 +79,9 @@ void Game::State6()
         b414 = false;
     };
     // YOU take the ball out of bounds yourself (club mode starts the 3.5s shot clock).
+    bool soloInbound = false;   // mod: a 1-player team took the ball out this frame
     auto YouTakeBall = [&](int you1) {
+        if (teamSize == 1) soloInbound = true;
         if (i3b0 == 1) f41c = 3.5f;
         P[you1]->i190 = 4;
         P[you1]->Motion_430497();
@@ -90,6 +92,20 @@ void Game::State6()
     int you1 = 0, com1 = 0;
     float youDist = 10000.0f, comDist = 10000.0f;
     int you2 = 0, you3 = 0, com2 = 0, com3 = 0;
+    // Mod (1v1 / 2v2): roles without a player are -1; these skip them.
+    auto SetPosIf = [&](int i, float x, float y, float z, float yaw) {
+        if (i >= 0) P[i]->SetPos(x, y, z, yaw);
+    };
+    auto ComThrowIn = [&]() {
+        if (com2 >= 0) {
+            ThrowIn(com1, com2);
+            return;
+        }
+        i268 = com1;   // nobody to throw to: dribble it in (see soloInbound below)
+        i404 = com1;
+        b414 = false;
+        soloInbound = true;
+    };
 
     if (f3e0 < 0.0f) {
         // ---- time up ----
@@ -130,36 +146,70 @@ void Game::State6()
     }
 
     // ---- sort players by distance to the ball ----
-    for (int i = 0; i < 6; i++) {
-        f3bc = (P[i]->pos.x - v24c.x) * (P[i]->pos.x - v24c.x) + (P[i]->pos.z - v24c.z) * (P[i]->pos.z - v24c.z);
-        if (P[i]->b154) {
-            if (P[i]->i190 < 3 || (f3bc < youDist && P[i]->i190 < 15)) {
-                you3 = you2;
-                you2 = you1;
-                you1 = i;
-                youDist = f3bc;
+    if (teamSize >= 3) {
+        for (int i = 0; i < 6; i++) {
+            f3bc = (P[i]->pos.x - v24c.x) * (P[i]->pos.x - v24c.x) + (P[i]->pos.z - v24c.z) * (P[i]->pos.z - v24c.z);
+            if (P[i]->b154) {
+                if (P[i]->i190 < 3 || (f3bc < youDist && P[i]->i190 < 15)) {
+                    you3 = you2;
+                    you2 = you1;
+                    you1 = i;
+                    youDist = f3bc;
+                } else {
+                    you3 = you2;
+                    you2 = i;
+                }
             } else {
-                you3 = you2;
-                you2 = i;
-            }
-        } else {
-            if (P[i]->i190 < 3 || (f3bc < comDist && P[i]->i190 < 10)) {
-                com3 = com2;
-                com2 = com1;
-                com1 = i;
-                comDist = f3bc;
-            } else {
-                com3 = com2;
-                com2 = i;
+                if (P[i]->i190 < 3 || (f3bc < comDist && P[i]->i190 < 10)) {
+                    com3 = com2;
+                    com2 = com1;
+                    com1 = i;
+                    comDist = f3bc;
+                } else {
+                    com3 = com2;
+                    com2 = i;
+                }
             }
         }
-    }
-    if (b3a6 != 0) {
-        if (P[you2]->pos.x < P[you3]->pos.x) { int t = you2; you2 = you3; you3 = t; }
-        if (P[com2]->pos.x > P[com3]->pos.x) { int t = com2; com2 = com3; com3 = t; }
+        if (b3a6 != 0) {
+            if (P[you2]->pos.x < P[you3]->pos.x) { int t = you2; you2 = you3; you3 = t; }
+            if (P[com2]->pos.x > P[com3]->pos.x) { int t = com2; com2 = com3; com3 = t; }
+        } else {
+            if (P[you2]->pos.x > P[you3]->pos.x) { int t = you2; you2 = you3; you3 = t; }
+            if (P[com2]->pos.x < P[com3]->pos.x) { int t = com2; com2 = com3; com3 = t; }
+        }
     } else {
-        if (P[you2]->pos.x > P[you3]->pos.x) { int t = you2; you2 = you3; you3 = t; }
-        if (P[com2]->pos.x < P[com3]->pos.x) { int t = com2; com2 = com3; com3 = t; }
+        // Mod (1v1 / 2v2): the same roles from the players in the match: the ball carrier, else the
+        // nearest one still in play, controls; the other (2v2) is role 2. Missing roles are -1.
+        you2 = you3 = com2 = com3 = -1;
+        for (int side = 0; side < 2; side++) {
+            bool you = side == 0;
+            int limit = you ? 15 : 10;
+            int lead = -1, other = -1;
+            float leadDist = 10000.0f;
+            for (int i = 0; i < 6; i++) {
+                if (P[i]->benched || P[i]->b154 != you) continue;
+                float d = (P[i]->pos.x - v24c.x) * (P[i]->pos.x - v24c.x) + (P[i]->pos.z - v24c.z) * (P[i]->pos.z - v24c.z);
+                bool takes = lead < 0 || P[i]->i190 < 3 ||
+                             (P[lead]->i190 >= 3 && d < leadDist && P[i]->i190 < limit);
+                if (takes) {
+                    other = lead;
+                    lead = i;
+                    leadDist = d;
+                } else {
+                    other = i;
+                }
+            }
+            if (you) {
+                you1 = lead;
+                you2 = other;
+                youDist = leadDist;
+            } else {
+                com1 = lead;
+                com2 = other;
+                comDist = leadDist;
+            }
+        }
     }
 
     // ---- goals: i418 1..4 from the ball physics; the conceding team takes the ball out ----
@@ -223,17 +273,17 @@ void Game::State6()
                     P[slot[5]]->SetPos(40.0f, 0.0f, f410, 1.54f);
                     TrainerThrowIn(1.54f);
                     P[you1]->SetPos(10.0f, 0.0f, f410, -1.54f);
-                    P[you2]->SetPos(15.0f, 0.0f, f410 + 5.0f, -1.54f);
-                    P[you3]->SetPos(16.0f, 0.0f, f410 - 5.0f, -1.54f);
+                    SetPosIf(you2, 15.0f, 0.0f, f410 + 5.0f, -1.54f);
+                    SetPosIf(you3, 16.0f, 0.0f, f410 - 5.0f, -1.54f);
                     TrainerRelease();
                 } else if (b3a6 == 0) {
                     if (!P[i408]->b154) {   // COM sent it out / scored: YOU throw in
                         YouTakeBall(you1);
                         P[you1]->SetPos(38.0f, 0.0f, f410, 1.54f);
-                        P[you2]->SetPos(30.0f, 0.0f, f410 + 5.0f, -1.54f);
-                        P[you3]->SetPos(32.0f, 0.0f, f410 - 5.0f, -1.54f);
-                        P[com2]->SetPos(1.0f, 0.0f, 4.0f, 1.54f);
-                        P[com3]->SetPos(2.0f, 0.0f, -4.0f, 1.54f);
+                        SetPosIf(you2, 30.0f, 0.0f, f410 + 5.0f, -1.54f);
+                        SetPosIf(you3, 32.0f, 0.0f, f410 - 5.0f, -1.54f);
+                        SetPosIf(com2, 1.0f, 0.0f, 4.0f, 1.54f);
+                        SetPosIf(com3, 2.0f, 0.0f, -4.0f, 1.54f);
                         P[com1]->SetPos(3.0f, 0.0f, 0.0f, 1.54f);
                         i404 = you1;
                         b414 = false;
@@ -246,20 +296,20 @@ void Game::State6()
                     f410 = 35.0f;
                 } else {
                     P[com1]->SetPos(38.0f, 0.0f, f410, 1.54f);
-                    P[com2]->SetPos(30.0f, 0.0f, f410 + 5.0f, -1.54f);
-                    P[com3]->SetPos(32.0f, 0.0f, f410 - 5.0f, -1.54f);
-                    P[you2]->SetPos(10.0f, 0.0f, 4.0f, -1.54f);
-                    P[you3]->SetPos(2.0f, 0.0f, -4.0f, 1.54f);
+                    SetPosIf(com2, 30.0f, 0.0f, f410 + 5.0f, -1.54f);
+                    SetPosIf(com3, 32.0f, 0.0f, f410 - 5.0f, -1.54f);
+                    SetPosIf(you2, 10.0f, 0.0f, 4.0f, -1.54f);
+                    SetPosIf(you3, 2.0f, 0.0f, -4.0f, 1.54f);
                     P[you1]->SetPos(3.0f, 0.0f, 0.0f, 1.54f);
-                    ThrowIn(com1, com2);
+                    ComThrowIn();
                 }
             } else if (i40c == 2) {   // left end line (x = -38)
                 if (i3b0 == 2) {
                     P[slot[5]]->SetPos(-40.0f, 0.0f, f410, -1.54f);
                     TrainerThrowIn(-1.54f);
                     P[you1]->SetPos(-10.0f, 0.0f, f410, 1.54f);
-                    P[you2]->SetPos(-15.0f, 0.0f, f410 + 5.0f, 1.54f);
-                    P[you3]->SetPos(-16.0f, 0.0f, f410 - 5.0f, 1.54f);
+                    SetPosIf(you2, -15.0f, 0.0f, f410 + 5.0f, 1.54f);
+                    SetPosIf(you3, -16.0f, 0.0f, f410 - 5.0f, 1.54f);
                     TrainerRelease();
                 } else if (b3a6 == 0) {
                     if (!P[i408]->b154) {
@@ -267,20 +317,20 @@ void Game::State6()
                         f410 = -35.0f;
                     } else {
                         P[com1]->SetPos(-38.0f, 0.0f, f410, -1.54f);
-                        P[com2]->SetPos(-30.0f, 0.0f, f410 + 5.0f, 1.54f);
-                        P[com3]->SetPos(-32.0f, 0.0f, f410 - 5.0f, 1.54f);
-                        P[you2]->SetPos(-10.0f, 0.0f, 4.0f, 1.54f);
-                        P[you3]->SetPos(2.0f, 0.0f, -4.0f, -1.54f);
+                        SetPosIf(com2, -30.0f, 0.0f, f410 + 5.0f, 1.54f);
+                        SetPosIf(com3, -32.0f, 0.0f, f410 - 5.0f, 1.54f);
+                        SetPosIf(you2, -10.0f, 0.0f, 4.0f, 1.54f);
+                        SetPosIf(you3, 2.0f, 0.0f, -4.0f, -1.54f);
                         P[you1]->SetPos(3.0f, 0.0f, 0.0f, -1.54f);
-                        ThrowIn(com1, com2);
+                        ComThrowIn();
                     }
                 } else if (!P[i408]->b154) {
                     YouTakeBall(you1);
                     P[you1]->SetPos(-38.0f, 0.0f, f410, -1.54f);
-                    P[you2]->SetPos(-30.0f, 0.0f, f410 + 5.0f, 1.54f);
-                    P[you3]->SetPos(-32.0f, 0.0f, f410 - 5.0f, 1.54f);
-                    P[com2]->SetPos(1.0f, 0.0f, 4.0f, -1.54f);
-                    P[com3]->SetPos(2.0f, 0.0f, -4.0f, -1.54f);
+                    SetPosIf(you2, -30.0f, 0.0f, f410 + 5.0f, 1.54f);
+                    SetPosIf(you3, -32.0f, 0.0f, f410 - 5.0f, 1.54f);
+                    SetPosIf(com2, 1.0f, 0.0f, 4.0f, -1.54f);
+                    SetPosIf(com3, 2.0f, 0.0f, -4.0f, -1.54f);
                     P[com1]->SetPos(3.0f, 0.0f, 0.0f, -1.54f);
                     i404 = you1;
                     b414 = false;
@@ -294,57 +344,69 @@ void Game::State6()
                     P[slot[5]]->SetPos(f410, 0.0f, 20.0f, 0.0f);
                     TrainerThrowIn(0.0f);
                     P[you1]->SetPos(f410, 0.0f, 0.0f, 3.14f);
-                    P[you2]->SetPos(f410 + 5.0f, 0.0f, 3.0f, 3.14f);
-                    P[you3]->SetPos(f410 - 1.0f, 0.0f, 4.0f, 3.14f);
+                    SetPosIf(you2, f410 + 5.0f, 0.0f, 3.0f, 3.14f);
+                    SetPosIf(you3, f410 - 1.0f, 0.0f, 4.0f, 3.14f);
                     TrainerRelease();
                 } else if (!P[i408]->b154) {
                     YouTakeBall(you1);
                     P[you1]->SetPos(f410, 0.0f, 20.0f, 0.0f);
-                    P[you2]->SetPos(f410 + 5.0f, 0.0f, 10.0f, 3.14f);
-                    P[you3]->SetPos(f410 - 1.0f, 0.0f, 12.0f, 3.14f);
-                    P[com2]->SetPos(f410 + 8.0f, 0.0f, 5.0f, 3.14f);
-                    P[com3]->SetPos(f410 - 8.0f, 0.0f, 4.0f, 3.14f);
+                    SetPosIf(you2, f410 + 5.0f, 0.0f, 10.0f, 3.14f);
+                    SetPosIf(you3, f410 - 1.0f, 0.0f, 12.0f, 3.14f);
+                    SetPosIf(com2, f410 + 8.0f, 0.0f, 5.0f, 3.14f);
+                    SetPosIf(com3, f410 - 8.0f, 0.0f, 4.0f, 3.14f);
                     P[com1]->SetPos(f410, 0.0f, 0.0f, 3.14f);
                     i404 = you1;
                     b414 = false;
                 } else {
                     P[com1]->SetPos(f410, 0.0f, 20.0f, 0.0f);
-                    P[com2]->SetPos(f410 + 5.0f, 0.0f, 10.0f, 3.14f);
-                    P[com3]->SetPos(f410 - 1.0f, 0.0f, 12.0f, 3.14f);
-                    P[you2]->SetPos(f410 + 8.0f, 0.0f, 1.0f, 3.14f);
-                    P[you3]->SetPos(f410 - 8.0f, 0.0f, 2.0f, 3.14f);
+                    SetPosIf(com2, f410 + 5.0f, 0.0f, 10.0f, 3.14f);
+                    SetPosIf(com3, f410 - 1.0f, 0.0f, 12.0f, 3.14f);
+                    SetPosIf(you2, f410 + 8.0f, 0.0f, 1.0f, 3.14f);
+                    SetPosIf(you3, f410 - 8.0f, 0.0f, 2.0f, 3.14f);
                     P[you1]->SetPos(f410, 0.0f, 3.0f, 3.14f);
-                    ThrowIn(com1, com2);
+                    ComThrowIn();
                 }
             } else if (i40c == 4) {   // near side line (z = -19)
                 if (i3b0 == 2) {
                     P[slot[5]]->SetPos(f410, 0.0f, -20.0f, 3.14f);
                     TrainerThrowIn(3.14f);
                     P[you1]->SetPos(f410, 0.0f, 0.0f, 0.0f);
-                    P[you2]->SetPos(f410 + 5.0f, 0.0f, -3.0f, 0.0f);
-                    P[you3]->SetPos(f410 - 1.0f, 0.0f, -4.0f, 0.0f);
+                    SetPosIf(you2, f410 + 5.0f, 0.0f, -3.0f, 0.0f);
+                    SetPosIf(you3, f410 - 1.0f, 0.0f, -4.0f, 0.0f);
                     TrainerRelease();
                 } else if (!P[i408]->b154) {
                     YouTakeBall(you1);
                     P[you1]->SetPos(f410, 0.0f, -20.0f, 3.14f);
-                    P[you2]->SetPos(f410 + 5.0f, 0.0f, -10.0f, 0.0f);
-                    P[you3]->SetPos(f410 - 1.0f, 0.0f, -12.0f, 0.0f);
-                    P[com2]->SetPos(f410 + 8.0f, 0.0f, -5.0f, 0.0f);
-                    P[com3]->SetPos(f410 - 8.0f, 0.0f, -4.0f, 0.0f);
+                    SetPosIf(you2, f410 + 5.0f, 0.0f, -10.0f, 0.0f);
+                    SetPosIf(you3, f410 - 1.0f, 0.0f, -12.0f, 0.0f);
+                    SetPosIf(com2, f410 + 8.0f, 0.0f, -5.0f, 0.0f);
+                    SetPosIf(com3, f410 - 8.0f, 0.0f, -4.0f, 0.0f);
                     P[com1]->SetPos(f410, 0.0f, 0.0f, 0.0f);
                     i404 = you1;
                     b414 = false;
                 } else {
                     P[com1]->SetPos(f410, 0.0f, -20.0f, 3.14f);
-                    P[com2]->SetPos(f410 + 5.0f, 0.0f, -10.0f, 0.0f);
-                    P[com3]->SetPos(f410 - 1.0f, 0.0f, -12.0f, 0.0f);
-                    P[you2]->SetPos(f410 + 8.0f, 0.0f, -5.0f, 0.0f);
-                    P[you3]->SetPos(f410 - 8.0f, 0.0f, -4.0f, 0.0f);
+                    SetPosIf(com2, f410 + 5.0f, 0.0f, -10.0f, 0.0f);
+                    SetPosIf(com3, f410 - 1.0f, 0.0f, -12.0f, 0.0f);
+                    SetPosIf(you2, f410 + 8.0f, 0.0f, -5.0f, 0.0f);
+                    SetPosIf(you3, f410 - 8.0f, 0.0f, -4.0f, 0.0f);
                     P[you1]->SetPos(f410, 0.0f, 0.0f, 0.0f);
-                    ThrowIn(com1, com2);
+                    ComThrowIn();
                 }
             }
         }
+    }
+
+    // Mod (1v1): with no one to pass to, the thrower dribbles in from just inside the line.
+    if (soloInbound && i268 >= 0) {
+        Player *p = P[i268];
+        // Far enough in that the dribbled ball (up to ~2 units from the body) stays inside 38 / 19.
+        if (p->pos.x > 35.0f) p->pos.x = 35.0f;
+        if (p->pos.x < -35.0f) p->pos.x = -35.0f;
+        if (p->pos.z > 16.5f) p->pos.z = 16.5f;
+        if (p->pos.z < -16.5f) p->pos.z = -16.5f;
+        p->i190 = 0;
+        p->Motion_42ee86();
     }
 
     // ---- the player YOU control (you1) ----
@@ -490,7 +552,7 @@ void Game::State6()
     };
     bool upFree = keyUp == KEY_FREE && keyNum8 == KEY_FREE && !analog;
     if (b3a6 == 0) {   // YOU attack the hoop at x = -35
-        if (6 < P[you2]->i190 && P[you2]->i190 < 10) {
+        if (you2 >= 0 && 6 < P[you2]->i190 && P[you2]->i190 < 10) {
             if (P[you2]->pos.z > 18.0f) RunTo(you2, 0.0f);
             else if (P[you2]->pos.z < -18.0f) RunTo(you2, 3.14f);
             else if (P[you1]->pos.x <= -25.0f) {
@@ -506,7 +568,7 @@ void Game::State6()
                 WatchBall(you2);
             }
         }
-        if (6 < P[you3]->i190 && P[you3]->i190 < 10) {
+        if (you3 >= 0 && 6 < P[you3]->i190 && P[you3]->i190 < 10) {
             float dx = P[you3]->pos.x - P[you1]->pos.x, dz = P[you3]->pos.z - P[you1]->pos.z;
             if (P[you3]->pos.z > 18.0f) RunTo(you3, 0.0f);
             else if (P[you3]->pos.z < -18.0f) RunTo(you3, 3.14f);
@@ -525,7 +587,7 @@ void Game::State6()
             }
         }
     } else {   // second half: YOU attack the hoop at x = +35
-        if (6 < P[you2]->i190 && P[you2]->i190 < 10) {
+        if (you2 >= 0 && 6 < P[you2]->i190 && P[you2]->i190 < 10) {
             if (P[you2]->pos.z > 18.0f) RunTo(you2, 0.0f);
             else if (P[you2]->pos.z < -18.0f) RunTo(you2, 3.14f);
             else if (25.0f <= P[you1]->pos.x) {
@@ -541,7 +603,7 @@ void Game::State6()
                 WatchBall(you2);
             }
         }
-        if (6 < P[you3]->i190 && P[you3]->i190 < 10) {
+        if (you3 >= 0 && 6 < P[you3]->i190 && P[you3]->i190 < 10) {
             float dx = P[you3]->pos.x - P[you1]->pos.x, dz = P[you3]->pos.z - P[you1]->pos.z;
             if (P[you3]->pos.z > 18.0f) RunTo(you3, 0.0f);
             else if (P[you3]->pos.z < -18.0f) RunTo(you3, 3.14f);
@@ -562,6 +624,8 @@ void Game::State6()
     }
 
     // ---- COM ----
+    // Mod: who com2 / com3 mark; with full teams these are you3 / you2 as in the original.
+    int mark2 = you2 >= 0 ? you2 : you1, mark3 = you3 >= 0 ? you3 : mark2;
     if (i3b0 == 2) {
         // Practice: the trainer (slot 5) stands still in the first half and chases in the second.
         int t = slot[5];
@@ -651,18 +715,21 @@ void Game::State6()
                     JumpShot(37.0f);
                 } else if (b3a6 == 0) {
                     // Pass forward if a teammate is well ahead and nobody is in between, else go.
-                    bool laneBlocked = (c->pos.x < P[you1]->pos.x && P[you1]->pos.x < P[com2]->pos.x) ||
-                                       (c->pos.x < P[you2]->pos.x && P[you2]->pos.x < P[com2]->pos.x) ||
-                                       (c->pos.x < P[you3]->pos.x && P[you3]->pos.x < P[com2]->pos.x);
-                    if (P[com2]->pos.x - c->pos.x <= 15.0f || laneBlocked)
+                    // Mod: missing players never block; without a teammate COM always goes itself.
+                    auto between = [&](int y) {
+                        return y >= 0 && c->pos.x < P[y]->pos.x && P[y]->pos.x < P[com2]->pos.x;
+                    };
+                    bool laneBlocked = com2 < 0 || between(you1) || between(you2) || between(you3);
+                    if (laneBlocked || P[com2]->pos.x - c->pos.x <= 15.0f)
                         Shoot(35.0f, 30.0f);
                     else
                         PassTo(com1, com2);
                 } else {
-                    bool laneBlocked = (P[you1]->pos.x < c->pos.x && P[com2]->pos.x < P[you1]->pos.x) ||
-                                       (P[you2]->pos.x < c->pos.x && P[com2]->pos.x < P[you2]->pos.x) ||
-                                       (P[you3]->pos.x < c->pos.x && P[com2]->pos.x < P[you3]->pos.x);
-                    if (-15.0f <= P[com2]->pos.x - c->pos.x || laneBlocked)
+                    auto between = [&](int y) {
+                        return y >= 0 && P[y]->pos.x < c->pos.x && P[com2]->pos.x < P[y]->pos.x;
+                    };
+                    bool laneBlocked = com2 < 0 || between(you1) || between(you2) || between(you3);
+                    if (laneBlocked || -15.0f <= P[com2]->pos.x - c->pos.x)
                         Shoot(-35.0f, -30.0f);
                     else
                         PassTo(com1, com2);
@@ -687,7 +754,7 @@ void Game::State6()
         }
 
         // com2: forward when COM has the ball, otherwise marks you3.
-        if (6 < P[com2]->i190 && P[com2]->i190 < 10) {
+        if (com2 >= 0 && 6 < P[com2]->i190 && P[com2]->i190 < 10) {
             Player *c = P[com2];
             if (c->pos.z > 18.0f) RunTo(com2, 0.0f);
             else if (c->pos.z < -18.0f) RunTo(com2, 3.14f);
@@ -726,14 +793,14 @@ void Game::State6()
                     RunTo(com2, 1.57f);
                 }
             } else {
-                TurnTo(com2, (P[you3]->pos.x + v24c.x) / 2.0f, (P[you3]->pos.z + v24c.z) / 2.0f, 5.0f / f400);
+                TurnTo(com2, (P[mark3]->pos.x + v24c.x) / 2.0f, (P[mark3]->pos.z + v24c.z) / 2.0f, 5.0f / f400);
                 Step(com2);
                 c->Motion_42dfc0();
             }
         }
 
         // com3: shadows you2 while YOU have the ball, otherwise marks between you2 and the ball.
-        if (6 < P[com3]->i190 && P[com3]->i190 < 10) {
+        if (com3 >= 0 && 6 < P[com3]->i190 && P[com3]->i190 < 10) {
             Player *c = P[com3];
             if (c->pos.z > 18.0f) RunTo(com3, 0.0f);
             else if (c->pos.z < -18.0f) RunTo(com3, 3.14f);
@@ -741,22 +808,22 @@ void Game::State6()
             else if (c->pos.x > 35.0f) RunTo(com3, 1.57f);
             else if (i268 == you1) {
                 if (b3a6 == 0) {
-                    if (2.0f <= P[you2]->pos.x - c->pos.x) {
+                    if (2.0f <= P[mark2]->pos.x - c->pos.x) {
                         WatchBall(com3);
                     } else {
-                        TurnTo(com3, P[you2]->pos.x - 2.0f, 0.0f, 5.0f);
+                        TurnTo(com3, P[mark2]->pos.x - 2.0f, 0.0f, 5.0f);
                         Step(com3);
                         c->Motion_42dfc0();
                     }
-                } else if (P[you2]->pos.x - c->pos.x <= -2.0f) {
+                } else if (P[mark2]->pos.x - c->pos.x <= -2.0f) {
                     WatchBall(com3);
                 } else {
-                    TurnTo(com3, P[you2]->pos.x + 2.0f, 0.0f, 5.0f);
+                    TurnTo(com3, P[mark2]->pos.x + 2.0f, 0.0f, 5.0f);
                     Step(com3);
                     c->Motion_42dfc0();
                 }
             } else {
-                TurnTo(com3, (P[you2]->pos.x + v24c.x) / 2.0f, (P[you2]->pos.z + v24c.z) / 2.0f, 5.0f / f400);
+                TurnTo(com3, (P[mark2]->pos.x + v24c.x) / 2.0f, (P[mark2]->pos.z + v24c.z) / 2.0f, 5.0f / f400);
                 Step(com3);
                 c->Motion_42dfc0();
             }

@@ -28,6 +28,7 @@ void Game::State1_Title()
     players[4]->SetPos(-42.0f, 0.0f, -28.0f, 0.885f);
     players[5]->SetPos(-50.0f, 0.0f, -20.0f, 0.485f);
     for (int i = 0; i < 6; i++) players[i]->Motion_4312d5();
+    for (int i = 0; i < 6; i++) players[i]->benched = false;   // mod: 1v1 / 2v2 benches end here
     camPos = Vec3(-48.0f, 20.0f, -28.0f);
     camDir = Vec3(1.0f, 0.0f, 1.0f);
     v24c.y = 6.0f;
@@ -167,12 +168,15 @@ void Game::State3()
         state = 11;
         return;
     }
-    if (AnyActionPushed(this)) {
+    if (b39a != 0 && (i3b0 == MODE_NORMAL || i3b0 == MODE_CLUB) && AnyActionPushed(this)) {
         sound->Play(1);
-        f390 = 0.0f;
-        f394 = 1.0f;
-        b39a = 0;
-        sound->OpenMp3("WAV\\LP\\mion.mp3");
+        menuSel = teamSize - 1;
+        state = 12;
+        return;
+    }
+    if (AnyActionPushed(this)) {
+        if (i3b0 == MODE_PRACTICE) teamSize = 3;   // the practice drills are built for 3 players
+        StartTeamSelect();
     }
     if (b39a == 0 && 0.5f < f390) {
         camPos = Vec3(0.0f, 3.5f, -30.0f);
@@ -196,6 +200,71 @@ void Game::State3()
         }
         players[i3b4]->SetPos(-2.0f, 0.0f, -20.0f, f390);
     }
+}
+
+// Mode chosen: fade out, then State3 moves on to team select (the original's confirm in state 3).
+void Game::StartTeamSelect()
+{
+    sound->Play(1);
+    f390 = 0.0f;
+    f394 = 1.0f;
+    b39a = 0;
+    sound->OpenMp3("WAV\\LP\\mion.mp3");
+    state = 3;
+}
+
+// Mod, 1v1 / 2v2: team[0..n-1] were picked by YOU. COM gets n random players from the rest; the
+// others sit out (benched, hidden) and fill the unused team[] entries.
+void Game::PickSmallTeams()
+{
+    int rest[6], nRest = 0;
+    for (int i = 0; i < 6; i++)
+        if (!players[i]->b154) rest[nRest++] = i;
+    for (int i = nRest - 1; i > 0; i--) {   // shuffle
+        int j = crt_rand() % (i + 1);
+        int t = rest[i];
+        rest[i] = rest[j];
+        rest[j] = t;
+    }
+    int r = 0;
+    for (int k = 0; k < teamSize; k++) team[3 + k] = rest[r++];
+    for (int k = teamSize; k < 3; k++) team[k] = rest[r++];
+    for (int k = teamSize; k < 3; k++) team[3 + k] = rest[r++];
+    for (int k = 0; k < teamSize; k++) {
+        Player *p = players[team[3 + k]];
+        float yaw = Atan2((float)k * 2.0f + (-3.0f - (float)k * 3.0f) + 2.0f, -30.0f);
+        p->SetPos((float)k * 2.0f + 2.0f, 0.0f, -30.0f, yaw);
+        p->Motion_42dfc0();
+    }
+    for (int k = teamSize; k < 3; k++) {
+        players[team[k]]->benched = true;
+        players[team[3 + k]]->benched = true;
+    }
+}
+
+// ---- 12 (mod): team size for Normal / Club mode. Up/Down select, X confirms -------------------
+void Game::State12_TeamSize()
+{
+    f390 = f390 + dt;
+    if (v24c.y < 1.0f && -1.0f < f25c && f25c < 7.0f) f25c = 25.0f;   // same backdrop as state 3
+
+    const int ITEMS = 4;   // 1v1, 2v2, 3v3, back
+    if ((keyUp == KEY_PUSH || keyNum8 == KEY_PUSH) && menuSel > 0) {
+        menuSel--;
+        sound->Play(2);
+    }
+    if ((keyDown == KEY_PUSH || keyNum2 == KEY_PUSH) && menuSel < ITEMS - 1) {
+        menuSel++;
+        sound->Play(2);
+    }
+    if (!AnyActionPushed(this)) return;
+    if (menuSel == ITEMS - 1) {
+        sound->Play(1);
+        state = 3;
+        return;
+    }
+    teamSize = menuSel + 1;
+    StartTeamSelect();
 }
 
 // ---- 11 (mod): settings. Up/Down select, Left/Right change, X/Enter on "Back" saves -------------
@@ -398,11 +467,12 @@ void Game::State4()
 
     if (i3b8 < 3 && AnyActionPushed(this)) {
         sound->Play(4);
-        if (i3b8 < 2) {
+        if (i3b8 < teamSize - 1) {
             players[i3b4]->b154 = true;
             players[i3b4]->yaw = Atan2(((float)i3b8 * 6.0f + 3.0f) - 2.0f, -20.0f);
             players[i3b4]->Motion_42dfc0();
-            if (i3b8 == 0) team[2] = i3b4;
+            if (teamSize < 3) team[i3b8] = i3b4;   // mod: smaller teams fill team[] in pick order
+            else if (i3b8 == 0) team[2] = i3b4;
             else team[0] = i3b4;
             i3b8 = i3b8 + 1;
             do {
@@ -414,18 +484,24 @@ void Game::State4()
             players[i3b4]->b154 = true;
             players[i3b4]->yaw = Atan2(4.0f, -20.0f);
             players[i3b4]->Motion_42dfc0();
-            team[1] = i3b4;
-            i3b8 = 0;
-            for (int i = 0; i < 6; i++) {
-                if (!players[i]->b154) {
-                    float yaw = Atan2((float)i3b8 * 2.0f + (-3.0f - (float)i3b8 * 3.0f) + 2.0f, -30.0f);
-                    players[i]->SetPos((float)i3b8 * 2.0f + 2.0f, 0.0f, -30.0f, yaw);
-                    players[i]->Motion_42dfc0();
-                    team[3 + i3b8] = i;
-                    i3b8 = i3b8 + 1;
+            if (teamSize < 3) {
+                team[teamSize - 1] = i3b4;
+                PickSmallTeams();
+                i3b8 = 3;
+            } else {
+                team[1] = i3b4;
+                i3b8 = 0;
+                for (int i = 0; i < 6; i++) {
+                    if (!players[i]->b154) {
+                        float yaw = Atan2((float)i3b8 * 2.0f + (-3.0f - (float)i3b8 * 3.0f) + 2.0f, -30.0f);
+                        players[i]->SetPos((float)i3b8 * 2.0f + 2.0f, 0.0f, -30.0f, yaw);
+                        players[i]->Motion_42dfc0();
+                        team[3 + i3b8] = i;
+                        i3b8 = i3b8 + 1;
+                    }
                 }
+                i3b8 = 3;
             }
-            i3b8 = 3;
         }
     }
 
@@ -477,14 +553,27 @@ void Game::State4()
         i3b8 = 5;
         i418 = 0;
         for (int i = 0; i < 6; i++) slot[i] = team[i];
+        if (teamSize < 3) {
+            // Mod: the n players in the match take slots 3-n..2 (and 6-n..5) so the centre, who
+            // jumps at the tip-off, always plays; Satoko / Rika only jump when they must.
+            for (int side = 0; side < 2; side++) {
+                int *t = team + side * 3, *s = slot + side * 3;
+                for (int k = 0; k < 3; k++) s[k] = t[(k + teamSize) % 3];
+                if (teamSize == 2 && (s[2] == 3 || s[2] == 4) && s[1] != 3 && s[1] != 4) {
+                    int tmp = s[1];
+                    s[1] = s[2];
+                    s[2] = tmp;
+                }
+            }
+        }
         // Satoko (3) and Rika (4) never take the centre (slot 2 / 5): rotate the line-up.
-        while (slot[2] == 3 || slot[2] == 4) {
+        while (teamSize == 3 && (slot[2] == 3 || slot[2] == 4)) {
             i3fc = slot[2];
             slot[2] = slot[1];
             slot[1] = slot[0];
             slot[0] = i3fc;
         }
-        while (slot[5] == 3 || slot[5] == 4) {
+        while (teamSize == 3 && (slot[5] == 3 || slot[5] == 4)) {
             i3fc = slot[5];
             slot[5] = slot[4];
             slot[4] = slot[3];
@@ -794,6 +883,10 @@ void Game::State8()
         int arrived = 0;
         for (int i = 0; i < 3; i++) {   // YOU line up at x = 0,3,6 / z = -3
             Player *p = players[team[i]];
+            if (p->benched) {
+                arrived++;
+                continue;
+            }
             float dx = p->pos.x - (float)i * 3.0f, dz = p->pos.z + 3.0f;
             if (sqrtf(dx * dx + dz * dz) <= 0.5f) {
                 p->yaw = 0.0f;
@@ -809,6 +902,10 @@ void Game::State8()
         }
         for (int i = 0; i < 3; i++) {   // COM line up at x = -1.5,-4.5,-7.5 / z = 1
             Player *p = players[team[5 - i]];
+            if (p->benched) {
+                arrived++;
+                continue;
+            }
             float dx = (float)i * 3.0f + 1.5f + p->pos.x, dz = p->pos.z - 1.0f;
             if (sqrtf(dx * dx + dz * dz) <= 0.5f) {
                 p->yaw = 0.0f;
@@ -861,6 +958,7 @@ void Game::State8()
             i3b8 = 0;
             f390 = 0.0f;
             state = 9;
+            for (int i = 0; i < 6; i++) players[i]->benched = false;
         } else {
             i3b8 = 6;
             sound->Play(7);

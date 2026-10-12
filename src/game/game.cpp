@@ -169,8 +169,10 @@ void Game::Frame()
         case 8: State8(); break;
         case 9: State9(); break;
         case 11: State11_Settings(); break;
+        case 12: State12_TeamSize(); break;
         }
-        for (int i = 0; i < 6; i++) players[i]->Update(dt);
+        for (int i = 0; i < 6; i++)
+            if (!players[i]->benched) players[i]->Update(dt);
         fn_42b23c();
     }
 
@@ -186,7 +188,8 @@ void Game::Frame()
         float yawAngle = Atan2(camDir.x, camDir.z);
         RenderSky(yawAngle, pitch);
         RenderCourt();
-        for (int i = 0; i < 6; i++) players[i]->Render(device, matShadow);
+        for (int i = 0; i < 6; i++)
+            if (!players[i]->benched) players[i]->Render(device, matShadow);
         RenderObjects();
         DrawTeamPortraits();
         fn_421d0f();
@@ -236,7 +239,7 @@ Vec3 Game::CalcStep(int idx)
     }
     for (int j = 0; j < 6; j++) {
         Player *o = players[j];
-        if (j != idx && o->i190 > 2) {
+        if (j != idx && o->i190 > 2 && !o->benched) {
             float d2 = (o->pos.x - p.x) * (o->pos.x - p.x) + (o->pos.z - p.z) * (o->pos.z - p.z);
             if (d2 < 9.0f) {
                 p.x = o->pos.x - ((o->pos.x - p.x) * 3.0f) / sqrtf(d2);

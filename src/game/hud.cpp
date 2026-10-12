@@ -75,6 +75,19 @@ void Game::DrawHUD()
         DrawText(text, 12, 499, 460, 255, 250, 150);
     }
 
+    // ---- state 12 (mod): team size ----
+    if (state == 12) {
+        DrawTextCentered("試合の人数を選択してください", 24, 320, 200, Pulse(f390, 10.0f), Pulse(f390, 7.0f),
+                         Pulse(f390, 3.0f));
+        static const char *const sizes[4] = {"１対１", "２対２", "３対３", "戻る"};
+        for (int i = 0; i < 4; i++) {
+            int y = 270 + i * 36;
+            DrawTextCentered(sizes[i], 28, 322, y + 2, 0, 0, 0);
+            if (i == menuSel) DrawTextCentered(sizes[i], 28, 320, y, 255, 0, 0);
+            else DrawTextCentered(sizes[i], 28, 320, y, 255, 255, 255);
+        }
+    }
+
     // ---- state 11 (mod): settings ----
     if (state == 11) DrawSettingsMenu();
 
@@ -82,7 +95,10 @@ void Game::DrawHUD()
     if (state == 4 && i3b8 < 3) {
         snprintf(text, sizeof(text), "チーム分け");
         DrawText(text, 28, 243, 24, Pulse(f390, 10.0f), Pulse(f390, 7.0f), Pulse(f390, 3.0f));
-        snprintf(text, sizeof(text), "あなたのチームのプレーヤーを３人選択してください");
+        static const char *const pickText[3] = {"あなたのチームのプレーヤーを１人選択してください",
+                                                "あなたのチームのプレーヤーを２人選択してください",
+                                                "あなたのチームのプレーヤーを３人選択してください"};
+        snprintf(text, sizeof(text), "%s", pickText[teamSize - 1]);
         DrawText(text, 24, 34, 74, 0, 0, 0);
         DrawText(text, 24, 32, 72, 255, 255, 255);
 

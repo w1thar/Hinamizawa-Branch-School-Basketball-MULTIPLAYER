@@ -181,13 +181,12 @@ void Game::DrawTeamPortraits()
         v[3] = TL(((float)i + 11.0f) * 0.075f * 640.0f, 33.6f, 0.01f, 0.5f, 0xffffffff, 0, u1, 0.838f);
         Strip(device, v);
     };
-    if (b3a6 == 0) {   // first half: YOU on the left
-        for (int i = 0; i < 3; i++) icon(i, team[i]);
-        for (int i = 0; i < 3; i++) iconRight(i, team[3 + i]);
-    } else {
-        for (int i = 0; i < 3; i++) icon(i, team[3 + i]);
-        for (int i = 0; i < 3; i++) iconRight(i, team[i]);
-    }
+    // Mod: benched players (1v1 / 2v2) get no portrait; with full teams this is the original order.
+    int left = b3a6 == 0 ? 0 : 3, right = b3a6 == 0 ? 3 : 0;
+    for (int i = 0, n = 0; i < 3; i++)
+        if (!players[team[left + i]]->benched) icon(n++, team[left + i]);
+    for (int i = 0, n = 0; i < 3; i++)
+        if (!players[team[right + i]]->benched) iconRight(n++, team[right + i]);
 }
 
 void Game::fn_421d0f()
