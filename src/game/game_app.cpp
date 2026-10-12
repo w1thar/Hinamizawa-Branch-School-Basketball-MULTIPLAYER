@@ -303,34 +303,56 @@ void Game::DrawText(const char *str, int size, int x, int y, int r, int g, int b
     device->DrawOverlay(t->tex, fx, (float)y, t->w, t->h, t->u1, t->v1, color);
 }
 
+// The string and font DrawText would use: the English translation in the Latin font, or (English
+// mode) untranslated plain-ASCII text such as device names in the Latin font too.
+static const char *PickText(const char *str, plat::Font &font)
+{
+    font = plat::FONT_JAPANESE;
+    if (g_settings.language != LANG_ENGLISH) return str;
+    if (const char *en = Lang_English(str)) {
+        font = plat::FONT_LATIN;
+        return en;
+    }
+    bool ascii = true;
+    for (const char *p = str; *p; p++)
+        if ((unsigned char)*p >= 0x80) ascii = false;
+    if (ascii) font = plat::FONT_LATIN;
+    return str;
+}
+
 float Game::MeasureText(const char *str, int size)
 {
-    plat::Font font = plat::FONT_JAPANESE;
-    if (g_settings.language == LANG_ENGLISH) {
-        if (const char *en = Lang_English(str)) {
-            str = en;
-            font = plat::FONT_LATIN;
-        }
-    }
+    plat::Font font;
+    str = PickText(str, font);
     const CachedText *t = GetText(device, str, size, font);
     return t ? t->w : 0.0f;
 }
 
 void Game::DrawTextCentered(const char *str, int size, int cx, int y, int r, int g, int b)
 {
-    // Measured in the font DrawText will pick, then drawn without re-centring.
-    float w = MeasureText(str, size);
-    plat::Font font = plat::FONT_JAPANESE;
-    if (g_settings.language == LANG_ENGLISH) {
-        if (const char *en = Lang_English(str)) {
-            str = en;
-            font = plat::FONT_LATIN;
-        }
-    }
+    // Measured in the font DrawText will pick, then drawn without re-centring; shrunk to fit the
+    // screen if a translation is too long.
+    plat::Font font;
+    str = PickText(str, font);
     const CachedText *t = GetText(device, str, size, font);
+    while (t && t->w > 624.0f && size > 10) t = GetText(device, str, --size, font);
     if (!t) return;
     u32 color = 0xff000000u | ((u32)(r & 0xff) << 16) | ((u32)(g & 0xff) << 8) | (u32)(b & 0xff);
-    device->DrawOverlay(t->tex, cx - w / 2.0f, (float)y, t->w, t->h, t->u1, t->v1, color);
+    device->DrawOverlay(t->tex, cx - t->w / 2.0f, (float)y + 0.0f, t->w, t->h, t->u1, t->v1, color);
+}
+
+void Game::DrawTextFit(const char *str, int size, int x, int y, int maxW, int r, int g, int b)
+{
+    if (!str || !*str) return;
+    plat::Font font;
+    str = PickText(str, font);
+    const CachedText *t = GetText(device, str, size, font);
+    int drawn = size;
+    while (t && t->w > (float)maxW && drawn > 10) t = GetText(device, str, --drawn, font);
+    if (!t) return;
+    u32 color = 0xff000000u | ((u32)(r & 0xff) << 16) | ((u32)(g & 0xff) << 8) | (u32)(b & 0xff);
+    // A shrunk line keeps its vertical centre.
+    device->DrawOverlay(t->tex, (float)x, (float)y + (float)(size - drawn) / 2.0f, t->w, t->h, t->u1, t->v1, color);
 }
 
 // Called once per frame by main(): frees text that was not drawn for a while.

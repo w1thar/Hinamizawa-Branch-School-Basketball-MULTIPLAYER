@@ -91,27 +91,27 @@ void Game::DrawHUD()
                 DrawTextCentered(labels[i], 24, 320, y, 255, g, g);
                 continue;
             }
-            DrawText(labels[i], 22, 82, y + 2, 0, 0, 0);
-            DrawText(labels[i], 22, 80, y, 255, g, g);
+            DrawTextFit(labels[i], 22, 62, y + 2, 150, 0, 0, 0);
+            DrawTextFit(labels[i], 22, 60, y, 150, 255, g, g);
             char value[96];
             int dim = 255;
             if (i <= 1) {
-                if (localDev[i] == DEVICE_NONE) snprintf(value, sizeof(value), "%s", Tr("（なし）"));
-                else if (localDev[i] == DEVICE_KEYBOARD) snprintf(value, sizeof(value), "%s", Tr("キーボード"));
+                if (localDev[i] == DEVICE_NONE) snprintf(value, sizeof(value), "%s", "（なし）");
+                else if (localDev[i] == DEVICE_KEYBOARD) snprintf(value, sizeof(value), "%s", "キーボード");
                 else snprintf(value, sizeof(value), "%s", Input_DeviceName(localDev[i]));
             } else if (i == 2) {
-                snprintf(value, sizeof(value), "%s", Tr(localVersus ? "対戦（Ｐ１対Ｐ２）" : "協力（ＣＯＭと対戦）"));
+                snprintf(value, sizeof(value), "%s", localVersus ? "対戦（Ｐ１対Ｐ２）" : "協力（ＣＯＭと対戦）");
             } else if (i == 3) {
-                snprintf(value, sizeof(value), "%s", Tr(sizes[localSize - 1]));
+                snprintf(value, sizeof(value), "%s", sizes[localSize - 1]);
             } else if (i == 4) {
                 bool autoSw = localVersus && localAuto;
-                snprintf(value, sizeof(value), "%s", Tr(autoSw ? "ボールに近いキャラに自動切替" : "選んだキャラで固定"));
+                snprintf(value, sizeof(value), "%s", autoSw ? "ボールに近いキャラに自動切替" : "選んだキャラで固定");
                 if (!localVersus) dim = 150;   // co-op: always fixed
             } else {
-                snprintf(value, sizeof(value), "%s", Tr(times[localTime]));
+                snprintf(value, sizeof(value), "%s", times[localTime]);
             }
-            DrawText(value, 22, 242, y + 2, 0, 0, 0);
-            DrawText(value, 22, 240, y, dim, g * dim / 255, g * dim / 255);
+            DrawTextFit(value, 22, 222, y + 2, 400, 0, 0, 0);
+            DrawTextFit(value, 22, 220, y, 400, dim, g * dim / 255, g * dim / 255);
         }
         if (localDev[0] == localDev[1] || localDev[0] == DEVICE_NONE || localDev[1] == DEVICE_NONE)
             DrawTextCentered("Ｐ１とＰ２に別々の入力機器を選んでください", 16, 320, 416, 255, 120, 120);
@@ -418,8 +418,8 @@ void Game::DrawSettingsMenu()
             DrawTextCentered(labels[i], 28, 320, y, 255, g, g);
             continue;
         }
-        DrawText(labels[i], 24, 122, y + 2, 0, 0, 0);
-        DrawText(labels[i], 24, 120, y, 255, g, g);
+        DrawTextFit(labels[i], 24, 122, y + 2, 226, 0, 0, 0);
+        DrawTextFit(labels[i], 24, 120, y, 226, 255, g, g);
         char value[64];
         if (i < 3) {
             // A 10-step bar plus the percentage.
@@ -428,10 +428,10 @@ void Game::DrawSettingsMenu()
             for (int k = 0; k < 10; k++) bar += k < filled ? "■" : "□";
             snprintf(value, sizeof(value), "%s %3d%%", bar.c_str(), values[i]);
         } else {
-            snprintf(value, sizeof(value), "%s", Tr(g_settings.language == LANG_ENGLISH ? "英語" : "日本語"));
+            snprintf(value, sizeof(value), "%s", g_settings.language == LANG_ENGLISH ? "英語" : "日本語");
         }
-        DrawText(value, 24, 362, y + 2, 0, 0, 0);
-        DrawText(value, 24, 360, y, 255, g, g);
+        DrawTextFit(value, 24, 362, y + 2, 270, 0, 0, 0);
+        DrawTextFit(value, 24, 360, y, 270, 255, g, g);
     }
     DrawTextCentered("←→：変更　　Ｘ：決定", 16, 320, 440, 255, 250, 150);
 }

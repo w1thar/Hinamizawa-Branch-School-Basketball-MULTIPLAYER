@@ -61,6 +61,8 @@ public:
     // Added by the mod: helpers for the new menus (also translation-aware).
     float MeasureText(const char *str, int size);
     void DrawTextCentered(const char *str, int size, int cx, int y, int r, int g, int b);
+    // Left-aligned at x (no re-centring of translations), shrunk until it fits in maxW pixels.
+    void DrawTextFit(const char *str, int size, int x, int y, int maxW, int r, int g, int b);
 
     // ---- game (0x40e400..0x42b23c) ----
     void InitGame();
