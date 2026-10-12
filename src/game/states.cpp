@@ -8,6 +8,7 @@
 
 #include "core/d3dmath.h"
 #include "game/game.h"
+#include "game/settings.h"
 
 static float Atan2(float y, float x) { return (float)atan2((double)y, (double)x); }
 
@@ -152,11 +153,19 @@ void Game::State3()
         if (i3b0 == 0) SetFaces(this, 0, 0, 0, 0);
         if (i3b0 == 1) SetFaces(this, 0, 1, 1, -1);
     }
-    if ((keyDown == KEY_PUSH || keyNum2 == KEY_PUSH) && i3b0 < 2) {
+    if ((keyDown == KEY_PUSH || keyNum2 == KEY_PUSH) && i3b0 < MODE_LAST) {
         i3b0 = i3b0 + 1;
         sound->Play(2);
         if (i3b0 == 1) SetFaces(this, 0, 1, 1, -1);
         if (i3b0 == 2) SetFaces(this, 1, 0, 0, 0);
+        if (i3b0 == 3) SetFaces(this, 0, 0, 0, 0);
+    }
+    // Mod: entries below the original three open the mod's own screens.
+    if (b39a != 0 && i3b0 == MODE_SETTINGS && AnyActionPushed(this)) {
+        sound->Play(1);
+        menuSel = 0;
+        state = 11;
+        return;
     }
     if (AnyActionPushed(this)) {
         sound->Play(1);
@@ -186,6 +195,49 @@ void Game::State3()
             i3b4 = 0;
         }
         players[i3b4]->SetPos(-2.0f, 0.0f, -20.0f, f390);
+    }
+}
+
+// ---- 11 (mod): settings. Up/Down select, Left/Right change, X/Enter on "Back" saves -------------
+void Game::State11_Settings()
+{
+    f390 = f390 + dt;
+    if (v24c.y < 1.0f && -1.0f < f25c && f25c < 7.0f) f25c = 25.0f;   // same backdrop as state 3
+
+    const int ITEMS = 5;   // master, music, sfx, language, back
+    if ((keyUp == KEY_PUSH || keyNum8 == KEY_PUSH) && menuSel > 0) {
+        menuSel--;
+        sound->Play(2);
+    }
+    if ((keyDown == KEY_PUSH || keyNum2 == KEY_PUSH) && menuSel < ITEMS - 1) {
+        menuSel++;
+        sound->Play(2);
+    }
+    int dir = 0;
+    if (keyLeft == KEY_PUSH || keyNum4 == KEY_PUSH) dir = -1;
+    if (keyRight == KEY_PUSH || keyNum6 == KEY_PUSH) dir = 1;
+    if (dir != 0) {
+        int *vol = menuSel == 0 ? &g_settings.masterVolume : menuSel == 1 ? &g_settings.musicVolume
+                 : menuSel == 2 ? &g_settings.sfxVolume : nullptr;
+        if (vol) {
+            *vol += dir * 10;
+            if (*vol < 0) *vol = 0;
+            if (*vol > 100) *vol = 100;
+            Settings_ApplyAudio();
+            sound->Play(2);   // audible feedback at the new volume
+        } else if (menuSel == 3) {
+            g_settings.language = g_settings.language == LANG_ENGLISH ? LANG_JAPANESE : LANG_ENGLISH;
+            sound->Play(2);
+        }
+    }
+    if (menuSel == 3 && AnyActionPushed(this)) {
+        g_settings.language = g_settings.language == LANG_ENGLISH ? LANG_JAPANESE : LANG_ENGLISH;
+        sound->Play(2);
+    }
+    if (menuSel == ITEMS - 1 && AnyActionPushed(this)) {
+        Settings_Save();
+        sound->Play(1);
+        state = 3;
     }
 }
 

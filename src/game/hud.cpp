@@ -3,7 +3,11 @@
 #include <cmath>
 #include <cstdio>
 
+#include <string>
+
 #include "game/game.h"
+#include "game/lang.h"
+#include "game/settings.h"
 
 namespace {
 
@@ -49,28 +53,51 @@ void Game::DrawHUD()
         DrawText(text, 12, 371, 460, 50, 50, 50);
     }
 
-    // ---- state 3: play mode select ----
+    // ---- state 3: play mode select (mod: generic list with the extra entries) ----
     if ((state == 3) & (b39a != 0)) {
         snprintf(text, sizeof(text), "プレイモードを選択してください");
         DrawText(text, 24, 140, 192, Pulse(f390, 10.0f), Pulse(f390, 7.0f), Pulse(f390, 3.0f));
-        snprintf(text, sizeof(text), "ノーマルモード");
-        DrawText(text, 28, 245, 337, 0, 0, 0);
-        snprintf(text, sizeof(text), "　部活モード");
-        DrawText(text, 28, 245, 376, 0, 0, 0);
-        snprintf(text, sizeof(text), "　練習モード");
-        DrawText(text, 28, 245, 433, 0, 0, 0);
-        int sel[3][3] = {{255, 255, 255}, {255, 255, 255}, {255, 255, 255}};
-        if (i3b0 >= 0 && i3b0 <= 2) sel[i3b0][1] = sel[i3b0][2] = 0;   // selected mode in red
-        if (i3b0 == 0 || i3b0 == 1 || i3b0 == 2) {
-            snprintf(text, sizeof(text), "ノーマルモード");
-            DrawText(text, 28, 243, 335, sel[0][0], sel[0][1], sel[0][2]);
-            snprintf(text, sizeof(text), "　部活モード");
-            DrawText(text, 28, 243, 374, sel[1][0], sel[1][1], sel[1][2]);
-            snprintf(text, sizeof(text), "　練習モード");
-            DrawText(text, 28, 243, 431, sel[2][0], sel[2][1], sel[2][2]);
+        static const char *const modes[MODE_LAST + 1] = {"ノーマルモード", "　部活モード", "　練習モード", "設定"};
+        for (int i = 0; i <= MODE_LAST; i++) {
+            int y = 300 + i * 36;
+            DrawTextCentered(modes[i], 28, 322, y + 2, 0, 0, 0);
+            if (i == i3b0) DrawTextCentered(modes[i], 28, 320, y, 255, 0, 0);
+            else DrawTextCentered(modes[i], 28, 320, y, 255, 255, 255);
         }
         snprintf(text, sizeof(text), "ESCキー:強制終了(常時)");
         DrawText(text, 12, 499, 460, 255, 250, 150);
+    }
+
+    // ---- state 11 (mod): settings ----
+    if (state == 11) {
+        DrawTextCentered("設定", 28, 320, 192, Pulse(f390, 10.0f), Pulse(f390, 7.0f), Pulse(f390, 3.0f));
+        static const char *const labels[5] = {"全体の音量", "音楽の音量", "効果音の音量", "言語", "戻る"};
+        const int values[3] = {g_settings.masterVolume, g_settings.musicVolume, g_settings.sfxVolume};
+        for (int i = 0; i < 5; i++) {
+            int y = 250 + i * 36;
+            bool sel = i == menuSel;
+            int g = sel ? 0 : 255;
+            if (i == 4) {
+                DrawTextCentered(labels[i], 28, 322, y + 2, 0, 0, 0);
+                DrawTextCentered(labels[i], 28, 320, y, 255, g, g);
+                continue;
+            }
+            DrawText(labels[i], 24, 122, y + 2, 0, 0, 0);
+            DrawText(labels[i], 24, 120, y, 255, g, g);
+            char value[64];
+            if (i < 3) {
+                // A 10-step bar plus the percentage.
+                int filled = values[i] / 10;
+                std::string bar;
+                for (int k = 0; k < 10; k++) bar += k < filled ? "■" : "□";
+                snprintf(value, sizeof(value), "%s %3d%%", bar.c_str(), values[i]);
+            } else {
+                snprintf(value, sizeof(value), "%s", Tr(g_settings.language == LANG_ENGLISH ? "英語" : "日本語"));
+            }
+            DrawText(value, 24, 362, y + 2, 0, 0, 0);
+            DrawText(value, 24, 360, y, 255, g, g);
+        }
+        DrawTextCentered("←→：変更　　Ｘ：決定", 16, 320, 440, 255, 250, 150);
     }
 
     // ---- state 4: team selection ----

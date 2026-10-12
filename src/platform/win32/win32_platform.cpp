@@ -6,6 +6,7 @@
 #endif
 #include <windows.h>
 #include <mmsystem.h>
+#include <shlobj.h>
 
 #include <GL/gl.h>
 
@@ -283,7 +284,7 @@ void AudioClose()
 void AudioLock() { EnterCriticalSection(&g_audioLock); }
 void AudioUnlock() { LeaveCriticalSection(&g_audioLock); }
 
-bool RasterText(const char *utf8, int height, std::vector<uint8_t> &alpha, int &w, int &h)
+bool RasterText(const char *utf8, int height, Font fontKind, std::vector<uint8_t> &alpha, int &w, int &h)
 {
     wchar_t text[512];
     int len = MultiByteToWideChar(CP_UTF8, 0, utf8, -1, text, 512) - 1;
@@ -292,8 +293,11 @@ bool RasterText(const char *utf8, int height, std::vector<uint8_t> &alpha, int &
     // Original: LOGFONT { lfHeight = size, lfWeight = 400, lfCharSet = SHIFTJIS_CHARSET,
     // lfFaceName = "標準ゴシック" }. That face never existed on stock Windows, so GDI's font
     // mapper fell back to the system Japanese gothic (MS Gothic); ask for it directly.
-    HFONT font = CreateFontW(height, 0, 0, 0, FW_NORMAL, FALSE, FALSE, FALSE, SHIFTJIS_CHARSET, OUT_DEFAULT_PRECIS,
-                             CLIP_DEFAULT_PRECIS, ANTIALIASED_QUALITY, FIXED_PITCH | FF_MODERN, L"MS Gothic");
+    HFONT font = fontKind == FONT_LATIN
+                     ? CreateFontW(height, 0, 0, 0, FW_BOLD, FALSE, FALSE, FALSE, DEFAULT_CHARSET, OUT_DEFAULT_PRECIS,
+                                   CLIP_DEFAULT_PRECIS, ANTIALIASED_QUALITY, VARIABLE_PITCH | FF_SWISS, L"Tahoma")
+                     : CreateFontW(height, 0, 0, 0, FW_NORMAL, FALSE, FALSE, FALSE, SHIFTJIS_CHARSET, OUT_DEFAULT_PRECIS,
+                                   CLIP_DEFAULT_PRECIS, ANTIALIASED_QUALITY, FIXED_PITCH | FF_MODERN, L"MS Gothic");
     HDC dc = CreateCompatibleDC(nullptr);
     HGDIOBJ oldFont = SelectObject(dc, font);
     SIZE sz;
@@ -326,6 +330,19 @@ bool RasterText(const char *utf8, int height, std::vector<uint8_t> &alpha, int &
     DeleteObject(font);
     DeleteDC(dc);
     return true;
+}
+
+std::string ConfigDir()
+{
+    wchar_t base[MAX_PATH];
+    if (FAILED(SHGetFolderPathW(nullptr, CSIDL_APPDATA, nullptr, 0, base))) return std::string();
+    std::wstring dir = std::wstring(base) + L"\\HinamizawaBasketball\\";
+    CreateDirectoryW(dir.c_str(), nullptr);
+    int n = WideCharToMultiByte(CP_UTF8, 0, dir.c_str(), -1, nullptr, 0, nullptr, nullptr);
+    if (n <= 1) return std::string();
+    std::string out((size_t)(n - 1), ' ');
+    WideCharToMultiByte(CP_UTF8, 0, dir.c_str(), -1, &out[0], n, nullptr, nullptr);
+    return out;
 }
 
 const uint8_t *PakData(size_t *size)

@@ -35,6 +35,7 @@ struct Music {
 };
 
 Slot g_slots[Sound::NUM_SLOTS];
+float g_musicGain = 1.0f, g_sfxGain = 1.0f;
 Music g_music;
 bool g_audioOpen = false;
 
@@ -78,16 +79,16 @@ void Mix(int16_t *out, int frames, void *)
             float t = (float)(s.pos - (double)i0);
             float a0 = s.pcm[i0 * s.channels], a1 = s.pcm[i1 * s.channels];
             float b0 = s.pcm[i0 * s.channels + s.channels - 1], b1 = s.pcm[i1 * s.channels + s.channels - 1];
-            l += (a0 + (a1 - a0) * t) * s.gain;
-            r += (b0 + (b1 - b0) * t) * s.gain;
+            l += (a0 + (a1 - a0) * t) * s.gain * g_sfxGain;
+            r += (b0 + (b1 - b0) * t) * s.gain * g_sfxGain;
             s.pos += (double)s.rate / plat::AUDIO_RATE;
         }
         Music &m = g_music;
         if (m.playing && m.mp3Valid) {
             float ml, mr;
             if (MusicFrame(ml, mr)) {
-                l += ml * 32767.0f;
-                r += mr * 32767.0f;
+                l += ml * 32767.0f * g_musicGain;
+                r += mr * 32767.0f * g_musicGain;
                 m.frac += (double)m.rate / plat::AUDIO_RATE;
                 while (m.frac >= 1.0) {
                     m.frac -= 1.0;
@@ -113,6 +114,14 @@ void CloseMusicLocked()
 }  // namespace
 
 Sound::Sound() : mp3Playing(false) {}
+
+void Sound::SetMixVolumes(float music, float sfx)
+{
+    plat::AudioLock();
+    g_musicGain = music;
+    g_sfxGain = sfx;
+    plat::AudioUnlock();
+}
 
 Sound::~Sound()
 {

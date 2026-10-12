@@ -9,6 +9,9 @@
 #include "game/player.h"
 #include "render/gfx.h"
 
+// Entries of the play-mode menu (state 3). 0..2 are the original modes.
+enum PlayMode { MODE_NORMAL = 0, MODE_CLUB = 1, MODE_PRACTICE = 2, MODE_SETTINGS = 3, MODE_LAST = 3 };
+
 // Key states produced by UpdateInput() (the original's per-file KEY_* constants).
 enum KeyState { KEY_FREE = 0, KEY_PUSH = 1, KEY_RELEASE = 2, KEY_HOLD = 3 };
 
@@ -25,6 +28,9 @@ public:
     void UpdateTimer();
     void UpdateInput();
     void DrawText(const char *str, int size, int x, int y, int r, int g, int b);
+    // Added by the mod: helpers for the new menus (also translation-aware).
+    float MeasureText(const char *str, int size);
+    void DrawTextCentered(const char *str, int size, int cx, int y, int r, int g, int b);
 
     // ---- game (0x40e400..0x42b23c) ----
     void InitGame();
@@ -41,6 +47,7 @@ public:
     void State7();
     void State8();
     void State9();
+    void State11_Settings();   // added by the mod
 
     void RenderSky(float yawAngle, float pitchAngle);
     void RenderCourt();
@@ -110,4 +117,7 @@ public:
     bool b414;
     int i418;
     float f41c;
+
+    // ---- added by the mod ----
+    int menuSel;               // cursor in the mod's menus
 };

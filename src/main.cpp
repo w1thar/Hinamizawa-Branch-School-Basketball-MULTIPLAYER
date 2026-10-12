@@ -8,6 +8,7 @@
 
 #include "core/pak.h"
 #include "game/game.h"
+#include "game/settings.h"
 #include "platform/platform.h"
 
 void TextCacheEndFrame();
@@ -22,6 +23,8 @@ static int Run(int argc, char **argv)
         else if (!strcmp(argv[i], "-scale") && i + 1 < argc) cfg.windowScale = atoi(argv[++i]);
     }
     if (!plat::Init(cfg)) return 1;
+    Settings_Load();
+    Settings_ApplyAudio();
     if (!pak_init()) {
         plat::ErrorBox("assets missing from the executable");
         plat::Shutdown();

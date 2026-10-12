@@ -4,6 +4,7 @@
 
 #include <cstddef>
 #include <cstdint>
+#include <string>
 #include <vector>
 
 namespace plat {
@@ -60,9 +61,14 @@ void AudioClose();
 void AudioLock();
 void AudioUnlock();
 
-// Renders a UTF-8 string with a Japanese gothic font. Output is an 8-bit coverage bitmap
-// (w*h bytes, top-down). `height` is the GDI cell height in pixels.
-bool RasterText(const char *utf8, int height, std::vector<uint8_t> &alpha, int &w, int &h);
+// Renders a UTF-8 string. Output is an 8-bit coverage bitmap (w*h bytes, top-down).
+// `height` is the GDI cell height in pixels. FONT_JAPANESE is the original's gothic; FONT_LATIN is
+// a proportional UI font used for the English translation.
+enum Font { FONT_JAPANESE = 0, FONT_LATIN = 1 };
+bool RasterText(const char *utf8, int height, Font font, std::vector<uint8_t> &alpha, int &w, int &h);
+
+// Per-user folder for settings, with a trailing path separator; created if missing.
+std::string ConfigDir();
 
 // The asset archive linked into the executable.
 const uint8_t *PakData(size_t *size);

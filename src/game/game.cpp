@@ -166,6 +166,7 @@ void Game::Frame()
     case 7: State7(); break;
     case 8: State8(); break;
     case 9: State9(); break;
+    case 11: State11_Settings(); break;
     }
     for (int i = 0; i < 6; i++) players[i]->Update(dt);
     fn_42b23c();

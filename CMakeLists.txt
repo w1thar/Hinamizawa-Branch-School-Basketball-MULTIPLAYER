@@ -31,11 +31,13 @@ set(HB_SOURCES
     src/game/game.cpp
     src/game/game_app.cpp
     src/game/hud.cpp
+    src/game/lang.cpp
     src/game/match.cpp
     src/game/models.cpp
     src/game/player.cpp
     src/game/player_motions.cpp
     src/game/render.cpp
+    src/game/settings.cpp
     src/game/states.cpp
 )
 

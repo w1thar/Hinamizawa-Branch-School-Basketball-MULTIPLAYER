@@ -27,5 +27,8 @@ public:
 
     bool mp3Playing;
 
+    // Not in the original: global gains (0..1) for music and sound effects.
+    static void SetMixVolumes(float music, float sfx);
+
     static const int NUM_SLOTS = 15;
 };
