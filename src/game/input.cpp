@@ -43,6 +43,7 @@ bool Input_ReadRaw(int device, RawControls &out)
     if (device < 0) return false;
     plat::GamepadState s;
     if (!plat::ReadGamepad(device, s)) return false;
+    if (!plat::WindowFocused()) return true;   // connected, but this window is in the background
     out.up = s.buttons[plat::PAD_DPAD_UP] || s.ly < -STICK_THRESHOLD;
     out.down = s.buttons[plat::PAD_DPAD_DOWN] || s.ly > STICK_THRESHOLD;
     out.left = s.buttons[plat::PAD_DPAD_LEFT] || s.lx < -STICK_THRESHOLD;

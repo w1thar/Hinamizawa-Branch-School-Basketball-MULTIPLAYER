@@ -442,7 +442,7 @@ void Game::DrawSettingsMenu()
 
 void Game::DrawPauseMenu()
 {
-    static const char *const names[4] = {"再開", "設定", "タイトルに戻る", "ゲーム終了"};
+    static const char *const names[5] = {"再開", "設定", "タイトルに戻る", "ゲーム終了", "部屋を出る"};   // by PAUSE_* id
     DrawTextCentered("ポーズ", 36, 320, 150, 255, 255, 180);
     int ids[4];
     int n = PauseItems(ids);

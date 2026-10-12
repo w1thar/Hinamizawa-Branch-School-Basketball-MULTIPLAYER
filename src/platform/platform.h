@@ -48,6 +48,7 @@ void Present();
 void ToggleFullscreen();
 
 bool KeyDown(int key);
+bool WindowFocused();   // mod: gamepads are ignored while another window is active
 double TimeSeconds();
 void SleepMs(int ms);
 

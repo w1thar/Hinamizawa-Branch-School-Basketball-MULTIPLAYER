@@ -982,8 +982,9 @@ void Game::State5()
         Player *you = players[slot[2]], *com = players[slot[5]];
         // Mod: in multiplayer each jumper that a human controls uses that human's device.
         // With auto-switch the team's human jumps whoever stands in the centre.
-        int hA = !mpActive ? -1 : mpAutoSwitch ? MpHumanOnTeam(true) : ctrl[slot[2]];
-        int hB = !mpActive ? -1 : mpAutoSwitch ? MpHumanOnTeam(false) : ctrl[slot[5]];
+        int hA = mpActive ? ctrl[slot[2]] : -1, hB = mpActive ? ctrl[slot[5]] : -1;
+        if (mpActive && mpAutoSwitch && hA < 0) hA = MpSoloHuman(true);
+        if (mpActive && mpAutoSwitch && hB < 0) hB = MpSoloHuman(false);
         auto tipHeld = [&](int h) {
             if (h < 0) return keyX == KEY_HOLD || keyZ == KEY_HOLD || keyC == KEY_HOLD;
             const VirtualPad &k = hum[h].pad;

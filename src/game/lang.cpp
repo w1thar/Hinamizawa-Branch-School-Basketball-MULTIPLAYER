@@ -170,6 +170,7 @@ const char *const kTable[][2] = {
     {"準備", "Ready?"},
     {"試合開始", "Start match"},
     {"部屋を出る", "Leave"},
+    {"一人のチームはボールに近いキャラに自動切替", "Solo players auto-switch to the nearest teammate"},
     {"全員の準備ＯＫを待っています", "Waiting for everyone to be ready"},
     {"人が片方のチームだけなら協力プレイ（ＣＯＭと対戦）、両チームなら対戦です", "Players on one team only: co-op vs COM. On both teams: versus"},
     {"圭一", "Keiichi"},

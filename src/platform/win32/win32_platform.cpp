@@ -219,6 +219,8 @@ void Present() { SwapBuffers(g_hdc); }
 
 void ToggleFullscreen() { SetFullscreen(!g_fullscreen); }
 
+bool WindowFocused() { return GetForegroundWindow() == g_hwnd; }
+
 bool KeyDown(int key)
 {
     if (GetForegroundWindow() != g_hwnd) return false;

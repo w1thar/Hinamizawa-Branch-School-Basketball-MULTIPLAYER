@@ -34,6 +34,7 @@ struct MpHuman {
     bool shotCam = false;      // camera follows this player's shot (i3b8 == 1)
     int tipState = 0;          // tip-off jump: 0 ready, 1 in the air
     bool teamA = true;         // the team this human plays for
+    bool gone = false;         // online: disconnected (their character is AI now)
     Vec3 cam, camDir;          // this player's camera
     Vec3 sky;                  // sky scroll state (v37c) of this player's view
 };
@@ -90,6 +91,7 @@ public:
     void MpUpdateInput();
     bool MpTeamHasHuman(bool teamA) const;
     int MpHumanOnTeam(bool teamA) const;
+    int MpSoloHuman(bool teamA) const;   // the only human on that team, else -1
     const char *TeamLabel(bool teamA) const;
     void RenderSplitScreen();
     // Online play (online.cpp).

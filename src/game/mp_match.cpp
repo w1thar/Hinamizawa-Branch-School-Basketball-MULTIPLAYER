@@ -21,8 +21,19 @@ bool Game::MpTeamHasHuman(bool teamA) const { return MpHumanOnTeam(teamA) >= 0; 
 int Game::MpHumanOnTeam(bool teamA) const
 {
     for (int h = 0; h < mpHumans; h++)
-        if (hum[h].player >= 0 && hum[h].teamA == teamA) return h;
+        if (!hum[h].gone && hum[h].player >= 0 && hum[h].teamA == teamA) return h;
     return -1;
+}
+
+int Game::MpSoloHuman(bool teamA) const
+{
+    int found = -1, n = 0;
+    for (int h = 0; h < mpHumans; h++) {
+        if (hum[h].gone || hum[h].teamA != teamA) continue;
+        found = h;
+        n++;
+    }
+    return n == 1 ? found : -1;
 }
 
 void Game::State6MP()
@@ -163,15 +174,17 @@ void Game::State6MP()
     }
     auto TeamOf = [&](int i) { return P[i]->b154 ? 0 : 1; };
 
-    // Auto-switch (versus): each human controls their team's lead, like YOU in single player.
+    // Auto-switch: a human who is alone on their team controls the team's lead (ball carrier /
+    // nearest to the ball), like YOU in single player. Teams with several humans stay locked.
     if (mpAutoSwitch) {
         for (int h = 0; h < mpHumans; h++) {
+            if (hum[h].gone || MpSoloHuman(hum[h].teamA) != h) continue;
             int lead = R[hum[h].teamA ? 0 : 1][0];
             if (lead >= 0) hum[h].player = lead;
         }
         for (int &c : ctrl) c = -1;
         for (int h = 0; h < mpHumans; h++)
-            if (hum[h].player >= 0) ctrl[hum[h].player] = h;
+            if (!hum[h].gone && hum[h].player >= 0) ctrl[hum[h].player] = h;
     }
 
     // ---- goals ----

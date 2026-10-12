@@ -26,7 +26,7 @@ static void DefaultName();
 namespace {
 
 const uint32_t MAGIC = 0x314d4248u;   // "HBM1"
-const int VERSION = 1;
+const int VERSION = 2;
 const double TIMEOUT = 6.0;
 
 enum Packet {
@@ -82,6 +82,7 @@ struct State {
     uint16_t port = 0;
     LobbyPlayer lp[6] = {};
     int teamSize = 3, timeSel = 0;
+    bool autoSwitch = true;
     int mySlot = 0;
     // host
     Peer peers[6] = {};
@@ -341,9 +342,10 @@ static void HostRemovePeer(Game *g, int s)
     O.lp[s].used = false;
     // In a match the player's character is taken over by the AI.
     for (int h = 0; h < g->mpHumans; h++) {
-        if (O.humSlot[h] == s && g->hum[h].player >= 0) {
-            g->ctrl[g->hum[h].player] = -1;
+        if (O.humSlot[h] == s && g->hum[h].device == DEVICE_REMOTE && !g->hum[h].gone) {
+            if (g->hum[h].player >= 0) g->ctrl[g->hum[h].player] = -1;
             g->hum[h].player = -1;
+            g->hum[h].gone = true;
         }
     }
 }
@@ -462,6 +464,7 @@ void Game::OnlineHostSend()
         Begin(w, P_LOBBY);
         w.u8(O.teamSize);
         w.u8(O.timeSel);
+        w.u8(O.autoSwitch);
         for (const LobbyPlayer &p : O.lp) {
             w.u8(p.used);
             w.str(p.name, 24);
@@ -543,7 +546,7 @@ void Game::OnlineStartMatch()
     static const int minutes[4] = {0, 3, 5, 10};
     mpActive = true;
     mpSplit = false;
-    mpAutoSwitch = false;
+    mpAutoSwitch = O.autoSwitch;
     mpMinutes = minutes[O.timeSel];
     teamSize = O.teamSize;
     mpHumans = 0;
@@ -659,6 +662,7 @@ void Game::OnlineClientReceive()
         } else if (type == P_LOBBY && O.welcomed) {
             O.teamSize = r.u8();
             O.timeSel = r.u8();
+            O.autoSwitch = r.u8() != 0;
             for (LobbyPlayer &p : O.lp) {
                 p.used = r.u8() != 0;
                 r.str(p.name, 24);
@@ -1107,7 +1111,7 @@ void Game::State15_Lobby()
     while (plat::PollChar() != 0) {}
     bool host = O.role == ROLE_HOST;
     if (O.role == ROLE_CLIENT && !O.welcomed) return;
-    const int ITEMS = host ? 6 : 4;
+    const int ITEMS = host ? 7 : 4;
     if ((keyUp == KEY_PUSH || keyNum8 == KEY_PUSH) && menuSel > 0) {
         menuSel--;
         sound->Play(2);
@@ -1121,7 +1125,7 @@ void Game::State15_Lobby()
     int dir = 0;
     if (keyLeft == KEY_PUSH || keyNum4 == KEY_PUSH) dir = -1;
     if (keyRight == KEY_PUSH || keyNum6 == KEY_PUSH) dir = 1;
-    if (action && menuSel <= (host ? 3 : 2)) dir = 1;
+    if (action && menuSel <= (host ? 4 : 2)) dir = 1;
 
     LobbyPlayer &me = O.lp[O.mySlot];
     int myTeam = host ? me.team : O.wantTeam;
@@ -1145,6 +1149,9 @@ void Game::State15_Lobby()
             sound->Play(2);
         } else if (host && menuSel == 3) {
             O.timeSel = (O.timeSel + dir + 4) % 4;
+            sound->Play(2);
+        } else if (host && menuSel == 4) {
+            O.autoSwitch = !O.autoSwitch;
             sound->Play(2);
         } else if (!host && menuSel == 2) {
             O.wantReady = !O.wantReady;
@@ -1171,7 +1178,7 @@ void Game::State15_Lobby()
         sound->ForceTrack("WAV\\LP\\1.mp3");
         return;
     }
-    if (host && menuSel == 4 && action) {
+    if (host && menuSel == 5 && action) {
         bool allReady = true;
         for (int s = 1; s < 6; s++)
             if (O.lp[s].used && !O.lp[s].ready) allReady = false;
@@ -1302,8 +1309,8 @@ void Game::DrawOnlineHUD()
     const LobbyPlayer &me = O.lp[O.mySlot];
     int myTeam = host ? me.team : O.wantTeam, myChr = host ? me.chr : O.wantChr;
     if (myTeam < 0) myTeam = me.team;
-    const char *labels[6];
-    const char *values[6] = {};
+    const char *labels[7];
+    const char *values[7] = {};
     int n = 0;
     labels[n] = "チーム";
     values[n++] = myTeam == 0 ? "チームＡ" : "チームＢ";
@@ -1314,6 +1321,8 @@ void Game::DrawOnlineHUD()
         values[n++] = sizes[O.teamSize - 1];
         labels[n] = "試合時間";
         values[n++] = times[O.timeSel];
+        labels[n] = "操作";
+        values[n++] = O.autoSwitch ? "一人のチームはボールに近いキャラに自動切替" : "選んだキャラで固定";
         labels[n++] = "試合開始";
     } else {
         labels[n] = "準備";
@@ -1321,7 +1330,7 @@ void Game::DrawOnlineHUD()
     }
     labels[n++] = "部屋を出る";
     for (int i = 0; i < n; i++) {
-        int y = 296 + i * 26;
+        int y = 284 + i * 24;
         bool sel = i == menuSel;
         int g = sel ? 0 : 255;
         if (!values[i]) {
