@@ -79,4 +79,8 @@ public:
 
     bool benched = false;   // mod: sitting out a 1v1 / 2v2 match (hidden, ignored)
     bool pickedB = false;   // mod: picked for team B by a human (versus team select)
+    int motionId = 0;       // mod: last Motion_* applied (index into Player::kMotions)
+    int texFrame[4] = {};   // mod: last SetTex0..3 frames
+    void ApplyMotion(int id);   // mod: calls Motion_* by index (online clients)
+    static const int NUM_MOTIONS = 17;
 };

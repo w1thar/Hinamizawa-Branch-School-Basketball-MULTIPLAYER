@@ -66,9 +66,9 @@ void Game::DrawHUD()
         snprintf(text, sizeof(text), "プレイモードを選択してください");
         DrawText(text, 24, 140, 192, Pulse(f390, 10.0f), Pulse(f390, 7.0f), Pulse(f390, 3.0f));
         static const char *const modes[MODE_LAST + 1] = {"ノーマルモード", "　部活モード", "　練習モード", "ローカル対戦",
-                                                          "設定"};
+                                                          "オンライン対戦", "設定"};
         for (int i = 0; i <= MODE_LAST; i++) {
-            int y = 290 + i * 34;
+            int y = 276 + i * 31;
             DrawTextCentered(modes[i], 28, 322, y + 2, 0, 0, 0);
             if (i == i3b0) DrawTextCentered(modes[i], 28, 320, y, 255, 0, 0);
             else DrawTextCentered(modes[i], 28, 320, y, 255, 255, 255);
@@ -76,6 +76,9 @@ void Game::DrawHUD()
         snprintf(text, sizeof(text), "ESCキー:ポーズ");
         DrawText(text, 12, 499, 460, 255, 250, 150);
     }
+
+    // ---- states 14 / 15 (mod): online menu and lobby ----
+    DrawOnlineHUD();
 
     // ---- state 13 (mod): local multiplayer setup ----
     if (state == 13) {
@@ -367,7 +370,8 @@ void Game::DrawHUD()
         }
         if (i3b8 == 3) {
             if (mpActive && mpVersus && i3d8 != i3dc) {
-                snprintf(text, sizeof(text), "%s", i3dc < i3d8 ? "Ｐ１　ＷＩＮ！" : "Ｐ２　ＷＩＮ！");
+                if (OnlineActive()) snprintf(text, sizeof(text), "%s", i3dc < i3d8 ? "チームＡ　ＷＩＮ！" : "チームＢ　ＷＩＮ！");
+                else snprintf(text, sizeof(text), "%s", i3dc < i3d8 ? "Ｐ１　ＷＩＮ！" : "Ｐ２　ＷＩＮ！");
                 DrawTextCentered(text, 72, 320, 225, Pulse(f390, 10.0f), Pulse(f390, 7.0f), Pulse(f390, 3.0f));
             } else if (i3dc < i3d8) {
                 snprintf(text, sizeof(text), "ＹＯＵ　ＷＩＮ！");

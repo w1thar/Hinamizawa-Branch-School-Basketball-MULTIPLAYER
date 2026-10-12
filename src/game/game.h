@@ -8,12 +8,13 @@
 #include "game/input.h"
 #include "game/models.h"
 #include "game/player.h"
+#include "platform/platform.h"
 #include "render/gfx.h"
 
 // Entries of the play-mode menu (state 3). 0..2 are the original modes.
 enum PlayMode {
     MODE_NORMAL = 0, MODE_CLUB = 1, MODE_PRACTICE = 2,
-    MODE_LOCAL = 3, MODE_SETTINGS = 4, MODE_LAST = 4
+    MODE_LOCAL = 3, MODE_ONLINE = 4, MODE_SETTINGS = 5, MODE_LAST = 5
 };
 
 // Multiplayer (mod): one entry per human player.
@@ -91,11 +92,36 @@ public:
     int MpHumanOnTeam(bool teamA) const;
     const char *TeamLabel(bool teamA) const;
     void RenderSplitScreen();
+    // Online play (online.cpp).
+    void State14_Online();
+    void State15_Lobby();
+    bool OnlineActive() const;
+    bool OnlineIsHost() const;
+    bool OnlineClientView() const;   // a client during a match: the host's snapshots replace the game logic
+    bool OnlineTextEntry() const;
+    void OnlineNoteSoundSet(int set);
+    void OnlineLobbyScene();
+    void OnlineLeave();
+    void OnlineFail(const char *msg);
+    void OnlineHostReceive();
+    void OnlineHostSend();
+    void OnlineStartMatch();
+    void OnlineMatchOver();
+    void OnlineClientReceive();
+    void OnlineClientSend();
+    void OnlineApplySnapshot();
+    void OnlineFrameBegin();
+    void OnlineFrameEnd();
+    void OnlineHost();
+    void OnlineJoin(const plat::NetAddr &addr);
+    void DrawOnlineHUD();
+    bool MpAnyHumanPushed();
     void DrawSplitDivider();
     void StartTeamSelect();
     void PickSmallTeams();
     bool SettingsMenu();       // settings page input; true when "Back" was chosen
     bool UpdatePause();        // pause menu; true while the game is paused
+    bool UpdatePauseMenu();
     int PauseItems(int *ids);  // the pause menu's entries for the current state
     void ReturnToTitle();
     void DrawSettingsMenu();
@@ -189,6 +215,7 @@ public:
     int mpHumans;
     MpHuman hum[6];
     int ctrl[6];               // player index -> human controlling it, or -1
+    RawControls netRaw[6];     // online host: buttons of remote humans this frame
     int mpMenuOwner;           // human whose device drives the menu keys, or -1 for everyone
     MpPick mpPicks[6];
     int mpPickCount, mpPickIdx;

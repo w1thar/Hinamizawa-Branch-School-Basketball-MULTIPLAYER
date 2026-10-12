@@ -29,6 +29,10 @@ public:
 
     // Not in the original: global gains (0..1) for music and sound effects.
     static void SetMixVolumes(float music, float sfx);
+    // Online play (mod): the host reports every Play(); clients mirror the host's music.
+    static void (*playHook)(int slot);
+    static const char *CurrentTrack(int &generation);   // "" when no music is playing
+    void ForceTrack(const char *file);                  // open + play, "" stops
 
     static const int NUM_SLOTS = 15;
 };

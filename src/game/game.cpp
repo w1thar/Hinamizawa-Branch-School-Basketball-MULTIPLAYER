@@ -111,6 +111,7 @@ void Game::InitGame()
 
 void Game::ShutdownGame()
 {
+    OnlineLeave();
     for (Player *&p : players) {
         delete p;
         p = nullptr;
@@ -132,6 +133,7 @@ void Game::ShutdownGame()
 
 void Game::LoadSoundSet(int set)
 {
+    OnlineNoteSoundSet(set);
     sound->Init();
     if (set == 0) {
         sound->LoadWav(0, "WAV\\LP\\semi.wav");
@@ -156,8 +158,13 @@ void Game::LoadSoundSet(int set)
 
 void Game::Frame()
 {
+    OnlineFrameBegin();            // mod: network in (online play)
     bool frozen = UpdatePause();   // mod: the pause menu freezes everything below
-    if (!frozen) {
+    if (OnlineClientView()) {
+        // Online client in a match: everything comes from the host's snapshot.
+        for (int i = 0; i < 6; i++)
+            if (!players[i]->benched) players[i]->Update(dt);
+    } else if (!frozen) {
         switch (state) {
         case 1: State1_Title(); break;
         case 2: State2(); break;
@@ -174,11 +181,16 @@ void Game::Frame()
         case 11: State11_Settings(); break;
         case 12: State12_TeamSize(); break;
         case 13: State13_LocalSetup(); break;
+        case 14: State14_Online(); break;
+        case 15: State15_Lobby(); break;
         }
         for (int i = 0; i < 6; i++)
             if (!players[i]->benched) players[i]->Update(dt);
         fn_42b23c();
     }
+    OnlineFrameEnd();   // mod: network out
+    if (!OnlineTextEntry())
+        while (plat::PollChar() != 0) {}   // typed text only matters on the code / name pages
 
     if (mpActive && mpSplit && state == 6) {   // mod: local multiplayer, one view per player
         RenderSplitScreen();

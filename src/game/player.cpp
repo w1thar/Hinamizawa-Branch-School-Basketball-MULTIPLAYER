@@ -201,7 +201,31 @@ static void ApplyTex(SkinModel *m, int group, int frame)
     for (int i = 0; i < g.count; i++) m->verts[g.verts[i].vtx].tv = g.verts[i].tv + (float)frame * step;
 }
 
-void Player::SetTex0(int frame) { ApplyTex(model, 0, frame); }
-void Player::SetTex1(int frame) { ApplyTex(model, 1, frame); }
-void Player::SetTex2(int frame) { ApplyTex(model, 2, frame); }
-void Player::SetTex3(int frame) { ApplyTex(model, 3, frame); }
+void Player::SetTex0(int frame) { texFrame[0] = frame; ApplyTex(model, 0, frame); }
+void Player::SetTex1(int frame) { texFrame[1] = frame; ApplyTex(model, 1, frame); }
+void Player::SetTex2(int frame) { texFrame[2] = frame; ApplyTex(model, 2, frame); }
+void Player::SetTex3(int frame) { texFrame[3] = frame; ApplyTex(model, 3, frame); }
+
+void Player::ApplyMotion(int id)
+{
+    static void (Player::*const motions[NUM_MOTIONS])() = {
+        &Player::Motion_Stand,
+        &Player::Motion_42dfc0,
+        &Player::Motion_42e9cd,
+        &Player::Motion_42ee86,
+        &Player::Motion_42f1a9,
+        &Player::Motion_42fb3f,
+        &Player::Motion_43006a,
+        &Player::Motion_4301cb,
+        &Player::Motion_43030b,
+        &Player::Motion_430497,
+        &Player::Motion_4305b1,
+        &Player::Motion_430701,
+        &Player::Motion_430a58,
+        &Player::Motion_430c40,
+        &Player::Motion_430e6d,
+        &Player::Motion_431118,
+        &Player::Motion_4312d5,
+    };
+    if (id >= 0 && id < NUM_MOTIONS) (this->*motions[id])();
+}

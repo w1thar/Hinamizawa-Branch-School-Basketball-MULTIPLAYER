@@ -92,6 +92,40 @@ bool ReadGamepad(int id, GamepadState &state);
 
 // Per-user folder for settings, with a trailing path separator; created if missing.
 std::string ConfigDir();
+// The user's login name (UTF-8), for a default player name.
+std::string UserName();
+
+// Typed text (added by the mod, for entering join codes): characters typed since the last call,
+// one per call as a Unicode code point (0 = none). Backspace is 8, Ctrl+V is 0x16.
+unsigned PollChar();
+std::string ClipboardText();
+
+// UDP networking (added by the mod). Addresses are IPv4 in host byte order.
+struct NetAddr {
+    uint32_t ip = 0;
+    uint16_t port = 0;
+    bool operator==(const NetAddr &o) const { return ip == o.ip && port == o.port; }
+};
+const uint32_t NET_BROADCAST = 0xffffffffu;
+bool NetInit();
+// Opens a non-blocking UDP socket on `port` (0 = any free port); -1 on failure.
+int UdpOpen(uint16_t port, bool broadcast);
+void UdpClose(int sock);
+bool UdpSend(int sock, const NetAddr &to, const void *data, int len);
+// Next waiting datagram, or -1 if there is none.
+int UdpRecv(int sock, NetAddr &from, void *buf, int max);
+uint16_t UdpLocalPort(int sock);
+bool NetResolve(const char *host, uint16_t port, NetAddr &out);
+uint32_t NetLocalIP();   // this PC's main LAN address (0 if unknown)
+std::string NetAddrString(uint32_t ip);
+
+// Making a hosted game reachable from the internet, done on a background thread:
+// UPnP port mapping on the router (and its external address), else the public address seen by a
+// STUN server. Status: 0 working, 1 port mapped (ip = router's external address), 2 no mapping
+// (ip = public address from STUN, or 0 if that failed too).
+void NetStartPortMapping(uint16_t port);
+int NetPortMappingStatus(uint32_t &externalIp);
+void NetStopPortMapping();   // removes the mapping again (blocking, short timeouts)
 
 // The asset archive linked into the executable.
 const uint8_t *PakData(size_t *size);

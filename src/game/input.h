@@ -6,6 +6,8 @@
 // Device ids: DEVICE_KEYBOARD, or a gamepad id from plat::ListGamepads().
 const int DEVICE_NONE = -1;
 const int DEVICE_KEYBOARD = -2;
+const int DEVICE_ANY = -3;      // keyboard + every gamepad (the local player online)
+const int DEVICE_REMOTE = -4;   // input arrives over the network
 
 // One player's controls, as the original's key-state values (KEY_FREE / PUSH / RELEASE / HOLD).
 struct VirtualPad {

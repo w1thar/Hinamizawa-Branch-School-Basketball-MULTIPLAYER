@@ -11,6 +11,23 @@ static const float STICK_DEADZONE = 0.3f;    // stick -> analog movement
 bool Input_ReadRaw(int device, RawControls &out)
 {
     out = RawControls();
+    if (device == DEVICE_ANY) {
+        Input_ReadRaw(DEVICE_KEYBOARD, out);
+        plat::GamepadInfo pads[16];
+        int n = plat::ListGamepads(pads, 16);
+        for (int i = 0; i < n; i++) {
+            RawControls r;
+            if (!Input_ReadRaw(pads[i].id, r)) continue;
+            out.up |= r.up; out.down |= r.down; out.left |= r.left; out.right |= r.right;
+            out.pass |= r.pass; out.shoot |= r.shoot; out.alt |= r.alt;
+            out.confirm |= r.confirm; out.pause |= r.pause;
+            if (r.moveX * r.moveX + r.moveY * r.moveY > out.moveX * out.moveX + out.moveY * out.moveY) {
+                out.moveX = r.moveX;
+                out.moveY = r.moveY;
+            }
+        }
+        return true;
+    }
     if (device == DEVICE_KEYBOARD) {
         out.up = plat::KeyDown(plat::KEY_UP) || plat::KeyDown(plat::KEY_NUMPAD8);
         out.down = plat::KeyDown(plat::KEY_DOWN) || plat::KeyDown(plat::KEY_NUMPAD2);

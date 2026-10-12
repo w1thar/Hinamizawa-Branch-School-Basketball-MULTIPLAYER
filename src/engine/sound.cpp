@@ -1,6 +1,7 @@
 #include "engine/sound.h"
 
 #include <cmath>
+#include <cstdio>
 #include <cstring>
 #include <vector>
 
@@ -36,6 +37,8 @@ struct Music {
 
 Slot g_slots[Sound::NUM_SLOTS];
 float g_musicGain = 1.0f, g_sfxGain = 1.0f;
+char g_trackName[128];
+int g_trackGen;
 Music g_music;
 bool g_audioOpen = false;
 
@@ -194,8 +197,11 @@ bool Sound::LoadWav(int slot, const char *file)
     return true;
 }
 
+void (*Sound::playHook)(int slot) = nullptr;
+
 void Sound::Play(int slot)
 {
+    if (playHook) playHook(slot);
     plat::AudioLock();
     g_slots[slot].pos = 0;          // SetCurrentPosition(0)
     g_slots[slot].playing = !g_slots[slot].pcm.empty();
@@ -217,6 +223,7 @@ void Sound::OpenMp3(const char *file)
     size_t size;
     const void *d = g_music.open ? nullptr : pak_find(file, &size);
     if (d && drmp3_init_memory(&g_music.mp3, d, size, nullptr)) {
+        snprintf(g_trackName, sizeof(g_trackName), "%s", file);
         g_music.mp3Valid = true;
         g_music.open = true;
         g_music.rate = (int)g_music.mp3.sampleRate;
@@ -231,7 +238,10 @@ void Sound::PlayMp3()
 {
     if (mp3Playing) StopMp3();
     plat::AudioLock();
-    if (g_music.open) g_music.playing = true;
+    if (g_music.open) {
+        g_music.playing = true;
+        g_trackGen++;
+    }
     plat::AudioUnlock();
     mp3Playing = true;
 }
@@ -244,4 +254,25 @@ void Sound::StopMp3()
         plat::AudioUnlock();
         mp3Playing = false;
     }
+}
+
+const char *Sound::CurrentTrack(int &generation)
+{
+    generation = g_trackGen;
+    bool playing;
+    plat::AudioLock();
+    playing = g_music.playing && g_music.mp3Valid;
+    plat::AudioUnlock();
+    return playing ? g_trackName : "";
+}
+
+void Sound::ForceTrack(const char *file)
+{
+    plat::AudioLock();
+    CloseMusicLocked();
+    plat::AudioUnlock();
+    mp3Playing = false;
+    if (!file || !*file) return;
+    OpenMp3(file);
+    PlayMp3();
 }

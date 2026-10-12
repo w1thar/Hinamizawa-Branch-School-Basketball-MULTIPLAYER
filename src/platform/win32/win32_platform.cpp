@@ -28,6 +28,8 @@ bool g_quit;
 bool g_fullscreen;
 RECT g_windowedRect;
 LARGE_INTEGER g_freq;
+unsigned g_chars[64];
+int g_charCount;
 
 void UpdateOutputRect()
 {
@@ -69,6 +71,9 @@ LRESULT CALLBACK WndProc(HWND hwnd, UINT msg, WPARAM wp, LPARAM lp)
     switch (msg) {
     case WM_KEYDOWN:
         return 0;   // the original quit on ESC; the mod uses it for the pause menu
+    case WM_CHAR:
+        if (g_charCount < 64) g_chars[g_charCount++] = (unsigned)wp;   // mod: typed join codes
+        return 0;
     case WM_SYSKEYDOWN:
         if (wp == VK_RETURN && (lp & (1 << 29))) {  // Alt+Enter
             SetFullscreen(!g_fullscreen);
@@ -329,6 +334,48 @@ bool RasterText(const char *utf8, int height, Font fontKind, std::vector<uint8_t
     DeleteObject(font);
     DeleteDC(dc);
     return true;
+}
+
+unsigned PollChar()
+{
+    if (g_charCount == 0) return 0;
+    unsigned c = g_chars[0];
+    memmove(g_chars, g_chars + 1, (g_charCount - 1) * sizeof(unsigned));
+    g_charCount--;
+    return c;
+}
+
+static std::string WideToUtf8(const wchar_t *w)
+{
+    int n = WideCharToMultiByte(CP_UTF8, 0, w, -1, nullptr, 0, nullptr, nullptr);
+    if (n <= 1) return std::string();
+    std::string s(n - 1, '\0');
+    WideCharToMultiByte(CP_UTF8, 0, w, -1, &s[0], n, nullptr, nullptr);
+    return s;
+}
+
+std::string ClipboardText()
+{
+    std::string out;
+    if (!OpenClipboard(g_hwnd)) return out;
+    HANDLE h = GetClipboardData(CF_UNICODETEXT);
+    if (h) {
+        const wchar_t *w = (const wchar_t *)GlobalLock(h);
+        if (w) {
+            out = WideToUtf8(w);
+            GlobalUnlock(h);
+        }
+    }
+    CloseClipboard();
+    return out;
+}
+
+std::string UserName()
+{
+    wchar_t buf[128];
+    DWORD n = 128;
+    if (!GetUserNameW(buf, &n)) return std::string();
+    return WideToUtf8(buf);
 }
 
 std::string ConfigDir()

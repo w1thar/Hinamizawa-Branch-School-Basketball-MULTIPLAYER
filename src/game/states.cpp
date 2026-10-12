@@ -193,6 +193,12 @@ void Game::State3()
         state = 13;
         return;
     }
+    if (b39a != 0 && i3b0 == MODE_ONLINE && AnyActionPushed(this)) {
+        sound->Play(1);
+        menuSel = 0;
+        state = 14;
+        return;
+    }
     if (b39a != 0 && i3b0 == MODE_SETTINGS && AnyActionPushed(this)) {
         sound->Play(1);
         menuSel = 0;
@@ -502,6 +508,7 @@ void Game::MpPlaceHumansInCentre()
 // Scoreboard names: YOU / COM, or P1 / P2 in a versus match.
 const char *Game::TeamLabel(bool teamA) const
 {
+    if (mpActive && mpVersus && OnlineActive()) return teamA ? "チームＡ" : "チームＢ";
     if (mpActive && mpVersus) return teamA ? "Ｐ１" : "Ｐ２";
     return teamA ? "ＹＯＵ" : "ＣＯＭ";
 }
@@ -557,23 +564,35 @@ bool Game::SettingsMenu()
 }
 
 // ---- pause menu (mod): ESC / Options freezes the game ------------------------------------------
-enum { PAUSE_RESUME, PAUSE_SETTINGS, PAUSE_TITLE, PAUSE_QUIT };
+enum { PAUSE_RESUME, PAUSE_SETTINGS, PAUSE_TITLE, PAUSE_QUIT, PAUSE_LEAVE };
 
 int Game::PauseItems(int *ids)
 {
     int n = 0;
     ids[n++] = PAUSE_RESUME;
     ids[n++] = PAUSE_SETTINGS;
-    if (state >= 4 && state <= 9) ids[n++] = PAUSE_TITLE;   // not on the title screens themselves
+    if (OnlineActive() && state >= 4 && state <= 9) ids[n++] = PAUSE_LEAVE;   // online: leave the room
+    else if (state >= 4 && state <= 9) ids[n++] = PAUSE_TITLE;   // not on the title screens themselves
     ids[n++] = PAUSE_QUIT;
     return n;
 }
 
 bool Game::UpdatePause()
 {
+    // Online the game cannot stop for one player: the menu opens but nothing freezes.
+    if (OnlineActive()) {
+        bool menu = UpdatePauseMenu();
+        (void)menu;
+        return false;
+    }
+    return UpdatePauseMenu();
+}
+
+bool Game::UpdatePauseMenu()
+{
     if (!paused) {
         // In the title's settings page ESC just goes back (handled by SettingsMenu).
-        if (keyPause != KEY_PUSH || state < 2 || state == 11) return false;
+        if (keyPause != KEY_PUSH || state < 2 || state == 11 || state >= 13) return false;
         paused = true;
         pausePage = 0;
         pauseSel = 0;
@@ -616,7 +635,15 @@ bool Game::UpdatePause()
         ReturnToTitle();
         break;
     case PAUSE_QUIT:
+        OnlineLeave();
         quit = true;
+        break;
+    case PAUSE_LEAVE:
+        sound->Play(1);
+        paused = false;
+        inputLock = true;
+        OnlineLeave();
+        ReturnToTitle();
         break;
     }
     return paused;
@@ -972,6 +999,7 @@ void Game::State5()
             f3a0 = f3a0 + dt;
             if (1.0f < f3a0) f3a0 = 0.001f;
         }
+        if (hA >= 0) hum[hA].power = f3a0;
         if (i3b8 == 2 && tipReleased(hA)) {
             you->Motion_4301cb();   // jump
             you->f18c = you->stat16c * f3a0;
@@ -1158,7 +1186,7 @@ void Game::State7()
         camDir.x = sinf(yawAngle);
         camDir.z = cosf(yawAngle);
     }
-    if (keyX == KEY_PUSH || keyZ == KEY_PUSH || keyC == KEY_PUSH) {
+    if (keyX == KEY_PUSH || keyZ == KEY_PUSH || keyC == KEY_PUSH || MpAnyHumanPushed()) {
         sound->Play(7);
         i3b8 = 5;
         f390 = 0.0f;
@@ -1242,7 +1270,7 @@ void Game::State8()
             for (int i = 0; i < 6; i++) players[team[i]]->Motion_43030b();
         }
     } else if (i3b8 == 3) {
-        if (keyX == KEY_PUSH || keyZ == KEY_PUSH || keyC == KEY_PUSH) i3b8 = 4;
+        if (keyX == KEY_PUSH || keyZ == KEY_PUSH || keyC == KEY_PUSH || MpAnyHumanPushed()) i3b8 = 4;
     } else if (i3b8 == 4) {
         f394 = dt * 0.3f + f394;
         if (1.0f < f394) {
@@ -1251,7 +1279,7 @@ void Game::State8()
         }
     } else if (i3b8 == 5) {
         sound->StopMp3();
-        if (i3dc < i3d8 && i3b0 != 2 && !(mpActive && mpVersus)) {   // won a real match: ending
+        if (i3dc < i3d8 && i3b0 != 2 && !(mpActive && mpVersus) && !OnlineActive()) {   // won a real match: ending
             i3b8 = 0;
             f390 = 0.0f;
             state = 9;
@@ -1261,6 +1289,8 @@ void Game::State8()
             sound->Play(7);
             f390 = 0.0f;
         }
+    } else if (i3b8 == 6 && 4.0f < f390 && OnlineIsHost()) {
+        OnlineMatchOver();   // mod: online, everyone goes back to the lobby
     } else if (i3b8 == 6 && 4.0f < f390) {
         for (int i = 0; i < 6; i++) {
             players[team[i]]->SetTex1(0);
@@ -1424,4 +1454,15 @@ void Game::State9()
         SetShadowMatrix(matShadow, lightDir);
     }
     if (keyX == KEY_PUSH || keyZ == KEY_PUSH || keyC == KEY_PUSH) i3b8 = 3;
+}
+
+// Online half time / results: any remote player's button counts too.
+bool Game::MpAnyHumanPushed()
+{
+    if (!OnlineIsHost()) return false;
+    for (int h = 0; h < mpHumans; h++) {
+        const VirtualPad &k = hum[h].pad;
+        if (hum[h].device == DEVICE_REMOTE && (k.pass == KEY_PUSH || k.shoot == KEY_PUSH || k.alt == KEY_PUSH)) return true;
+    }
+    return false;
 }

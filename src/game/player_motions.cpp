@@ -7,6 +7,7 @@
 // Motion_Stand @ 0x0042df38
 void Player::Motion_Stand()
 {
+  motionId = 0;
   int local_8;
   for (local_8 = 0; local_8 < 1; local_8 = local_8 + 1) {
     memset(this->keys[local_8].pose,0,this->model->numBones * 24);
@@ -21,6 +22,7 @@ void Player::Motion_Stand()
 // Motion_42dfc0 @ 0x0042dfc0
 void Player::Motion_42dfc0()
 {
+  motionId = 1;
   int local_8;
   for (local_8 = 0; local_8 < 4; local_8 = local_8 + 1) {
     memset(this->keys[local_8].pose,0,this->model->numBones * 24);
@@ -218,6 +220,7 @@ void Player::Motion_42dfc0()
 // Motion_42e9cd @ 0x0042e9cd
 void Player::Motion_42e9cd()
 {
+  motionId = 2;
   int local_8;
   for (local_8 = 0; local_8 < 4; local_8 = local_8 + 1) {
     memset(this->keys[local_8].pose,0,this->model->numBones * 24);
@@ -313,6 +316,7 @@ void Player::Motion_42e9cd()
 // Motion_42ee86 @ 0x0042ee86
 void Player::Motion_42ee86()
 {
+  motionId = 3;
   int local_8;
   for (local_8 = 0; local_8 < 4; local_8 = local_8 + 1) {
     memset(this->keys[local_8].pose,0,this->model->numBones * 24);
@@ -384,6 +388,7 @@ void Player::Motion_42ee86()
 // Motion_42f1a9 @ 0x0042f1a9
 void Player::Motion_42f1a9()
 {
+  motionId = 4;
   int local_8;
   for (local_8 = 0; local_8 < 4; local_8 = local_8 + 1) {
     memset(this->keys[local_8].pose,0,this->model->numBones * 24);
@@ -572,6 +577,7 @@ void Player::Motion_42f1a9()
 // Motion_42fb3f @ 0x0042fb3f
 void Player::Motion_42fb3f()
 {
+  motionId = 5;
   int local_8;
   for (local_8 = 0; local_8 < 4; local_8 = local_8 + 1) {
     memset(this->keys[local_8].pose,0,this->model->numBones * 24);
@@ -673,6 +679,7 @@ void Player::Motion_42fb3f()
 // Motion_43006a @ 0x0043006a
 void Player::Motion_43006a()
 {
+  motionId = 6;
   int local_8;
   for (local_8 = 0; local_8 < 1; local_8 = local_8 + 1) {
     memset(this->keys[local_8].pose,0,this->model->numBones * 24);
@@ -699,6 +706,7 @@ void Player::Motion_43006a()
 // Motion_4301cb @ 0x004301cb
 void Player::Motion_4301cb()
 {
+  motionId = 7;
   int local_8;
   for (local_8 = 0; local_8 < 1; local_8 = local_8 + 1) {
     memset(this->keys[local_8].pose,0,this->model->numBones * 24);
@@ -723,6 +731,7 @@ void Player::Motion_4301cb()
 // Motion_43030b @ 0x0043030b
 void Player::Motion_43030b()
 {
+  motionId = 8;
   int local_8;
   for (local_8 = 0; local_8 < 1; local_8 = local_8 + 1) {
     memset(this->keys[local_8].pose,0,this->model->numBones * 24);
@@ -751,6 +760,7 @@ void Player::Motion_43030b()
 // Motion_430497 @ 0x00430497
 void Player::Motion_430497()
 {
+  motionId = 9;
   int local_8;
   for (local_8 = 0; local_8 < 1; local_8 = local_8 + 1) {
     memset(this->keys[local_8].pose,0,this->model->numBones * 24);
@@ -773,6 +783,7 @@ void Player::Motion_430497()
 // Motion_4305b1 @ 0x004305b1
 void Player::Motion_4305b1()
 {
+  motionId = 10;
   int local_8;
   for (local_8 = 0; local_8 < 1; local_8 = local_8 + 1) {
     memset(this->keys[local_8].pose,0,this->model->numBones * 24);
@@ -798,6 +809,7 @@ void Player::Motion_4305b1()
 // Motion_430701 @ 0x00430701
 void Player::Motion_430701()
 {
+  motionId = 11;
   int local_8;
   for (local_8 = 0; local_8 < 2; local_8 = local_8 + 1) {
     memset(this->keys[local_8].pose,0,this->model->numBones * 24);
@@ -864,6 +876,7 @@ void Player::Motion_430701()
 // Motion_430a58 @ 0x00430a58
 void Player::Motion_430a58()
 {
+  motionId = 12;
   int local_8;
   for (local_8 = 0; local_8 < 1; local_8 = local_8 + 1) {
     memset(this->keys[local_8].pose,0,this->model->numBones * 24);
@@ -902,6 +915,7 @@ void Player::Motion_430a58()
 // Motion_430c40 @ 0x00430c40
 void Player::Motion_430c40()
 {
+  motionId = 13;
   int local_8;
   for (local_8 = 0; local_8 < 1; local_8 = local_8 + 1) {
     memset(this->keys[local_8].pose,0,this->model->numBones * 24);
@@ -942,6 +956,7 @@ void Player::Motion_430c40()
 // Motion_430e6d @ 0x00430e6d
 void Player::Motion_430e6d()
 {
+  motionId = 14;
   int local_8;
   for (local_8 = 0; local_8 < 2; local_8 = local_8 + 1) {
     memset(this->keys[local_8].pose,0,this->model->numBones * 24);
@@ -987,6 +1002,7 @@ void Player::Motion_430e6d()
 // Motion_431118 @ 0x00431118
 void Player::Motion_431118()
 {
+  motionId = 15;
   int local_8;
   for (local_8 = 0; local_8 < 2; local_8 = local_8 + 1) {
     memset(this->keys[local_8].pose,0,this->model->numBones * 24);
@@ -1019,6 +1035,7 @@ void Player::Motion_431118()
 // Motion_4312d5 @ 0x004312d5
 void Player::Motion_4312d5()
 {
+  motionId = 16;
   int local_8;
   for (local_8 = 0; local_8 < 8; local_8 = local_8 + 1) {
     memset(this->keys[local_8].pose,0,this->model->numBones * 24);

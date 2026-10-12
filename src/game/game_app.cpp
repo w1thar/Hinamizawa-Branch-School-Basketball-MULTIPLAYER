@@ -32,6 +32,7 @@ Game::Game()
     mpActive = mpVersus = mpSplit = false;
     mpHumans = 0;
     for (int &c : ctrl) c = -1;
+    for (RawControls &r : netRaw) r = RawControls();
     mpMenuOwner = -1;
     memset(mpPicks, 0, sizeof(mpPicks));
     mpPickCount = mpPickIdx = 0;
@@ -210,12 +211,14 @@ void Game::MpUpdateInput()
     for (int h = 0; h < mpHumans; h++) {
         MpHuman &m = hum[h];
         RawControls r;
-        if (m.device == DEVICE_NONE || !Input_ReadRaw(m.device, r)) r = RawControls();
+        if (m.device == DEVICE_REMOTE) r = netRaw[h];
+        else if (m.device == DEVICE_NONE || !Input_ReadRaw(m.device, r)) r = RawControls();
+        if (paused && OnlineActive() && m.device != DEVICE_REMOTE) r = RawControls();   // menu open online
         Input_Step(m.pad, r);
         m.moveX = r.moveX;
         m.moveY = r.moveY;
         m.move = r.moveX != 0.0f || r.moveY != 0.0f;
-        if (inputLock) m.pad.pass = m.pad.shoot = m.pad.alt = m.pad.confirm = m.pad.pause = KEY_FREE;
+        if (inputLock && m.device != DEVICE_REMOTE) m.pad.pass = m.pad.shoot = m.pad.alt = m.pad.confirm = m.pad.pause = KEY_FREE;
     }
 }
 
