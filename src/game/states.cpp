@@ -28,7 +28,14 @@ void Game::State1_Title()
     players[4]->SetPos(-42.0f, 0.0f, -28.0f, 0.885f);
     players[5]->SetPos(-50.0f, 0.0f, -20.0f, 0.485f);
     for (int i = 0; i < 6; i++) players[i]->Motion_4312d5();
-    for (int i = 0; i < 6; i++) players[i]->benched = false;   // mod: 1v1 / 2v2 benches end here
+    for (int i = 0; i < 6; i++) {   // mod: 1v1 / 2v2 benches and multiplayer end here
+        players[i]->benched = false;
+        players[i]->pickedB = false;
+        ctrl[i] = -1;
+    }
+    mpActive = mpVersus = mpSplit = false;
+    mpHumans = 0;
+    mpMenuOwner = -1;
     camPos = Vec3(-48.0f, 20.0f, -28.0f);
     camDir = Vec3(1.0f, 0.0f, 1.0f);
     v24c.y = 6.0f;
@@ -153,15 +160,39 @@ void Game::State3()
         sound->Play(2);
         if (i3b0 == 0) SetFaces(this, 0, 0, 0, 0);
         if (i3b0 == 1) SetFaces(this, 0, 1, 1, -1);
+        if (i3b0 == 2) SetFaces(this, 1, 0, 0, 0);   // mod: reachable from below now
+        if (i3b0 >= 3) SetFaces(this, 0, 0, 0, 0);
     }
     if ((keyDown == KEY_PUSH || keyNum2 == KEY_PUSH) && i3b0 < MODE_LAST) {
         i3b0 = i3b0 + 1;
         sound->Play(2);
         if (i3b0 == 1) SetFaces(this, 0, 1, 1, -1);
         if (i3b0 == 2) SetFaces(this, 1, 0, 0, 0);
-        if (i3b0 == 3) SetFaces(this, 0, 0, 0, 0);
+        if (i3b0 >= 3) SetFaces(this, 0, 0, 0, 0);
     }
     // Mod: entries below the original three open the mod's own screens.
+    if (b39a != 0 && i3b0 == MODE_LOCAL && AnyActionPushed(this)) {
+        sound->Play(1);
+        menuSel = 0;
+        // Default devices: 1P on the first gamepad (else the keyboard), 2P on the next one.
+        plat::GamepadInfo pads[16];
+        int n = plat::ListGamepads(pads, 16);
+        auto connected = [&](int dev) {
+            if (dev == DEVICE_KEYBOARD) return true;
+            for (int i = 0; i < n; i++)
+                if (pads[i].id == dev) return true;
+            return false;
+        };
+        if (!connected(localDev[0]) || localDev[0] == DEVICE_NONE) localDev[0] = n > 0 ? pads[0].id : DEVICE_KEYBOARD;
+        if (!connected(localDev[1]) || localDev[1] == DEVICE_NONE || localDev[1] == localDev[0]) {
+            localDev[1] = DEVICE_KEYBOARD;
+            for (int i = 0; i < n && localDev[1] == localDev[0]; i++)
+                if (pads[i].id != localDev[0]) localDev[1] = pads[i].id;
+            if (localDev[1] == localDev[0]) localDev[1] = DEVICE_NONE;
+        }
+        state = 13;
+        return;
+    }
     if (b39a != 0 && i3b0 == MODE_SETTINGS && AnyActionPushed(this)) {
         sound->Play(1);
         menuSel = 0;
@@ -196,9 +227,11 @@ void Game::State3()
             players[i]->Motion_Stand();
             players[i]->SetPos(2.0f, 0.0f, -30.0f, 0.0f);
             players[i]->b154 = false;
+            players[i]->pickedB = false;
             i3b4 = 0;
         }
         players[i3b4]->SetPos(-2.0f, 0.0f, -20.0f, f390);
+        if (mpActive) MpBeginPicks();
     }
 }
 
@@ -265,6 +298,201 @@ void Game::State12_TeamSize()
     }
     teamSize = menuSel + 1;
     StartTeamSelect();
+}
+
+// ---- 13 (mod): local multiplayer setup ------------------------------------------------------------
+// Rows: 1P device, 2P device, mode (co-op / versus), team size, start, back. Up/Down select,
+// Left/Right change, X confirms. Anyone's device can drive this screen.
+void Game::State13_LocalSetup()
+{
+    f390 = f390 + dt;
+    if (v24c.y < 1.0f && -1.0f < f25c && f25c < 7.0f) f25c = 25.0f;   // same backdrop as state 3
+
+    const int ITEMS = 6;
+    if ((keyUp == KEY_PUSH || keyNum8 == KEY_PUSH) && menuSel > 0) {
+        menuSel--;
+        sound->Play(2);
+    }
+    if ((keyDown == KEY_PUSH || keyNum2 == KEY_PUSH) && menuSel < ITEMS - 1) {
+        menuSel++;
+        sound->Play(2);
+    }
+    int dir = 0;
+    if (keyLeft == KEY_PUSH || keyNum4 == KEY_PUSH) dir = -1;
+    if (keyRight == KEY_PUSH || keyNum6 == KEY_PUSH) dir = 1;
+    if (menuSel <= 3 && AnyActionPushed(this)) dir = 1;   // X also cycles the value
+
+    int minSize = localVersus ? 1 : 2;   // co-op needs room for both players on one team
+    if (localSize < minSize) localSize = minSize;
+    if (dir != 0) {
+        if (menuSel <= 1) {
+            // Keyboard, then each connected pad.
+            int opts[17], n = 0;
+            opts[n++] = DEVICE_KEYBOARD;
+            plat::GamepadInfo pads[16];
+            int np = plat::ListGamepads(pads, 16);
+            for (int i = 0; i < np; i++) opts[n++] = pads[i].id;
+            int cur = 0;
+            for (int i = 0; i < n; i++)
+                if (opts[i] == localDev[menuSel]) cur = i;
+            cur = (cur + dir + n) % n;
+            localDev[menuSel] = opts[cur];
+        } else if (menuSel == 2) {
+            localVersus = !localVersus;
+            minSize = localVersus ? 1 : 2;
+            if (localSize < minSize) localSize = minSize;
+        } else if (menuSel == 3) {
+            localSize += dir;
+            if (localSize > 3) localSize = minSize;
+            if (localSize < minSize) localSize = 3;
+        }
+        if (menuSel <= 3) sound->Play(2);
+    }
+    if (menuSel == 5 && AnyActionPushed(this)) {
+        sound->Play(1);
+        state = 3;
+        return;
+    }
+    bool valid = localDev[0] != DEVICE_NONE && localDev[1] != DEVICE_NONE && localDev[0] != localDev[1];
+    if (menuSel == 4 && AnyActionPushed(this)) {
+        if (!valid) {
+            sound->Play(3);
+            return;
+        }
+        mpActive = true;
+        mpVersus = localVersus;
+        mpSplit = true;
+        mpHumans = 2;
+        for (int h = 0; h < 6; h++) hum[h] = MpHuman();
+        hum[0].device = localDev[0];
+        hum[1].device = localDev[1];
+        for (int &c : ctrl) c = -1;
+        teamSize = localSize;
+        i3b0 = MODE_NORMAL;
+        SetFaces(this, 0, 0, 0, 0);
+        StartTeamSelect();
+    }
+}
+
+// Team select order. Co-op: 1P and 2P each pick their own character, then (3v3) 1P picks the third
+// teammate; COM gets the rest. Versus: 1P and 2P take turns, the first pick of each is their own.
+void Game::MpBeginPicks()
+{
+    mpPickCount = 0;
+    if (mpVersus) {
+        for (int k = 0; k < teamSize; k++) {
+            mpPicks[mpPickCount++] = {true, 0, k == 0 ? 0 : -1};
+            mpPicks[mpPickCount++] = {false, 1, k == 0 ? 1 : -1};
+        }
+    } else {
+        mpPicks[mpPickCount++] = {true, 0, 0};
+        mpPicks[mpPickCount++] = {true, 1, 1};
+        for (int k = 2; k < teamSize; k++) mpPicks[mpPickCount++] = {true, 0, -1};
+    }
+    mpPickIdx = 0;
+    mpMenuOwner = mpPicks[0].owner;
+    for (int h = 0; h < mpHumans; h++) hum[h].player = -1;
+}
+
+// The candidate i3b4 was chosen for the current pick.
+void Game::MpPickChosen()
+{
+    const MpPick &pk = mpPicks[mpPickIdx];
+    Player *pl = players[i3b4];
+    int nA = 0, nB = 0;
+    for (int i = 0; i < 6; i++) {
+        if (players[i]->b154) nA++;
+        if (players[i]->pickedB) nB++;
+    }
+    if (pk.teamA) {
+        pl->b154 = true;
+        pl->yaw = Atan2(((float)nA * 6.0f + 3.0f) - 2.0f, -20.0f);
+        team[nA] = i3b4;
+    } else {
+        pl->pickedB = true;
+        pl->yaw = Atan2(-((float)nB * 6.0f + 3.0f) - 2.0f, -20.0f);
+        team[3 + nB] = i3b4;
+    }
+    pl->Motion_42dfc0();
+    if (pk.lock >= 0) hum[pk.lock].player = i3b4;
+    mpPickIdx++;
+
+    if (mpPickIdx < mpPickCount) {
+        mpMenuOwner = mpPicks[mpPickIdx].owner;
+        do {
+            i3b4 = i3b4 + 1;
+            if (5 < i3b4) i3b4 = 0;
+        } while (players[i3b4]->b154 || players[i3b4]->pickedB);
+        players[i3b4]->SetPos(-2.0f, 0.0f, -20.0f, f390);
+        return;
+    }
+
+    // All picks made. Co-op: COM gets teamSize of the rest (random for 1v1 / 2v2, as in
+    // single player; all three for 3v3). Whoever is left sits out.
+    mpMenuOwner = -1;
+    if (!mpVersus) {
+        int rest[6], n = 0;
+        for (int i = 0; i < 6; i++)
+            if (!players[i]->b154) rest[n++] = i;
+        for (int i = n - 1; i > 0; i--) {
+            int j = crt_rand() % (i + 1);
+            int t = rest[i];
+            rest[i] = rest[j];
+            rest[j] = t;
+        }
+        for (int k = 0; k < teamSize; k++) {
+            team[3 + k] = rest[k];
+            Player *p = players[rest[k]];
+            float yaw = Atan2((float)k * 2.0f + (-3.0f - (float)k * 3.0f) + 2.0f, -30.0f);
+            p->SetPos((float)k * 2.0f + 2.0f, 0.0f, -30.0f, yaw);
+            p->Motion_42dfc0();
+        }
+    }
+    // Unused team[] entries take the players sitting out.
+    int r = 0;
+    int out[6], nOut = 0;
+    for (int i = 0; i < 6; i++) {
+        bool inA = players[i]->b154;
+        bool inB = false;
+        for (int k = 0; k < teamSize; k++)
+            if (team[3 + k] == i) inB = true;
+        if (!inA && !inB) out[nOut++] = i;
+    }
+    for (int k = teamSize; k < 3; k++) team[k] = out[r++];
+    for (int k = teamSize; k < 3; k++) team[3 + k] = out[r++];
+    for (int k = teamSize; k < 3; k++) {
+        players[team[k]]->benched = true;
+        players[team[3 + k]]->benched = true;
+    }
+    for (int i = 0; i < 6; i++) players[i]->pickedB = false;   // team B is now simply !b154
+    for (int &c : ctrl) c = -1;
+    for (int h = 0; h < mpHumans; h++)
+        if (hum[h].player >= 0) ctrl[hum[h].player] = h;
+    i3b8 = 3;
+}
+
+// The tip-off jumpers (slot 2 / 5) should be humans where possible, so they get to jump.
+void Game::MpPlaceHumansInCentre()
+{
+    for (int side = 0; side < 2; side++) {
+        int *s = slot + side * 3;
+        if (ctrl[s[2]] >= 0) continue;
+        for (int k = 0; k < 2; k++) {
+            if (ctrl[s[k]] >= 0 && !players[s[k]]->benched) {
+                int t = s[k];
+                s[k] = s[2];
+                s[2] = t;
+                break;
+            }
+        }
+    }
+}
+
+// Scoreboard names: YOU / COM, or 1P / 2P in a versus match.
+const char *Game::TeamLabel(bool teamA) const
+{
+    if (mpActive && mpVersus) return teamA ? "１Ｐ" : "２Ｐ";
+    return teamA ? "ＹＯＵ" : "ＣＯＭ";
 }
 
 // ---- 11 (mod): settings. Up/Down select, Left/Right change, X/Enter on "Back" saves -------------
@@ -446,7 +674,7 @@ void Game::State4()
             i3b4 += step;
             if (5 < i3b4) i3b4 = 0;
             if (i3b4 < 0) i3b4 = 5;
-        } while (players[i3b4]->b154);
+        } while (players[i3b4]->b154 || players[i3b4]->pickedB);
         players[i3b4]->SetPos(-2.0f, 0.0f, -20.0f, f390);
     };
     if (i3b8 < 3 && (keyRight == KEY_PUSH || keyNum6 == KEY_PUSH)) {
@@ -465,7 +693,10 @@ void Game::State4()
         i39c = 0;
     }
 
-    if (i3b8 < 3 && AnyActionPushed(this)) {
+    if (i3b8 < 3 && mpActive && AnyActionPushed(this)) {
+        sound->Play(4);
+        MpPickChosen();
+    } else if (i3b8 < 3 && AnyActionPushed(this)) {
         sound->Play(4);
         if (i3b8 < teamSize - 1) {
             players[i3b4]->b154 = true;
@@ -508,7 +739,7 @@ void Game::State4()
     // Picked players (and everyone once the teams are complete) walk onto the court.
     for (int i = 0; i < 6; i++) {
         Player *p = players[i];
-        if (2 < i3b8 || p->b154) {
+        if (2 < i3b8 || p->b154 || p->pickedB) {
             if (p->pos.z <= 0.0f) {
                 p->pos.x = p->pos.x - sinf(p->yaw) * p->stat168 * dt;
                 p->pos.z = p->pos.z - cosf(p->yaw) * p->stat168 * dt;
@@ -579,6 +810,7 @@ void Game::State4()
             slot[4] = slot[3];
             slot[3] = i3fc;
         }
+        if (mpActive) MpPlaceHumansInCentre();
         if (i3b0 == 2) {
             // Practice: skip the tip-off, YOU start with the ball.
             players[slot[0]]->SetPos(-7.0f, 0.0f, -7.0f, -2.355f);
@@ -709,12 +941,24 @@ void Game::State5()
     } else {
         f3e0 = f3e0 - dt;
         Player *you = players[slot[2]], *com = players[slot[5]];
-        if (i3b8 == 2 && (keyX == KEY_HOLD || keyZ == KEY_HOLD || keyC == KEY_HOLD)) {
+        // Mod: in multiplayer each jumper that a human controls uses that human's device.
+        int hA = mpActive ? ctrl[slot[2]] : -1, hB = mpActive ? ctrl[slot[5]] : -1;
+        auto tipHeld = [&](int h) {
+            if (h < 0) return keyX == KEY_HOLD || keyZ == KEY_HOLD || keyC == KEY_HOLD;
+            const VirtualPad &k = hum[h].pad;
+            return k.pass == KEY_HOLD || k.shoot == KEY_HOLD || k.alt == KEY_HOLD;
+        };
+        auto tipReleased = [&](int h) {
+            if (h < 0) return keyX == KEY_RELEASE || keyZ == KEY_RELEASE || keyC == KEY_RELEASE;
+            const VirtualPad &k = hum[h].pad;
+            return k.pass == KEY_RELEASE || k.shoot == KEY_RELEASE || k.alt == KEY_RELEASE;
+        };
+        if (i3b8 == 2 && tipHeld(hA)) {
             you->Motion_43006a();   // crouch, charging the jump
             f3a0 = f3a0 + dt;
             if (1.0f < f3a0) f3a0 = 0.001f;
         }
-        if (i3b8 == 2 && (keyX == KEY_RELEASE || keyZ == KEY_RELEASE || keyC == KEY_RELEASE)) {
+        if (i3b8 == 2 && tipReleased(hA)) {
             you->Motion_4301cb();   // jump
             you->f18c = you->stat16c * f3a0;
             sound->Play(2);
@@ -730,18 +974,8 @@ void Game::State5()
                 you->pos.y = you->f18c * dt + you->pos.y;
             }
         }
-        if (f390 <= f3bc + 1.75f) {
-            if (1.2f < f390) com->Motion_43006a();
-        } else {
-            if (com->pos.y < 0.1f) {
-                com->Motion_4301cb();
-                sound->Play(2);
-            }
-            if (-0.001f < com->pos.y) {
-                com->f18c = com->f18c - dt * 20.0f;
-                com->pos.y = com->f18c * dt + com->pos.y;
-            }
-            // Whoever reaches within 5 units of the ball first tips it towards their goal.
+        // Whoever reaches within 5 units of the ball first tips it towards their goal.
+        auto comTouch = [&]() {
             if (v24c.y - com->pos.y < 5.0f) {
                 if (b3a6 == 0) f260 = -0.5f - ((float)crt_rand() * 2.0f) / 32767.0f;
                 else f260 = ((float)crt_rand() * 2.0f) / 32767.0f + 0.5f;
@@ -763,6 +997,8 @@ void Game::State5()
                 b414 = false;
                 state = 6;
             }
+        };
+        auto youTouch = [&]() {
             if (v24c.y - you->pos.y < 5.0f) {
                 if (b3a6 == 0) f260 = ((float)crt_rand() * 2.0f) / 32767.0f + 0.5f;
                 else f260 = -0.5f - ((float)crt_rand() * 2.0f) / 32767.0f;
@@ -784,6 +1020,53 @@ void Game::State5()
                 b414 = false;
                 state = 6;
             }
+        };
+        if (hB >= 0) {
+            // A human jumps for team B: the same crouch / release as team A.
+            MpHuman &m = hum[hB];
+            if (m.tipState == 0 && tipHeld(hB)) {
+                com->Motion_43006a();
+                m.power = m.power + dt;
+                if (1.0f < m.power) m.power = 0.001f;
+            }
+            if (m.tipState == 0 && tipReleased(hB)) {
+                com->Motion_4301cb();
+                com->f18c = com->stat16c * m.power;
+                sound->Play(2);
+                m.tipState = 1;
+            }
+            if (m.tipState == 1) {
+                if (com->pos.y <= -0.001f) {
+                    com->Motion_Stand();
+                    m.tipState = 0;
+                    com->pos.y = 0.0f;
+                } else {
+                    com->f18c = com->f18c - dt * 20.0f;
+                    com->pos.y = com->f18c * dt + com->pos.y;
+                }
+            }
+            // As with COM, nobody can reach the ball before it comes back down.
+            if (1.2f < f390 && f25c < 0.0f) {
+                comTouch();
+                youTouch();
+            }
+            if (state == 6) {
+                m.tipState = 0;
+                m.power = 0.0f;
+            }
+        } else if (f390 <= f3bc + 1.75f) {
+            if (1.2f < f390) com->Motion_43006a();
+        } else {
+            if (com->pos.y < 0.1f) {
+                com->Motion_4301cb();
+                sound->Play(2);
+            }
+            if (-0.001f < com->pos.y) {
+                com->f18c = com->f18c - dt * 20.0f;
+                com->pos.y = com->f18c * dt + com->pos.y;
+            }
+            comTouch();
+            youTouch();
         }
     }
 }
@@ -954,7 +1237,7 @@ void Game::State8()
         }
     } else if (i3b8 == 5) {
         sound->StopMp3();
-        if (i3dc < i3d8 && i3b0 != 2) {   // won a real match: ending
+        if (i3dc < i3d8 && i3b0 != 2 && !(mpActive && mpVersus)) {   // won a real match: ending
             i3b8 = 0;
             f390 = 0.0f;
             state = 9;

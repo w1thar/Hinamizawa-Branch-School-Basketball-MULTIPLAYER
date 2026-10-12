@@ -374,8 +374,16 @@ void Device::Clear(u32 flags, u32 argb, float z)
 
 void Device::SetViewport(const Viewport &vp)
 {
-    // The game only ever uses the full 640x480 viewport with depth range [0,1].
+    // The original only used the full 640x480 viewport. The mod's split screen uses sub-rectangles
+    // (logical 640x480 coordinates); pre-transformed vertices still span 0..640 x 0..480 and are
+    // squeezed into the viewport, like a 640x480 frame per view.
     glDepthRange(vp.minZ, vp.maxZ);
+    if (S.outW <= 0 || S.outH <= 0) return;
+    float sx = (float)S.outW / 640.0f, sy = (float)S.outH / 480.0f;
+    int x0 = S.outX + (int)(vp.x * sx + 0.5f), x1 = S.outX + (int)((vp.x + vp.w) * sx + 0.5f);
+    int y0 = S.outY + (int)(vp.y * sy + 0.5f), y1 = S.outY + (int)((vp.y + vp.h) * sy + 0.5f);
+    glViewport(x0, S.winH - y1, x1 - x0, y1 - y0);
+    glScissor(x0, S.winH - y1, x1 - x0, y1 - y0);
 }
 
 void Device::SetTransform(TransformType t, const Mat4 &m)

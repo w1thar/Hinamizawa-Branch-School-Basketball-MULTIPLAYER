@@ -164,16 +164,27 @@ void Game::Frame()
         case 3: State3(); break;
         case 4: State4(); break;
         case 5: State5(); break;
-        case 6: State6(); break;
+        case 6:
+            if (mpActive) State6MP();
+            else State6();
+            break;
         case 7: State7(); break;
         case 8: State8(); break;
         case 9: State9(); break;
         case 11: State11_Settings(); break;
         case 12: State12_TeamSize(); break;
+        case 13: State13_LocalSetup(); break;
         }
         for (int i = 0; i < 6; i++)
             if (!players[i]->benched) players[i]->Update(dt);
         fn_42b23c();
+    }
+
+    if (mpActive && mpSplit && state == 6) {   // mod: local multiplayer, one view per player
+        RenderSplitScreen();
+        DrawHUD();
+        Flip();
+        return;
     }
 
     Vec3 up(0.0f, 1.0f, 0.0f);
@@ -248,4 +259,55 @@ Vec3 Game::CalcStep(int idx)
         }
     }
     return p;
+}
+
+// Mod: local multiplayer split screen. Each human gets a 320x480 half (1P left, 2P right) with
+// their own camera, sky scroll, shot cone and power gauge; the team portraits, score frames and
+// fades are drawn once over the whole screen.
+void Game::RenderSplitScreen()
+{
+    Mat4 proj, narrow;
+    device->GetTransform(gfx::TS_PROJECTION, proj);
+    narrow = proj;
+    narrow.m[0] *= 2.0f;   // half the width at the same scale: half the horizontal field of view
+    Vec3 savedSky = v37c;
+    int views = mpHumans < 2 ? mpHumans : 2;
+    if (!device->BeginScene()) return;
+    for (int v = 0; v < views; v++) {
+        MpHuman &m = hum[v];
+        gfx::Viewport vp = {(u32)(v * 320), 0, 320, 480, 0.0f, 1.0f};
+        device->SetViewport(vp);
+        device->SetTransform(gfx::TS_PROJECTION, narrow);
+        Vec3 up(0.0f, 1.0f, 0.0f);
+        Vec3 at(m.cam.x + m.camDir.x, m.cam.y + m.camDir.y, m.cam.z + m.camDir.z);
+        D3DUtil_SetViewMatrix(matView, m.cam, at, up);
+        device->SetTransform(gfx::TS_VIEW, matView);
+        device->Clear(gfx::CLEAR_ZBUFFER, 0, 1.0f);
+        device->SetLight(0, light);
+        i3ac = m.marker;
+        v240 = m.markerPos;
+        f3a0 = m.power;
+        i39c = m.gauge;
+        v37c = m.sky;
+        float pitch = Atan2(m.camDir.y, 1.0f);
+        float yawAngle = Atan2(m.camDir.x, m.camDir.z);
+        RenderSky(yawAngle, pitch);
+        m.sky = v37c;
+        RenderCourt();
+        for (int i = 0; i < 6; i++)
+            if (!players[i]->benched) players[i]->Render(device, matShadow);
+        RenderObjects();
+        DrawPowerGauge();
+        fn_428844();
+    }
+    v37c = savedSky;
+    gfx::Viewport full = {0, 0, 640, 480, 0.0f, 1.0f};
+    device->SetViewport(full);
+    device->SetTransform(gfx::TS_PROJECTION, proj);
+    DrawSplitDivider();
+    DrawTeamPortraits();
+    fn_421d0f();
+    fn_428491();
+    if (paused) DrawPauseDim();
+    device->EndScene();
 }

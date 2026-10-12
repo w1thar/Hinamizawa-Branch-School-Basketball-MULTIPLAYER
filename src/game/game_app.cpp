@@ -29,6 +29,15 @@ Game::Game()
     paused = false;
     pausePage = pauseSel = 0;
     teamSize = 3;
+    mpActive = mpVersus = mpSplit = false;
+    mpHumans = 0;
+    for (int &c : ctrl) c = -1;
+    mpMenuOwner = -1;
+    memset(mpPicks, 0, sizeof(mpPicks));
+    mpPickCount = mpPickIdx = 0;
+    localDev[0] = localDev[1] = DEVICE_NONE;
+    localVersus = false;
+    localSize = 3;
     mouseX = mouseY = 0;
     quit = false;
 
@@ -120,6 +129,7 @@ static void UpdateKey(int *state, bool down)
 // (see game/input.h for the mapping), so single-player works with a controller too.
 void Game::UpdateInput()
 {
+    MpUpdateInput();
     RawControls pad = {};
     plat::GamepadInfo list[16];
     int n = plat::ListGamepads(list, 16);
@@ -144,19 +154,38 @@ void Game::UpdateInput()
     padMove = pad.moveX != 0.0f || pad.moveY != 0.0f;
     padMoveX = pad.moveX;
     padMoveY = pad.moveY;
-    UpdateKey(&keyUp, plat::KeyDown(plat::KEY_UP) || pad.up);
-    UpdateKey(&keyDown, plat::KeyDown(plat::KEY_DOWN) || pad.down);
-    UpdateKey(&keyLeft, plat::KeyDown(plat::KEY_LEFT) || pad.left);
-    UpdateKey(&keyRight, plat::KeyDown(plat::KEY_RIGHT) || pad.right);
-    UpdateKey(&keySpace, plat::KeyDown(plat::KEY_SPACE));
-    UpdateKey(&keyEnter, plat::KeyDown(plat::KEY_RETURN) || pad.confirm);
-    UpdateKey(&keyNum2, plat::KeyDown(plat::KEY_NUMPAD2));
-    UpdateKey(&keyNum4, plat::KeyDown(plat::KEY_NUMPAD4));
-    UpdateKey(&keyNum6, plat::KeyDown(plat::KEY_NUMPAD6));
-    UpdateKey(&keyNum8, plat::KeyDown(plat::KEY_NUMPAD8));
-    UpdateKey(&keyX, plat::KeyDown(plat::KEY_X) || pad.pass);
-    UpdateKey(&keyZ, plat::KeyDown(plat::KEY_Z) || pad.shoot);
-    UpdateKey(&keyC, plat::KeyDown(plat::KEY_C) || pad.alt);
+    if (mpMenuOwner >= 0 && mpMenuOwner < mpHumans) {
+        // Mod: during multiplayer team select only the picking player's device drives the menus.
+        RawControls o;
+        if (!Input_ReadRaw(hum[mpMenuOwner].device, o)) o = RawControls();
+        UpdateKey(&keyUp, o.up);
+        UpdateKey(&keyDown, o.down);
+        UpdateKey(&keyLeft, o.left);
+        UpdateKey(&keyRight, o.right);
+        UpdateKey(&keySpace, false);
+        UpdateKey(&keyEnter, o.confirm);
+        UpdateKey(&keyNum2, false);
+        UpdateKey(&keyNum4, false);
+        UpdateKey(&keyNum6, false);
+        UpdateKey(&keyNum8, false);
+        UpdateKey(&keyX, o.pass);
+        UpdateKey(&keyZ, o.shoot);
+        UpdateKey(&keyC, o.alt);
+    } else {
+        UpdateKey(&keyUp, plat::KeyDown(plat::KEY_UP) || pad.up);
+        UpdateKey(&keyDown, plat::KeyDown(plat::KEY_DOWN) || pad.down);
+        UpdateKey(&keyLeft, plat::KeyDown(plat::KEY_LEFT) || pad.left);
+        UpdateKey(&keyRight, plat::KeyDown(plat::KEY_RIGHT) || pad.right);
+        UpdateKey(&keySpace, plat::KeyDown(plat::KEY_SPACE));
+        UpdateKey(&keyEnter, plat::KeyDown(plat::KEY_RETURN) || pad.confirm);
+        UpdateKey(&keyNum2, plat::KeyDown(plat::KEY_NUMPAD2));
+        UpdateKey(&keyNum4, plat::KeyDown(plat::KEY_NUMPAD4));
+        UpdateKey(&keyNum6, plat::KeyDown(plat::KEY_NUMPAD6));
+        UpdateKey(&keyNum8, plat::KeyDown(plat::KEY_NUMPAD8));
+        UpdateKey(&keyX, plat::KeyDown(plat::KEY_X) || pad.pass);
+        UpdateKey(&keyZ, plat::KeyDown(plat::KEY_Z) || pad.shoot);
+        UpdateKey(&keyC, plat::KeyDown(plat::KEY_C) || pad.alt);
+    }
     UpdateKey(&mouseL, plat::KeyDown(plat::KEY_LBUTTON));
     UpdateKey(&mouseR, plat::KeyDown(plat::KEY_RBUTTON));
     UpdateKey(&keyPause, plat::KeyDown(plat::KEY_ESCAPE) || pad.pause);
@@ -168,6 +197,21 @@ void Game::UpdateInput()
                        keyEnter != KEY_FREE || keyPause != KEY_FREE;
         if (!anyDown) inputLock = false;
         else keyX = keyZ = keyC = keySpace = keyEnter = keyPause = KEY_FREE;
+    }
+}
+
+// Mod: each multiplayer human's own device -> their VirtualPad and analog direction.
+void Game::MpUpdateInput()
+{
+    for (int h = 0; h < mpHumans; h++) {
+        MpHuman &m = hum[h];
+        RawControls r;
+        if (m.device == DEVICE_NONE || !Input_ReadRaw(m.device, r)) r = RawControls();
+        Input_Step(m.pad, r);
+        m.moveX = r.moveX;
+        m.moveY = r.moveY;
+        m.move = r.moveX != 0.0f || r.moveY != 0.0f;
+        if (inputLock) m.pad.pass = m.pad.shoot = m.pad.alt = m.pad.confirm = m.pad.pause = KEY_FREE;
     }
 }
 

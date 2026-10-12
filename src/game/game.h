@@ -5,12 +5,41 @@
 
 #include "core/types.h"
 #include "engine/sound.h"
+#include "game/input.h"
 #include "game/models.h"
 #include "game/player.h"
 #include "render/gfx.h"
 
 // Entries of the play-mode menu (state 3). 0..2 are the original modes.
-enum PlayMode { MODE_NORMAL = 0, MODE_CLUB = 1, MODE_PRACTICE = 2, MODE_SETTINGS = 3, MODE_LAST = 3 };
+enum PlayMode {
+    MODE_NORMAL = 0, MODE_CLUB = 1, MODE_PRACTICE = 2,
+    MODE_LOCAL = 3, MODE_SETTINGS = 4, MODE_LAST = 4
+};
+
+// Multiplayer (mod): one entry per human player.
+struct MpHuman {
+    int device = DEVICE_NONE;  // local input device (DEVICE_KEYBOARD or a gamepad id)
+    VirtualPad pad;            // this player's buttons, stepped every frame
+    float moveX = 0, moveY = 0;
+    bool move = false;         // analog direction (gamepads), screen-relative
+    int player = -1;           // the character this human is locked to
+    // Per-human copies of what the original keeps once for 'YOU':
+    float power = 0;           // loop-shot charge (f3a0)
+    int marker = 0;            // shot-type cone (i3ac)
+    int gauge = 0;             // ideal-power marker (i39c)
+    Vec3 markerPos;            // cone position (v240)
+    bool upHeld = false;       // running forward this frame (red-cone rule)
+    bool chargeCam = false;    // camera behind the player while charging (i3b8 == 2)
+    bool shotCam = false;      // camera follows this player's shot (i3b8 == 1)
+    int tipState = 0;          // tip-off jump: 0 ready, 1 in the air
+    Vec3 cam, camDir;          // this player's camera
+    Vec3 sky;                  // sky scroll state (v37c) of this player's view
+};
+struct MpPick {
+    bool teamA;                // picks for team A (left / 'YOU') or team B
+    int owner;                 // human choosing
+    int lock;                  // human locked to the picked character, or -1
+};
 
 // Key states produced by UpdateInput() (the original's per-file KEY_* constants).
 enum KeyState { KEY_FREE = 0, KEY_PUSH = 1, KEY_RELEASE = 2, KEY_HOLD = 3 };
@@ -49,6 +78,16 @@ public:
     void State9();
     void State11_Settings();   // added by the mod
     void State12_TeamSize();   // added by the mod
+    void State13_LocalSetup(); // added by the mod
+    void State6MP();           // the match with human players anywhere (mp_match.cpp)
+    void MpBeginPicks();
+    void MpPickChosen();
+    void MpPlaceHumansInCentre();
+    void MpUpdateInput();
+    bool MpTeamHasHuman(bool teamA) const;
+    const char *TeamLabel(bool teamA) const;
+    void RenderSplitScreen();
+    void DrawSplitDivider();
     void StartTeamSelect();
     void PickSmallTeams();
     bool SettingsMenu();       // settings page input; true when "Back" was chosen
@@ -138,4 +177,18 @@ public:
     int pausePage;             // 0 = pause menu, 1 = settings
     int pauseSel;
     int teamSize;              // players per team in the match (1..3; the original is always 3)
+
+    // ---- multiplayer (mod) ----
+    bool mpActive;             // a multiplayer match is set up (from team select to the results)
+    bool mpVersus;             // humans on both teams (else co-op against COM)
+    bool mpSplit;              // local split screen
+    int mpHumans;
+    MpHuman hum[6];
+    int ctrl[6];               // player index -> human controlling it, or -1
+    int mpMenuOwner;           // human whose device drives the menu keys, or -1 for everyone
+    MpPick mpPicks[6];
+    int mpPickCount, mpPickIdx;
+    int localDev[2];           // local setup: devices chosen for 1P / 2P
+    bool localVersus;
+    int localSize;
 };

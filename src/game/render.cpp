@@ -380,6 +380,20 @@ void Game::DrawPauseDim()
     device->SetTextureStageState(0, gfx::TSS_ALPHAARG1, gfx::TA_TEXTURE);
 }
 
+// Mod: the line between the two halves of the split screen.
+void Game::DrawSplitDivider()
+{
+    u32 c = 0xff000000;
+    TLVertex v[4];
+    v[0] = TL(318.0f, 480.0f, 0.0f, 0.5f, c, 0, -0.71f, 0.56f);
+    v[1] = TL(318.0f, 0.0f, 0.0f, 0.5f, c, 0, -0.71f, 0.58f);
+    v[2] = TL(322.0f, 480.0f, 0.0f, 0.5f, c, 0, -0.7f, 0.58f);
+    v[3] = TL(322.0f, 0.0f, 0.0f, 0.5f, c, 0, -0.7f, 0.56f);
+    device->SetTextureStageState(0, gfx::TSS_ALPHAARG1, gfx::TA_DIFFUSE);
+    Strip(device, v);
+    device->SetTextureStageState(0, gfx::TSS_ALPHAARG1, gfx::TA_TEXTURE);
+}
+
 // Title logo.
 void Game::fn_4286c9()
 {

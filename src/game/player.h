@@ -78,4 +78,5 @@ public:
     float f198;
 
     bool benched = false;   // mod: sitting out a 1v1 / 2v2 match (hidden, ignored)
+    bool pickedB = false;   // mod: picked for team B by a human (versus team select)
 };

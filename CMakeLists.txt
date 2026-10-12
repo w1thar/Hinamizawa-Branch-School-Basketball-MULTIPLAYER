@@ -34,6 +34,7 @@ set(HB_SOURCES
     src/game/input.cpp
     src/game/lang.cpp
     src/game/match.cpp
+    src/game/mp_match.cpp
     src/game/models.cpp
     src/game/player.cpp
     src/game/player_motions.cpp
