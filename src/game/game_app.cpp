@@ -162,6 +162,12 @@ void Game::UpdateInput()
             pad.moveY = r.moveY;
         }
     }
+    if (pad.moveX == 0.0f && pad.moveY == 0.0f) {   // WASD layout: the keyboard steers like a stick
+        RawControls kbMove;
+        Input_ReadRaw(DEVICE_KEYBOARD, kbMove);
+        pad.moveX = kbMove.moveX;
+        pad.moveY = kbMove.moveY;
+    }
     padMove = pad.moveX != 0.0f || pad.moveY != 0.0f;
     padMoveX = pad.moveX;
     padMoveY = pad.moveY;

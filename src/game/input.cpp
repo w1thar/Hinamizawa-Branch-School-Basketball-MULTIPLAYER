@@ -65,6 +65,17 @@ bool Input_ReadRaw(int device, RawControls &out)
         // Enter always confirms; Space too with the original layout (it was an action key there).
         out.confirm = plat::KeyDown(plat::KEY_RETURN) || (g_settings.kbLayout == KB_CLASSIC && plat::KeyDown(plat::KEY_SPACE));
         out.pause = plat::KeyDown(plat::KEY_ESCAPE);
+        // WASD / custom layouts move like a stick: the character runs the way you press (screen-
+        // relative, diagonals included). The classic layout keeps the original turn-and-run.
+        if (g_settings.kbLayout != KB_CLASSIC) {
+            float x = (out.right ? 1.0f : 0.0f) - (out.left ? 1.0f : 0.0f);
+            float y = (out.down ? 1.0f : 0.0f) - (out.up ? 1.0f : 0.0f);
+            float d = sqrtf(x * x + y * y);
+            if (d > 0.0f) {
+                out.moveX = x / d;
+                out.moveY = y / d;
+            }
+        }
         return true;
     }
     if (device < 0) return false;
