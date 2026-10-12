@@ -1,7 +1,7 @@
 # Hinamizawa Branch School Basketball — Multiplayer
 
 An independent modification of the source port of the fan-made *Higurashi no Naku Koro ni*
-3-on-3 basketball minigame (`basket_v101.exe`, 2002, by ひぐ中 / YnSoft). It adds **local and
+3-on-3 basketball minigame (`basket_v101.exe`, 2004, by ひぐ中 / YnSoft). It adds **local and
 online multiplayer**, **controller support**, **remappable controls**, a **pause menu**, and a
 **settings menu with English translation**.
 
