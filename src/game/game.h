@@ -32,6 +32,7 @@ struct MpHuman {
     bool chargeCam = false;    // camera behind the player while charging (i3b8 == 2)
     bool shotCam = false;      // camera follows this player's shot (i3b8 == 1)
     int tipState = 0;          // tip-off jump: 0 ready, 1 in the air
+    bool teamA = true;         // the team this human plays for
     Vec3 cam, camDir;          // this player's camera
     Vec3 sky;                  // sky scroll state (v37c) of this player's view
 };
@@ -85,6 +86,7 @@ public:
     void MpPlaceHumansInCentre();
     void MpUpdateInput();
     bool MpTeamHasHuman(bool teamA) const;
+    int MpHumanOnTeam(bool teamA) const;
     const char *TeamLabel(bool teamA) const;
     void RenderSplitScreen();
     void DrawSplitDivider();
@@ -191,4 +193,8 @@ public:
     int localDev[2];           // local setup: devices chosen for 1P / 2P
     bool localVersus;
     int localSize;
+    bool localAuto;            // local setup: versus players switch to the player nearest the ball
+    int localTime;             // local setup: 0 = two 5-minute halves, 1..3 = one 3 / 5 / 10 min period
+    bool mpAutoSwitch;         // humans control their team's lead (as YOU in single player)
+    int mpMinutes;             // 0 = the original two halves, else one period of this many minutes
 };

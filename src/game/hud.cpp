@@ -79,34 +79,42 @@ void Game::DrawHUD()
 
     // ---- state 13 (mod): local multiplayer setup ----
     if (state == 13) {
-        DrawTextCentered("ローカル対戦", 28, 320, 180, Pulse(f390, 10.0f), Pulse(f390, 7.0f), Pulse(f390, 3.0f));
-        static const char *const labels[6] = {"１Ｐ", "２Ｐ", "モード", "人数", "スタート", "戻る"};
+        DrawTextCentered("ローカル対戦", 28, 320, 150, Pulse(f390, 10.0f), Pulse(f390, 7.0f), Pulse(f390, 3.0f));
+        static const char *const labels[8] = {"Ｐ１", "Ｐ２", "モード", "人数", "操作", "試合時間", "スタート", "戻る"};
         static const char *const sizes[3] = {"１対１", "２対２", "３対３"};
-        for (int i = 0; i < 6; i++) {
-            int y = 230 + i * 34;
+        static const char *const times[4] = {"５分×２（ハーフタイムあり）", "３分", "５分", "１０分"};
+        for (int i = 0; i < 8; i++) {
+            int y = 192 + i * 28;
             int g = i == menuSel ? 0 : 255;
-            if (i >= 4) {
-                DrawTextCentered(labels[i], 26, 322, y + 2, 0, 0, 0);
-                DrawTextCentered(labels[i], 26, 320, y, 255, g, g);
+            if (i >= 6) {
+                DrawTextCentered(labels[i], 24, 322, y + 2, 0, 0, 0);
+                DrawTextCentered(labels[i], 24, 320, y, 255, g, g);
                 continue;
             }
-            DrawText(labels[i], 24, 102, y + 2, 0, 0, 0);
-            DrawText(labels[i], 24, 100, y, 255, g, g);
+            DrawText(labels[i], 22, 82, y + 2, 0, 0, 0);
+            DrawText(labels[i], 22, 80, y, 255, g, g);
             char value[96];
+            int dim = 255;
             if (i <= 1) {
                 if (localDev[i] == DEVICE_NONE) snprintf(value, sizeof(value), "%s", Tr("（なし）"));
                 else if (localDev[i] == DEVICE_KEYBOARD) snprintf(value, sizeof(value), "%s", Tr("キーボード"));
                 else snprintf(value, sizeof(value), "%s", Input_DeviceName(localDev[i]));
             } else if (i == 2) {
-                snprintf(value, sizeof(value), "%s", Tr(localVersus ? "対戦（１Ｐ対２Ｐ）" : "協力（ＣＯＭと対戦）"));
-            } else {
+                snprintf(value, sizeof(value), "%s", Tr(localVersus ? "対戦（Ｐ１対Ｐ２）" : "協力（ＣＯＭと対戦）"));
+            } else if (i == 3) {
                 snprintf(value, sizeof(value), "%s", Tr(sizes[localSize - 1]));
+            } else if (i == 4) {
+                bool autoSw = localVersus && localAuto;
+                snprintf(value, sizeof(value), "%s", Tr(autoSw ? "ボールに近いキャラに自動切替" : "選んだキャラで固定"));
+                if (!localVersus) dim = 150;   // co-op: always fixed
+            } else {
+                snprintf(value, sizeof(value), "%s", Tr(times[localTime]));
             }
-            DrawText(value, 24, 262, y + 2, 0, 0, 0);
-            DrawText(value, 24, 260, y, 255, g, g);
+            DrawText(value, 22, 242, y + 2, 0, 0, 0);
+            DrawText(value, 22, 240, y, dim, g * dim / 255, g * dim / 255);
         }
         if (localDev[0] == localDev[1] || localDev[0] == DEVICE_NONE || localDev[1] == DEVICE_NONE)
-            DrawTextCentered("１Ｐと２Ｐに別々の入力機器を選んでください", 16, 320, 416, 255, 120, 120);
+            DrawTextCentered("Ｐ１とＰ２に別々の入力機器を選んでください", 16, 320, 416, 255, 120, 120);
         DrawTextCentered("←→：変更　　Ｘ：決定", 16, 320, 440, 255, 250, 150);
     }
 
@@ -136,8 +144,8 @@ void Game::DrawHUD()
         snprintf(text, sizeof(text), "%s", pickText[teamSize - 1]);
         if (mpActive && mpPickIdx < mpPickCount) {
             const MpPick &pk = mpPicks[mpPickIdx];
-            if (pk.owner == 0) snprintf(text, sizeof(text), "%s", pk.lock >= 0 ? "１Ｐ：使うキャラクターを選んでください" : "１Ｐ：チームメイトを選んでください");
-            else snprintf(text, sizeof(text), "%s", pk.lock >= 0 ? "２Ｐ：使うキャラクターを選んでください" : "２Ｐ：チームメイトを選んでください");
+            if (pk.owner == 0) snprintf(text, sizeof(text), "%s", pk.lock >= 0 ? "Ｐ１：使うキャラクターを選んでください" : "Ｐ１：チームメイトを選んでください");
+            else snprintf(text, sizeof(text), "%s", pk.lock >= 0 ? "Ｐ２：使うキャラクターを選んでください" : "Ｐ２：チームメイトを選んでください");
         }
         DrawText(text, 24, 34, 74, 0, 0, 0);
         DrawText(text, 24, 32, 72, 255, 255, 255);
@@ -207,10 +215,10 @@ void Game::DrawHUD()
 
     // ---- split screen (mod): which half is whose ----
     if (state == 6 && mpActive && mpSplit) {
-        DrawText("１Ｐ", 20, 10, 452, 0, 0, 0);
-        DrawText("１Ｐ", 20, 8, 450, 120, 200, 255);
-        DrawText("２Ｐ", 20, 290, 452, 0, 0, 0);
-        DrawText("２Ｐ", 20, 288, 450, 255, 150, 120);
+        DrawText("Ｐ１", 20, 10, 452, 0, 0, 0);
+        DrawText("Ｐ１", 20, 8, 450, 120, 200, 255);
+        DrawText("Ｐ２", 20, 332, 452, 0, 0, 0);
+        DrawText("Ｐ２", 20, 330, 450, 255, 150, 120);
     }
 
     // ---- states 5/6: tip-off and match ----
@@ -225,10 +233,12 @@ void Game::DrawHUD()
             DrawText(text, 48, 163, 31, 255, 255, 255);
             snprintf(text, sizeof(text), "%3d", i3dc);
             DrawText(text, 48, 401, 31, 255, 255, 255);
-            snprintf(text, sizeof(text), "<<- Goal");
-            DrawText(text, 16, 289, 73, 0, 0, 0);
-            int c = (int)(cosf(f3e0 * 4.0f) * 128.0f + 128.0f);
-            DrawText(text, 16, 287, 72, 255, c, c);
+            if (!mpActive) {   // mod: each side attacks a different way in multiplayer
+                snprintf(text, sizeof(text), "<<- Goal");
+                DrawText(text, 16, 289, 73, 0, 0, 0);
+                int c = (int)(cosf(f3e0 * 4.0f) * 128.0f + 128.0f);
+                DrawText(text, 16, 287, 72, 255, c, c);
+            }
         } else {
             snprintf(text, sizeof(text), "%s", TeamLabel(false));
             DrawText(text, 28, 76, 4, 255, 255, 0);
@@ -238,10 +248,12 @@ void Game::DrawHUD()
             DrawText(text, 48, 163, 31, 255, 255, 255);
             snprintf(text, sizeof(text), "%3d", i3d8);
             DrawText(text, 48, 401, 31, 255, 255, 255);
-            snprintf(text, sizeof(text), "Goal ->>");
-            DrawText(text, 16, 289, 73, 0, 0, 0);
-            int c = (int)(cosf(f3e0 * 4.0f) * 128.0f + 128.0f);
-            DrawText(text, 16, 287, 72, 255, c, c);
+            if (!mpActive) {
+                snprintf(text, sizeof(text), "Goal ->>");
+                DrawText(text, 16, 289, 73, 0, 0, 0);
+                int c = (int)(cosf(f3e0 * 4.0f) * 128.0f + 128.0f);
+                DrawText(text, 16, 287, 72, 255, c, c);
+            }
         }
         snprintf(text, sizeof(text), "TIME");
         DrawText(text, 24, 294, 0, 255, 255, 255);
@@ -272,7 +284,7 @@ void Game::DrawHUD()
             DrawText(text, 48, 223, 225, Pulse(f390, 10.0f), Pulse(f390, 7.0f), Pulse(f390, 3.0f));
         }
         if (i3b8 == 5) {
-            if (b3a6 == 0) {
+            if (b3a6 == 0 && !(mpActive && mpMinutes > 0)) {
                 snprintf(text, sizeof(text), "はーふたいむ");
                 DrawText(text, 48, 185, 225, Pulse(f390, 10.0f), Pulse(f390, 7.0f), Pulse(f390, 3.0f));
             } else {
@@ -355,7 +367,7 @@ void Game::DrawHUD()
         }
         if (i3b8 == 3) {
             if (mpActive && mpVersus && i3d8 != i3dc) {
-                snprintf(text, sizeof(text), "%s", i3dc < i3d8 ? "１Ｐ　ＷＩＮ！" : "２Ｐ　ＷＩＮ！");
+                snprintf(text, sizeof(text), "%s", i3dc < i3d8 ? "Ｐ１　ＷＩＮ！" : "Ｐ２　ＷＩＮ！");
                 DrawTextCentered(text, 72, 320, 225, Pulse(f390, 10.0f), Pulse(f390, 7.0f), Pulse(f390, 3.0f));
             } else if (i3dc < i3d8) {
                 snprintf(text, sizeof(text), "ＹＯＵ　ＷＩＮ！");

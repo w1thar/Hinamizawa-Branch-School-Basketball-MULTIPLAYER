@@ -38,6 +38,10 @@ Game::Game()
     localDev[0] = localDev[1] = DEVICE_NONE;
     localVersus = false;
     localSize = 3;
+    localAuto = true;
+    localTime = 0;
+    mpAutoSwitch = false;
+    mpMinutes = 0;
     mouseX = mouseY = 0;
     quit = false;
 

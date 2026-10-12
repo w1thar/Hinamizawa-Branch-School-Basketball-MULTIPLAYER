@@ -16,11 +16,13 @@
 
 static float Atan2(float y, float x) { return (float)atan2((double)y, (double)x); }
 
-bool Game::MpTeamHasHuman(bool teamA) const
+bool Game::MpTeamHasHuman(bool teamA) const { return MpHumanOnTeam(teamA) >= 0; }
+
+int Game::MpHumanOnTeam(bool teamA) const
 {
     for (int h = 0; h < mpHumans; h++)
-        if (hum[h].player >= 0 && players[hum[h].player]->b154 == teamA) return true;
-    return false;
+        if (hum[h].player >= 0 && hum[h].teamA == teamA) return h;
+    return -1;
 }
 
 void Game::State6MP()
@@ -70,12 +72,13 @@ void Game::State6MP()
 
     // ---- time up (as the original) ----
     f3e0 = f3e0 - dt;
+    bool lastPeriod = b3a6 != 0 || mpMinutes > 0;   // one-period matches end at the first whistle
     if (f3e0 < 0.0f) {
         if (i3b8 < 5) {
             v24c.y = 0.7f;
             f25c = 0.0f;
             f390 = 0.0f;
-            if (b3a6 == 0) {
+            if (!lastPeriod) {
                 sound->Play(0);
                 for (int i = 0; i < 6; i++) {
                     P[i]->i190 = 7;
@@ -103,7 +106,7 @@ void Game::State6MP()
             hum[h].chargeCam = hum[h].shotCam = false;
         }
         if (5.0f < f390) {
-            if (b3a6 == 0) {
+            if (!lastPeriod) {
                 i3b8 = 0;
                 state = 7;
             } else {
@@ -159,6 +162,17 @@ void Game::State6MP()
         leadDist[t] = best;
     }
     auto TeamOf = [&](int i) { return P[i]->b154 ? 0 : 1; };
+
+    // Auto-switch (versus): each human controls their team's lead, like YOU in single player.
+    if (mpAutoSwitch) {
+        for (int h = 0; h < mpHumans; h++) {
+            int lead = R[hum[h].teamA ? 0 : 1][0];
+            if (lead >= 0) hum[h].player = lead;
+        }
+        for (int &c : ctrl) c = -1;
+        for (int h = 0; h < mpHumans; h++)
+            if (hum[h].player >= 0) ctrl[hum[h].player] = h;
+    }
 
     // ---- goals ----
     if (i418 == 1) {

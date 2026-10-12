@@ -261,7 +261,7 @@ Vec3 Game::CalcStep(int idx)
     return p;
 }
 
-// Mod: local multiplayer split screen. Each human gets a 320x480 half (1P left, 2P right) with
+// Mod: local multiplayer split screen. Each human gets a 320x480 half (P1 left, P2 right) with
 // their own camera, sky scroll, shot cone and power gauge; the team portraits, score frames and
 // fades are drawn once over the whole screen.
 void Game::RenderSplitScreen()

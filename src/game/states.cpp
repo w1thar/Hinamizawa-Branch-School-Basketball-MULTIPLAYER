@@ -174,7 +174,7 @@ void Game::State3()
     if (b39a != 0 && i3b0 == MODE_LOCAL && AnyActionPushed(this)) {
         sound->Play(1);
         menuSel = 0;
-        // Default devices: 1P on the first gamepad (else the keyboard), 2P on the next one.
+        // Default devices: P1 on the first gamepad (else the keyboard), P2 on the next one.
         plat::GamepadInfo pads[16];
         int n = plat::ListGamepads(pads, 16);
         auto connected = [&](int dev) {
@@ -301,14 +301,15 @@ void Game::State12_TeamSize()
 }
 
 // ---- 13 (mod): local multiplayer setup ------------------------------------------------------------
-// Rows: 1P device, 2P device, mode (co-op / versus), team size, start, back. Up/Down select,
+// Rows: P1 device, P2 device, mode (co-op / versus), team size, start, back. Up/Down select,
 // Left/Right change, X confirms. Anyone's device can drive this screen.
 void Game::State13_LocalSetup()
 {
     f390 = f390 + dt;
     if (v24c.y < 1.0f && -1.0f < f25c && f25c < 7.0f) f25c = 25.0f;   // same backdrop as state 3
 
-    const int ITEMS = 6;
+    // Rows: P1, P2, mode, team size, control, match time, start, back.
+    const int ITEMS = 8, START = 6, BACK = 7;
     if ((keyUp == KEY_PUSH || keyNum8 == KEY_PUSH) && menuSel > 0) {
         menuSel--;
         sound->Play(2);
@@ -320,11 +321,11 @@ void Game::State13_LocalSetup()
     int dir = 0;
     if (keyLeft == KEY_PUSH || keyNum4 == KEY_PUSH) dir = -1;
     if (keyRight == KEY_PUSH || keyNum6 == KEY_PUSH) dir = 1;
-    if (menuSel <= 3 && AnyActionPushed(this)) dir = 1;   // X also cycles the value
+    if (menuSel < START && AnyActionPushed(this)) dir = 1;   // X also cycles the value
 
     int minSize = localVersus ? 1 : 2;   // co-op needs room for both players on one team
     if (localSize < minSize) localSize = minSize;
-    if (dir != 0) {
+    if (dir != 0 && menuSel < START) {
         if (menuSel <= 1) {
             // Keyboard, then each connected pad.
             int opts[17], n = 0;
@@ -345,16 +346,20 @@ void Game::State13_LocalSetup()
             localSize += dir;
             if (localSize > 3) localSize = minSize;
             if (localSize < minSize) localSize = 3;
+        } else if (menuSel == 4) {
+            if (localVersus) localAuto = !localAuto;   // co-op is always fixed
+        } else if (menuSel == 5) {
+            localTime = (localTime + dir + 4) % 4;
         }
-        if (menuSel <= 3) sound->Play(2);
+        sound->Play(2);
     }
-    if (menuSel == 5 && AnyActionPushed(this)) {
+    if (menuSel == BACK && AnyActionPushed(this)) {
         sound->Play(1);
         state = 3;
         return;
     }
     bool valid = localDev[0] != DEVICE_NONE && localDev[1] != DEVICE_NONE && localDev[0] != localDev[1];
-    if (menuSel == 4 && AnyActionPushed(this)) {
+    if (menuSel == START && AnyActionPushed(this)) {
         if (!valid) {
             sound->Play(3);
             return;
@@ -362,6 +367,9 @@ void Game::State13_LocalSetup()
         mpActive = true;
         mpVersus = localVersus;
         mpSplit = true;
+        mpAutoSwitch = localVersus && localAuto;
+        static const int minutes[4] = {0, 3, 5, 10};
+        mpMinutes = minutes[localTime];
         mpHumans = 2;
         for (int h = 0; h < 6; h++) hum[h] = MpHuman();
         hum[0].device = localDev[0];
@@ -374,8 +382,8 @@ void Game::State13_LocalSetup()
     }
 }
 
-// Team select order. Co-op: 1P and 2P each pick their own character, then (3v3) 1P picks the third
-// teammate; COM gets the rest. Versus: 1P and 2P take turns, the first pick of each is their own.
+// Team select order. Co-op: P1 and P2 each pick their own character, then (3v3) P1 picks the third
+// teammate; COM gets the rest. Versus: P1 and P2 take turns, the first pick of each is their own.
 void Game::MpBeginPicks()
 {
     mpPickCount = 0;
@@ -466,8 +474,11 @@ void Game::MpPickChosen()
     }
     for (int i = 0; i < 6; i++) players[i]->pickedB = false;   // team B is now simply !b154
     for (int &c : ctrl) c = -1;
-    for (int h = 0; h < mpHumans; h++)
-        if (hum[h].player >= 0) ctrl[hum[h].player] = h;
+    for (int h = 0; h < mpHumans; h++) {
+        if (hum[h].player < 0) continue;
+        ctrl[hum[h].player] = h;
+        hum[h].teamA = players[hum[h].player]->b154;
+    }
     i3b8 = 3;
 }
 
@@ -488,10 +499,10 @@ void Game::MpPlaceHumansInCentre()
     }
 }
 
-// Scoreboard names: YOU / COM, or 1P / 2P in a versus match.
+// Scoreboard names: YOU / COM, or P1 / P2 in a versus match.
 const char *Game::TeamLabel(bool teamA) const
 {
-    if (mpActive && mpVersus) return teamA ? "１Ｐ" : "２Ｐ";
+    if (mpActive && mpVersus) return teamA ? "Ｐ１" : "Ｐ２";
     return teamA ? "ＹＯＵ" : "ＣＯＭ";
 }
 
@@ -864,6 +875,7 @@ void Game::State5()
         b3a4 = true;
         i39c = 0;
         f3e0 = i3b0 == 2 ? 180.0f : 300.0f;   // half length in seconds
+        if (mpActive && mpMinutes > 0) f3e0 = (float)mpMinutes * 60.0f;   // mod: one period
         b414 = false;
         f394 = 0.0f;
         camPos.y = 155.0f;
@@ -942,7 +954,9 @@ void Game::State5()
         f3e0 = f3e0 - dt;
         Player *you = players[slot[2]], *com = players[slot[5]];
         // Mod: in multiplayer each jumper that a human controls uses that human's device.
-        int hA = mpActive ? ctrl[slot[2]] : -1, hB = mpActive ? ctrl[slot[5]] : -1;
+        // With auto-switch the team's human jumps whoever stands in the centre.
+        int hA = !mpActive ? -1 : mpAutoSwitch ? MpHumanOnTeam(true) : ctrl[slot[2]];
+        int hB = !mpActive ? -1 : mpAutoSwitch ? MpHumanOnTeam(false) : ctrl[slot[5]];
         auto tipHeld = [&](int h) {
             if (h < 0) return keyX == KEY_HOLD || keyZ == KEY_HOLD || keyC == KEY_HOLD;
             const VirtualPad &k = hum[h].pad;
