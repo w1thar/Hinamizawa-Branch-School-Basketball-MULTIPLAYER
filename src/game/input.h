@@ -26,6 +26,12 @@ struct RawControls {
     float moveX, moveY;
 };
 
+// Remappable actions (mod). Keyboard: KACT_*, controller: PACT_*.
+enum { KACT_UP, KACT_DOWN, KACT_LEFT, KACT_RIGHT, KACT_PASS, KACT_SHOOT, KACT_ALT };
+enum { PACT_PASS, PACT_SHOOT, PACT_ALT, PACT_PAUSE };
+int Input_KeyFor(int action, int which);    // virtual key of the current layout (0 = none)
+const char *Input_PadButtonName(int button);
+
 // Reads the current raw state of a device; false if it is disconnected.
 bool Input_ReadRaw(int device, RawControls &out);
 // Advances a virtual pad by one frame using the original's PUSH/HOLD/RELEASE rules.

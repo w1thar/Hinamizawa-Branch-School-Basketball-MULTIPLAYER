@@ -1,5 +1,6 @@
 // Gamepads on Windows: XInput (Xbox-style pads) plus PlayStation DualShock 4 / DualSense read
 // directly as HID devices, over USB or Bluetooth. hid.dll and xinput are loaded at run time.
+// Everything else goes through DirectInput (win32_dinput.cpp).
 #define WIN32_LEAN_AND_MEAN
 #ifndef NOMINMAX
 #define NOMINMAX
@@ -15,6 +16,12 @@
 #include "platform/platform.h"
 
 namespace plat {
+
+namespace dinput {
+void Scan();
+int List(GamepadInfo *out, int max);
+bool Read(int id, GamepadState &s);
+}  // namespace dinput
 
 namespace {
 
@@ -280,6 +287,7 @@ int ListGamepads(GamepadInfo *out, int max)
     if (g_lastScan == 0 || now - g_lastScan > 2000) {
         g_lastScan = now;
         ScanHid();
+        dinput::Scan();
     }
     int n = 0;
     for (HidPad *p : g_hidPads) {
@@ -297,11 +305,13 @@ int ListGamepads(GamepadInfo *out, int max)
         snprintf(out[n].name, sizeof(out[n].name), "%s %d", TypeName(PADTYPE_XINPUT), slot + 1);
         n++;
     }
+    n += dinput::List(out + n, max - n);
     return n;
 }
 
 bool ReadGamepad(int id, GamepadState &state)
 {
+    if (id >= 200) return dinput::Read(id, state);
     if (id < 4) {
         LoadXInput();
         return ReadXInput(id, state);

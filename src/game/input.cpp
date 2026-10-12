@@ -4,9 +4,35 @@
 #include <cstdio>
 
 #include "game/game.h"
+#include "game/settings.h"
 
 static const float STICK_THRESHOLD = 0.5f;   // stick -> digital directions (menus, keyboard-style keys)
 static const float STICK_DEADZONE = 0.3f;    // stick -> analog movement
+
+int Input_KeyFor(int action, int which)
+{
+    if (action < 0 || action >= KB_ACTIONS || which < 0 || which > 1) return 0;
+    if (g_settings.kbLayout == KB_WASD) return kKbWasd[action][which];
+    if (g_settings.kbLayout == KB_CUSTOM) return g_settings.kbCustom[action][which];
+    return kKbClassic[action][which];
+}
+
+const char *Input_PadButtonName(int b)
+{
+    static const char *const names[plat::PAD_BUTTON_COUNT] = {
+        "× / A", "○ / B", "□ / X", "△ / Y", "L1 / LB", "R1 / RB", "L2 / LT", "R2 / RT",
+        "Share / Back", "Options / Start", "L3", "R3", "PS / Home", "D-pad ↑", "D-pad ↓", "D-pad ←", "D-pad →"};
+    return b >= 0 && b < plat::PAD_BUTTON_COUNT ? names[b] : "-";
+}
+
+static bool ActionKey(int action)
+{
+    for (int k = 0; k < 2; k++) {
+        int vk = Input_KeyFor(action, k);
+        if (vk && plat::KeyDown(vk)) return true;
+    }
+    return false;
+}
 
 bool Input_ReadRaw(int device, RawControls &out)
 {
@@ -29,14 +55,15 @@ bool Input_ReadRaw(int device, RawControls &out)
         return true;
     }
     if (device == DEVICE_KEYBOARD) {
-        out.up = plat::KeyDown(plat::KEY_UP) || plat::KeyDown(plat::KEY_NUMPAD8);
-        out.down = plat::KeyDown(plat::KEY_DOWN) || plat::KeyDown(plat::KEY_NUMPAD2);
-        out.left = plat::KeyDown(plat::KEY_LEFT) || plat::KeyDown(plat::KEY_NUMPAD4);
-        out.right = plat::KeyDown(plat::KEY_RIGHT) || plat::KeyDown(plat::KEY_NUMPAD6);
-        out.pass = plat::KeyDown(plat::KEY_X);
-        out.shoot = plat::KeyDown(plat::KEY_Z);
-        out.alt = plat::KeyDown(plat::KEY_C);
-        out.confirm = plat::KeyDown(plat::KEY_RETURN) || plat::KeyDown(plat::KEY_SPACE);
+        out.up = ActionKey(KACT_UP);
+        out.down = ActionKey(KACT_DOWN);
+        out.left = ActionKey(KACT_LEFT);
+        out.right = ActionKey(KACT_RIGHT);
+        out.pass = ActionKey(KACT_PASS);
+        out.shoot = ActionKey(KACT_SHOOT);
+        out.alt = ActionKey(KACT_ALT);
+        // Enter always confirms; Space too with the original layout (it was an action key there).
+        out.confirm = plat::KeyDown(plat::KEY_RETURN) || (g_settings.kbLayout == KB_CLASSIC && plat::KeyDown(plat::KEY_SPACE));
         out.pause = plat::KeyDown(plat::KEY_ESCAPE);
         return true;
     }
@@ -48,11 +75,15 @@ bool Input_ReadRaw(int device, RawControls &out)
     out.down = s.buttons[plat::PAD_DPAD_DOWN] || s.ly > STICK_THRESHOLD;
     out.left = s.buttons[plat::PAD_DPAD_LEFT] || s.lx < -STICK_THRESHOLD;
     out.right = s.buttons[plat::PAD_DPAD_RIGHT] || s.lx > STICK_THRESHOLD;
-    out.pass = s.buttons[plat::PAD_SOUTH];
-    out.shoot = s.buttons[plat::PAD_WEST];
-    out.alt = s.buttons[plat::PAD_EAST];
-    out.confirm = s.buttons[plat::PAD_SOUTH];
-    out.pause = s.buttons[plat::PAD_START];
+    auto btn = [&](int action) {
+        int b = g_settings.padMap[action];
+        return b >= 0 && b < plat::PAD_BUTTON_COUNT && s.buttons[b];
+    };
+    out.pass = btn(PACT_PASS);
+    out.shoot = btn(PACT_SHOOT);
+    out.alt = btn(PACT_ALT);
+    out.confirm = out.pass;
+    out.pause = btn(PACT_PAUSE);
     float mag = sqrtf(s.lx * s.lx + s.ly * s.ly);
     if (mag > STICK_DEADZONE) {
         float len = mag > 1.0f ? 1.0f : mag;

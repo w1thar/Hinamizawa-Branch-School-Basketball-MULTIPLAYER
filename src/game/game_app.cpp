@@ -29,6 +29,12 @@ Game::Game()
     paused = false;
     pausePage = pauseSel = 0;
     teamSize = 3;
+    ctlOpen = false;
+    ctlSel = 0;
+    ctlCapture = 0;
+    ctlCaptureStart = 0;
+    ctlWaitRelease = false;
+    ctlCaptureArmed = false;
     mpActive = mpVersus = mpSplit = false;
     mpHumans = 0;
     for (int &c : ctrl) c = -1;
@@ -177,19 +183,22 @@ void Game::UpdateInput()
         UpdateKey(&keyZ, o.shoot);
         UpdateKey(&keyC, o.alt);
     } else {
-        UpdateKey(&keyUp, plat::KeyDown(plat::KEY_UP) || pad.up);
-        UpdateKey(&keyDown, plat::KeyDown(plat::KEY_DOWN) || pad.down);
-        UpdateKey(&keyLeft, plat::KeyDown(plat::KEY_LEFT) || pad.left);
-        UpdateKey(&keyRight, plat::KeyDown(plat::KEY_RIGHT) || pad.right);
-        UpdateKey(&keySpace, plat::KeyDown(plat::KEY_SPACE));
-        UpdateKey(&keyEnter, plat::KeyDown(plat::KEY_RETURN) || pad.confirm);
-        UpdateKey(&keyNum2, plat::KeyDown(plat::KEY_NUMPAD2));
-        UpdateKey(&keyNum4, plat::KeyDown(plat::KEY_NUMPAD4));
-        UpdateKey(&keyNum6, plat::KeyDown(plat::KEY_NUMPAD6));
-        UpdateKey(&keyNum8, plat::KeyDown(plat::KEY_NUMPAD8));
-        UpdateKey(&keyX, plat::KeyDown(plat::KEY_X) || pad.pass);
-        UpdateKey(&keyZ, plat::KeyDown(plat::KEY_Z) || pad.shoot);
-        UpdateKey(&keyC, plat::KeyDown(plat::KEY_C) || pad.alt);
+        // Keyboard through the chosen layout / remapping (the numpad is part of the classic layout).
+        RawControls kb;
+        Input_ReadRaw(DEVICE_KEYBOARD, kb);
+        UpdateKey(&keyUp, kb.up || pad.up);
+        UpdateKey(&keyDown, kb.down || pad.down);
+        UpdateKey(&keyLeft, kb.left || pad.left);
+        UpdateKey(&keyRight, kb.right || pad.right);
+        UpdateKey(&keySpace, false);
+        UpdateKey(&keyEnter, kb.confirm || pad.confirm);
+        UpdateKey(&keyNum2, false);
+        UpdateKey(&keyNum4, false);
+        UpdateKey(&keyNum6, false);
+        UpdateKey(&keyNum8, false);
+        UpdateKey(&keyX, kb.pass || pad.pass);
+        UpdateKey(&keyZ, kb.shoot || pad.shoot);
+        UpdateKey(&keyC, kb.alt || pad.alt);
     }
     UpdateKey(&mouseL, plat::KeyDown(plat::KEY_LBUTTON));
     UpdateKey(&mouseR, plat::KeyDown(plat::KEY_RBUTTON));

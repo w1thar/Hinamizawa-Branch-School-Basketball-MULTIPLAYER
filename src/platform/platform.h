@@ -49,6 +49,7 @@ void ToggleFullscreen();
 
 bool KeyDown(int key);
 bool WindowFocused();   // mod: gamepads are ignored while another window is active
+std::string KeyName(int key);   // mod: display name of a virtual key ("W", "Shift", ...)
 double TimeSeconds();
 void SleepMs(int ms);
 
@@ -76,7 +77,7 @@ enum PadButton {
     PAD_DPAD_UP, PAD_DPAD_DOWN, PAD_DPAD_LEFT, PAD_DPAD_RIGHT,
     PAD_BUTTON_COUNT
 };
-enum PadType { PADTYPE_XINPUT, PADTYPE_DUALSHOCK4, PADTYPE_DUALSENSE };
+enum PadType { PADTYPE_XINPUT, PADTYPE_DUALSHOCK4, PADTYPE_DUALSENSE, PADTYPE_GENERIC };
 struct GamepadState {
     float lx = 0, ly = 0;   // left stick, -1..1, +y = down
     bool buttons[PAD_BUTTON_COUNT] = {};

@@ -524,7 +524,11 @@ void Game::State11_Settings()
 // The settings page, shared by the title menu (state 11) and the pause menu.
 bool Game::SettingsMenu()
 {
-    const int ITEMS = 5;   // master, music, sfx, language, back
+    if (ctlOpen) {
+        ControlsMenu();
+        return false;
+    }
+    const int ITEMS = 6;   // master, music, sfx, language, controls, back
     if ((keyUp == KEY_PUSH || keyNum8 == KEY_PUSH) && menuSel > 0) {
         menuSel--;
         sound->Play(2);
@@ -553,6 +557,14 @@ bool Game::SettingsMenu()
     if (menuSel == 3 && AnyActionPushed(this)) {
         g_settings.language = g_settings.language == LANG_ENGLISH ? LANG_JAPANESE : LANG_ENGLISH;
         sound->Play(2);
+    }
+    if (menuSel == 4 && AnyActionPushed(this)) {
+        sound->Play(1);
+        ctlOpen = true;
+        ctlSel = 0;
+        ctlCapture = 0;
+        ctlWaitRelease = true;
+        return false;
     }
     // "Back", or ESC / Options anywhere on the page.
     if ((menuSel == ITEMS - 1 && AnyActionPushed(this)) || keyPause == KEY_PUSH) {
@@ -1466,4 +1478,131 @@ bool Game::MpAnyHumanPushed()
         if (hum[h].device == DEVICE_REMOTE && (k.pass == KEY_PUSH || k.shoot == KEY_PUSH || k.alt == KEY_PUSH)) return true;
     }
     return false;
+}
+
+// ---- controls page (mod) ---------------------------------------------------------------------
+// Rows: keyboard layout, 7 keyboard actions, 4 controller actions, reset, back. Choosing an action
+// waits for the next key / controller button and binds it.
+namespace {
+
+bool AnyKeyDown()
+{
+    for (int vk = 0x08; vk <= 0xfe; vk++) {
+        if (vk >= 0xa0 && vk <= 0xa5) continue;   // left/right Shift/Ctrl/Alt: the generic codes cover them
+        if (plat::KeyDown(vk)) return true;
+    }
+    return false;
+}
+
+int PressedPadButton()
+{
+    plat::GamepadInfo pads[16];
+    int n = plat::ListGamepads(pads, 16);
+    for (int i = 0; i < n; i++) {
+        plat::GamepadState s;
+        if (!plat::WindowFocused() || !plat::ReadGamepad(pads[i].id, s)) continue;
+        for (int b = 0; b < plat::PAD_BUTTON_COUNT; b++)
+            if (s.buttons[b]) return b;
+    }
+    return -1;
+}
+
+}  // namespace
+
+void Game::ControlsMenu()
+{
+    const int ROW_LAYOUT = 0, ROW_KEY0 = 1, ROW_PAD0 = 1 + KB_ACTIONS, ROW_RESET = ROW_PAD0 + PAD_ACTIONS,
+              ROW_BACK = ROW_RESET + 1, ITEMS = ROW_BACK + 1;
+    if (ctlWaitRelease) {
+        if (AnyKeyDown() || PressedPadButton() >= 0) return;
+        ctlWaitRelease = false;
+        // Key states left over from the capture must not act as fresh presses.
+        keyX = keyZ = keyC = keySpace = keyEnter = keyPause = keyUp = keyDown = keyLeft = keyRight = KEY_HOLD;
+        return;
+    }
+    if (ctlCapture && !ctlCaptureArmed) {
+        if (AnyKeyDown() || PressedPadButton() >= 0) {
+            ctlCaptureStart = plat::TimeSeconds();
+            return;
+        }
+        ctlCaptureArmed = true;
+    }
+    if (ctlCapture) {
+        double now = plat::TimeSeconds();
+        bool done = now - ctlCaptureStart > 8.0 || plat::KeyDown(plat::KEY_ESCAPE);   // timeout / cancel
+        if (!done && ctlCapture == 1) {
+            for (int vk = 0x08; vk <= 0xfe && !done; vk++) {
+                if (vk == plat::KEY_ESCAPE || (vk >= 0xa0 && vk <= 0xa5) || vk == 0x01 || vk == 0x02 || vk == 0x04 ||
+                    vk == 0x05 || vk == 0x06)
+                    continue;
+                if (!plat::KeyDown(vk)) continue;
+                int a = ctlSel - ROW_KEY0;
+                if (g_settings.kbLayout != KB_CUSTOM) {   // start from the layout in use
+                    for (int i = 0; i < KB_ACTIONS; i++)
+                        for (int k = 0; k < 2; k++) g_settings.kbCustom[i][k] = Input_KeyFor(i, k);
+                    g_settings.kbLayout = KB_CUSTOM;
+                }
+                for (int i = 0; i < KB_ACTIONS; i++)   // a key does one thing
+                    for (int k = 0; k < 2; k++)
+                        if (g_settings.kbCustom[i][k] == vk) g_settings.kbCustom[i][k] = 0;
+                g_settings.kbCustom[a][0] = vk;
+                done = true;
+                sound->Play(1);
+            }
+        } else if (!done && ctlCapture == 2) {
+            int b = PressedPadButton();
+            if (b >= 0) {
+                int a = ctlSel - ROW_PAD0;
+                for (int i = 0; i < PAD_ACTIONS; i++)   // swap with the action that had this button
+                    if (g_settings.padMap[i] == b) g_settings.padMap[i] = g_settings.padMap[a];
+                g_settings.padMap[a] = b;
+                done = true;
+                sound->Play(1);
+            }
+        }
+        if (done) {
+            ctlCapture = 0;
+            ctlWaitRelease = true;
+            Settings_Save();
+        }
+        return;
+    }
+
+    if ((keyUp == KEY_PUSH || keyNum8 == KEY_PUSH) && ctlSel > 0) {
+        ctlSel--;
+        sound->Play(2);
+    }
+    if ((keyDown == KEY_PUSH || keyNum2 == KEY_PUSH) && ctlSel < ITEMS - 1) {
+        ctlSel++;
+        sound->Play(2);
+    }
+    bool action = AnyActionPushed(this);
+    int dir = 0;
+    if (keyLeft == KEY_PUSH || keyNum4 == KEY_PUSH) dir = -1;
+    if (keyRight == KEY_PUSH || keyNum6 == KEY_PUSH) dir = 1;
+    if (ctlSel == ROW_LAYOUT && (dir != 0 || action)) {
+        g_settings.kbLayout = (g_settings.kbLayout + (dir ? dir : 1) + 3) % 3;
+        sound->Play(2);
+        Settings_Save();
+    } else if (action && ctlSel >= ROW_KEY0 && ctlSel < ROW_PAD0) {
+        ctlCapture = 1;
+        ctlCaptureStart = plat::TimeSeconds();
+        sound->Play(2);
+    } else if (action && ctlSel >= ROW_PAD0 && ctlSel < ROW_RESET) {
+        ctlCapture = 2;
+        ctlCaptureStart = plat::TimeSeconds();
+        sound->Play(2);
+    } else if (action && ctlSel == ROW_RESET) {
+        g_settings.kbLayout = KB_CLASSIC;
+        for (int i = 0; i < KB_ACTIONS; i++)
+            for (int k = 0; k < 2; k++) g_settings.kbCustom[i][k] = kKbClassic[i][k];
+        for (int i = 0; i < PAD_ACTIONS; i++) g_settings.padMap[i] = kPadDefault[i];
+        sound->Play(1);
+        Settings_Save();
+    } else if ((action && ctlSel == ROW_BACK) || keyPause == KEY_PUSH) {
+        sound->Play(1);
+        ctlOpen = false;
+        Settings_Save();
+    }
+    if (ctlCapture) ctlCaptureArmed = false;   // listen once the confirming key / button is let go
 }

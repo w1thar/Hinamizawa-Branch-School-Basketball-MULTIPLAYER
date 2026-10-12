@@ -220,6 +220,27 @@ void Present() { SwapBuffers(g_hdc); }
 void ToggleFullscreen() { SetFullscreen(!g_fullscreen); }
 
 bool WindowFocused() { return GetForegroundWindow() == g_hwnd; }
+HWND Win32MainWindow() { return g_hwnd; }
+static std::string WideToUtf8(const wchar_t *w);
+
+std::string KeyName(int key)
+{
+    UINT sc = MapVirtualKeyW((UINT)key, 0 /* MAPVK_VK_TO_VSC */);
+    switch (key) {   // keys that need the "extended" bit to get the right name
+    case VK_LEFT: case VK_UP: case VK_RIGHT: case VK_DOWN: case VK_PRIOR: case VK_NEXT:
+    case VK_END: case VK_HOME: case VK_INSERT: case VK_DELETE: case VK_DIVIDE: case VK_NUMLOCK:
+    case VK_RCONTROL: case VK_RMENU:
+        sc |= 0x100;
+        break;
+    }
+    wchar_t buf[64];
+    if (!GetKeyNameTextW((LONG)(sc << 16), buf, 64)) {
+        char b[16];
+        snprintf(b, sizeof(b), "Key %d", key);
+        return b;
+    }
+    return WideToUtf8(buf);
+}
 
 bool KeyDown(int key)
 {

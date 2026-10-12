@@ -10,6 +10,12 @@
 
 Settings g_settings;
 
+// Classic: the original arrows (+ numpad) and X / Z / C. WASD: move with WASD (arrows still work),
+// Space passes, Shift shoots, E is the extra button.
+const int kKbClassic[KB_ACTIONS][2] = {{0x26, 0x68}, {0x28, 0x62}, {0x25, 0x64}, {0x27, 0x66}, {0x58, 0}, {0x5a, 0}, {0x43, 0}};
+const int kKbWasd[KB_ACTIONS][2] = {{0x57, 0x26}, {0x53, 0x28}, {0x41, 0x25}, {0x44, 0x27}, {0x20, 0}, {0x10, 0}, {0x45, 0}};
+const int kPadDefault[PAD_ACTIONS] = {0, 2, 1, 9};
+
 static std::string SettingsPath() { return plat::ConfigDir() + "settings.ini"; }
 
 static int Clamp(int v, int lo, int hi) { return v < lo ? lo : v > hi ? hi : v; }
@@ -32,6 +38,23 @@ void Settings_Load()
         else if (!strcmp(key, "language")) g_settings.language = Clamp(atoi(val), 0, 1);
         else if (!strcmp(key, "net_port")) g_settings.netPort = Clamp(atoi(val), 1024, 65535);
         else if (!strcmp(key, "player_name") && *val) snprintf(g_settings.playerName, sizeof(g_settings.playerName), "%s", val);
+        else if (!strcmp(key, "kb_layout")) g_settings.kbLayout = Clamp(atoi(val), 0, 2);
+        else if (!strcmp(key, "kb_custom")) {
+            int v[KB_ACTIONS * 2];
+            int n = 0;
+            for (char *p = (char *)val; *p && n < KB_ACTIONS * 2;) {
+                v[n++] = Clamp(atoi(p), 0, 255);
+                p = strchr(p, ',');
+                if (!p) break;
+                p++;
+            }
+            if (n == KB_ACTIONS * 2)
+                for (int i = 0; i < n; i++) g_settings.kbCustom[i / 2][i % 2] = v[i];
+        } else if (!strcmp(key, "pad_map")) {
+            int v[PAD_ACTIONS];
+            if (sscanf(val, "%d,%d,%d,%d", &v[0], &v[1], &v[2], &v[3]) == 4)
+                for (int i = 0; i < PAD_ACTIONS; i++) g_settings.padMap[i] = Clamp(v[i], 0, 16);
+        }
     }
     fclose(f);
 }
@@ -46,6 +69,11 @@ void Settings_Save()
     fprintf(f, "language=%d\n", g_settings.language);
     fprintf(f, "net_port=%d\n", g_settings.netPort);
     fprintf(f, "player_name=%s\n", g_settings.playerName);
+    fprintf(f, "kb_layout=%d\n", g_settings.kbLayout);
+    fprintf(f, "kb_custom=");
+    for (int i = 0; i < KB_ACTIONS * 2; i++) fprintf(f, i ? ",%d" : "%d", g_settings.kbCustom[i / 2][i % 2]);
+    fprintf(f, "\n");
+    fprintf(f, "pad_map=%d,%d,%d,%d\n", g_settings.padMap[0], g_settings.padMap[1], g_settings.padMap[2], g_settings.padMap[3]);
     fclose(f);
 }
 

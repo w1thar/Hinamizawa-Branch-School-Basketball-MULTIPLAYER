@@ -410,14 +410,18 @@ void Game::DrawHUD()
 // ---- mod menus ----
 void Game::DrawSettingsMenu()
 {
-    DrawTextCentered("設定", 28, 320, 192, Pulse(f390, 10.0f), Pulse(f390, 7.0f), Pulse(f390, 3.0f));
-    static const char *const labels[5] = {"全体の音量", "音楽の音量", "効果音の音量", "言語", "戻る"};
+    if (ctlOpen) {
+        DrawControlsMenu();
+        return;
+    }
+    DrawTextCentered("設定", 28, 320, 180, Pulse(f390, 10.0f), Pulse(f390, 7.0f), Pulse(f390, 3.0f));
+    static const char *const labels[6] = {"全体の音量", "音楽の音量", "効果音の音量", "言語", "操作設定", "戻る"};
     const int values[3] = {g_settings.masterVolume, g_settings.musicVolume, g_settings.sfxVolume};
-    for (int i = 0; i < 5; i++) {
-        int y = 250 + i * 36;
+    for (int i = 0; i < 6; i++) {
+        int y = 230 + i * 34;
         bool sel = i == menuSel;
         int g = sel ? 0 : 255;
-        if (i == 4) {
+        if (i >= 4) {
             DrawTextCentered(labels[i], 28, 322, y + 2, 0, 0, 0);
             DrawTextCentered(labels[i], 28, 320, y, 255, g, g);
             continue;
@@ -453,4 +457,48 @@ void Game::DrawPauseMenu()
         else DrawTextCentered(names[ids[i]], 28, 320, y, 255, 255, 255);
     }
     DrawTextCentered("↑↓：選択　　Ｘ：決定　　ESC：再開", 16, 320, 440, 255, 250, 150);
+}
+
+void Game::DrawControlsMenu()
+{
+    DrawTextCentered("操作設定", 26, 320, 40, Pulse(f390, 10.0f), Pulse(f390, 7.0f), Pulse(f390, 3.0f));
+    static const char *const layouts[3] = {"クラシック（矢印・Ｘ・Ｚ・Ｃ）", "ＷＡＳＤ（Space：パス　Shift：シュート）", "カスタム"};
+    static const char *const kbLabels[KB_ACTIONS] = {"キー：上", "キー：下", "キー：左", "キー：右", "キー：パス", "キー：シュート", "キー：サブ（Ｃ）"};
+    static const char *const padLabels[PAD_ACTIONS] = {"パッド：パス", "パッド：シュート", "パッド：サブ", "パッド：ポーズ"};
+    const int rows = 1 + KB_ACTIONS + PAD_ACTIONS + 2;
+    for (int i = 0; i < rows; i++) {
+        int y = 84 + i * 25 + (i >= 1 + KB_ACTIONS ? 6 : 0) + (i >= 1 + KB_ACTIONS + PAD_ACTIONS ? 6 : 0);
+        bool sel = i == ctlSel;
+        int g = sel ? 0 : 255;
+        std::string value;
+        const char *label = "";
+        if (i == 0) {
+            label = "キーボード配置";
+            value = layouts[g_settings.kbLayout];
+        } else if (i <= KB_ACTIONS) {
+            int a = i - 1;
+            label = kbLabels[a];
+            if (sel && ctlCapture == 1) {
+                value = "キーを押してください…（Esc：キャンセル）";
+            } else {
+                int k0 = Input_KeyFor(a, 0), k1 = Input_KeyFor(a, 1);
+                value = k0 ? plat::KeyName(k0) : "-";
+                if (k1) value += " / " + plat::KeyName(k1);
+            }
+        } else if (i <= KB_ACTIONS + PAD_ACTIONS) {
+            int a = i - 1 - KB_ACTIONS;
+            label = padLabels[a];
+            value = sel && ctlCapture == 2 ? "ボタンを押してください…（Esc：キャンセル）" : Input_PadButtonName(g_settings.padMap[a]);
+        } else {
+            const char *t = i == rows - 2 ? "初期設定に戻す" : "戻る";
+            DrawTextCentered(t, 20, 322, y + 2, 0, 0, 0);
+            DrawTextCentered(t, 20, 320, y, 255, g, g);
+            continue;
+        }
+        DrawTextFit(label, 18, 52, y + 2, 230, 0, 0, 0);
+        DrawTextFit(label, 18, 50, y, 230, 255, g, g);
+        DrawTextFit(value.c_str(), 18, 292, y + 2, 330, 0, 0, 0);
+        DrawTextFit(value.c_str(), 18, 290, y, 330, 255, g, g);
+    }
+    DrawTextCentered("←→：配置の変更　　Ｘ：割り当て変更　　Esc：戻る", 14, 320, 456, 255, 250, 150);
 }

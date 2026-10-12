@@ -122,6 +122,8 @@ public:
     void StartTeamSelect();
     void PickSmallTeams();
     bool SettingsMenu();       // settings page input; true when "Back" was chosen
+    void ControlsMenu();       // the controls page inside the settings
+    void DrawControlsMenu();
     bool UpdatePause();        // pause menu; true while the game is paused
     bool UpdatePauseMenu();
     int PauseItems(int *ids);  // the pause menu's entries for the current state
@@ -209,6 +211,12 @@ public:
     int pausePage;             // 0 = pause menu, 1 = settings
     int pauseSel;
     int teamSize;              // players per team in the match (1..3; the original is always 3)
+    bool ctlOpen;              // settings: the controls page is open
+    int ctlSel;
+    int ctlCapture;            // 0 none, 1 waiting for a key, 2 waiting for a controller button
+    double ctlCaptureStart;
+    bool ctlWaitRelease;       // ignore input until everything is let go (after a capture)
+    bool ctlCaptureArmed;      // the key / button that started the capture has been released
 
     // ---- multiplayer (mod) ----
     bool mpActive;             // a multiplayer match is set up (from team select to the results)
